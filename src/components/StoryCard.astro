@@ -1,0 +1,44 @@
+---
+export interface Props {
+  story: {
+    id: string;
+    displayName: string;
+    ageGroup?: string;
+    favoriteCharacter?: string;
+    firstWork: string[];
+    catchphrase: string;
+    imageUrl?: string | null;
+    publishedAt: string;
+    isSeedContent?: boolean;
+  };
+}
+const { story } = Astro.props;
+---
+
+<article class="story-card">
+  {story.imageUrl && (
+    <div class="card-image">
+      <img src={story.imageUrl} alt={story.displayName + 'の投稿画像'} loading="lazy" />
+    </div>
+  )}
+  <div class="card-body">
+    <div class="card-tags">
+      {story.firstWork.map((w) => (
+        <span class="tag">{w}</span>
+      ))}
+    </div>
+    <blockquote class="card-catchphrase">
+      &ldquo;{story.catchphrase}&rdquo;
+    </blockquote>
+    <div class="card-meta">
+      <span class="card-name">{story.displayName}</span>
+      {story.ageGroup && <span class="card-age">・出会いは{story.ageGroup}</span>}
+      {story.favoriteCharacter && (
+        <span class="card-chara">・推し：{story.favoriteCharacter}</span>
+      )}
+    </div>
+  </div>
+  <a href={`/stories/${story.id}`} class="card-link" aria-label={`${story.displayName}の体験談を読む`}>
+    <span class="card-link-text">続きを読む →</span>
+  </a>
+</article>

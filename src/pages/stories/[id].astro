@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import stories from '../../data/stories.json';
+
+export function getStaticPaths() {
+  return stories.map((story) => ({
+    params: { id: story.id },
+    props: { story },
+  }));
+}
+
+const { story } = Astro.props;
+---
+
+<BaseLayout
+  title={story.displayName + 'の体験談'}
+  description={story.catchphrase}
+>
+  <article class="story-detail">
+    <div class="story-detail-inner">
+
+      <!-- パンくず -->
+      <nav class="breadcrumb">
+        <a href="/">ホーム</a> &rsaquo;
+        <a href="/stories">体験談一覧</a> &rsaquo;
+        <span>{story.displayName}</span>
+      </nav>
+
+      <!-- ヘッダー -->
+      <header class="story-header">
+        <div class="story-tags">
+          {story.firstWork.map((w) => (
+            <span class="tag tag-large">{w}</span>
+          ))}
+        </div>
+        <blockquote class="story-catchphrase">
+          &ldquo;{story.catchphrase}&rdquo;
+        </blockquote>
+        <div class="story-meta">
+          <span class="story-name">{story.displayName}</span>
+          {story.ageGroup && (
+            <span class="story-meta-item">出会いは{story.ageGroup}</span>
+          )}
+          {story.favoriteCharacter && (
+            <span class="story-meta-item">推し：{story.favoriteCharacter}</span>
+          )}
+          <span class="story-meta-item story-date">
+            {new Date(story.publishedAt).toLocaleDateString('ja-JP', {
+              year: 'numeric', month: 'long', day: 'numeric'
+            })}
+          </span>
+        </div>
+      </header>
+
+      <!-- 画像（あれば） -->
+      {story.imageUrl && (
+        <div class="story-image">
+          <img src={story.imageUrl} alt={story.imageCaption ?? story.displayName + 'の投稿画像'} />
+          {story.imageCaption && <p class="story-image-caption">{story.imageCaption}</p>}
+        </div>
+      )}
+
+      <!-- 本文 -->
+      <div class="story-body">
+        <section class="story-section">
+          <h2>ハマるきっかけになったシーン</h2>
+          <p>{story.triggerScene}</p>
+        </section>
+
+        <section class="story-section">
+          <h2>「あ、自分これ好きだ」と気づいた瞬間</h2>
+          <p>{story.realization}</p>
+        </section>
+
+        {story.currentRelationship && (
+          <section class="story-section">
+            <h2>今のあなたとナルボルの関係</h2>
+            <p>{story.currentRelationship}</p>
+          </section>
+        )}
+
+        {story.message && (
+          <section class="story-message">
+            <p class="message-label">同じ作品を好きな人へ</p>
+            <blockquote class="message-quote">&ldquo;{story.message}&rdquo;</blockquote>
+          </section>
+        )}
+      </div>
+
+      <!-- ナビゲーション -->
+      <nav class="story-nav">
+        <a href="/stories" class="btn btn-outline">&larr; 一覧に戻る</a>
+        <a href="/submit" class="btn btn-primary">あなたの体験談を投稿する</a>
+      </nav>
+
+    </div>
+  </article>
+</BaseLayout>

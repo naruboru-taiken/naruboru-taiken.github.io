@@ -1,0 +1,63 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = 'ナルボルファンの体験談を集めたサイトです。' } = Astro.props;
+
+// GitHub Pages の base パスに対応するためすべての内部リンクにプレフィックスを付与する
+// BASE_URL は astro.config.mjs の base 設定から自動生成される（例: "/naruboru-fan-site/"）
+// base 未設定時は "/" になる
+const base = import.meta.env.BASE_URL.replace(/\/$/, ''); // 末尾スラッシュを除去
+---
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title} | ナルボル体験談</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href={`${base}/styles/global.css`} />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a href={`${base}/`} class="site-logo">
+          <span class="logo-mark">忍</span>
+          <span class="logo-text">ナルボル体験談</span>
+        </a>
+        <nav class="site-nav">
+          <a href={`${base}/stories`}>体験談を読む</a>
+          <a href={`${base}/submit`} class="nav-cta">体験談を投稿する</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-logo">
+          <span class="logo-mark-small">忍</span> ナルボル体験談
+        </p>
+        <nav class="footer-nav">
+          <a href={`${base}/`}>ホーム</a>
+          <a href={`${base}/stories`}>体験談一覧</a>
+          <a href={`${base}/guidelines`}>投稿ガイドライン</a>
+          <a href={`${base}/submit`}>投稿する</a>
+        </nav>
+        <p class="footer-note">
+          ※ 本サイトはファンによる非公式サイトです。NARUTO・BORUTOの著作権は岸本斉史先生・集英社および池本幹雄先生・小太刀右京先生に帰属します。本サイトは権利者とは一切関係ありません。
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
