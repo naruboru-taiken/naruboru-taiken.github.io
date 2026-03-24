@@ -6,6 +6,8 @@ import stories from '../../data/stories.json';
 const sorted = [...stories].sort(
   (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
 );
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout title="体験談一覧" description="ナルボルファンの体験談一覧です。">
@@ -28,7 +30,7 @@ const sorted = [...stories].sort(
 
       <div class="submit-nudge">
         <p>あなたの体験談もぜひ。</p>
-        <a href="/submit" class="btn btn-primary">投稿する →</a>
+        <a href={`${base}/submit`} class="btn btn-primary">投稿する →</a>
       </div>
     </div>
   </section>

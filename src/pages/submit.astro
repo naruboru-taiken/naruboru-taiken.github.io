@@ -1,10 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// ★ここにTally.soのフォームURLを設定してください
-// Tally.so でフォームを作成後、埋め込みURLに差し替えてください
-const TALLY_FORM_URL = 'https://tally.so/r/dWl9Lz';
 const TALLY_EMBED_URL = 'https://tally.so/embed/dWl9Lz?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout title="体験談を投稿する" description="ナルボル体験談サイトへの投稿ページです。">
@@ -27,7 +25,7 @@ const TALLY_EMBED_URL = 'https://tally.so/embed/dWl9Lz?alignLeft=1&hideTitle=1&t
         <ul class="checklist">
           <li>
             <span class="check-icon">📋</span>
-            <a href="/guidelines">投稿ガイドライン</a>を読みましたか？
+            <a href={`${base}/guidelines`}>投稿ガイドライン</a>を読みましたか？
           </li>
           <li>
             <span class="check-icon">🚫</span>
@@ -43,45 +41,25 @@ const TALLY_EMBED_URL = 'https://tally.so/embed/dWl9Lz?alignLeft=1&hideTitle=1&t
       </div>
 
       <!-- フォーム埋め込みエリア -->
+      <!-- フォームURLを変更する場合: src/pages/submit.astro 冒頭の TALLY_EMBED_URL を更新してください -->
       <div class="form-embed-wrapper">
-        {TALLY_FORM_URL === 'https://tally.so/r/XXXXXXXX' ? (
-          <!-- フォームURL未設定時のプレースホルダー表示 -->
-          <div class="form-placeholder">
-            <div class="form-placeholder-icon">📝</div>
-            <h3>投稿フォームの設置手順</h3>
-            <p>
-              <strong>Tally.soでフォームを作成後、このページを更新してください。</strong>
-            </p>
-            <ol>
-              <li>
-                <a href="https://tally.so" target="_blank" rel="noopener noreferrer">tally.so</a> にアクセスしてアカウントを作成
-              </li>
-              <li>要件定義書を参考にフォームを作成</li>
-              <li><code>src/pages/submit.astro</code> の <code>TALLY_FORM_URL</code> と <code>TALLY_EMBED_URL</code> を更新</li>
-            </ol>
-            <p class="placeholder-note">
-              ※ このメッセージは、フォームURLが設定されると自動的に非表示になります。
-            </p>
-          </div>
-        ) : (
-          <iframe
-            data-tally-src={TALLY_EMBED_URL}
-            loading="lazy"
-            width="100%"
-            height="500"
-            frameborder="0"
-            marginheight="0"
-            marginwidth="0"
-            title="ナルボル体験談投稿フォーム"
-            class="tally-iframe"
-          ></iframe>
-          <script src="https://tally.so/widgets/embed.js" is:inline></script>
-        )}
+        <iframe
+          data-tally-src={TALLY_EMBED_URL}
+          loading="lazy"
+          width="100%"
+          height="500"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          title="ナルボル体験談投稿フォーム"
+          class="tally-iframe"
+        ></iframe>
+        <script src="https://tally.so/widgets/embed.js" is:inline></script>
       </div>
 
       <!-- ガイドライン再掲リンク -->
       <p class="submit-guideline-link">
-        投稿に迷ったら <a href="/guidelines">投稿ガイドライン</a> をご確認ください。
+        投稿に迷ったら <a href={`${base}/guidelines`}>投稿ガイドライン</a> をご確認ください。
       </p>
 
     </div>

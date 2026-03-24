@@ -1,5 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout title="投稿ガイドライン" description="ナルボル体験談サイトの投稿ガイドラインです。">
@@ -88,14 +90,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <h2>免責事項</h2>
         <p>
           本サイトはNARUTO・BORUTOの非公式ファンサイトです。
-          岸本斉史先生・集英社・その他権利者とは一切関係ありません。
+          岸本斉史先生・集英社および池本幹雄先生・小太刀右京先生・その他権利者とは一切関係ありません。
           投稿内容の著作権は投稿者に帰属しますが、本サイトへの掲載を許諾したものとみなします。
         </p>
       </section>
 
       <div class="gl-cta">
         <p>ガイドラインを読んでいただきありがとうございます。</p>
-        <a href="/submit" class="btn btn-primary">体験談を投稿する</a>
+        <a href={`${base}/submit`} class="btn btn-primary">体験談を投稿する</a>
       </div>
 
     </div>

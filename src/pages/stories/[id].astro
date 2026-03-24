@@ -10,6 +10,7 @@ export function getStaticPaths() {
 }
 
 const { story } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
 <BaseLayout
@@ -21,8 +22,8 @@ const { story } = Astro.props;
 
       <!-- パンくず -->
       <nav class="breadcrumb">
-        <a href="/">ホーム</a> &rsaquo;
-        <a href="/stories">体験談一覧</a> &rsaquo;
+        <a href={`${base}/`}>ホーム</a> &rsaquo;
+        <a href={`${base}/stories`}>体験談一覧</a> &rsaquo;
         <span>{story.displayName}</span>
       </nav>
 
@@ -88,8 +89,8 @@ const { story } = Astro.props;
 
       <!-- ナビゲーション -->
       <nav class="story-nav">
-        <a href="/stories" class="btn btn-outline">&larr; 一覧に戻る</a>
-        <a href="/submit" class="btn btn-primary">あなたの体験談を投稿する</a>
+        <a href={`${base}/stories`} class="btn btn-outline">&larr; 一覧に戻る</a>
+        <a href={`${base}/submit`} class="btn btn-primary">あなたの体験談を投稿する</a>
       </nav>
 
     </div>
