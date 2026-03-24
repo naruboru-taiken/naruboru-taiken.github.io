@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- 背景 -->
+  <rect width="1200" height="630" fill="#1a1a2e"/>
+
+  <!-- オレンジのグラデーション装飾 -->
+  <circle cx="100" cy="315" r="400" fill="#e8621a" opacity="0.15"/>
+  <circle cx="1150" cy="80" r="250" fill="#e8621a" opacity="0.08"/>
+
+  <!-- 左端のアクセントライン -->
+  <rect x="0" y="0" width="8" height="630" fill="#e8621a"/>
+
+  <!-- 忍マーク -->
+  <circle cx="140" cy="220" r="56" fill="#e8621a"/>
+  <text x="140" y="238" font-family="serif" font-size="52" font-weight="bold" fill="white" text-anchor="middle">忍</text>
+
+  <!-- サイトタイトル -->
+  <text x="220" y="200" font-family="'Noto Sans JP', 'Hiragino Sans', sans-serif" font-size="52" font-weight="bold" fill="white">ナルボル体験談</text>
+
+  <!-- サブタイトル -->
+  <text x="220" y="258" font-family="'Noto Sans JP', 'Hiragino Sans', sans-serif" font-size="26" fill="#e8621a">NARUTO・BORUTO ファン体験談</text>
+
+  <!-- 区切り線 -->
+  <rect x="80" y="310" width="1040" height="2" fill="#e8621a" opacity="0.4"/>
+
+  <!-- キャッチコピー -->
+  <text x="600" y="390" font-family="'Noto Sans JP', 'Hiragino Sans', sans-serif" font-size="36" font-weight="bold" fill="white" text-anchor="middle">あなたがオタクになった日のこと、</text>
+  <text x="600" y="445" font-family="'Noto Sans JP', 'Hiragino Sans', sans-serif" font-size="36" font-weight="bold" fill="white" text-anchor="middle">教えてください。</text>
+
+  <!-- URL -->
+  <text x="600" y="570" font-family="monospace" font-size="22" fill="rgba(255,255,255,0.4)" text-anchor="middle">chachaTSUBAKI.github.io/naruboru-fan-site</text>
+</svg>

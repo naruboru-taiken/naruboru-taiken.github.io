@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<BaseLayout
+  title="プライバシーポリシー"
+  description="ナルボル体験談サイトのプライバシーポリシーです。"
+>
+  <section class="page-header">
+    <div class="page-header-inner">
+      <h1 class="page-title">プライバシーポリシー</h1>
+      <p class="page-desc">個人情報の取り扱いについて説明します。</p>
+    </div>
+  </section>
+
+  <article class="guidelines-article">
+    <div class="guidelines-inner">
+
+      <section class="gl-section">
+        <h2>収集する情報</h2>
+        <p>本サイトでは、体験談の投稿フォームにて以下の情報をお預かりしています。</p>
+        <ul>
+          <li>
+            <strong>X（旧Twitter）ID</strong>（必須）<br />
+            投稿者本人への連絡および本人確認のために収集します。
+            サイト上に公開されることはありません。
+          </li>
+          <li>
+            <strong>表示名・ニックネーム</strong>（任意）<br />
+            サイト上の体験談に表示する名前として使用します。
+            未入力の場合、識別子を代わりに表示します。
+          </li>
+          <li>
+            <strong>体験談の本文・選択肢の回答</strong>（一部必須）<br />
+            審査後にサイト上で公開します。
+          </li>
+          <li>
+            <strong>投稿画像</strong>（任意）<br />
+            審査後、問題がないと判断した場合にサイト上で公開します。
+          </li>
+        </ul>
+        <p>
+          本サイトはアクセス解析ツールを使用していないため、IPアドレスや閲覧履歴などの情報は収集・記録していません。
+        </p>
+      </section>
+
+      <section class="gl-section">
+        <h2>情報の利用目的</h2>
+        <ul>
+          <li>体験談のサイト掲載および公開</li>
+          <li>投稿内容に確認事項がある場合の連絡</li>
+          <li>掲載取り下げ・削除依頼があった場合の本人確認</li>
+        </ul>
+        <p>上記以外の目的には使用しません。</p>
+      </section>
+
+      <section class="gl-section">
+        <h2>第三者への提供</h2>
+        <p>
+          収集した個人情報（X IDを含む）を第三者に販売・提供・開示することはありません。
+          ただし、法令に基づき開示が求められた場合はこの限りではありません。
+        </p>
+      </section>
+
+      <section class="gl-section">
+        <h2>情報の保管・管理</h2>
+        <p>
+          投稿フォームのデータはTally.so（フォームサービス）およびAirtable（データベースサービス）に保管されます。
+          各サービスのプライバシーポリシーについては以下をご確認ください。
+        </p>
+        <ul>
+          <li>Tally.so: <a href="https://tally.so/help/privacy-policy" target="_blank" rel="noopener noreferrer">https://tally.so/help/privacy-policy</a></li>
+          <li>Airtable: <a href="https://www.airtable.com/privacy" target="_blank" rel="noopener noreferrer">https://www.airtable.com/privacy</a></li>
+        </ul>
+        <p>
+          サイトへの掲載が終了した投稿の個人情報（X ID）については、
+          削除依頼を受けた場合に速やかに削除します。
+        </p>
+      </section>
+
+      <section class="gl-section">
+        <h2>掲載取り下げ・情報削除の依頼</h2>
+        <p>
+          掲載済みの体験談の取り下げや、お預かりしている個人情報の削除を希望される場合は、
+          投稿時に使用したX IDのアカウントより、運営のXアカウントへDMにてご連絡ください。
+        </p>
+        <p>
+          確認が取れ次第、速やかに対応します。
+        </p>
+        <!-- ★運営のXアカウントが決まったらここに追記してください -->
+        <!-- 例: <p>運営X: <a href="https://x.com/yourhandle">@yourhandle</a></p> -->
+      </section>
+
+      <section class="gl-section">
+        <h2>Cookieについて</h2>
+        <p>
+          本サイト（GitHub Pages上の静的サイト）自体はCookieを使用していません。
+          ただし埋め込みフォーム（Tally.so）はCookieを使用する場合があります。
+        </p>
+      </section>
+
+      <section class="gl-section">
+        <h2>プライバシーポリシーの変更</h2>
+        <p>
+          本ポリシーは予告なく変更される場合があります。
+          重要な変更がある場合は、サイト上でお知らせします。
+        </p>
+        <p class="gl-note">最終更新日：2026年3月25日</p>
+      </section>
+
+      <div class="gl-cta">
+        <p>ご不明な点はお気軽にご連絡ください。</p>
+        <a href={`${base}/guidelines`} class="btn btn-outline">投稿ガイドラインを読む</a>
+      </div>
+
+    </div>
+  </article>
+</BaseLayout>
