@@ -183,6 +183,12 @@ a:hover { text-decoration: underline; }
   font-size: 0.9rem;
 }
 
+/* メディア種別タグ（アニメ・漫画など）：シリーズタグと色を変えて区別 */
+.tag-media {
+  background: #eef2ff;
+  color: #3730a3;
+}
+
 /* ============ ヒーロー ============ */
 .hero {
   position: relative;

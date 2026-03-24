@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import stories from '../../data/stories.json';
 
 export function getStaticPaths() {
-  return stories.map((story) => ({
+  return (stories as any[]).map((story) => ({
     params: { id: story.id },
     props: { story },
   }));
@@ -29,9 +29,8 @@ const { story } = Astro.props;
       <!-- ヘッダー -->
       <header class="story-header">
         <div class="story-tags">
-          {story.firstWork.map((w) => (
-            <span class="tag tag-large">{w}</span>
-          ))}
+          <span class="tag tag-large">{story.firstSeries}</span>
+          <span class="tag tag-large tag-media">{story.firstMedia}</span>
         </div>
         <blockquote class="story-catchphrase">
           &ldquo;{story.catchphrase}&rdquo;
