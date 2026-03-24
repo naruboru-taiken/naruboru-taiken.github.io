@@ -281,9 +281,13 @@ btn.addEventListener('click', async () => {
           await navigator.share({ files: [file] });
         } else {
           downloadBlob(blob);
+          showToast('画像をダウンロードしました。\nInstagramアプリのストーリーズから追加してください。');
         }
       } catch (e) {
-        if (e.name !== 'AbortError') downloadBlob(blob);
+        if (e.name !== 'AbortError') {
+          downloadBlob(blob);
+          showToast('画像をダウンロードしました。\nInstagramアプリのストーリーズから追加してください。');
+        }
       } finally {
         btn.disabled = false;
         btn.innerHTML = originalHTML;
@@ -376,5 +380,19 @@ function downloadBlob(blob) {
   a.click();
   document.body.removeChild(a);
   setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function showToast(message) {
+  const toast = document.createElement('div');
+  toast.className = 'share-toast';
+  toast.textContent = message;
+  document.body.appendChild(toast);
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => toast.classList.add('share-toast--visible'));
+  });
+  setTimeout(() => {
+    toast.classList.remove('share-toast--visible');
+    setTimeout(() => toast.remove(), 400);
+  }, 5000);
 }
 </script>
