@@ -568,6 +568,24 @@ a:hover { text-decoration: underline; }
   text-decoration: none;
 }
 
+.btn-ig-share {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+.btn-ig-share:hover { opacity: 0.85; text-decoration: none; }
+.btn-ig-share:disabled { opacity: 0.6; cursor: wait; }
+
 .story-nav {
   display: flex;
   flex-wrap: wrap;
@@ -824,7 +842,7 @@ a:hover { text-decoration: underline; }
   .hero-actions { flex-direction: column; align-items: flex-start; }
 
   .story-share { flex-direction: column; align-items: flex-start; }
-  .btn-x-share { width: 100%; justify-content: center; }
+  .btn-x-share, .btn-ig-share { width: 100%; justify-content: center; }
 
   .story-nav { flex-direction: column; }
   .story-nav .btn { width: 100%; text-align: center; }
