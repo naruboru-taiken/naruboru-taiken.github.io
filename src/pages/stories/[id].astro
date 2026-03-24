@@ -62,15 +62,19 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
       <!-- 本文 -->
       <div class="story-body">
-        <section class="story-section">
-          <h2>ハマるきっかけになったシーン</h2>
-          <p>{story.triggerScene}</p>
-        </section>
+        {story.triggerScene && (
+          <section class="story-section">
+            <h2>ハマるきっかけになったシーン</h2>
+            <p>{story.triggerScene}</p>
+          </section>
+        )}
 
-        <section class="story-section">
-          <h2>「あ、自分これ好きだ」と気づいた瞬間</h2>
-          <p>{story.realization}</p>
-        </section>
+        {story.realization && (
+          <section class="story-section">
+            <h2>「あ、自分これ好きだ」と気づいた瞬間</h2>
+            <p>{story.realization}</p>
+          </section>
+        )}
 
         {story.currentRelationship && (
           <section class="story-section">
