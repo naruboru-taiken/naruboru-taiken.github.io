@@ -17,7 +17,7 @@ const { story } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-<article class="story-card">
+<article class="story-card" data-series={story.firstSeries}>
   {story.imageUrl && (
     <div class="card-image">
       <img src={story.imageUrl} alt={story.displayName + 'の投稿画像'} loading="lazy" />

@@ -15,18 +15,31 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div class="page-header-inner">
       <h1 class="page-title">体験談一覧</h1>
       <p class="page-desc">
-        現在 <strong>{stories.length}</strong> 件の体験談が集まっています。
+        現在 <strong id="story-count">{stories.length}</strong> 件の体験談が集まっています。
       </p>
     </div>
   </section>
 
   <section class="section">
     <div class="section-inner">
-      <div class="card-grid">
+
+      <!-- シリーズフィルター -->
+      <div class="filter-bar" role="group" aria-label="シリーズで絞り込む">
+        <button class="filter-btn active" data-filter="all">すべて</button>
+        <button class="filter-btn" data-filter="NARUTO">NARUTO</button>
+        <button class="filter-btn" data-filter="BORUTO">BORUTO</button>
+      </div>
+
+      <div class="card-grid" id="story-grid">
         {sorted.map((story) => (
           <StoryCard story={story} />
         ))}
       </div>
+
+      <!-- 0件メッセージ -->
+      <p id="no-results" class="filter-no-results" hidden>
+        該当する体験談がまだありません。
+      </p>
 
       <div class="submit-nudge">
         <p>あなたの体験談もぜひ。</p>
@@ -35,3 +48,28 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     </div>
   </section>
 </BaseLayout>
+
+<script>
+const btns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
+const cards = document.querySelectorAll<HTMLElement>('.story-card');
+const countEl = document.getElementById('story-count');
+const noResults = document.getElementById('no-results');
+
+btns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    btns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter ?? 'all';
+
+    let visible = 0;
+    cards.forEach(card => {
+      const match = filter === 'all' || card.dataset.series === filter;
+      card.style.display = match ? '' : 'none';
+      if (match) visible++;
+    });
+
+    if (countEl) countEl.textContent = String(visible);
+    if (noResults) noResults.hidden = visible > 0;
+  });
+});
+</script>

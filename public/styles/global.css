@@ -596,12 +596,76 @@ a:hover { text-decoration: underline; }
 }
 
 /* ============ 体験談一覧ページ ============ */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.75rem;
+}
+
+.filter-btn {
+  padding: 0.4rem 1.1rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-text-sub);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.filter-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.filter-btn.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+  font-weight: 500;
+}
+
+.filter-no-results {
+  text-align: center;
+  color: var(--color-text-sub);
+  padding: var(--space-lg) 0;
+}
+
 .submit-nudge {
   text-align: center;
   padding: var(--space-lg) 0 0;
   color: var(--color-text-sub);
 }
 .submit-nudge p { margin-bottom: var(--space-sm); }
+
+/* ============ 投稿完了ページ ============ */
+.thanks-box {
+  text-align: center;
+  padding: var(--space-lg) var(--space-md);
+  max-width: 480px;
+  margin: 0 auto;
+}
+.thanks-check {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-md);
+}
+.thanks-box h2 {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-sm);
+}
+.thanks-box p {
+  color: var(--color-text-sub);
+  line-height: var(--line-height);
+  margin-bottom: 0.5rem;
+}
 
 /* ============ ガイドラインページ ============ */
 .guidelines-article {
