@@ -125,7 +125,17 @@ const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
   </article>
 </BaseLayout>
 
-<script define:vars={{ catchphrase: story.catchphrase, displayName: story.displayName, storyUrl, firstSeries: story.firstSeries, firstMedia: story.firstMedia }}>
+<script define:vars={{
+  catchphrase: story.catchphrase,
+  displayName: story.displayName,
+  storyUrl,
+  firstSeries: story.firstSeries,
+  firstMedia: story.firstMedia,
+  triggerScene: story.triggerScene ?? null,
+  realization: story.realization ?? null,
+  currentRelationship: story.currentRelationship ?? null,
+  message: story.message ?? null,
+}}>
 const btn = document.getElementById('ig-share-btn');
 const originalHTML = btn.innerHTML;
 
@@ -135,9 +145,10 @@ btn.addEventListener('click', async () => {
 
   try {
     await Promise.allSettled([
-      document.fonts.load('bold 72px "Noto Sans JP"'),
-      document.fonts.load('500 40px "Noto Sans JP"'),
-      document.fonts.load('400 32px "Noto Sans JP"'),
+      document.fonts.load('bold 54px "Noto Sans JP"'),
+      document.fonts.load('bold 30px "Noto Sans JP"'),
+      document.fonts.load('400 34px "Noto Sans JP"'),
+      document.fonts.load('500 36px "Noto Sans JP"'),
     ]);
 
     const canvas = document.createElement('canvas');
@@ -149,118 +160,120 @@ btn.addEventListener('click', async () => {
     ctx.fillStyle = '#1a1a2e';
     ctx.fillRect(0, 0, 1080, 1920);
 
-    // オレンジのグラデーション装飾（上左）
-    const g1 = ctx.createRadialGradient(180, 480, 0, 180, 480, 640);
-    g1.addColorStop(0, 'rgba(232,98,26,0.28)');
+    const g1 = ctx.createRadialGradient(160, 360, 0, 160, 360, 560);
+    g1.addColorStop(0, 'rgba(232,98,26,0.22)');
     g1.addColorStop(1, 'rgba(232,98,26,0)');
     ctx.fillStyle = g1;
     ctx.fillRect(0, 0, 1080, 1920);
 
-    // グラデーション装飾（下右）
-    const g2 = ctx.createRadialGradient(920, 1680, 0, 920, 1680, 420);
-    g2.addColorStop(0, 'rgba(232,98,26,0.18)');
+    const g2 = ctx.createRadialGradient(960, 1760, 0, 960, 1760, 380);
+    g2.addColorStop(0, 'rgba(232,98,26,0.14)');
     g2.addColorStop(1, 'rgba(232,98,26,0)');
     ctx.fillStyle = g2;
     ctx.fillRect(0, 0, 1080, 1920);
 
-    // 左アクセントバー
     ctx.fillStyle = '#e8621a';
     ctx.fillRect(0, 0, 14, 1920);
 
     // ── ヘッダー ──
-    // 忍マーク
+    const logoX = 100, logoY = 104, logoR = 42;
     ctx.beginPath();
-    ctx.arc(120, 176, 58, 0, Math.PI * 2);
+    ctx.arc(logoX, logoY, logoR, 0, Math.PI * 2);
     ctx.fillStyle = '#e8621a';
     ctx.fill();
 
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 58px serif';
+    ctx.font = 'bold 44px serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('忍', 120, 178);
+    ctx.fillText('忍', logoX, logoY + 2);
 
-    // サイト名
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 46px "Noto Sans JP", sans-serif';
+    ctx.font = 'bold 40px "Noto Sans JP", sans-serif';
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
-    ctx.fillText('ナルボル体験談', 204, 176);
+    ctx.fillText('ナルボル体験談', 162, logoY);
 
-    // ヘッダー区切り線
     ctx.beginPath();
-    ctx.moveTo(80, 290);
-    ctx.lineTo(1000, 290);
-    ctx.strokeStyle = 'rgba(232,98,26,0.55)';
+    ctx.moveTo(60, 170);
+    ctx.lineTo(1020, 170);
+    ctx.strokeStyle = 'rgba(232,98,26,0.6)';
     ctx.lineWidth = 2;
     ctx.stroke();
 
-    // ── 引用デコレーション ──
-    ctx.fillStyle = 'rgba(232,98,26,0.45)';
-    ctx.font = 'bold 220px Georgia, serif';
+    // ── キャッチフレーズ（コンパクト版） ──
+    let curY = 200;
+    ctx.fillStyle = '#e8621a';
+    ctx.font = 'bold 54px "Noto Sans JP", sans-serif';
     ctx.textAlign = 'left';
     ctx.textBaseline = 'top';
-    ctx.fillText('\u201C', 56, 290);
+    const catchN = drawWrapped(ctx, `「${catchphrase}」`, 60, curY, 960, 76);
+    curY += catchN * 76 + 18;
 
-    // ── キャッチフレーズ ──
-    ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 72px "Noto Sans JP", sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'top';
-    const catchLines = drawWrappedText(ctx, catchphrase, 540, 530, 880, 104);
-    const afterCatch = 530 + catchLines * 104;
+    // 投稿者名 + タグ（横並び）
+    ctx.fillStyle = 'rgba(255,255,255,0.65)';
+    ctx.font = '500 36px "Noto Sans JP", sans-serif';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(`— ${displayName} さん`, 60, curY + 22);
 
-    // 閉じ引用符（小さめ）
-    ctx.fillStyle = 'rgba(232,98,26,0.35)';
-    ctx.font = 'bold 120px Georgia, serif';
-    ctx.textAlign = 'right';
-    ctx.textBaseline = 'top';
-    ctx.fillText('\u201D', 1020, afterCatch - 30);
+    // タグ（右寄せ）
+    const tagH = 50, tagR = 8;
+    ctx.font = '500 28px "Noto Sans JP", sans-serif';
+    const tw1 = ctx.measureText(firstSeries).width + 32;
+    const tw2 = ctx.measureText(firstMedia).width + 32;
+    drawPill(ctx, firstSeries, 1020 - tw2 - 12 - tw1, curY - 2, tw1, tagH, tagR, '#e8621a');
+    drawPill(ctx, firstMedia, 1020 - tw2, curY - 2, tw2, tagH, tagR, '#3d3d72');
+    curY += tagH + 32;
 
-    // ── 投稿者名 ──
-    ctx.fillStyle = 'rgba(255,255,255,0.72)';
-    ctx.font = '500 44px "Noto Sans JP", sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'top';
-    ctx.fillText(`— ${displayName} さん`, 540, afterCatch + 70);
-
-    // ── タグ ──
-    const tagY = afterCatch + 160;
-    const tagH = 62;
-    const tagR = 10;
-    ctx.font = '500 32px "Noto Sans JP", sans-serif';
-    const tw1 = ctx.measureText(firstSeries).width;
-    const tw2 = ctx.measureText(firstMedia).width;
-    const tpx = 22;
-    const tgap = 20;
-    const totalTW = (tw1 + tpx * 2) + tgap + (tw2 + tpx * 2);
-    const tagStartX = (1080 - totalTW) / 2;
-
-    drawPill(ctx, firstSeries, tagStartX, tagY, tw1 + tpx * 2, tagH, tagR, '#e8621a');
-    drawPill(ctx, firstMedia, tagStartX + tw1 + tpx * 2 + tgap, tagY, tw2 + tpx * 2, tagH, tagR, '#3d3d72');
-
-    // ── ボトム区切り ──
-    const divY = Math.min(tagY + 130, 1560);
+    // 区切り線
     ctx.beginPath();
-    ctx.moveTo(80, divY);
-    ctx.lineTo(1000, divY);
-    ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+    ctx.moveTo(60, curY);
+    ctx.lineTo(1020, curY);
+    ctx.strokeStyle = 'rgba(255,255,255,0.14)';
     ctx.lineWidth = 1;
     ctx.stroke();
+    curY += 36;
 
-    // サブコピー
-    ctx.fillStyle = 'rgba(255,255,255,0.55)';
-    ctx.font = '400 34px "Noto Sans JP", sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'bottom';
-    ctx.fillText('ナルボルファンの体験談を読む', 540, 1790);
+    // ── 本文セクション ──
+    const BODY_MAX = 1780; // フッター手前の下限
+    const sections = [
+      { label: 'ハマるきっかけになったシーン', text: triggerScene },
+      { label: '「あ、自分これ好きだ」と気づいた瞬間', text: realization },
+      { label: '今のあなたとナルボルの関係', text: currentRelationship },
+      { label: '同じ作品を好きな人へ', text: message },
+    ].filter(s => s.text);
 
-    // URL
+    for (const section of sections) {
+      if (curY > BODY_MAX) break;
+
+      // セクション見出し（オレンジ、左端のマーク付き）
+      ctx.fillStyle = '#e8621a';
+      ctx.fillRect(60, curY, 6, 38);
+      ctx.fillStyle = '#e8621a';
+      ctx.font = 'bold 30px "Noto Sans JP", sans-serif';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'top';
+      const headN = drawWrapped(ctx, section.label, 80, curY, 940, 42);
+      curY += headN * 42 + 14;
+
+      // 本文（最大4行、超えたら末尾に…）
+      const availLines = Math.floor(Math.min(4, (BODY_MAX - curY) / 50));
+      if (availLines <= 0) break;
+      ctx.fillStyle = 'rgba(255,255,255,0.88)';
+      ctx.font = '400 34px "Noto Sans JP", sans-serif';
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'top';
+      const bodyN = drawWrappedClamped(ctx, section.text, 60, curY, 960, 50, availLines);
+      curY += bodyN * 50 + 44;
+    }
+
+    // ── フッター ──
     ctx.fillStyle = 'rgba(255,255,255,0.35)';
-    ctx.font = '28px monospace';
+    ctx.font = '26px monospace';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'bottom';
-    ctx.fillText('chachaTSUBAKI.github.io/naruboru-fan-site', 540, 1870);
+    ctx.fillText('chachaTSUBAKI.github.io/naruboru-fan-site', 540, 1900);
 
     // ── シェア or ダウンロード ──
     canvas.toBlob(async (blob) => {
@@ -286,7 +299,8 @@ btn.addEventListener('click', async () => {
   }
 });
 
-function drawWrappedText(ctx, text, cx, y, maxW, lineH) {
+// テキスト折り返し（行数を返す）
+function drawWrapped(ctx, text, x, y, maxW, lineH) {
   const chars = [...text];
   let line = '';
   const lines = [];
@@ -300,7 +314,38 @@ function drawWrappedText(ctx, text, cx, y, maxW, lineH) {
     }
   }
   if (line) lines.push(line);
-  lines.forEach((l, i) => ctx.fillText(l, cx, y + i * lineH));
+  lines.forEach((l, i) => ctx.fillText(l, x, y + i * lineH));
+  return lines.length;
+}
+
+// テキスト折り返し（最大行数制限 + 末尾に…）
+function drawWrappedClamped(ctx, text, x, y, maxW, lineH, maxLines) {
+  const chars = [...text];
+  let line = '';
+  const lines = [];
+  for (const ch of chars) {
+    const test = line + ch;
+    if (ctx.measureText(test).width > maxW && line !== '') {
+      lines.push(line);
+      line = ch;
+      if (lines.length >= maxLines) break;
+    } else {
+      line = test;
+    }
+  }
+  if (line && lines.length < maxLines) lines.push(line);
+
+  // 途中で切れた場合、最終行に…を付与
+  const fullText = chars.join('');
+  if (lines.join('').length < fullText.length && lines.length > 0) {
+    let last = lines[lines.length - 1];
+    while (last.length > 0 && ctx.measureText(last + '…').width > maxW) {
+      last = last.slice(0, -1);
+    }
+    lines[lines.length - 1] = last + '…';
+  }
+
+  lines.forEach((l, i) => ctx.fillText(l, x, y + i * lineH));
   return lines.length;
 }
 
