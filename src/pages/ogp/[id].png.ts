@@ -27,9 +27,16 @@ function h(type: string, props: Record<string, any> = {}, ...children: (Child | 
   };
 }
 
+function getDisplayCatchphrase(story: (typeof stories)[number]): string {
+  if (story.catchphrase) return story.catchphrase;
+  const fallback = (story as any).mainStory || (story as any).triggerScene || '';
+  return fallback.length > 60 ? fallback.slice(0, 60) + '…' : fallback;
+}
+
 // ── OGP カードデザイン (1200×630) ──
 function buildCard(story: (typeof stories)[number]): SNode {
-  const fontSize = story.catchphrase.length > 34 ? '40px' : story.catchphrase.length > 22 ? '46px' : '54px';
+  const cp = getDisplayCatchphrase(story);
+  const fontSize = cp.length > 34 ? '40px' : cp.length > 22 ? '46px' : '54px';
 
   const pill = (text: string, bg: string) =>
     h('div', {
@@ -116,7 +123,7 @@ function buildCard(story: (typeof stories)[number]): SNode {
           lineHeight: 1.6,
           wordBreak: 'break-word',
         }
-      }, `「${story.catchphrase}」`),
+      }, `「${cp}」`),
       // ボトム行
       h('div', {
         style: {

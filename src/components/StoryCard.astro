@@ -7,7 +7,9 @@ export interface Props {
     favoriteCharacter?: string;
     firstSeries: string;
     firstMedia: string;
-    catchphrase: string;
+    catchphrase?: string | null;
+    mainStory?: string | null;
+    triggerScene?: string | null;
     imageUrl?: string | null;
     publishedAt: string;
     isSeedContent?: boolean;
@@ -15,6 +17,15 @@ export interface Props {
 }
 const { story } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+function truncate(text: string, max = 60) {
+  return text.length > max ? text.slice(0, max) + '…' : text;
+}
+const displayCatchphrase =
+  story.catchphrase ||
+  (story.mainStory ? truncate(story.mainStory) : null) ||
+  (story.triggerScene ? truncate(story.triggerScene) : null) ||
+  '';
 ---
 
 <article class="story-card" data-series={story.firstSeries}>
@@ -29,7 +40,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       <span class="tag tag-media">{story.firstMedia}</span>
     </div>
     <blockquote class="card-catchphrase">
-      &ldquo;{story.catchphrase}&rdquo;
+      &ldquo;{displayCatchphrase}&rdquo;
     </blockquote>
     <div class="card-meta">
       <span class="card-name">{story.displayName}</span>

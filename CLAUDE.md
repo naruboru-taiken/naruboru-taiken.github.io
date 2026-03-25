@@ -52,11 +52,15 @@ naruboru-fan-site/
   "displayName": "表示名",
   "ageGroup": "10代",              // 〜10歳/10代/20代/30代/40代以上/覚えていない
   "favoriteCharacter": "キャラ名", // 任意
-  "firstWork": ["NARUTOアニメ"],   // 配列。選択肢: NARUTOアニメ/NARUTO漫画/BORUTOアニメ/BORUTO漫画/二次創作/その他
+  "firstSeries": "NARUTO",         // "NARUTO" または "BORUTO"
+  "firstMedia": "TVアニメ",        // 漫画（連載・単行本）/ TVアニメ / 映画 / 二次創作 / その他
   "catchphrase": "キャッチコピー", // 必須。カードのメインテキストになる
-  "triggerScene": "ハマったシーン",
-  "realization": "気づいた瞬間",
-  "currentRelationship": "今の関係", // 任意
+  "mainStory": "体験談（自由記述）", // 新フォーム用。あれば下記3フィールドより優先して表示
+  "triggerScene": "ハマったシーン", // 旧フォーム用（後方互換）
+  "realization": "気づいた瞬間",    // 旧フォーム用（後方互換）
+  "currentRelationship": "今の関係", // 旧フォーム用（後方互換）
+  "favoriteScene": "好きなシーン・セリフ", // 任意
+  "futureWish": "観てみたい作品",    // 任意。「こんな作品が観てみたい」セクションで表示
   "message": "一言メッセージ",       // 任意
   "imageUrl": null,                  // 画像URLまたはnull
   "imageCaption": null,              // 画像の説明またはnull
@@ -64,6 +68,11 @@ naruboru-fan-site/
   "isSeedContent": false             // 運営作成のサンプルはtrue
 }
 ```
+
+**表示ロジック（詳細ページ）:**
+- `mainStory` があれば「体験談」として1ブロック表示（新フォーム形式）
+- `mainStory` がなければ `triggerScene` / `realization` / `currentRelationship` を個別表示（旧形式）
+- `favoriteScene` / `futureWish` / `message` は新旧共通で条件付き表示
 
 ### 「投稿を非公開/削除したい」
 → `src/data/stories.json` から該当オブジェクトを削除するか、ファイルから取り除く

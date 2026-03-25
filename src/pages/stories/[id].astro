@@ -12,10 +12,19 @@ export function getStaticPaths() {
 const { story } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
+function truncate(text: string, max = 60) {
+  return text.length > max ? text.slice(0, max) + '…' : text;
+}
+const displayCatchphrase =
+  story.catchphrase ||
+  (story.mainStory ? truncate(story.mainStory) : null) ||
+  (story.triggerScene ? truncate(story.triggerScene) : null) ||
+  '';
+
 const siteUrl = 'https://chachaTSUBAKI.github.io/naruboru-fan-site';
 const storyUrl = `${siteUrl}/stories/${story.id}`;
 const ogpImageUrl = `${siteUrl}/ogp/${story.id}.png`;
-const shareText = `「${story.catchphrase}」\n${story.displayName}さんのナルボル体験談 #ナルボル体験談`;
+const shareText = `「${displayCatchphrase}」\n${story.displayName}さんのナルボル体験談 #ナルボル体験談`;
 const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(storyUrl)}`;
 ---
 
@@ -41,7 +50,7 @@ const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
           <span class="tag tag-large tag-media">{story.firstMedia}</span>
         </div>
         <blockquote class="story-catchphrase">
-          &ldquo;{story.catchphrase}&rdquo;
+          &ldquo;{displayCatchphrase}&rdquo;
         </blockquote>
         <div class="story-meta">
           <span class="story-name">{story.displayName}</span>
@@ -69,24 +78,47 @@ const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
 
       <!-- 本文 -->
       <div class="story-body">
-        {story.triggerScene && (
+        {story.mainStory ? (
           <section class="story-section">
-            <h2>ハマるきっかけになったシーン</h2>
-            <p>{story.triggerScene}</p>
+            <h2>体験談</h2>
+            <p>{story.mainStory}</p>
+          </section>
+        ) : (
+          <>
+            {story.triggerScene && (
+              <section class="story-section">
+                <h2>ハマるきっかけになったシーン</h2>
+                <p>{story.triggerScene}</p>
+              </section>
+            )}
+
+            {story.realization && (
+              <section class="story-section">
+                <h2>「あ、自分これ好きだ」と気づいた瞬間</h2>
+                <p>{story.realization}</p>
+              </section>
+            )}
+
+            {story.currentRelationship && (
+              <section class="story-section">
+                <h2>今のあなたとナルボルの関係</h2>
+                <p>{story.currentRelationship}</p>
+              </section>
+            )}
+          </>
+        )}
+
+        {story.favoriteScene && (
+          <section class="story-section">
+            <h2>特に好きなシーン・セリフ</h2>
+            <p>{story.favoriteScene}</p>
           </section>
         )}
 
-        {story.realization && (
-          <section class="story-section">
-            <h2>「あ、自分これ好きだ」と気づいた瞬間</h2>
-            <p>{story.realization}</p>
-          </section>
-        )}
-
-        {story.currentRelationship && (
-          <section class="story-section">
-            <h2>今のあなたとナルボルの関係</h2>
-            <p>{story.currentRelationship}</p>
+        {story.futureWish && (
+          <section class="story-section story-section--wish">
+            <h2>こんな作品が観てみたい</h2>
+            <p>{story.futureWish}</p>
           </section>
         )}
 
@@ -128,14 +160,17 @@ const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
 </BaseLayout>
 
 <script define:vars={{
-  catchphrase: story.catchphrase,
+  catchphrase: displayCatchphrase,
   displayName: story.displayName,
   storyUrl,
   firstSeries: story.firstSeries,
   firstMedia: story.firstMedia,
+  mainStory: story.mainStory ?? null,
   triggerScene: story.triggerScene ?? null,
   realization: story.realization ?? null,
   currentRelationship: story.currentRelationship ?? null,
+  favoriteScene: story.favoriteScene ?? null,
+  futureWish: story.futureWish ?? null,
   message: story.message ?? null,
 }}>
 const btn = document.getElementById('ig-share-btn');
@@ -235,10 +270,17 @@ btn.addEventListener('click', async () => {
 
     // ── 本文セクション ──
     const BODY_MAX = 1780; // フッター手前の下限
+    const narrativeSections = mainStory
+      ? [{ label: '体験談', text: mainStory }]
+      : [
+          { label: 'ハマるきっかけになったシーン', text: triggerScene },
+          { label: '「あ、自分これ好きだ」と気づいた瞬間', text: realization },
+          { label: '今のあなたとナルボルの関係', text: currentRelationship },
+        ];
     const sections = [
-      { label: 'ハマるきっかけになったシーン', text: triggerScene },
-      { label: '「あ、自分これ好きだ」と気づいた瞬間', text: realization },
-      { label: '今のあなたとナルボルの関係', text: currentRelationship },
+      ...narrativeSections,
+      { label: '特に好きなシーン・セリフ', text: favoriteScene },
+      { label: 'こんな作品が観てみたい', text: futureWish },
       { label: '同じ作品を好きな人へ', text: message },
     ].filter(s => s.text);
 
