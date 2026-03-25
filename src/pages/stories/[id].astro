@@ -108,6 +108,13 @@ const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
           </>
         )}
 
+        {story.favoriteScene && (
+          <section class="story-section">
+            <h2>特に好きなシーン・セリフ</h2>
+            <p>{story.favoriteScene}</p>
+          </section>
+        )}
+
         {story.futureWish && (
           <section class="story-section story-section--wish">
             <h2>こんな作品が観てみたい</h2>
@@ -162,6 +169,7 @@ const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
   triggerScene: story.triggerScene ?? null,
   realization: story.realization ?? null,
   currentRelationship: story.currentRelationship ?? null,
+  favoriteScene: story.favoriteScene ?? null,
   futureWish: story.futureWish ?? null,
   message: story.message ?? null,
 }}>
@@ -271,6 +279,7 @@ btn.addEventListener('click', async () => {
         ];
     const sections = [
       ...narrativeSections,
+      { label: '特に好きなシーン・セリフ', text: favoriteScene },
       { label: 'こんな作品が観てみたい', text: futureWish },
       { label: '同じ作品を好きな人へ', text: message },
     ].filter(s => s.text);
