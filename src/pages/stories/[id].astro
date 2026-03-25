@@ -364,26 +364,31 @@ function drawWrapped(ctx, text, x, y, maxW, lineH) {
   return lines.length;
 }
 
-// テキスト折り返し（最大行数制限 + 末尾に…）
+// テキスト折り返し（最大行数制限 + 末尾に… + \n改行対応）
 function drawWrappedClamped(ctx, text, x, y, maxW, lineH, maxLines) {
-  const chars = [...text];
-  let line = '';
-  const lines = [];
-  for (const ch of chars) {
-    const test = line + ch;
-    if (ctx.measureText(test).width > maxW && line !== '') {
-      lines.push(line);
-      line = ch;
-      if (lines.length >= maxLines) break;
-    } else {
-      line = test;
+  // \n で段落分割し、各段落を幅で折り返して全行リストを作る
+  const allLines = [];
+  for (const para of text.split('\n')) {
+    if (para.trim() === '') continue; // 空行はスペース節約のためスキップ
+    const chars = [...para];
+    let line = '';
+    for (const ch of chars) {
+      const test = line + ch;
+      if (ctx.measureText(test).width > maxW && line !== '') {
+        allLines.push(line);
+        line = ch;
+      } else {
+        line = test;
+      }
     }
+    if (line) allLines.push(line);
   }
-  if (line && lines.length < maxLines) lines.push(line);
+
+  const truncated = allLines.length > maxLines;
+  const lines = allLines.slice(0, maxLines);
 
   // 途中で切れた場合、最終行に…を付与
-  const fullText = chars.join('');
-  if (lines.join('').length < fullText.length && lines.length > 0) {
+  if (truncated && lines.length > 0) {
     let last = lines[lines.length - 1];
     while (last.length > 0 && ctx.measureText(last + '…').width > maxW) {
       last = last.slice(0, -1);
