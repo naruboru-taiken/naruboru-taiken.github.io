@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import StoryCard from '../../components/StoryCard.astro';
 import stories from '../../data/stories.json';
 
 export function getStaticPaths() {
@@ -20,6 +21,29 @@ const displayCatchphrase =
   (story.mainStory ? truncate(story.mainStory) : null) ||
   (story.triggerScene ? truncate(story.triggerScene) : null) ||
   '';
+
+// 関連体験談スコアリング
+function getRelatedStories(current: any, all: any[], count = 3) {
+  return all
+    .filter(s => s.id !== current.id)
+    .map(s => {
+      let score = 0;
+      if (s.favoriteCharacter && current.favoriteCharacter &&
+          s.favoriteCharacter === current.favoriteCharacter) score += 3;
+      if (s.firstSeries && s.firstSeries === current.firstSeries) score += 2;
+      if (s.ageGroup && s.ageGroup === current.ageGroup) score += 1;
+      if (s.firstMedia && s.firstMedia === current.firstMedia) score += 1;
+      return { story: s, score };
+    })
+    .sort((a, b) =>
+      b.score !== a.score
+        ? b.score - a.score
+        : new Date(b.story.publishedAt).getTime() - new Date(a.story.publishedAt).getTime()
+    )
+    .slice(0, count)
+    .map(x => x.story);
+}
+const relatedStories = getRelatedStories(story, stories as any[]);
 
 const siteUrl = 'https://chachaTSUBAKI.github.io/naruboru-fan-site';
 const storyUrl = `${siteUrl}/stories/${story.id}`;
@@ -148,6 +172,16 @@ const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
           Instagramストーリーズ
         </button>
       </div>
+
+      <!-- 関連体験談 -->
+      {relatedStories.length > 0 && (
+        <section class="related-stories">
+          <h2 class="related-stories-title">こんな体験談も</h2>
+          <div class="related-stories-grid">
+            {relatedStories.map(s => <StoryCard story={s} />)}
+          </div>
+        </section>
+      )}
 
       <!-- ナビゲーション -->
       <nav class="story-nav">
