@@ -284,7 +284,8 @@ btn.addEventListener('click', async () => {
       { label: '同じ作品を好きな人へ', text: message },
     ].filter(s => s.text);
 
-    for (const section of sections) {
+    for (let si = 0; si < sections.length; si++) {
+      const section = sections[si];
       if (curY > BODY_MAX) break;
 
       // セクション見出し（オレンジ、左端のマーク付き）
@@ -297,8 +298,9 @@ btn.addEventListener('click', async () => {
       const headN = drawWrapped(ctx, section.label, 80, curY, 940, 42);
       curY += headN * 42 + 14;
 
-      // 本文（最大4行、超えたら末尾に…）
-      const availLines = Math.floor(Math.min(4, (BODY_MAX - curY) / 50));
+      // 残りセクション数で空きスペースを均等割り、最低2行は確保
+      const remainingSections = sections.length - si;
+      const availLines = Math.max(2, Math.floor((BODY_MAX - curY) / 50 / remainingSections));
       if (availLines <= 0) break;
       ctx.fillStyle = 'rgba(255,255,255,0.88)';
       ctx.font = '400 34px "Noto Sans JP", sans-serif';
