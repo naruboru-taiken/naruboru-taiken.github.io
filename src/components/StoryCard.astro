@@ -36,8 +36,8 @@ const displayCatchphrase =
   )}
   <div class="card-body">
     <div class="card-tags">
-      <span class="tag">{story.firstSeries}</span>
-      <span class="tag tag-media">{story.firstMedia}</span>
+      {story.firstSeries && <span class="tag">{story.firstSeries}</span>}
+      {story.firstMedia && <span class="tag tag-media">{story.firstMedia}</span>}
     </div>
     <blockquote class="card-catchphrase">
       &ldquo;{displayCatchphrase}&rdquo;

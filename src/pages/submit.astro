@@ -1,16 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const TALLY_EMBED_URL = 'https://tally.so/embed/dWl9Lz?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1';
+const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSc5haprqYIM3MX0FdsuPVZinmbA4xPljPETYs1ewAfL9EW59Q/viewform?embedded=true';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 
-<BaseLayout title="体験談を投稿する" description="ナルボル体験談サイトへの投稿ページです。">
+<BaseLayout title="体験談を投稿する" description="NARUTO・BORUTOファン体験談サイトへの投稿ページです。">
   <section class="page-header">
     <div class="page-header-inner">
       <h1 class="page-title">体験談を投稿する</h1>
       <p class="page-desc">
-        あなたのナルボルとの出会いを教えてください。<br />
+        あなたとNARUTO・BORUTOの出会いを教えてください。<br />
         投稿内容は運営が確認後に掲載します。
       </p>
     </div>
@@ -28,10 +28,6 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
             <a href={`${base}/guidelines`}>投稿ガイドライン</a>を読みましたか？
           </li>
           <li>
-            <span class="check-icon">🚫</span>
-            <span><strong>公式漫画のコマ・アニメのキャプチャ・他者の二次創作イラストは添付しないでください。</strong>発見した場合は画像のみ非公開になります。</span>
-          </li>
-          <li>
             <span class="check-icon">🔒</span>
             本名・住所などの個人情報は記入しないでください。
             X IDは連絡専用で、サイトには公開されません。
@@ -40,58 +36,25 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       </div>
 
       <!-- フォーム埋め込みエリア -->
-      <!-- フォームURLを変更する場合: src/pages/submit.astro 冒頭の TALLY_EMBED_URL を更新してください -->
-      <div id="form-embed-wrapper" class="form-embed-wrapper">
+      <!-- フォームURLを変更する場合: src/pages/submit.astro 冒頭の FORM_URL を更新してください -->
+      <div class="form-embed-wrapper">
         <iframe
-          data-tally-src={TALLY_EMBED_URL}
+          src={FORM_URL}
           loading="lazy"
           width="100%"
-          height="500"
+          height="3154"
           frameborder="0"
           marginheight="0"
           marginwidth="0"
           title="ナルボル体験談投稿フォーム"
-          class="tally-iframe"
-        ></iframe>
-        <script src="https://tally.so/widgets/embed.js" is:inline></script>
-      </div>
-
-      <!-- 投稿完了メッセージ（TallyのpostMessageで表示） -->
-      <div id="submit-thanks" class="thanks-box" hidden>
-        <div class="thanks-check">✓</div>
-        <h2>投稿を受け付けました！</h2>
-        <p>ありがとうございます。内容を確認後、数日〜1週間程度で掲載します。</p>
-        <p>掲載後はXアカウント（<a href="https://x.com/naruto_2024" target="_blank" rel="noopener noreferrer">@naruto_2024</a>）でお知らせします。</p>
-        <a href={`${base}/stories`} class="btn btn-primary" style="margin-top: 1.5rem; display: inline-block;">みんなの体験談を読む →</a>
+        >読み込んでいます…</iframe>
       </div>
 
       <!-- ガイドライン再掲リンク -->
-      <p id="submit-guideline-link" class="submit-guideline-link">
+      <p class="submit-guideline-link">
         投稿に迷ったら <a href={`${base}/guidelines`}>投稿ガイドライン</a> をご確認ください。
       </p>
 
     </div>
   </section>
 </BaseLayout>
-
-<script>
-// Tally.so フォーム送信イベントの受信
-window.addEventListener('message', (e) => {
-  let data = e.data;
-  if (typeof data === 'string') {
-    try { data = JSON.parse(data); } catch { return; }
-  }
-  const submitted =
-    data?.type === 'tally-form-submitted' ||
-    data?.event === 'onTallyFormSubmitted';
-  if (!submitted) return;
-
-  document.getElementById('form-embed-wrapper')?.style.setProperty('display', 'none');
-  document.getElementById('submit-guideline-link')?.style.setProperty('display', 'none');
-  const thanks = document.getElementById('submit-thanks');
-  if (thanks) {
-    thanks.removeAttribute('hidden');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-});
-</script>

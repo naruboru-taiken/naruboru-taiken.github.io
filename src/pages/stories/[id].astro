@@ -46,8 +46,8 @@ const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
       <!-- ヘッダー -->
       <header class="story-header">
         <div class="story-tags">
-          <span class="tag tag-large">{story.firstSeries}</span>
-          <span class="tag tag-large tag-media">{story.firstMedia}</span>
+          {story.firstSeries && <span class="tag tag-large">{story.firstSeries}</span>}
+          {story.firstMedia && <span class="tag tag-large tag-media">{story.firstMedia}</span>}
         </div>
         <blockquote class="story-catchphrase">
           &ldquo;{displayCatchphrase}&rdquo;
