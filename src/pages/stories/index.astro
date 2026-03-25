@@ -23,24 +23,37 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <section class="section">
     <div class="section-inner">
 
-      <!-- フィルター + ランダムボタン -->
+      <!-- フィルター + ソート + ランダムボタン -->
       <div class="filter-toolbar">
         <div class="filter-bar" role="group" aria-label="シリーズで絞り込む">
           <button class="filter-btn active" data-filter="all">すべて</button>
           <button class="filter-btn" data-filter="NARUTO">NARUTO</button>
           <button class="filter-btn" data-filter="BORUTO">BORUTO</button>
         </div>
-        <button id="random-btn" class="btn-random" type="button">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <rect x="2" y="2" width="20" height="20" rx="3"/>
-            <circle cx="8" cy="8" r="1.5" fill="currentColor" stroke="none"/>
-            <circle cx="16" cy="8" r="1.5" fill="currentColor" stroke="none"/>
-            <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
-            <circle cx="8" cy="16" r="1.5" fill="currentColor" stroke="none"/>
-            <circle cx="16" cy="16" r="1.5" fill="currentColor" stroke="none"/>
-          </svg>
-          ランダムに読む
-        </button>
+        <div class="filter-toolbar-right">
+          <select id="sort-select" class="sort-select" aria-label="並び替え">
+            <option value="new">新しい順</option>
+            <option value="age-asc">年齢が低い順</option>
+            <option value="age-desc">年齢が高い順</option>
+          </select>
+          <button id="random-btn" class="btn-random" type="button">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="3"/>
+              <circle cx="8" cy="8" r="1.5" fill="currentColor" stroke="none"/>
+              <circle cx="16" cy="8" r="1.5" fill="currentColor" stroke="none"/>
+              <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+              <circle cx="8" cy="16" r="1.5" fill="currentColor" stroke="none"/>
+              <circle cx="16" cy="16" r="1.5" fill="currentColor" stroke="none"/>
+            </svg>
+            ランダムに読む
+          </button>
+        </div>
+      </div>
+
+      <!-- キャラクターフィルターチップ（推し一覧ページからの遷移時に表示） -->
+      <div id="chara-filter-chip" class="chara-filter-chip" hidden>
+        <span>推し：<strong id="chara-filter-name"></strong></span>
+        <button id="chara-filter-clear" type="button" aria-label="キャラクターフィルターを解除">×</button>
       </div>
 
       <div class="card-grid" id="story-grid">
@@ -63,37 +76,84 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 </BaseLayout>
 
 <script>
-// ランダムに読む
-const randomBtn = document.getElementById('random-btn');
-randomBtn?.addEventListener('click', () => {
-  const visibleCards = [...document.querySelectorAll<HTMLElement>('.story-card')]
-    .filter(card => card.style.display !== 'none');
-  if (visibleCards.length === 0) return;
-  const card = visibleCards[Math.floor(Math.random() * visibleCards.length)];
-  const link = card.querySelector<HTMLAnchorElement>('.card-link');
-  if (link) window.location.href = link.href;
-});
-
-const btns = document.querySelectorAll<HTMLButtonElement>('.filter-btn');
-const cards = document.querySelectorAll<HTMLElement>('.story-card');
+const cards = Array.from(document.querySelectorAll<HTMLElement>('.story-card'));
 const countEl = document.getElementById('story-count');
 const noResults = document.getElementById('no-results');
+const grid = document.getElementById('story-grid');
 
-btns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    btns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.dataset.filter ?? 'all';
+let currentSeries = 'all';
+let currentChara = '';
 
-    let visible = 0;
-    cards.forEach(card => {
-      const match = filter === 'all' || card.dataset.series === filter;
-      card.style.display = match ? '' : 'none';
-      if (match) visible++;
-    });
+// URLパラメータからキャラクターフィルターを読み込む
+const charaParam = new URLSearchParams(window.location.search).get('chara') ?? '';
+if (charaParam) {
+  currentChara = charaParam;
+  const chip = document.getElementById('chara-filter-chip');
+  const nameEl = document.getElementById('chara-filter-name');
+  chip?.removeAttribute('hidden');
+  if (nameEl) nameEl.textContent = charaParam;
+}
 
-    if (countEl) countEl.textContent = String(visible);
-    if (noResults) noResults.hidden = visible > 0;
+function applyFilters() {
+  let visible = 0;
+  cards.forEach(card => {
+    const seriesOk = currentSeries === 'all' || card.dataset.series === currentSeries;
+    const charaOk = !currentChara || card.dataset.chara === currentChara;
+    const show = seriesOk && charaOk;
+    card.style.display = show ? '' : 'none';
+    if (show) visible++;
   });
+  if (countEl) countEl.textContent = String(visible);
+  if (noResults) noResults.hidden = visible > 0;
+}
+applyFilters();
+
+// シリーズフィルター
+document.querySelectorAll<HTMLButtonElement>('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentSeries = btn.dataset.filter ?? 'all';
+    applyFilters();
+  });
+});
+
+// キャラクターフィルター解除
+document.getElementById('chara-filter-clear')?.addEventListener('click', () => {
+  currentChara = '';
+  document.getElementById('chara-filter-chip')?.setAttribute('hidden', '');
+  applyFilters();
+  const url = new URL(window.location.href);
+  url.searchParams.delete('chara');
+  history.replaceState({}, '', url);
+});
+
+// 年齢層ソート
+const ageOrder: Record<string, number> = {
+  '〜10歳': 0, '10代': 1, '20代': 2, '30代': 3, '40代以上': 4, '覚えていない': 5,
+};
+document.getElementById('sort-select')?.addEventListener('change', (e) => {
+  const key = (e.target as HTMLSelectElement).value;
+  if (!grid) return;
+  const all = Array.from(grid.querySelectorAll<HTMLElement>('.story-card'));
+  all.sort((a, b) => {
+    if (key === 'age-asc') {
+      return (ageOrder[a.dataset.ageGroup ?? ''] ?? 99) - (ageOrder[b.dataset.ageGroup ?? ''] ?? 99);
+    }
+    if (key === 'age-desc') {
+      return (ageOrder[b.dataset.ageGroup ?? ''] ?? -1) - (ageOrder[a.dataset.ageGroup ?? ''] ?? -1);
+    }
+    return new Date(b.dataset.publishedAt ?? '').getTime() - new Date(a.dataset.publishedAt ?? '').getTime();
+  });
+  all.forEach(card => grid.appendChild(card));
+});
+
+// ランダムに読む
+document.getElementById('random-btn')?.addEventListener('click', () => {
+  const visible = cards.filter(c => c.style.display !== 'none');
+  if (!visible.length) return;
+  const card = visible[Math.floor(Math.random() * visible.length)];
+  const link = card.querySelector<HTMLAnchorElement>('.card-link');
+  if (link) window.location.href = link.href;
 });
 </script>

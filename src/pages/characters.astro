@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import stories from '../data/stories.json';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// キャラ別に集計
+const charaMap = new Map<string, number>();
+for (const story of stories) {
+  if (story.favoriteCharacter) {
+    charaMap.set(story.favoriteCharacter, (charaMap.get(story.favoriteCharacter) ?? 0) + 1);
+  }
+}
+const characters = [...charaMap.entries()]
+  .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'ja'))
+  .map(([name, count]) => ({ name, count }));
+
+const noCharaCount = stories.filter(s => !s.favoriteCharacter).length;
+---
+
+<BaseLayout title="推し一覧" description="NARUTO・BORUTOのキャラクター別に体験談を探せます。推しのキャラクターから体験談を見つけよう。">
+  <section class="page-header">
+    <div class="page-header-inner">
+      <h1 class="page-title">推し一覧</h1>
+      <p class="page-desc">
+        キャラクターから体験談を探せます。
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+
+      <div class="chara-grid">
+        {characters.map(({ name, count }) => (
+          <a
+            href={`${base}/stories?chara=${encodeURIComponent(name)}`}
+            class="chara-card"
+          >
+            <span class="chara-card-name">{name}</span>
+            <span class="chara-card-count">体験談 {count}件</span>
+          </a>
+        ))}
+      </div>
+
+      {noCharaCount > 0 && (
+        <p class="chara-note">
+          ※ 推しを記入していない体験談が {noCharaCount} 件あります。
+          <a href={`${base}/stories`}>すべての体験談を見る →</a>
+        </p>
+      )}
+
+    </div>
+  </section>
+</BaseLayout>

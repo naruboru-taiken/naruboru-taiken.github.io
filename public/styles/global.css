@@ -659,6 +659,25 @@ a:hover { text-decoration: underline; }
 }
 .filter-toolbar .filter-bar { margin-bottom: 0; }
 
+.filter-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sort-select {
+  padding: 0.4rem 0.75rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-white);
+  color: var(--color-text-sub);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.sort-select:hover { border-color: var(--color-primary); }
+.sort-select:focus { outline: none; border-color: var(--color-primary); }
+
 .btn-random {
   display: inline-flex;
   align-items: center;
@@ -705,6 +724,44 @@ a:hover { text-decoration: underline; }
   font-weight: 500;
 }
 
+/* NEWバッジ */
+.badge-new {
+  display: inline-block;
+  padding: 0.15rem 0.45rem;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  border-radius: 4px;
+  letter-spacing: 0.06em;
+  vertical-align: middle;
+  margin-right: 0.25rem;
+}
+
+/* キャラクターフィルターチップ */
+.chara-filter-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.875rem;
+  background: var(--color-primary-light);
+  border: 1.5px solid var(--color-primary);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  color: var(--color-text);
+  margin-bottom: 1.25rem;
+}
+.chara-filter-chip button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-sub);
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0;
+}
+.chara-filter-chip button:hover { color: var(--color-text); }
+
 .filter-no-results {
   text-align: center;
   color: var(--color-text-sub);
@@ -717,6 +774,50 @@ a:hover { text-decoration: underline; }
   color: var(--color-text-sub);
 }
 .submit-nudge p { margin-bottom: var(--space-sm); }
+
+/* ============ 推し一覧ページ ============ */
+.chara-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 1rem;
+  margin-bottom: var(--space-md);
+}
+.chara-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.25rem 0.75rem;
+  background: var(--color-white);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: var(--color-text);
+  transition: border-color 0.15s, box-shadow 0.15s, color 0.15s;
+}
+.chara-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+  color: var(--color-primary);
+  text-decoration: none;
+}
+.chara-card-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+  word-break: break-all;
+}
+.chara-card-count {
+  font-size: 0.8rem;
+  color: var(--color-text-sub);
+}
+.chara-note {
+  color: var(--color-text-sub);
+  font-size: 0.875rem;
+  margin-top: var(--space-sm);
+}
+.chara-note a { margin-left: 0.5rem; }
 
 /* ============ 関連体験談（詳細ページ） ============ */
 .related-stories {

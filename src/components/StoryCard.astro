@@ -28,7 +28,12 @@ const displayCatchphrase =
   '';
 ---
 
-<article class="story-card" data-series={story.firstSeries}>
+<article class="story-card"
+  data-series={story.firstSeries}
+  data-age-group={story.ageGroup ?? ''}
+  data-chara={story.favoriteCharacter ?? ''}
+  data-published-at={story.publishedAt}
+>
   {story.imageUrl && (
     <div class="card-image">
       <img src={story.imageUrl} alt={story.displayName + 'の投稿画像'} loading="lazy" />
@@ -36,6 +41,7 @@ const displayCatchphrase =
   )}
   <div class="card-body">
     <div class="card-tags">
+      <span class="badge-new" hidden>NEW</span>
       {story.firstSeries && <span class="tag">{story.firstSeries}</span>}
       {story.firstMedia && <span class="tag tag-media">{story.firstMedia}</span>}
     </div>
@@ -54,3 +60,12 @@ const displayCatchphrase =
     <span class="card-link-text">続きを読む →</span>
   </a>
 </article>
+
+<script>
+document.querySelectorAll<HTMLElement>('.story-card[data-published-at]').forEach(card => {
+  const publishedAt = new Date(card.dataset.publishedAt!);
+  if ((Date.now() - publishedAt.getTime()) / 86400000 <= 7) {
+    card.querySelector('.badge-new')?.removeAttribute('hidden');
+  }
+});
+</script>
