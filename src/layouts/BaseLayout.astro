@@ -57,10 +57,15 @@ const fullTitle = `${title} | ナルボル体験談`;
           <span class="logo-mark">忍</span>
           <span class="logo-text">ナルボル体験談</span>
         </a>
-        <nav class="site-nav">
+        <nav class="site-nav" id="site-nav">
           <a href={`${base}/stories`}>体験談を読む</a>
           <a href={`${base}/submit`} class="nav-cta">体験談を投稿する</a>
         </nav>
+        <button class="nav-toggle" id="nav-toggle" aria-label="メニューを開く" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </header>
 
@@ -86,4 +91,21 @@ const fullTitle = `${title} | ナルボル体験談`;
       </div>
     </footer>
   </body>
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('site-nav');
+    toggle?.addEventListener('click', () => {
+      const isOpen = nav?.classList.toggle('nav-open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+    });
+    // ナビのリンクをタップしたらメニューを閉じる
+    nav?.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        nav.classList.remove('nav-open');
+        toggle?.setAttribute('aria-expanded', 'false');
+        toggle?.setAttribute('aria-label', 'メニューを開く');
+      });
+    });
+  </script>
 </html>

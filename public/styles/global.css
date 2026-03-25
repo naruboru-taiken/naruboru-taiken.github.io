@@ -126,6 +126,38 @@ a:hover { text-decoration: underline; }
 }
 .nav-cta:hover { background: var(--color-primary-dark) !important; }
 
+/* ハンバーガーボタン（モバイルのみ表示） */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--color-text);
+  border-radius: 2px;
+  transition: transform 0.25s, opacity 0.25s;
+}
+/* 開いているときはバツ印に */
+.nav-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
 /* ============ ボタン ============ */
 .btn {
   display: inline-flex;
@@ -827,8 +859,11 @@ a:hover { text-decoration: underline; }
   margin-bottom: var(--space-md);
 }
 
-.tally-iframe {
-  min-height: 600px;
+/* Googleフォームのiframe高さ。フォームの設問を大幅に変更した場合はここを更新してください */
+.form-embed-wrapper iframe {
+  display: block;
+  width: 100%;
+  height: 3200px;
   border: none;
 }
 
@@ -937,11 +972,39 @@ a:hover { text-decoration: underline; }
 /* ============ レスポンシブ ============ */
 @media (max-width: 640px) {
   .header-inner { padding: 0 var(--space-sm); }
-
-  .site-nav { gap: 0.4rem; }
-  .site-nav a:not(.nav-cta) { font-size: 0.8rem; padding: 0.3rem 0.6rem; }
-  .nav-cta { padding: 0.4rem 0.9rem; font-size: 0.8rem; }
   .logo-text { font-size: 0.95rem; }
+
+  /* ハンバーガーボタンを表示 */
+  .nav-toggle { display: flex; }
+
+  /* ナビをドロップダウンに */
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 64px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--color-white);
+    border-bottom: 2px solid var(--color-primary);
+    box-shadow: var(--shadow-sm);
+    padding: var(--space-sm) var(--space-md);
+  }
+  .site-nav.nav-open { display: flex; }
+  .site-nav a {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 1rem;
+  }
+  .site-nav a:last-child { border-bottom: none; }
+  .nav-cta {
+    margin-top: 0.5rem;
+    text-align: center;
+    border-radius: var(--radius) !important;
+    padding: 0.75rem !important;
+  }
 
   .hero { padding: var(--space-lg) 0; }
   .hero-inner, .section-inner, .page-header-inner,
