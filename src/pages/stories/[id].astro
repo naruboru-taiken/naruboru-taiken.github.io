@@ -45,7 +45,7 @@ function getRelatedStories(current: any, all: any[], count = 3) {
 }
 const relatedStories = getRelatedStories(story, stories as any[]);
 
-const siteUrl = 'https://chachaTSUBAKI.github.io/naruboru-fan-site';
+const siteUrl = 'https://naruboru-taiken.github.io';
 const storyUrl = `${siteUrl}/stories/${story.id}`;
 const ogpImageUrl = `${siteUrl}/ogp/${story.id}.png`;
 const shareText = `「${displayCatchphrase}」\n${story.displayName}さんのナルボル体験談 #ナルボル体験談`;
@@ -349,7 +349,7 @@ btn.addEventListener('click', async () => {
     ctx.font = '26px monospace';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'bottom';
-    ctx.fillText('chachaTSUBAKI.github.io/naruboru-fan-site', 540, 1900);
+    ctx.fillText('naruboru-taiken.github.io', 540, 1900);
 
     // ── シェア or ダウンロード ──
     canvas.toBlob(async (blob) => {

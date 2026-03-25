@@ -10,7 +10,6 @@ export default defineConfig({
   //   site: 'https://example.com',
   //
   // 設定後、内部リンクが壊れていないか npm run build で確認してください。
-  site: 'https://chachaTSUBAKI.github.io',
-  base: '/naruboru-fan-site',
+  site: 'https://naruboru-taiken.github.io',
   output: 'static',
 });

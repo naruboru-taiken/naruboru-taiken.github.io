@@ -140,7 +140,7 @@ function buildCard(story: (typeof stories)[number]): SNode {
           pill(story.firstMedia, '#3d3d72'),
         ),
         h('span', { style: { color: 'rgba(255,255,255,0.3)', fontSize: '18px' } },
-          'chachaTSUBAKI.github.io/naruboru-fan-site'
+          'naruboru-taiken.github.io'
         )
       )
     )
