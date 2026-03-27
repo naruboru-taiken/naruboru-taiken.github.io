@@ -1,0 +1,161 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SUPPORTED_LANGS, useTranslations, isSupportedLang } from '../../i18n/ui';
+import type { SupportedLang } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return SUPPORTED_LANGS.map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: SupportedLang };
+if (!isSupportedLang(lang)) return Astro.redirect('/submit');
+
+const t = useTranslations(lang);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSc5haprqYIM3MX0FdsuPVZinmbA4xPljPETYs1ewAfL9EW59Q/viewform?embedded=true';
+
+const notices = {
+  en: {
+    notice: 'The submission form is in Japanese. Please fill it out in Japanese.',
+    checklist_title: 'Before you submit',
+    checklist: [
+      { icon: '📋', text: 'Have you read the', link_text: 'submission guidelines', link_path: '/guidelines' },
+      { icon: '🔒', text: 'Do not include personal information (real name, address, etc.). Your X ID is for contact only and will not be published.' },
+    ],
+    thanks_title: 'Submission received!',
+    thanks_desc: 'Thank you. After review, your story will be published within a few days to a week.',
+    thanks_x: 'We\'ll notify you via our X account',
+    thanks_btn: 'Read other stories →',
+    lang_note: 'Note: The form is in Japanese. If you\'re not comfortable writing in Japanese, feel free to write in your language — we\'ll do our best to understand.',
+  },
+  fr: {
+    notice: 'Le formulaire de soumission est en japonais. Veuillez le remplir en japonais.',
+    checklist_title: 'Avant de soumettre',
+    checklist: [
+      { icon: '📋', text: 'Avez-vous lu les', link_text: 'règles de soumission', link_path: '/guidelines' },
+      { icon: '🔒', text: 'Ne pas inclure d\'informations personnelles (nom réel, adresse, etc.). Votre identifiant X est uniquement pour contact et ne sera pas publié.' },
+    ],
+    thanks_title: 'Soumission reçue !',
+    thanks_desc: 'Merci. Après examen, votre histoire sera publiée dans quelques jours à une semaine.',
+    thanks_x: 'Nous vous notifierons via notre compte X',
+    thanks_btn: 'Lire les autres histoires →',
+    lang_note: 'Note : Le formulaire est en japonais. Si vous n\'êtes pas à l\'aise pour écrire en japonais, n\'hésitez pas à écrire dans votre langue — nous ferons de notre mieux pour comprendre.',
+  },
+  ar: {
+    notice: 'نموذج التقديم باللغة اليابانية. يرجى ملؤه باللغة اليابانية.',
+    checklist_title: 'قبل الإرسال',
+    checklist: [
+      { icon: '📋', text: 'هل قرأت', link_text: 'إرشادات التقديم', link_path: '/guidelines' },
+      { icon: '🔒', text: 'لا تُدرج معلومات شخصية (الاسم الحقيقي، العنوان، إلخ). معرّف X الخاص بك مخصص للتواصل فقط ولن يُنشر.' },
+    ],
+    thanks_title: 'تم استلام التقديم!',
+    thanks_desc: 'شكراً لك. بعد المراجعة، ستُنشر قصتك في غضون أيام إلى أسبوع.',
+    thanks_x: 'سنخبرك عبر حساب X الخاص بنا',
+    thanks_btn: 'اقرأ القصص الأخرى →',
+    lang_note: 'ملاحظة: النموذج باليابانية. إذا لم تكن مرتاحاً للكتابة باليابانية، فلا بأس بالكتابة بلغتك — سنبذل قصارى جهدنا للفهم.',
+  },
+  es: {
+    notice: 'El formulario de envío está en japonés. Por favor, complétalo en japonés.',
+    checklist_title: 'Antes de enviar',
+    checklist: [
+      { icon: '📋', text: '¿Has leído la', link_text: 'guía de envío', link_path: '/guidelines' },
+      { icon: '🔒', text: 'No incluyas información personal (nombre real, dirección, etc.). Tu ID de X es solo para contacto y no se publicará.' },
+    ],
+    thanks_title: '¡Envío recibido!',
+    thanks_desc: 'Gracias. Después de la revisión, tu historia se publicará en días o una semana.',
+    thanks_x: 'Te notificaremos a través de nuestra cuenta de X',
+    thanks_btn: 'Leer otras historias →',
+    lang_note: 'Nota: El formulario está en japonés. Si no te sientes cómodo escribiendo en japonés, puedes escribir en tu idioma — haremos lo posible por entender.',
+  },
+  pt: {
+    notice: 'O formulário de envio está em japonês. Por favor, preencha-o em japonês.',
+    checklist_title: 'Antes de enviar',
+    checklist: [
+      { icon: '📋', text: 'Você leu as', link_text: 'diretrizes de envio', link_path: '/guidelines' },
+      { icon: '🔒', text: 'Não inclua informações pessoais (nome real, endereço, etc.). Seu ID do X é apenas para contato e não será publicado.' },
+    ],
+    thanks_title: 'Envio recebido!',
+    thanks_desc: 'Obrigado. Após revisão, sua história será publicada em dias a uma semana.',
+    thanks_x: 'Vamos notificá-lo através de nossa conta X',
+    thanks_btn: 'Ler outras histórias →',
+    lang_note: 'Nota: O formulário está em japonês. Se não se sentir confortável escrevendo em japonês, fique à vontade para escrever no seu idioma — faremos o possível para entender.',
+  },
+};
+
+const c = notices[lang] ?? notices.en;
+---
+
+<BaseLayout
+  title={t('submit.title')}
+  description={t('submit.desc')}
+  lang={lang}
+  pagePath="/submit"
+>
+  <section class="page-header">
+    <div class="page-header-inner">
+      <h1 class="page-title">{t('submit.title')}</h1>
+      <p class="page-desc">{t('submit.desc')}</p>
+    </div>
+  </section>
+
+  <section class="submit-section">
+    <div class="submit-inner">
+
+      <div class="pre-submit-check">
+        <h2>{c.checklist_title}</h2>
+        {c.lang_note && <p class="submit-lang-note">{c.lang_note}</p>}
+        <ul class="checklist">
+          {c.checklist.map(item => (
+            <li>
+              <span class="check-icon">{item.icon}</span>
+              {item.link_path ? (
+                <span>{item.text} <a href={`${base}/${lang}${item.link_path}`}>{item.link_text}</a>?</span>
+              ) : (
+                <span>{item.text}</span>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div id="form-embed-wrapper" class="form-embed-wrapper">
+        <iframe
+          id="google-form-iframe"
+          src={FORM_URL}
+          loading="lazy"
+          title="Naruboru Fan Stories submission form"
+        >Loading…</iframe>
+      </div>
+
+      <div id="submit-thanks" class="thanks-box" hidden>
+        <div class="thanks-check">✓</div>
+        <h2>{c.thanks_title}</h2>
+        <p>{c.thanks_desc}</p>
+        <p>{c.thanks_x} (<a href="https://x.com/naruboru_taiken" target="_blank" rel="noopener noreferrer">@naruboru_taiken</a>).</p>
+        <a href={`${base}/${lang}/stories`} class="btn btn-primary" style="margin-top: 1.5rem; display: inline-block;">{c.thanks_btn}</a>
+      </div>
+
+      <p id="submit-guideline-link" class="submit-guideline-link">
+        <a href={`${base}/${lang}/guidelines`}>{t('guidelines.title')}</a>
+      </p>
+
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+const iframe = document.getElementById('google-form-iframe') as HTMLIFrameElement;
+let loadCount = 0;
+iframe?.addEventListener('load', () => {
+  loadCount++;
+  if (loadCount < 2) return;
+  document.getElementById('form-embed-wrapper')?.style.setProperty('display', 'none');
+  document.getElementById('submit-guideline-link')?.style.setProperty('display', 'none');
+  const thanks = document.getElementById('submit-thanks');
+  if (thanks) {
+    thanks.removeAttribute('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+});
+</script>

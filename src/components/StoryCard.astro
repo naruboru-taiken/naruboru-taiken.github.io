@@ -1,4 +1,7 @@
 ---
+import { getStoryText, getAgeGroupLabel } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+
 export interface Props {
   story: {
     id: string;
@@ -13,19 +16,38 @@ export interface Props {
     imageUrl?: string | null;
     publishedAt: string;
     isSeedContent?: boolean;
+    translations?: Record<string, any>;
   };
+  lang?: Lang;
 }
-const { story } = Astro.props;
+const { story, lang = 'ja' } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 function truncate(text: string, max = 60) {
   return text.length > max ? text.slice(0, max) + '…' : text;
 }
+
+const catchphrase = getStoryText(story, lang, 'catchphrase');
+const mainStory = getStoryText(story, lang, 'mainStory');
+const triggerScene = getStoryText(story, lang, 'triggerScene');
+
 const displayCatchphrase =
-  story.catchphrase ||
-  (story.mainStory ? truncate(story.mainStory) : null) ||
-  (story.triggerScene ? truncate(story.triggerScene) : null) ||
+  catchphrase ||
+  (mainStory ? truncate(mainStory) : null) ||
+  (triggerScene ? truncate(triggerScene) : null) ||
   '';
+
+const ageLabel = getAgeGroupLabel(story.ageGroup, lang);
+
+// Labels
+const agePrefix = lang === 'ja' ? '出会いは' : (lang === 'ar' ? 'عمر الاكتشاف: ' : '');
+const favPrefix = lang === 'ja' ? '推し：' : (lang === 'ar' ? 'المفضل: ' : '');
+const readMore = lang === 'ja' ? '続きを読む →' : (lang === 'ar' ? 'اقرأ المزيد ←' : 'Read more →');
+
+// Story URL: for [lang] pages, link to /[lang]/stories/[id]
+const storyPath = lang === 'ja'
+  ? `${base}/stories/${story.id}`
+  : `${base}/${lang}/stories/${story.id}`;
 ---
 
 <article class="story-card"
@@ -36,7 +58,7 @@ const displayCatchphrase =
 >
   {story.imageUrl && (
     <div class="card-image">
-      <img src={story.imageUrl} alt={story.displayName + 'の投稿画像'} loading="lazy" />
+      <img src={story.imageUrl} alt={story.displayName} loading="lazy" />
     </div>
   )}
   <div class="card-body">
@@ -50,14 +72,14 @@ const displayCatchphrase =
     </blockquote>
     <div class="card-meta">
       <span class="card-name">{story.displayName}</span>
-      {story.ageGroup && <span class="card-age">・出会いは{story.ageGroup}</span>}
+      {ageLabel && <span class="card-age">・{agePrefix}{ageLabel}</span>}
       {story.favoriteCharacter && (
-        <span class="card-chara">・推し：{story.favoriteCharacter}</span>
+        <span class="card-chara">・{favPrefix}{story.favoriteCharacter}</span>
       )}
     </div>
   </div>
-  <a href={`${base}/stories/${story.id}`} class="card-link" aria-label={`${story.displayName}の体験談を読む`}>
-    <span class="card-link-text">続きを読む →</span>
+  <a href={storyPath} class="card-link" aria-label={story.displayName}>
+    <span class="card-link-text">{readMore}</span>
   </a>
 </article>
 

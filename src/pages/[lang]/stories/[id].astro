@@ -1,35 +1,54 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import StoryCard from '../../components/StoryCard.astro';
-import stories from '../../data/stories.json';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import StoryCard from '../../../components/StoryCard.astro';
+import stories from '../../../data/stories.json';
+import { SUPPORTED_LANGS, useTranslations, isSupportedLang, getStoryText, getAgeGroupLabel } from '../../../i18n/ui';
+import type { SupportedLang } from '../../../i18n/ui';
 
 export function getStaticPaths() {
-  return (stories as any[]).map((story) => ({
-    params: { id: story.id },
-    props: { story },
-  }));
+  return SUPPORTED_LANGS.flatMap(lang =>
+    (stories as any[]).map(story => ({
+      params: { lang, id: story.id },
+      props: { story, lang },
+    }))
+  );
 }
 
-const { story } = Astro.props;
+const { story, lang } = Astro.props as { story: any; lang: SupportedLang };
+if (!isSupportedLang(lang)) return Astro.redirect(`/stories/${story.id}`);
+
+const t = useTranslations(lang);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 function truncate(text: string, max = 60) {
   return text.length > max ? text.slice(0, max) + '…' : text;
 }
+
+// Get translated or original text for each field
+const mainStory = getStoryText(story, lang, 'mainStory');
+const triggerScene = getStoryText(story, lang, 'triggerScene');
+const realization = getStoryText(story, lang, 'realization');
+const currentRelationship = getStoryText(story, lang, 'currentRelationship');
+const favoriteScene = getStoryText(story, lang, 'favoriteScene');
+const futureWish = getStoryText(story, lang, 'futureWish');
+const message = getStoryText(story, lang, 'message');
+const catchphrase = getStoryText(story, lang, 'catchphrase');
+
 const displayCatchphrase =
-  story.catchphrase ||
-  (story.mainStory ? truncate(story.mainStory) : null) ||
-  (story.triggerScene ? truncate(story.triggerScene) : null) ||
+  catchphrase ||
+  (mainStory ? truncate(mainStory) : null) ||
+  (triggerScene ? truncate(triggerScene) : null) ||
   '';
 
-// 関連体験談スコアリング
+// Check if translation exists for main content
+const hasTranslation = lang !== 'ja' && !!story.translations?.[lang];
+
 function getRelatedStories(current: any, all: any[], count = 3) {
   return all
     .filter(s => s.id !== current.id)
     .map(s => {
       let score = 0;
-      if (s.favoriteCharacter && current.favoriteCharacter &&
-          s.favoriteCharacter === current.favoriteCharacter) score += 3;
+      if (s.favoriteCharacter && current.favoriteCharacter && s.favoriteCharacter === current.favoriteCharacter) score += 3;
       if (s.firstSeries && s.firstSeries === current.firstSeries) score += 2;
       if (s.ageGroup && s.ageGroup === current.ageGroup) score += 1;
       if (s.firstMedia && s.firstMedia === current.firstMedia) score += 1;
@@ -46,30 +65,32 @@ function getRelatedStories(current: any, all: any[], count = 3) {
 const relatedStories = getRelatedStories(story, stories as any[]);
 
 const siteUrl = 'https://naruboru-taiken.github.io';
-const storyUrl = `${siteUrl}/stories/${story.id}`;
+const storyUrl = `${siteUrl}/${lang}/stories/${story.id}`;
 const ogpImageUrl = `${siteUrl}/ogp/${story.id}.png`;
-const shareText = `「${displayCatchphrase}」\n${story.displayName}さんのナルボル体験談 #ナルボル体験談`;
+const shareText = `「${displayCatchphrase}」\n${story.displayName} — Naruboru Fan Stories #NaruboruFanStories`;
 const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(storyUrl)}`;
+
+const ageLabel = getAgeGroupLabel(story.ageGroup, lang);
 ---
 
 <BaseLayout
-  title={story.displayName + 'の体験談'}
-  description={`「${story.catchphrase}」— ${story.displayName}さんのナルボル体験談`}
+  title={story.displayName + t('detail.title_suffix')}
+  description={`「${displayCatchphrase}」— ${story.displayName}`}
   ogImage={ogpImageUrl}
-  lang="ja"
+  lang={lang}
   pagePath={`/stories/${story.id}`}
 >
   <article class="story-detail">
     <div class="story-detail-inner">
 
-      <!-- パンくず -->
+      <!-- Breadcrumb -->
       <nav class="breadcrumb">
-        <a href={`${base}/`}>ホーム</a> &rsaquo;
-        <a href={`${base}/stories`}>体験談一覧</a> &rsaquo;
+        <a href={`${base}/${lang}/`}>{t('detail.breadcrumb_home')}</a> &rsaquo;
+        <a href={`${base}/${lang}/stories`}>{t('detail.breadcrumb_stories')}</a> &rsaquo;
         <span>{story.displayName}</span>
       </nav>
 
-      <!-- ヘッダー -->
+      <!-- Header -->
       <header class="story-header">
         <div class="story-tags">
           {story.firstSeries && <span class="tag tag-large">{story.firstSeries}</span>}
@@ -80,90 +101,94 @@ const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
         </blockquote>
         <div class="story-meta">
           <span class="story-name">{story.displayName}</span>
-          {story.ageGroup && (
-            <span class="story-meta-item">出会いは{story.ageGroup}</span>
+          {ageLabel && (
+            <span class="story-meta-item">{t('detail.age_met')}{ageLabel}</span>
           )}
           {story.favoriteCharacter && (
-            <span class="story-meta-item">推し：{story.favoriteCharacter}</span>
+            <span class="story-meta-item">{t('detail.fav_prefix')}{story.favoriteCharacter}</span>
           )}
           <span class="story-meta-item story-date">
-            {new Date(story.publishedAt).toLocaleDateString('ja-JP', {
+            {new Date(story.publishedAt).toLocaleDateString(lang === 'ja' ? 'ja-JP' : lang === 'ar' ? 'ar' : 'en', {
               year: 'numeric', month: 'long', day: 'numeric'
             })}
           </span>
         </div>
+        {!hasTranslation && lang !== 'ja' && (
+          <p class="translation-notice">{t('detail.original_notice')}</p>
+        )}
+        {hasTranslation && (
+          <p class="translation-notice translation-notice--translated">{t('detail.translated_notice')}</p>
+        )}
       </header>
 
-      <!-- 画像（あれば） -->
+      <!-- Image -->
       {story.imageUrl && (
         <div class="story-image">
-          <img src={story.imageUrl} alt={story.imageCaption ?? story.displayName + 'の投稿画像'} />
+          <img src={story.imageUrl} alt={story.imageCaption ?? story.displayName} />
           {story.imageCaption && <p class="story-image-caption">{story.imageCaption}</p>}
         </div>
       )}
 
-      <!-- 本文 -->
+      <!-- Body -->
       <div class="story-body">
-        {story.mainStory ? (
+        {mainStory ? (
           <section class="story-section">
-            <h2>体験談</h2>
-            <p>{story.mainStory}</p>
+            <h2>{t('detail.main_story')}</h2>
+            <p>{mainStory}</p>
           </section>
         ) : (
           <>
-            {story.triggerScene && (
+            {triggerScene && (
               <section class="story-section">
-                <h2>ハマるきっかけになったシーン</h2>
-                <p>{story.triggerScene}</p>
+                <h2>{t('detail.trigger')}</h2>
+                <p>{triggerScene}</p>
               </section>
             )}
-
-            {story.realization && (
+            {realization && (
               <section class="story-section">
-                <h2>「あ、自分これ好きだ」と気づいた瞬間</h2>
-                <p>{story.realization}</p>
+                <h2>{t('detail.realization')}</h2>
+                <p>{realization}</p>
               </section>
             )}
-
-            {story.currentRelationship && (
+            {currentRelationship && (
               <section class="story-section">
-                <h2>今のあなたとナルボルの関係</h2>
-                <p>{story.currentRelationship}</p>
+                <h2>{t('detail.current')}</h2>
+                <p>{currentRelationship}</p>
               </section>
             )}
           </>
         )}
 
-        {story.favoriteScene && (
+        {favoriteScene && (
           <section class="story-section">
-            <h2>特に好きなシーン・セリフ</h2>
-            <p>{story.favoriteScene}</p>
+            <h2>{t('detail.fav_scene')}</h2>
+            <p>{favoriteScene}</p>
           </section>
         )}
 
-        {story.futureWish && (
+        {futureWish && (
           <section class="story-section story-section--wish">
-            <h2>こんな作品が観てみたい</h2>
-            <p>{story.futureWish}</p>
+            <h2>{t('detail.future_wish')}</h2>
+            <p>{futureWish}</p>
           </section>
         )}
 
-        {story.message && (
+        {message && (
           <section class="story-message">
-            <p class="message-label">同じ作品を好きな人へ</p>
-            <blockquote class="message-quote">&ldquo;{story.message}&rdquo;</blockquote>
+            <p class="message-label">{t('detail.message_label')}</p>
+            <blockquote class="message-quote">&ldquo;{message}&rdquo;</blockquote>
           </section>
         )}
       </div>
 
-      <!-- シェアボタン -->
+      <!-- Share buttons -->
       <div class="story-share">
-        <p class="story-share-label">この体験談をシェアする</p>
+        <p class="story-share-label">{t('detail.share_label')}</p>
         <a href={xShareUrl} target="_blank" rel="noopener noreferrer" class="btn btn-x-share">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.732-8.857L1.555 2.25H8.08l4.27 5.646L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/>
           </svg>
-          Xでシェア
+          {t('detail.share_x')}
         </a>
         <button type="button" id="ig-share-btn" class="btn btn-ig-share">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -171,24 +196,24 @@ const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
             <circle cx="12" cy="12" r="5"/>
             <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
           </svg>
-          Instagramストーリーズ
+          {t('detail.share_ig')}
         </button>
       </div>
 
-      <!-- 関連体験談 -->
+      <!-- Related stories -->
       {relatedStories.length > 0 && (
         <section class="related-stories">
-          <h2 class="related-stories-title">こんな体験談も</h2>
+          <h2 class="related-stories-title">{t('detail.related')}</h2>
           <div class="related-stories-grid">
-            {relatedStories.map(s => <StoryCard story={s} />)}
+            {relatedStories.map(s => <StoryCard story={s} lang={lang} />)}
           </div>
         </section>
       )}
 
-      <!-- ナビゲーション -->
+      <!-- Navigation -->
       <nav class="story-nav">
-        <a href={`${base}/stories`} class="btn btn-outline">&larr; 一覧に戻る</a>
-        <a href={`${base}/submit`} class="btn btn-primary">あなたの体験談を投稿する</a>
+        <a href={`${base}/${lang}/stories`} class="btn btn-outline">{t('detail.back')}</a>
+        <a href={`${base}/${lang}/submit`} class="btn btn-primary">{t('detail.submit')}</a>
       </nav>
 
     </div>
@@ -201,23 +226,24 @@ const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
   storyUrl,
   firstSeries: story.firstSeries,
   firstMedia: story.firstMedia,
-  mainStory: story.mainStory ?? null,
-  triggerScene: story.triggerScene ?? null,
-  realization: story.realization ?? null,
-  currentRelationship: story.currentRelationship ?? null,
-  favoriteScene: story.favoriteScene ?? null,
-  futureWish: story.futureWish ?? null,
-  message: story.message ?? null,
+  mainStory: mainStory ?? null,
+  triggerScene: triggerScene ?? null,
+  realization: realization ?? null,
+  currentRelationship: currentRelationship ?? null,
+  favoriteScene: favoriteScene ?? null,
+  futureWish: futureWish ?? null,
+  message: message ?? null,
+  generatingLabel: '',
+  downloadToast: '',
 }}>
 const btn = document.getElementById('ig-share-btn');
 const originalHTML = btn.innerHTML;
 
 btn.addEventListener('click', async () => {
   btn.disabled = true;
-  btn.textContent = '画像を生成中…';
+  btn.textContent = '…';
 
   try {
-    // CSSで宣言されたフォント（Noto Sans JP）がcanvasで使えるまで待機
     await document.fonts.ready;
 
     const canvas = document.createElement('canvas');
@@ -225,7 +251,6 @@ btn.addEventListener('click', async () => {
     canvas.height = 1920;
     const ctx = canvas.getContext('2d');
 
-    // ── 背景 ──
     ctx.fillStyle = '#1a1a2e';
     ctx.fillRect(0, 0, 1080, 1920);
 
@@ -235,22 +260,14 @@ btn.addEventListener('click', async () => {
     ctx.fillStyle = g1;
     ctx.fillRect(0, 0, 1080, 1920);
 
-    const g2 = ctx.createRadialGradient(960, 1760, 0, 960, 1760, 380);
-    g2.addColorStop(0, 'rgba(232,98,26,0.14)');
-    g2.addColorStop(1, 'rgba(232,98,26,0)');
-    ctx.fillStyle = g2;
-    ctx.fillRect(0, 0, 1080, 1920);
-
     ctx.fillStyle = '#e8621a';
     ctx.fillRect(0, 0, 14, 1920);
 
-    // ── ヘッダー ──
     const logoX = 100, logoY = 104, logoR = 42;
     ctx.beginPath();
     ctx.arc(logoX, logoY, logoR, 0, Math.PI * 2);
     ctx.fillStyle = '#e8621a';
     ctx.fill();
-
     ctx.fillStyle = '#ffffff';
     ctx.font = 'bold 44px serif';
     ctx.textAlign = 'center';
@@ -261,7 +278,7 @@ btn.addEventListener('click', async () => {
     ctx.font = 'bold 40px "Noto Sans JP", sans-serif';
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
-    ctx.fillText('ナルボル体験談', 162, logoY);
+    ctx.fillText('Naruboru Fan Stories', 162, logoY);
 
     ctx.beginPath();
     ctx.moveTo(60, 170);
@@ -270,7 +287,6 @@ btn.addEventListener('click', async () => {
     ctx.lineWidth = 2;
     ctx.stroke();
 
-    // ── キャッチフレーズ（コンパクト版） ──
     let curY = 200;
     ctx.fillStyle = '#e8621a';
     ctx.font = 'bold 54px "Noto Sans JP", sans-serif';
@@ -279,23 +295,22 @@ btn.addEventListener('click', async () => {
     const catchN = drawWrapped(ctx, `「${catchphrase}」`, 60, curY, 960, 76);
     curY += catchN * 76 + 18;
 
-    // 投稿者名 + タグ（横並び）
     ctx.fillStyle = 'rgba(255,255,255,0.65)';
     ctx.font = '500 36px "Noto Sans JP", sans-serif';
     ctx.textAlign = 'left';
     ctx.textBaseline = 'middle';
-    ctx.fillText(`— ${displayName} さん`, 60, curY + 22);
+    ctx.fillText(`— ${displayName}`, 60, curY + 22);
 
-    // タグ（右寄せ）
     const tagH = 50, tagR = 8;
     ctx.font = '500 28px "Noto Sans JP", sans-serif';
-    const tw1 = ctx.measureText(firstSeries).width + 32;
-    const tw2 = ctx.measureText(firstMedia).width + 32;
-    drawPill(ctx, firstSeries, 1020 - tw2 - 12 - tw1, curY - 2, tw1, tagH, tagR, '#e8621a');
-    drawPill(ctx, firstMedia, 1020 - tw2, curY - 2, tw2, tagH, tagR, '#3d3d72');
+    if (firstSeries) {
+      const tw1 = ctx.measureText(firstSeries).width + 32;
+      const tw2 = firstMedia ? ctx.measureText(firstMedia).width + 32 : 0;
+      drawPill(ctx, firstSeries, 1020 - tw2 - (tw2 ? 12 : 0) - tw1, curY - 2, tw1, tagH, tagR, '#e8621a');
+      if (firstMedia) drawPill(ctx, firstMedia, 1020 - tw2, curY - 2, tw2, tagH, tagR, '#3d3d72');
+    }
     curY += tagH + 32;
 
-    // 区切り線
     ctx.beginPath();
     ctx.moveTo(60, curY);
     ctx.lineTo(1020, curY);
@@ -304,56 +319,46 @@ btn.addEventListener('click', async () => {
     ctx.stroke();
     curY += 36;
 
-    // ── 本文セクション ──
-    const BODY_MAX = 1780; // フッター手前の下限
+    const BODY_MAX = 1780;
     const narrativeSections = mainStory
-      ? [{ label: '体験談', text: mainStory }]
+      ? [{ label: 'Story', text: mainStory }]
       : [
-          { label: 'ハマるきっかけになったシーン', text: triggerScene },
-          { label: '「あ、自分これ好きだ」と気づいた瞬間', text: realization },
-          { label: '今のあなたとナルボルの関係', text: currentRelationship },
-        ];
+          triggerScene && { label: 'The scene that hooked me', text: triggerScene },
+          realization && { label: 'When I realized I was a fan', text: realization },
+          currentRelationship && { label: 'My relationship today', text: currentRelationship },
+        ].filter(Boolean);
     const sections = [
       ...narrativeSections,
-      { label: '特に好きなシーン・セリフ', text: favoriteScene },
-      { label: 'こんな作品が観てみたい', text: futureWish },
-      { label: '同じ作品を好きな人へ', text: message },
-    ].filter(s => s.text);
+      favoriteScene && { label: 'Favorite scene', text: favoriteScene },
+      futureWish && { label: 'Stories I\'d love to see', text: futureWish },
+      message && { label: 'To fellow fans', text: message },
+    ].filter(Boolean);
 
     for (let si = 0; si < sections.length; si++) {
       const section = sections[si];
       if (curY > BODY_MAX) break;
-
-      // セクション見出し（オレンジ、左端のマーク付き）
       ctx.fillStyle = '#e8621a';
       ctx.fillRect(60, curY, 6, 38);
-      ctx.fillStyle = '#e8621a';
       ctx.font = 'bold 30px "Noto Sans JP", sans-serif';
       ctx.textAlign = 'left';
       ctx.textBaseline = 'top';
       const headN = drawWrapped(ctx, section.label, 80, curY, 940, 42);
       curY += headN * 42 + 14;
-
-      // 残りセクション数で空きスペースを均等割り、最低2行は確保
       const remainingSections = sections.length - si;
       const availLines = Math.max(2, Math.floor((BODY_MAX - curY) / 50 / remainingSections));
       if (availLines <= 0) break;
       ctx.fillStyle = 'rgba(255,255,255,0.88)';
       ctx.font = '400 34px "Noto Sans JP", sans-serif';
-      ctx.textAlign = 'left';
-      ctx.textBaseline = 'top';
       const bodyN = drawWrappedClamped(ctx, section.text, 60, curY, 960, 50, availLines);
       curY += bodyN * 50 + 44;
     }
 
-    // ── フッター ──
     ctx.fillStyle = 'rgba(255,255,255,0.35)';
     ctx.font = '26px monospace';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'bottom';
     ctx.fillText('naruboru-taiken.github.io', 540, 1900);
 
-    // ── シェア or ダウンロード ──
     canvas.toBlob(async (blob) => {
       const file = new File([blob], 'naruboru-story.png', { type: 'image/png' });
       try {
@@ -361,12 +366,12 @@ btn.addEventListener('click', async () => {
           await navigator.share({ files: [file] });
         } else {
           downloadBlob(blob);
-          showToast('画像をダウンロードしました。\nInstagramアプリのストーリーズから追加してください。');
+          showToast('Image downloaded. Open Instagram and add it to your Stories.');
         }
       } catch (e) {
         if (e.name !== 'AbortError') {
           downloadBlob(blob);
-          showToast('画像をダウンロードしました。\nInstagramアプリのストーリーズから追加してください。');
+          showToast('Image downloaded. Open Instagram and add it to your Stories.');
         }
       } finally {
         btn.disabled = false;
@@ -381,57 +386,40 @@ btn.addEventListener('click', async () => {
   }
 });
 
-// テキスト折り返し（行数を返す）
 function drawWrapped(ctx, text, x, y, maxW, lineH) {
   const chars = [...text];
   let line = '';
   const lines = [];
   for (const ch of chars) {
     const test = line + ch;
-    if (ctx.measureText(test).width > maxW && line !== '') {
-      lines.push(line);
-      line = ch;
-    } else {
-      line = test;
-    }
+    if (ctx.measureText(test).width > maxW && line !== '') { lines.push(line); line = ch; }
+    else line = test;
   }
   if (line) lines.push(line);
   lines.forEach((l, i) => ctx.fillText(l, x, y + i * lineH));
   return lines.length;
 }
 
-// テキスト折り返し（最大行数制限 + 末尾に… + \n改行対応）
 function drawWrappedClamped(ctx, text, x, y, maxW, lineH, maxLines) {
-  // \n で段落分割し、各段落を幅で折り返して全行リストを作る
   const allLines = [];
   for (const para of text.split('\n')) {
-    if (para.trim() === '') continue; // 空行はスペース節約のためスキップ
+    if (para.trim() === '') continue;
     const chars = [...para];
     let line = '';
     for (const ch of chars) {
       const test = line + ch;
-      if (ctx.measureText(test).width > maxW && line !== '') {
-        allLines.push(line);
-        line = ch;
-      } else {
-        line = test;
-      }
+      if (ctx.measureText(test).width > maxW && line !== '') { allLines.push(line); line = ch; }
+      else line = test;
     }
     if (line) allLines.push(line);
   }
-
   const truncated = allLines.length > maxLines;
   const lines = allLines.slice(0, maxLines);
-
-  // 途中で切れた場合、最終行に…を付与
   if (truncated && lines.length > 0) {
     let last = lines[lines.length - 1];
-    while (last.length > 0 && ctx.measureText(last + '…').width > maxW) {
-      last = last.slice(0, -1);
-    }
+    while (last.length > 0 && ctx.measureText(last + '…').width > maxW) last = last.slice(0, -1);
     lines[lines.length - 1] = last + '…';
   }
-
   lines.forEach((l, i) => ctx.fillText(l, x, y + i * lineH));
   return lines.length;
 }
@@ -472,9 +460,7 @@ function showToast(message) {
   toast.className = 'share-toast';
   toast.textContent = message;
   document.body.appendChild(toast);
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => toast.classList.add('share-toast--visible'));
-  });
+  requestAnimationFrame(() => requestAnimationFrame(() => toast.classList.add('share-toast--visible')));
   setTimeout(() => {
     toast.classList.remove('share-toast--visible');
     setTimeout(() => toast.remove(), 400);

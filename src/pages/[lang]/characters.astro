@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import stories from '../../data/stories.json';
+import { SUPPORTED_LANGS, useTranslations, isSupportedLang } from '../../i18n/ui';
+import type { SupportedLang } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return SUPPORTED_LANGS.map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: SupportedLang };
+if (!isSupportedLang(lang)) return Astro.redirect('/characters');
+
+const t = useTranslations(lang);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const charaMap = new Map<string, number>();
+for (const story of stories) {
+  if (story.favoriteCharacter) {
+    charaMap.set(story.favoriteCharacter, (charaMap.get(story.favoriteCharacter) ?? 0) + 1);
+  }
+}
+const characters = [...charaMap.entries()]
+  .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], 'ja'))
+  .map(([name, count]) => ({ name, count }));
+
+const noCharaCount = stories.filter(s => !s.favoriteCharacter).length;
+---
+
+<BaseLayout
+  title={t('characters.title')}
+  description={t('characters.desc')}
+  lang={lang}
+  pagePath="/characters"
+>
+  <section class="page-header">
+    <div class="page-header-inner">
+      <h1 class="page-title">{t('characters.title')}</h1>
+      <p class="page-desc">{t('characters.desc')}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-inner">
+      <div class="chara-grid">
+        {characters.map(({ name, count }) => (
+          <a
+            href={`${base}/${lang}/stories?chara=${encodeURIComponent(name)}`}
+            class="chara-card"
+          >
+            <span class="chara-card-name">{name}</span>
+            <span class="chara-card-count">{t('characters.stories_of', { count })}</span>
+          </a>
+        ))}
+      </div>
+
+      {noCharaCount > 0 && (
+        <p class="chara-note">
+          {t('characters.no_chara', { count: noCharaCount })}
+          <a href={`${base}/${lang}/stories`}>{t('characters.view_all')}</a>
+        </p>
+      )}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,42 +1,64 @@
 ---
+import { useTranslations, SUPPORTED_LANGS } from '../i18n/ui';
+import type { Lang } from '../i18n/ui';
+
 export interface Props {
   title: string;
   description?: string;
-  ogImage?: string; // ページ固有のOGP画像URLを渡せる（省略時はデフォルト画像を使用）
+  ogImage?: string;
+  lang?: Lang;
+  pagePath?: string; // e.g. '/' or '/stories' — used to build language-switch URLs
 }
 const {
   title,
-  description = 'ナルボルファンの「作品との出会いからオタクになるまで」のリアルな体験談を集めたサイトです。',
+  description,
   ogImage,
+  lang = 'ja',
+  pagePath = '/',
 } = Astro.props;
+
+const t = useTranslations(lang);
+const defaultDesc = t('site.description');
+const resolvedDescription = description ?? defaultDesc;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const siteUrl = 'https://naruboru-taiken.github.io';
 const pageUrl = `${siteUrl}${Astro.url.pathname}`;
 const ogImageUrl = ogImage ?? `${siteUrl}/ogp.png`;
-const fullTitle = `${title} | ナルボル体験談`;
+const siteName = t('site.name');
+const fullTitle = `${title} | ${siteName}`;
+
+const isRTL = lang === 'ar';
+
+// Build language switch URLs
+function langUrl(targetLang: Lang): string {
+  if (targetLang === 'ja') return `${base}${pagePath}`;
+  return `${base}/${targetLang}${pagePath}`;
+}
+
+const allLangs: Lang[] = ['ja', ...SUPPORTED_LANGS];
 ---
 <!doctype html>
-<html lang="ja">
+<html lang={lang} dir={isRTL ? 'rtl' : 'ltr'}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={description} />
+    <meta name="description" content={resolvedDescription} />
     <title>{fullTitle}</title>
 
     <!-- OGP（SNSシェア用） -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="ナルボル体験談" />
+    <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={fullTitle} />
-    <meta property="og:description" content={description} />
+    <meta property="og:description" content={resolvedDescription} />
     <meta property="og:url" content={pageUrl} />
     <meta property="og:image" content={ogImageUrl} />
-    <meta property="og:locale" content="ja_JP" />
+    <meta property="og:locale" content={lang === 'ja' ? 'ja_JP' : lang} />
 
     <!-- Twitter / X カード -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
-    <meta name="twitter:description" content={description} />
+    <meta name="twitter:description" content={resolvedDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
 
     <!-- Favicon -->
@@ -53,16 +75,35 @@ const fullTitle = `${title} | ナルボル体験談`;
   <body>
     <header class="site-header">
       <div class="header-inner">
-        <a href={`${base}/`} class="site-logo">
+        <a href={`${base}${lang === 'ja' ? '/' : '/' + lang + '/'}`} class="site-logo">
           <span class="logo-mark">忍</span>
-          <span class="logo-text">ナルボル体験談</span>
+          <span class="logo-text">{siteName}</span>
         </a>
         <nav class="site-nav" id="site-nav">
-          <a href={`${base}/stories`}>体験談を読む</a>
-          <a href={`${base}/characters`}>推し一覧</a>
-          <a href={`${base}/submit`} class="nav-cta">体験談を投稿する</a>
+          <a href={lang === 'ja' ? `${base}/stories` : `${base}/${lang}/stories`}>{t('nav.read')}</a>
+          <a href={lang === 'ja' ? `${base}/characters` : `${base}/${lang}/characters`}>{t('nav.characters')}</a>
+          <a href={lang === 'ja' ? `${base}/submit` : `${base}/${lang}/submit`} class="nav-cta">{t('nav.submit')}</a>
+
+          <!-- 言語切り替え -->
+          <div class="lang-switcher">
+            <button class="lang-switcher-btn" aria-label={t('lang.label')} aria-haspopup="listbox" aria-expanded="false" id="lang-btn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+              <span>{t(`lang.${lang}`)}</span>
+            </button>
+            <ul class="lang-menu" role="listbox" id="lang-menu" hidden>
+              {allLangs.map(l => (
+                <li role="option" aria-selected={l === lang}>
+                  <a href={langUrl(l)} hreflang={l}>{t(`lang.${l}`)}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </nav>
-        <button class="nav-toggle" id="nav-toggle" aria-label="メニューを開く" aria-expanded="false">
+        <button class="nav-toggle" id="nav-toggle" aria-label={t('nav.open')} aria-expanded="false">
           <span></span>
           <span></span>
           <span></span>
@@ -77,37 +118,57 @@ const fullTitle = `${title} | ナルボル体験談`;
     <footer class="site-footer">
       <div class="footer-inner">
         <p class="footer-logo">
-          <span class="logo-mark-small">忍</span> ナルボル体験談
+          <span class="logo-mark-small">忍</span> {siteName}
         </p>
         <nav class="footer-nav">
-          <a href={`${base}/`}>ホーム</a>
-          <a href={`${base}/stories`}>体験談一覧</a>
-          <a href={`${base}/characters`}>推し一覧</a>
-          <a href={`${base}/guidelines`}>投稿ガイドライン</a>
-          <a href={`${base}/privacy`}>プライバシーポリシー</a>
-          <a href={`${base}/submit`}>投稿する</a>
+          <a href={lang === 'ja' ? `${base}/` : `${base}/${lang}/`}>{t('footer.home')}</a>
+          <a href={lang === 'ja' ? `${base}/stories` : `${base}/${lang}/stories`}>{t('footer.stories')}</a>
+          <a href={lang === 'ja' ? `${base}/characters` : `${base}/${lang}/characters`}>{t('footer.characters')}</a>
+          <a href={lang === 'ja' ? `${base}/guidelines` : `${base}/${lang}/guidelines`}>{t('footer.guidelines')}</a>
+          <a href={lang === 'ja' ? `${base}/privacy` : `${base}/${lang}/privacy`}>{t('footer.privacy')}</a>
+          <a href={lang === 'ja' ? `${base}/submit` : `${base}/${lang}/submit`}>{t('footer.submit')}</a>
         </nav>
         <p class="footer-note">
-          ※ 本サイトはファンによる非公式サイトです。NARUTO・BORUTOの著作権は岸本斉史先生・集英社および池本幹雄先生・小太刀右京先生に帰属します。本サイトは権利者とは一切関係ありません。
+          {t('footer.unofficial')}
         </p>
       </div>
     </footer>
   </body>
   <script>
+    // ハンバーガーメニュー
     const toggle = document.getElementById('nav-toggle');
     const nav = document.getElementById('site-nav');
+    const openLabel = toggle?.getAttribute('aria-label') ?? 'Open menu';
     toggle?.addEventListener('click', () => {
       const isOpen = nav?.classList.toggle('nav-open');
       toggle.setAttribute('aria-expanded', String(isOpen));
-      toggle.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+      toggle.setAttribute('aria-label', isOpen ? openLabel.replace('Open', 'Close').replace('開く', '閉じる').replace('فتح', 'إغلاق').replace('Abrir', 'Cerrar').replace('Ouvrir', 'Fermer') : openLabel);
     });
-    // ナビのリンクをタップしたらメニューを閉じる
     nav?.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         nav.classList.remove('nav-open');
         toggle?.setAttribute('aria-expanded', 'false');
-        toggle?.setAttribute('aria-label', 'メニューを開く');
+        toggle?.setAttribute('aria-label', openLabel);
       });
+    });
+
+    // 言語切り替えドロップダウン
+    const langBtn = document.getElementById('lang-btn');
+    const langMenu = document.getElementById('lang-menu');
+    langBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = langMenu?.hasAttribute('hidden') === false;
+      if (isOpen) {
+        langMenu?.setAttribute('hidden', '');
+        langBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        langMenu?.removeAttribute('hidden');
+        langBtn.setAttribute('aria-expanded', 'true');
+      }
+    });
+    document.addEventListener('click', () => {
+      langMenu?.setAttribute('hidden', '');
+      langBtn?.setAttribute('aria-expanded', 'false');
     });
   </script>
 </html>

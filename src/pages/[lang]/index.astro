@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import StoryCard from '../../components/StoryCard.astro';
+import stories from '../../data/stories.json';
+import { SUPPORTED_LANGS, useTranslations, isSupportedLang } from '../../i18n/ui';
+import type { SupportedLang } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return SUPPORTED_LANGS.map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: SupportedLang };
+if (!isSupportedLang(lang)) return Astro.redirect('/');
+
+const t = useTranslations(lang);
+
+const latestStories = [...stories]
+  .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
+  .slice(0, 9);
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<BaseLayout
+  title={t('footer.home')}
+  description={t('site.description')}
+  lang={lang}
+  pagePath="/"
+>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-pattern"></div>
+    </div>
+    <div class="hero-inner">
+      <p class="hero-eyebrow">{t('home.eyebrow')}</p>
+      <h1 class="hero-title">{t('home.title')}</h1>
+      <p class="hero-desc">{t('home.desc')}</p>
+      <div class="hero-actions">
+        <a href={`${base}/${lang}/stories`} class="btn btn-primary">{t('home.read_all')}</a>
+        <a href={`${base}/${lang}/submit`} class="btn btn-outline">{t('home.submit')}</a>
+      </div>
+      <p class="hero-count">
+        {t('home.count', { count: stories.length })}
+      </p>
+    </div>
+  </section>
+
+  <!-- Latest stories -->
+  <section class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">{t('home.latest')}</h2>
+        <a href={`${base}/${lang}/stories`} class="section-link">{t('home.view_all')}</a>
+      </div>
+      <div class="card-grid">
+        {latestStories.map((story) => (
+          <StoryCard story={story} lang={lang} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <h2 class="cta-title">{t('home.cta_title')}</h2>
+      <p class="cta-desc">{t('home.cta_desc')}</p>
+      <a href={`${base}/${lang}/submit`} class="btn btn-primary btn-large">{t('home.cta_btn')}</a>
+      <p class="cta-note">
+        <a href={`${base}/${lang}/guidelines`}>{t('home.cta_guidelines')}</a>
+        {lang !== 'ja' && <span class="cta-note-sub"> — {t('home.cta_note')}</span>}
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>

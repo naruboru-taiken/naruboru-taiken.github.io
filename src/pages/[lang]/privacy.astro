@@ -1,0 +1,246 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SUPPORTED_LANGS, useTranslations, isSupportedLang } from '../../i18n/ui';
+import type { SupportedLang } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return SUPPORTED_LANGS.map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: SupportedLang };
+if (!isSupportedLang(lang)) return Astro.redirect('/privacy');
+
+const t = useTranslations(lang);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const content = {
+  en: {
+    collected_title: 'Information we collect',
+    collected_intro: 'We collect the following information through the submission form:',
+    collected: [
+      { term: 'X (Twitter) ID (required)', desc: 'Used only to contact the submitter and verify identity. Never published on the site.' },
+      { term: 'Display name / nickname (optional)', desc: 'Shown alongside the story on the site. If omitted, an identifier will be used.' },
+      { term: 'Story content and form answers (some required)', desc: 'Published on the site after review.' },
+    ],
+    no_analytics: 'This site does not use any analytics tools and does not collect or record IP addresses or browsing history.',
+    purpose_title: 'How we use your information',
+    purpose: [
+      'Publishing your story on the site',
+      'Contacting you if there are questions about your submission',
+      'Verifying your identity if you request removal',
+    ],
+    purpose_note: 'We will not use your information for any other purpose.',
+    third_title: 'Third-party sharing',
+    third: 'We do not sell, share, or disclose personal information (including your X ID) to third parties, except where required by law.',
+    storage_title: 'Data storage',
+    storage: 'Submission form data is stored in Google Forms. Please refer to Google\'s privacy policy for more details.',
+    removal_title: 'Removal requests',
+    removal: 'To request removal of a published story or deletion of your personal information, please DM the admin account from the X ID used when submitting.',
+    contact_label: 'Admin X: ',
+    cookie_title: 'Cookies',
+    cookie: 'This site (hosted on GitHub Pages) does not use cookies. However, embedded forms (Google Forms) may use cookies.',
+    change_title: 'Changes to this policy',
+    change: 'This policy may be updated without notice. For significant changes, we will announce them on the site.',
+    updated: 'Last updated: March 25, 2026',
+    contact_cta: 'If you have any questions, please feel free to contact us.',
+    guidelines_btn: 'Read submission guidelines',
+  },
+  fr: {
+    collected_title: 'Informations collectées',
+    collected_intro: 'Nous collectons les informations suivantes via le formulaire de soumission :',
+    collected: [
+      { term: 'Identifiant X (Twitter) (obligatoire)', desc: 'Utilisé uniquement pour contacter le soumissionnaire et vérifier son identité. Jamais publié sur le site.' },
+      { term: 'Nom d\'affichage / pseudo (facultatif)', desc: 'Affiché avec l\'histoire sur le site. Si omis, un identifiant sera utilisé.' },
+      { term: 'Contenu de l\'histoire et réponses au formulaire (partiellement obligatoires)', desc: 'Publiés sur le site après examen.' },
+    ],
+    no_analytics: 'Ce site n\'utilise aucun outil d\'analyse et ne collecte pas d\'adresses IP ni d\'historiques de navigation.',
+    purpose_title: 'Utilisation de vos informations',
+    purpose: [
+      'Publication de votre histoire sur le site',
+      'Contact si des questions se posent sur votre soumission',
+      'Vérification de votre identité en cas de demande de suppression',
+    ],
+    purpose_note: 'Nous n\'utiliserons pas vos informations à d\'autres fins.',
+    third_title: 'Partage avec des tiers',
+    third: 'Nous ne vendons, partageons ni divulguons vos informations personnelles (y compris votre identifiant X) à des tiers, sauf si la loi l\'exige.',
+    storage_title: 'Stockage des données',
+    storage: 'Les données du formulaire de soumission sont stockées dans Google Forms. Veuillez consulter la politique de confidentialité de Google pour plus de détails.',
+    removal_title: 'Demandes de suppression',
+    removal: 'Pour demander la suppression d\'une histoire publiée ou la suppression de vos informations personnelles, envoyez un DM au compte admin depuis l\'identifiant X utilisé lors de la soumission.',
+    contact_label: 'Compte admin X : ',
+    cookie_title: 'Cookies',
+    cookie: 'Ce site (hébergé sur GitHub Pages) n\'utilise pas de cookies. Cependant, les formulaires intégrés (Google Forms) peuvent utiliser des cookies.',
+    change_title: 'Modifications de cette politique',
+    change: 'Cette politique peut être mise à jour sans préavis. Pour les changements importants, nous les annoncerons sur le site.',
+    updated: 'Dernière mise à jour : 25 mars 2026',
+    contact_cta: 'Si vous avez des questions, n\'hésitez pas à nous contacter.',
+    guidelines_btn: 'Lire les règles de soumission',
+  },
+  ar: {
+    collected_title: 'المعلومات التي نجمعها',
+    collected_intro: 'نجمع المعلومات التالية من خلال نموذج التقديم:',
+    collected: [
+      { term: 'معرّف X (تويتر) (مطلوب)', desc: 'يُستخدم فقط للتواصل مع مقدّم الطلب والتحقق من هويته. لن يُنشر على الموقع أبداً.' },
+      { term: 'اسم العرض / اللقب (اختياري)', desc: 'يُعرض مع القصة على الموقع. إذا تُرك فارغاً، سيُستخدم معرّف.' },
+      { term: 'محتوى القصة وإجابات النموذج (بعضها مطلوب)', desc: 'تُنشر على الموقع بعد المراجعة.' },
+    ],
+    no_analytics: 'لا يستخدم هذا الموقع أي أدوات تحليل ولا يجمع عناوين IP أو سجلات التصفح.',
+    purpose_title: 'كيف نستخدم معلوماتك',
+    purpose: [
+      'نشر قصتك على الموقع',
+      'التواصل معك إذا كانت هناك أسئلة حول تقديمك',
+      'التحقق من هويتك في حالة طلب الإزالة',
+    ],
+    purpose_note: 'لن نستخدم معلوماتك لأي غرض آخر.',
+    third_title: 'المشاركة مع أطراف ثالثة',
+    third: 'نحن لا نبيع أو نشارك أو نكشف عن معلوماتك الشخصية (بما فيها معرّف X) لأطراف ثالثة، إلا إذا طلب القانون ذلك.',
+    storage_title: 'تخزين البيانات',
+    storage: 'يتم تخزين بيانات نموذج التقديم في Google Forms. يرجى الرجوع إلى سياسة خصوصية Google لمزيد من التفاصيل.',
+    removal_title: 'طلبات الإزالة',
+    removal: 'لطلب إزالة قصة منشورة أو حذف معلوماتك الشخصية، أرسل رسالة مباشرة للحساب الإداري من معرّف X المستخدم عند التقديم.',
+    contact_label: 'حساب X الإداري: ',
+    cookie_title: 'ملفات تعريف الارتباط',
+    cookie: 'لا يستخدم هذا الموقع (المستضاف على GitHub Pages) ملفات تعريف الارتباط. ومع ذلك، قد تستخدمها النماذج المضمّنة (Google Forms).',
+    change_title: 'التغييرات على هذه السياسة',
+    change: 'قد تُحدَّث هذه السياسة دون إشعار مسبق. في حالة التغييرات المهمة، سنعلن عنها على الموقع.',
+    updated: 'آخر تحديث: 25 مارس 2026',
+    contact_cta: 'إذا كان لديك أي أسئلة، فلا تتردد في التواصل معنا.',
+    guidelines_btn: 'اقرأ إرشادات التقديم',
+  },
+  es: {
+    collected_title: 'Información que recopilamos',
+    collected_intro: 'Recopilamos la siguiente información a través del formulario de envío:',
+    collected: [
+      { term: 'ID de X (Twitter) (obligatorio)', desc: 'Se usa únicamente para contactar al autor y verificar su identidad. Nunca se publica en el sitio.' },
+      { term: 'Nombre de visualización / apodo (opcional)', desc: 'Se muestra junto con la historia en el sitio. Si se omite, se usará un identificador.' },
+      { term: 'Contenido de la historia y respuestas del formulario (algunos obligatorios)', desc: 'Se publican en el sitio tras revisión.' },
+    ],
+    no_analytics: 'Este sitio no usa herramientas de análisis y no recopila ni registra direcciones IP ni historiales de navegación.',
+    purpose_title: 'Cómo usamos tu información',
+    purpose: [
+      'Publicar tu historia en el sitio',
+      'Contactarte si hay preguntas sobre tu envío',
+      'Verificar tu identidad si solicitas eliminación',
+    ],
+    purpose_note: 'No usaremos tu información para ningún otro fin.',
+    third_title: 'Compartir con terceros',
+    third: 'No vendemos, compartimos ni divulgamos información personal (incluyendo tu ID de X) a terceros, salvo cuando lo exija la ley.',
+    storage_title: 'Almacenamiento de datos',
+    storage: 'Los datos del formulario de envío se almacenan en Google Forms. Consulta la política de privacidad de Google para más detalles.',
+    removal_title: 'Solicitudes de eliminación',
+    removal: 'Para solicitar la eliminación de una historia publicada o de tus datos personales, envía un DM a la cuenta admin desde el ID de X usado al enviar.',
+    contact_label: 'Cuenta admin X: ',
+    cookie_title: 'Cookies',
+    cookie: 'Este sitio (alojado en GitHub Pages) no usa cookies. Sin embargo, los formularios incrustados (Google Forms) pueden usar cookies.',
+    change_title: 'Cambios en esta política',
+    change: 'Esta política puede actualizarse sin previo aviso. Para cambios importantes, los anunciaremos en el sitio.',
+    updated: 'Última actualización: 25 de marzo de 2026',
+    contact_cta: 'Si tienes alguna pregunta, no dudes en contactarnos.',
+    guidelines_btn: 'Leer guía de envío',
+  },
+  pt: {
+    collected_title: 'Informações que coletamos',
+    collected_intro: 'Coletamos as seguintes informações através do formulário de envio:',
+    collected: [
+      { term: 'ID do X (Twitter) (obrigatório)', desc: 'Usado apenas para contatar o autor e verificar sua identidade. Nunca publicado no site.' },
+      { term: 'Nome de exibição / apelido (opcional)', desc: 'Exibido com a história no site. Se omitido, um identificador será usado.' },
+      { term: 'Conteúdo da história e respostas do formulário (alguns obrigatórios)', desc: 'Publicados no site após revisão.' },
+    ],
+    no_analytics: 'Este site não usa ferramentas de análise e não coleta nem registra endereços IP ou históricos de navegação.',
+    purpose_title: 'Como usamos suas informações',
+    purpose: [
+      'Publicar sua história no site',
+      'Entrar em contato se houver dúvidas sobre seu envio',
+      'Verificar sua identidade se você solicitar remoção',
+    ],
+    purpose_note: 'Não usaremos suas informações para nenhum outro fim.',
+    third_title: 'Compartilhamento com terceiros',
+    third: 'Não vendemos, compartilhamos nem divulgamos informações pessoais (incluindo seu ID do X) a terceiros, exceto quando exigido por lei.',
+    storage_title: 'Armazenamento de dados',
+    storage: 'Os dados do formulário de envio são armazenados no Google Forms. Consulte a política de privacidade do Google para mais detalhes.',
+    removal_title: 'Solicitações de remoção',
+    removal: 'Para solicitar a remoção de uma história publicada ou a exclusão de suas informações pessoais, envie DM para a conta admin pelo ID do X usado no envio.',
+    contact_label: 'Conta admin X: ',
+    cookie_title: 'Cookies',
+    cookie: 'Este site (hospedado no GitHub Pages) não usa cookies. No entanto, formulários incorporados (Google Forms) podem usar cookies.',
+    change_title: 'Alterações nesta política',
+    change: 'Esta política pode ser atualizada sem aviso prévio. Para alterações importantes, as anunciaremos no site.',
+    updated: 'Última atualização: 25 de março de 2026',
+    contact_cta: 'Se você tiver dúvidas, entre em contato conosco.',
+    guidelines_btn: 'Ler diretrizes de envio',
+  },
+};
+
+const c = content[lang] ?? content.en;
+---
+
+<BaseLayout
+  title={t('privacy.title')}
+  description={t('privacy.desc')}
+  lang={lang}
+  pagePath="/privacy"
+>
+  <section class="page-header">
+    <div class="page-header-inner">
+      <h1 class="page-title">{t('privacy.title')}</h1>
+      <p class="page-desc">{t('privacy.desc')}</p>
+    </div>
+  </section>
+
+  <article class="guidelines-article">
+    <div class="guidelines-inner">
+
+      <section class="gl-section">
+        <h2>{c.collected_title}</h2>
+        <p>{c.collected_intro}</p>
+        <ul>
+          {c.collected.map(item => (
+            <li><strong>{item.term}</strong><br />{item.desc}</li>
+          ))}
+        </ul>
+        <p>{c.no_analytics}</p>
+      </section>
+
+      <section class="gl-section">
+        <h2>{c.purpose_title}</h2>
+        <ul>
+          {c.purpose.map(item => <li>{item}</li>)}
+        </ul>
+        <p>{c.purpose_note}</p>
+      </section>
+
+      <section class="gl-section">
+        <h2>{c.third_title}</h2>
+        <p>{c.third}</p>
+      </section>
+
+      <section class="gl-section">
+        <h2>{c.storage_title}</h2>
+        <p>{c.storage}</p>
+      </section>
+
+      <section class="gl-section">
+        <h2>{c.removal_title}</h2>
+        <p>{c.removal}</p>
+        <p>{c.contact_label}<a href="https://x.com/naruboru_taiken" target="_blank" rel="noopener noreferrer">@naruboru_taiken</a></p>
+      </section>
+
+      <section class="gl-section">
+        <h2>{c.cookie_title}</h2>
+        <p>{c.cookie}</p>
+      </section>
+
+      <section class="gl-section">
+        <h2>{c.change_title}</h2>
+        <p>{c.change}</p>
+        <p class="gl-note">{c.updated}</p>
+      </section>
+
+      <div class="gl-cta">
+        <p>{c.contact_cta}</p>
+        <a href={`${base}/${lang}/guidelines`} class="btn btn-outline">{c.guidelines_btn}</a>
+      </div>
+
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,247 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SUPPORTED_LANGS, useTranslations, isSupportedLang } from '../../i18n/ui';
+import type { SupportedLang } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return SUPPORTED_LANGS.map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: SupportedLang };
+if (!isSupportedLang(lang)) return Astro.redirect('/guidelines');
+
+const t = useTranslations(lang);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Translated content per language
+const content = {
+  en: {
+    about_title: 'About this site',
+    about: 'This is an unofficial fan site where NARUTO / BORUTO fans can freely submit and share the story of the moment they became a fan. All submissions are reviewed before publication.',
+    can_title: 'What you can submit',
+    can: [
+      'How you discovered NARUTO / BORUTO and what made you fall in love with it',
+      'Personal thoughts and feelings about characters or scenes',
+      'Fan activities (merchandise, pilgrimages, fan art, etc.)',
+      'How the series changed you',
+    ],
+    cannot_title: 'What you cannot submit',
+    cannot: [
+      'Harassment of characters, voice actors, creators, or other fans',
+      'Discriminatory, violent, or sexually inappropriate content',
+      'Personal information (your real name, address, phone number, etc.)',
+      'Solicitations or advertisements for other sites / services',
+      'Fabricated or false content',
+      'Copyright-infringing content',
+    ],
+    xid_title: 'Your X (Twitter) ID',
+    xid: 'We ask for your X ID only to contact you if there are questions about your submission, and to verify your identity if you request removal. Your X ID will never be published on the site.',
+    publish_title: 'Publication & removal',
+    publish: [
+      'Submissions are reviewed before publication (may take a few days to a week)',
+      'Submissions that violate guidelines may not be published (no individual notification)',
+      'To remove a published story, DM the admin account (@naruboru_taiken) from the X ID used when submitting',
+      'Minor typo / formatting corrections may be made without changing the meaning',
+    ],
+    disclaimer_title: 'Disclaimer',
+    disclaimer: 'This is an unofficial fan site for NARUTO / BORUTO. It has no affiliation with Masashi Kishimoto, Shueisha, or any other rights holders. Copyright of submitted content belongs to the submitter, but by submitting you grant permission for the content to be published on this site.',
+    thanks: 'Thank you for reading the guidelines.',
+    submit_btn: 'Submit Your Story',
+  },
+  fr: {
+    about_title: 'À propos de ce site',
+    about: 'Ce site fan non officiel permet aux fans de NARUTO / BORUTO de soumettre librement l\'histoire du moment où ils sont devenus fans. Toutes les soumissions sont examinées avant publication.',
+    can_title: 'Ce que vous pouvez soumettre',
+    can: [
+      'Comment vous avez découvert NARUTO / BORUTO et pourquoi vous en êtes tombé(e) amoureux(se)',
+      'Vos pensées personnelles sur des personnages ou des scènes',
+      'Activités fan (merchandising, pèlerinages, fan art, etc.)',
+      'Comment la série vous a changé(e)',
+    ],
+    cannot_title: 'Ce que vous ne pouvez pas soumettre',
+    cannot: [
+      'Harcèlement de personnages, doubleurs, créateurs ou autres fans',
+      'Contenu discriminatoire, violent ou sexuellement inapproprié',
+      'Informations personnelles (nom réel, adresse, téléphone, etc.)',
+      'Sollicitations ou publicités pour d\'autres sites / services',
+      'Contenu faux ou fabriqué',
+      'Contenu portant atteinte aux droits d\'auteur',
+    ],
+    xid_title: 'Votre identifiant X (Twitter)',
+    xid: 'Nous vous demandons votre identifiant X uniquement pour vous contacter en cas de questions sur votre soumission et pour vérifier votre identité si vous demandez une suppression. Votre identifiant X ne sera jamais publié.',
+    publish_title: 'Publication & suppression',
+    publish: [
+      'Les soumissions sont examinées avant publication (quelques jours à une semaine)',
+      'Les soumissions ne respectant pas les règles peuvent ne pas être publiées (sans notification individuelle)',
+      'Pour supprimer une histoire publiée, envoyez un DM au compte admin (@naruboru_taiken) depuis l\'identifiant X utilisé lors de la soumission',
+      'Des corrections mineures de typographie peuvent être effectuées sans changer le sens',
+    ],
+    disclaimer_title: 'Avertissement',
+    disclaimer: 'Ce site est un site fan non officiel de NARUTO / BORUTO. Il n\'est affilié à Masashi Kishimoto, Shueisha ni à aucun autre détenteur de droits. Les droits d\'auteur du contenu soumis appartiennent au soumissionnaire, mais en soumettant, vous accordez la permission de publier le contenu sur ce site.',
+    thanks: 'Merci d\'avoir lu les règles.',
+    submit_btn: 'Soumettre mon histoire',
+  },
+  ar: {
+    about_title: 'عن هذا الموقع',
+    about: 'هذا موقع غير رسمي من إنشاء المعجبين يمكّن محبي NARUTO / BORUTO من مشاركة قصة اللحظة التي أصبحوا فيها معجبين. تُراجَع جميع التقديمات قبل النشر.',
+    can_title: 'ما يمكنك تقديمه',
+    can: [
+      'كيف اكتشفت NARUTO / BORUTO وما الذي جعلك تقع في حبه',
+      'أفكارك الشخصية حول الشخصيات أو المشاهد',
+      'أنشطة المعجبين (بضائع، رحلات، رسوم، إلخ)',
+      'كيف غيّرت السلسلة حياتك',
+    ],
+    cannot_title: 'ما لا يمكنك تقديمه',
+    cannot: [
+      'مضايقة الشخصيات أو الممثلين أو المبدعين أو المعجبين الآخرين',
+      'محتوى تمييزي أو عنيف أو جنسي غير لائق',
+      'معلومات شخصية (اسمك الحقيقي، عنوانك، هاتفك، إلخ)',
+      'دعوات أو إعلانات لمواقع / خدمات أخرى',
+      'محتوى مزيف أو ملفق',
+      'محتوى ينتهك حقوق النشر',
+    ],
+    xid_title: 'معرّف X (تويتر) الخاص بك',
+    xid: 'نطلب معرّف X الخاص بك فقط للتواصل معك إذا كانت هناك أسئلة حول تقديمك، وللتحقق من هويتك إذا طلبت الإزالة. لن يُنشر معرّف X الخاص بك على الموقع.',
+    publish_title: 'النشر والإزالة',
+    publish: [
+      'تُراجَع التقديمات قبل النشر (قد يستغرق الأمر أياماً إلى أسبوع)',
+      'قد لا تُنشر التقديمات المخالفة للإرشادات (دون إشعار فردي)',
+      'لإزالة قصة منشورة، أرسل رسالة مباشرة للحساب الإداري (@naruboru_taiken) من معرّف X المستخدم عند التقديم',
+      'قد تُجرى تصحيحات طفيفة للأخطاء المطبعية دون تغيير المعنى',
+    ],
+    disclaimer_title: 'إخلاء المسؤولية',
+    disclaimer: 'هذا موقع غير رسمي لمحبي NARUTO / BORUTO. لا علاقة له بـ Masashi Kishimoto أو Shueisha أو أي من أصحاب الحقوق. حقوق الملكية الأدبية للمحتوى المقدَّم تعود لصاحبه، ولكن بتقديمه تمنح إذناً بنشره على هذا الموقع.',
+    thanks: 'شكراً لقراءة الإرشادات.',
+    submit_btn: 'شارك قصتك',
+  },
+  es: {
+    about_title: 'Sobre este sitio',
+    about: 'Este es un sitio fan no oficial donde los fans de NARUTO / BORUTO pueden compartir libremente la historia del momento en que se convirtieron en fans. Todas las publicaciones son revisadas antes de publicarse.',
+    can_title: 'Qué puedes enviar',
+    can: [
+      'Cómo descubriste NARUTO / BORUTO y qué te enamoró de la serie',
+      'Pensamientos y sentimientos personales sobre personajes o escenas',
+      'Actividades fan (merchandising, peregrinaciones, fan art, etc.)',
+      'Cómo la serie te cambió',
+    ],
+    cannot_title: 'Qué no puedes enviar',
+    cannot: [
+      'Acoso a personajes, actores de doblaje, creadores u otros fans',
+      'Contenido discriminatorio, violento o sexualmente inapropiado',
+      'Información personal (nombre real, dirección, teléfono, etc.)',
+      'Solicitudes o publicidad de otros sitios / servicios',
+      'Contenido falso o fabricado',
+      'Contenido que infrinja derechos de autor',
+    ],
+    xid_title: 'Tu ID de X (Twitter)',
+    xid: 'Te pedimos tu ID de X únicamente para contactarte si hay preguntas sobre tu envío y para verificar tu identidad si solicitas la eliminación. Tu ID de X nunca se publicará en el sitio.',
+    publish_title: 'Publicación y eliminación',
+    publish: [
+      'Los envíos se revisan antes de publicarse (puede tardar días o una semana)',
+      'Los envíos que no cumplan las guías pueden no publicarse (sin notificación individual)',
+      'Para eliminar una historia publicada, envía un DM a la cuenta admin (@naruboru_taiken) desde el ID de X usado al enviar',
+      'Se pueden hacer correcciones menores de ortografía sin cambiar el significado',
+    ],
+    disclaimer_title: 'Descargo de responsabilidad',
+    disclaimer: 'Este es un sitio fan no oficial de NARUTO / BORUTO. No tiene afiliación con Masashi Kishimoto, Shueisha ni ningún otro titular de derechos. Los derechos de autor del contenido enviado pertenecen al autor, pero al enviarlo otorgas permiso para que se publique en este sitio.',
+    thanks: 'Gracias por leer las guías.',
+    submit_btn: 'Enviar mi historia',
+  },
+  pt: {
+    about_title: 'Sobre este site',
+    about: 'Este é um site fan não oficial onde fãs de NARUTO / BORUTO podem compartilhar livremente a história do momento em que se tornaram fãs. Todos os envios são revisados antes da publicação.',
+    can_title: 'O que você pode enviar',
+    can: [
+      'Como você descobriu NARUTO / BORUTO e o que te fez se apaixonar',
+      'Pensamentos e sentimentos pessoais sobre personagens ou cenas',
+      'Atividades de fã (merchandise, peregrinações, fan art, etc.)',
+      'Como a série mudou você',
+    ],
+    cannot_title: 'O que você não pode enviar',
+    cannot: [
+      'Assédio a personagens, dubladores, criadores ou outros fãs',
+      'Conteúdo discriminatório, violento ou sexualmente inapropriado',
+      'Informações pessoais (nome real, endereço, telefone, etc.)',
+      'Solicitações ou publicidade de outros sites / serviços',
+      'Conteúdo falso ou fabricado',
+      'Conteúdo que infrinja direitos autorais',
+    ],
+    xid_title: 'Seu ID do X (Twitter)',
+    xid: 'Pedimos seu ID do X apenas para entrar em contato se houver dúvidas sobre seu envio e para verificar sua identidade se você solicitar remoção. Seu ID do X nunca será publicado no site.',
+    publish_title: 'Publicação e remoção',
+    publish: [
+      'Os envios são revisados antes da publicação (pode levar dias a uma semana)',
+      'Envios que violem as diretrizes podem não ser publicados (sem notificação individual)',
+      'Para remover uma história publicada, envie DM para a conta admin (@naruboru_taiken) pelo ID do X usado no envio',
+      'Podem ser feitas pequenas correções de digitação sem alterar o significado',
+    ],
+    disclaimer_title: 'Aviso legal',
+    disclaimer: 'Este é um site fan não oficial de NARUTO / BORUTO. Não tem afiliação com Masashi Kishimoto, Shueisha ou qualquer outro detentor de direitos. Os direitos autorais do conteúdo enviado pertencem ao autor, mas ao enviar você concede permissão para que o conteúdo seja publicado neste site.',
+    thanks: 'Obrigado por ler as diretrizes.',
+    submit_btn: 'Enviar minha história',
+  },
+};
+
+const c = content[lang] ?? content.en;
+---
+
+<BaseLayout
+  title={t('guidelines.title')}
+  description={t('guidelines.desc')}
+  lang={lang}
+  pagePath="/guidelines"
+>
+  <section class="page-header">
+    <div class="page-header-inner">
+      <h1 class="page-title">{t('guidelines.title')}</h1>
+      <p class="page-desc">{t('guidelines.desc')}</p>
+    </div>
+  </section>
+
+  <article class="guidelines-article">
+    <div class="guidelines-inner">
+
+      <section class="gl-section">
+        <h2>{c.about_title}</h2>
+        <p>{c.about}</p>
+      </section>
+
+      <section class="gl-section">
+        <h2>{c.can_title}</h2>
+        <ul>
+          {c.can.map(item => <li>{item}</li>)}
+        </ul>
+      </section>
+
+      <section class="gl-section gl-section--warning">
+        <h2>{c.cannot_title}</h2>
+        <ul>
+          {c.cannot.map(item => <li>{item}</li>)}
+        </ul>
+      </section>
+
+      <section class="gl-section">
+        <h2>{c.xid_title}</h2>
+        <p>{c.xid}</p>
+      </section>
+
+      <section class="gl-section">
+        <h2>{c.publish_title}</h2>
+        <ul>
+          {c.publish.map(item => <li set:html={item.replace('@naruboru_taiken', '<a href="https://x.com/naruboru_taiken" target="_blank" rel="noopener noreferrer">@naruboru_taiken</a>')} />)}
+        </ul>
+      </section>
+
+      <section class="gl-section">
+        <h2>{c.disclaimer_title}</h2>
+        <p>{c.disclaimer}</p>
+      </section>
+
+      <div class="gl-cta">
+        <p>{c.thanks}</p>
+        <a href={`${base}/${lang}/submit`} class="btn btn-primary">{c.submit_btn}</a>
+      </div>
+
+    </div>
+  </article>
+</BaseLayout>

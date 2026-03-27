@@ -25,6 +25,25 @@
 
 ---
 
+## 2026-03-24 — Tally.soフォーム設置・データ形式変更
+
+### 対応内容
+
+- **`src/pages/submit.astro`**: Tally.soフォーム（`dWl9Lz`）を埋め込み。投稿受付を開始。
+- **`src/data/stories.json`**: `firstWork: string[]` を `firstSeries` + `firstMedia` の2軸に変更。AI分析・集計に最適化。
+- **`src/components/StoryCard.astro`**: 新データ形式対応・BASE_URL対応を追加。
+- **`src/pages/stories/[id].astro`**: タグ表示を新データ形式に対応。
+- **`public/styles/global.css`**: メディア種別タグ（藍色）をシリーズタグ（オレンジ）と色分け。
+
+### データ形式変更の背景
+作品選択肢が20件以上になる問題を解決するため、「シリーズ（NARUTO/BORUTO）×メディア（TVアニメ/漫画など）」の2軸設計に変更。フォームのUXとAI分析効率を両立。
+
+### ビルド・デプロイ確認
+- `npm run build` → エラーなし ✅
+- GitHub Actions 自動デプロイ → push済み ✅
+
+---
+
 ## 初期構築 — フェーズ0
 
 - Astro（静的サイト）の全ページ実装（トップ・体験談一覧・詳細・投稿・ガイドライン）
