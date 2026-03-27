@@ -14,7 +14,7 @@ const t = useTranslations(lang);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 const FORM_LANG_MAP: Record<SupportedLang, string> = {
-  en: 'en', fr: 'fr', ar: 'ar', es: 'es', pt: 'pt-BR',
+  en: 'en', fr: 'fr', ar: 'ar', es: 'es', pt: 'pt-BR', zh: 'zh-CN', ko: 'ko',
 };
 const FORM_URL = `https://docs.google.com/forms/d/e/1FAIpQLSc5haprqYIM3MX0FdsuPVZinmbA4xPljPETYs1ewAfL9EW59Q/viewform?embedded=true&hl=${FORM_LANG_MAP[lang]}`;
 
@@ -83,6 +83,32 @@ const notices = {
     thanks_x: 'Vamos notificá-lo através de nossa conta X',
     thanks_btn: 'Ler outras histórias →',
     lang_note: 'Nota: O formulário está em japonês. Se não se sentir confortável escrevendo em japonês, fique à vontade para escrever no seu idioma — faremos o possível para entender.',
+  },
+  zh: {
+    notice: '投稿表单为日语。请用日语填写。',
+    checklist_title: '投稿前请确认',
+    checklist: [
+      { icon: '📋', text: '你是否已阅读', link_text: '投稿须知', link_path: '/guidelines' },
+      { icon: '🔒', text: '请勿填写个人信息（真实姓名、地址等）。你的X ID仅用于联系，不会公开。' },
+    ],
+    thanks_title: '投稿已收到！',
+    thanks_desc: '感谢你。审核后，你的故事将在几天到一周内发布。',
+    thanks_x: '我们将通过我们的X账号通知你',
+    thanks_btn: '阅读其他故事 →',
+    lang_note: '注：表单为日语。如果你不擅长写日语，也可以用你的语言填写——我们会尽力理解。',
+  },
+  ko: {
+    notice: '투고 폼은 일본어로 되어 있습니다. 일본어로 작성해 주세요.',
+    checklist_title: '투고 전 확인',
+    checklist: [
+      { icon: '📋', text: '투고 가이드라인을', link_text: '읽으셨나요', link_path: '/guidelines' },
+      { icon: '🔒', text: '개인정보（실명, 주소 등）는 기입하지 마세요. X ID는 연락용으로만 사용되며 공개되지 않습니다.' },
+    ],
+    thanks_title: '투고가 완료되었습니다!',
+    thanks_desc: '감사합니다. 검토 후 며칠에서 일주일 이내에 게재됩니다.',
+    thanks_x: '저희 X 계정을 통해 알려드리겠습니다',
+    thanks_btn: '다른 이야기 읽기 →',
+    lang_note: '참고: 폼은 일본어입니다. 일본어 작성이 어려우시면 자국어로 작성하셔도 됩니다——최대한 이해하도록 노력하겠습니다.',
   },
 };
 

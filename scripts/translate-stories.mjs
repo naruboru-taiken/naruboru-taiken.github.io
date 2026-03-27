@@ -21,9 +21,9 @@ if (!API_KEY) {
 }
 
 const FORCE = process.argv.includes('--force');
-const TARGET_LANGS = ['EN', 'FR', 'AR', 'ES', 'PT'];
+const TARGET_LANGS = ['EN', 'FR', 'AR', 'ES', 'PT', 'ZH', 'KO'];
 // DeepL言語コード → stories.jsonのキー
-const LANG_MAP = { EN: 'en', FR: 'fr', AR: 'ar', ES: 'es', PT: 'pt' };
+const LANG_MAP = { EN: 'en', FR: 'fr', AR: 'ar', ES: 'es', PT: 'pt', ZH: 'zh', KO: 'ko' };
 
 // 翻訳対象フィールド
 const TRANSLATABLE_FIELDS = [
