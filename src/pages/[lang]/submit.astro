@@ -13,10 +13,20 @@ if (!isSupportedLang(lang)) return Astro.redirect('/submit');
 const t = useTranslations(lang);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
+// 言語別専用フォーム（未設定の言語は日本語フォームにフォールバック）
+const FORM_URL_MAP: Partial<Record<SupportedLang, string>> = {
+  en: 'https://docs.google.com/forms/d/e/1FAIpQLScpvFxLBG4KwVaaaNkhtrd-8GAmVLANlvWluuUqHycszfdHcA/viewform?embedded=true',
+  fr: 'https://docs.google.com/forms/d/e/1FAIpQLSee027-4QeJHIBrXj-HOUOIFqXFwWOyJcBiTLGX94unIPo3bA/viewform?embedded=true',
+  ar: 'https://docs.google.com/forms/d/e/1FAIpQLSef2MXA7phgG-X3bjeuMuoORxrUnHphNDW-IqSN-BxnFevyzw/viewform?embedded=true',
+  es: 'https://docs.google.com/forms/d/e/1FAIpQLSdm0_RXuty7sHhkLeo_90hATdxtfBEGPNlAjFiLlMFOrTmYIA/viewform?embedded=true',
+  pt: 'https://docs.google.com/forms/d/e/1FAIpQLSfNuQe9ND73EoyHSXzfvT7zb6JLw84mMHA2vleZmSJwQrkJaw/viewform?embedded=true',
+  // zh・ko は明日追加予定
+};
 const FORM_LANG_MAP: Record<SupportedLang, string> = {
   en: 'en', fr: 'fr', ar: 'ar', es: 'es', pt: 'pt-BR', zh: 'zh-CN', ko: 'ko',
 };
-const FORM_URL = `https://docs.google.com/forms/d/e/1FAIpQLSc5haprqYIM3MX0FdsuPVZinmbA4xPljPETYs1ewAfL9EW59Q/viewform?embedded=true&hl=${FORM_LANG_MAP[lang]}`;
+const FORM_URL = FORM_URL_MAP[lang]
+  ?? `https://docs.google.com/forms/d/e/1FAIpQLSc5haprqYIM3MX0FdsuPVZinmbA4xPljPETYs1ewAfL9EW59Q/viewform?embedded=true&hl=${FORM_LANG_MAP[lang]}`;
 
 const notices = {
   en: {
