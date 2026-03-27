@@ -57,7 +57,7 @@ async function translate(text, targetLang) {
     throw new Error(`DeepL API error ${resp.status}: ${err}`);
   }
   const data = await resp.json();
-  return data.translations[0].translated_text;
+  return data.translations[0].text;
 }
 
 async function checkUsage() {
