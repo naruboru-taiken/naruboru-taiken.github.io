@@ -107,6 +107,9 @@ const ageLabel = getAgeGroupLabel(story.ageGroup, lang);
           {story.favoriteCharacter && (
             <span class="story-meta-item">{t('detail.fav_prefix')}{story.favoriteCharacter}</span>
           )}
+          {story.country && (
+            <span class="story-meta-item">{t('detail.country')}{getStoryText(story, lang, 'country')}</span>
+          )}
           <span class="story-meta-item story-date">
             {new Date(story.publishedAt).toLocaleDateString(lang === 'ja' ? 'ja-JP' : lang === 'ar' ? 'ar' : 'en', {
               year: 'numeric', month: 'long', day: 'numeric'

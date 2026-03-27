@@ -35,6 +35,7 @@ const TRANSLATABLE_FIELDS = [
   'favoriteScene',
   'futureWish',
   'message',
+  'country',
 ];
 
 const STORIES_PATH = resolve(process.cwd(), 'src/data/stories.json');

@@ -13,7 +13,10 @@ if (!isSupportedLang(lang)) return Astro.redirect('/submit');
 const t = useTranslations(lang);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSc5haprqYIM3MX0FdsuPVZinmbA4xPljPETYs1ewAfL9EW59Q/viewform?embedded=true';
+const FORM_LANG_MAP: Record<SupportedLang, string> = {
+  en: 'en', fr: 'fr', ar: 'ar', es: 'es', pt: 'pt-BR',
+};
+const FORM_URL = `https://docs.google.com/forms/d/e/1FAIpQLSc5haprqYIM3MX0FdsuPVZinmbA4xPljPETYs1ewAfL9EW59Q/viewform?embedded=true&hl=${FORM_LANG_MAP[lang]}`;
 
 const notices = {
   en: {

@@ -86,6 +86,9 @@ const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
           {story.favoriteCharacter && (
             <span class="story-meta-item">推し：{story.favoriteCharacter}</span>
           )}
+          {story.country && (
+            <span class="story-meta-item">居住地：{story.country}</span>
+          )}
           <span class="story-meta-item story-date">
             {new Date(story.publishedAt).toLocaleDateString('ja-JP', {
               year: 'numeric', month: 'long', day: 'numeric'
