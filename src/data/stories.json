@@ -813,5 +813,161 @@
         "futureWish": "Gostaria de ler uma coleção de pequenas histórias sobre a vida quotidiana em Sunagakure. Temari, a relação irmão-irmã entre Gao e Gao, a política de Suna no Sato e a diplomacia com Kinoha. Gostaria de ler mais histórias sobre os três irmãos, incluindo Kankuro."
       }
     }
+  },
+  {
+    "id": "story-016",
+    "displayName": "まさし",
+    "ageGroup": "10代",
+    "favoriteCharacter": "シカマル",
+    "firstSeries": "NARUTO",
+    "firstMedia": "TVアニメ",
+    "catchphrase": "バイブル",
+    "mainStory": "朝にアニメの再放送をやっていたのを見たのが初めての気がする.....うろ覚え。",
+    "triggerScene": null,
+    "realization": null,
+    "currentRelationship": null,
+    "favoriteScene": "自分を信じない奴なんかに、努力する価値はない！byマイトガイ",
+    "futureWish": "外伝映画でいいので、ゲームのような夢のマッチアップを見たい。",
+    "message": null,
+    "imageUrl": null,
+    "imageCaption": null,
+    "publishedAt": "2026-03-27",
+    "isSeedContent": false,
+    "translations": {
+      "en": {
+        "catchphrase": "Bible",
+        "mainStory": "I think the first time I saw a rerun of the cartoon in the morning: ..... Hazy memory.",
+        "favoriteScene": "If you don't believe in yourself, you're not worth the effort!",
+        "futureWish": "I would like to see a dream matchup like in the game, just an outside movie."
+      },
+      "fr": {
+        "catchphrase": "Bible",
+        "mainStory": "Je pense à la première fois que j'ai vu une rediffusion d'un dessin animé le matin : ..... Un souvenir creux.",
+        "favoriteScene": "Si vous ne croyez pas en vous, vous n'en valez pas la peine !",
+        "futureWish": "J'aimerais voir un match de rêve comme dans le jeu, mais dans un film externe."
+      },
+      "ar": {
+        "catchphrase": "الكتاب المقدس",
+        "mainStory": "أعتقد أن المرة الأولى التي شاهدت فيها إعادة عرض مسلسل كرتوني في الصباح: ..... ذاكرة جوفاء",
+        "favoriteScene": "إذا كنت لا تؤمن بنفسك، فأنت لا تستحق الجهد المبذول!",
+        "futureWish": "أود أن أرى مباراة الأحلام كما في اللعبة، ولكن في فيلم خارجي فقط."
+      },
+      "es": {
+        "catchphrase": "Biblia",
+        "mainStory": "Creo que la primera vez que vi una reposición de un dibujo animado por la mañana: ..... Un recuerdo hueco.",
+        "favoriteScene": "Si no crees en ti mismo, ¡no mereces el esfuerzo!",
+        "futureWish": "Me gustaría ver un enfrentamiento de ensueño como en el juego, sólo que en una película externa."
+      },
+      "pt": {
+        "catchphrase": "Bíblia",
+        "mainStory": "Acho que foi a primeira vez que vi uma repetição de um desenho animado de manhã: ..... Memória oca.",
+        "favoriteScene": "Se não acreditarmos em nós próprios, não vale a pena o esforço!",
+        "futureWish": "Gostaria de ver um confronto de sonho como no jogo, mas num filme externo."
+      }
+    }
+  },
+  {
+    "id": "story-017",
+    "displayName": "ゆうすけ",
+    "ageGroup": "20代",
+    "favoriteCharacter": "奈良シカマル",
+    "firstSeries": "NARUTO",
+    "firstMedia": "漫画（連載・単行本）",
+    "catchphrase": "NARUTOは人生の教科書",
+    "mainStory": "ジャンプ離れもしていてNARUTO世代でもありませんでした。\nNARUTOの存在は知ってはいましたが興味は全然なく寧ろ子供向けのくだらない漫画と言う認識でした。\nある日ブックオフで友人と待ち合わせをし先に着いた自分は何故かNARUTOの一巻を立ち読みしていました。\n1話を読んでNARUTOってこんな話しだったのかと号泣してしまいました。\nその後NARUTOに一気にハマってしまい現在に至ります。",
+    "triggerScene": null,
+    "realization": null,
+    "currentRelationship": null,
+    "favoriteScene": "イルカ先生の台詞は全部好きです。",
+    "futureWish": "幼少期から両親の事など\nほ大蛇丸の外伝があるなら読んでみたいです。",
+    "message": null,
+    "imageUrl": null,
+    "imageCaption": null,
+    "publishedAt": "2026-03-27",
+    "isSeedContent": false,
+    "translations": {
+      "en": {
+        "catchphrase": "NARUTO is a textbook for life",
+        "mainStory": "I was not a member of the Naruto generation, and I was not a member of the Jump generation.\nI knew that Naruto existed, but I had no interest in it and thought it was just a silly manga for children.\nOne day I met up with a friend at the Book-Off, and when I got there first, for some reason I found myself browsing through a volume of NARUTO.\nI read the first episode and cried, wondering if this was what Naruto was all about.\nAfter that, I was hooked on NARUTO and have been hooked ever since.",
+        "favoriteScene": "I love all of Dr. Dolphin's dialogue.",
+        "futureWish": "From his childhood, about his parents, etc.\nI would like to read Ho Daijamaru's Gaiden if there is one."
+      },
+      "fr": {
+        "catchphrase": "NARUTO est un manuel de vie.",
+        "mainStory": "J'étais également loin de Jump et je ne faisais pas partie de la génération Naruto.\nJe savais que Naruto existait, mais il ne m'intéressait pas du tout et je pensais que c'était juste un manga idiot pour les enfants.\nUn jour, j'ai rencontré un ami au Book-Off, et quand je suis arrivé le premier, pour une raison quelconque, j'ai feuilleté le premier volume de NARUTO.\nJ'ai lu le premier épisode et j'ai pleuré, me demandant si NARUTO était une telle histoire.\nAprès cela, je suis tombée amoureuse de NARUTO d'un seul coup et je suis restée accrochée depuis.",
+        "favoriteScene": "J'aime tous les dialogues du Dr Dolphin.",
+        "futureWish": "De son enfance, de ses parents, etc.\nJ'aimerais lire une biographie de Ho Daijamaru s'il en existe une."
+      },
+      "ar": {
+        "catchphrase": "NARUTO هو كتاب مدرسي للحياة.",
+        "mainStory": "كنت أيضًا بعيدًا عن القفزة ولم أكن من جيل ناروتو.\nكنت أعرف أن ناروتو موجودة، لكنني لم أكن مهتماً بها على الإطلاق واعتقدت أنها مجرد مانغا سخيفة للأطفال.\nفي أحد الأيام التقيت بصديق لي في معرض الكتاب، وعندما وصلت إلى هناك أولاً، ولسبب ما كنت أتصفح المجلد الأول من ناروتو.\nقرأت الحلقة الأولى وبكيت، وتساءلت عما إذا كانت NARUTO قصة من هذا القبيل.\nبعد ذلك، وقعتُ في حب NARUTO دفعة واحدة ووقعت في حب NARUTO منذ ذلك الحين.",
+        "favoriteScene": "تعجبني جميع حوارات الدكتور دولفين.",
+        "futureWish": "من طفولته ووالديه وما إلى ذلك.\nأود أن أقرأ السيرة الذاتية لهو دايجمارو إذا كانت هناك واحدة."
+      },
+      "es": {
+        "catchphrase": "NARUTO es un libro de texto para la vida.",
+        "mainStory": "Yo también estaba alejado de la Jump y no pertenecía a la generación Naruto.\nSabía que Naruto existía, pero no me interesaba en absoluto y pensaba que no era más que un manga tonto para niños.\nUn día quedé con un amigo en el Book-Off, y cuando llegué el primero, por alguna razón estaba hojeando el primer volumen de Naruto.\nLeí el primer episodio y lloré, preguntándome si NARUTO era una historia así.\nDespués de eso, me enamoré de NARUTO de golpe y desde entonces estoy enganchada.",
+        "favoriteScene": "Me gustan todos los diálogos del Dr. Delfín.",
+        "futureWish": "De su infancia, sus padres, etc.\nMe gustaría leer una biografía de Ho Daijamaru si la hay."
+      },
+      "pt": {
+        "catchphrase": "NARUTO é um livro didático para a vida.",
+        "mainStory": "Eu também estava longe da Jump e não era da geração Naruto.\nSabia que Naruto existia, mas não me interessava de todo e achava que era apenas uma manga parva para crianças.\nUm dia encontrei-me com um amigo no Book-Off e, quando cheguei lá primeiro, por alguma razão estava a folhear o primeiro volume de NARUTO.\nLi o primeiro episódio e chorei, perguntando-me se NARUTO era uma história assim.\nDepois disso, apaixonei-me de imediato por NARUTO e fiquei viciada desde então.",
+        "favoriteScene": "Gosto de todos os diálogos do Dr. Dolphin.",
+        "futureWish": "Da sua infância, dos seus pais, etc.\nGostaria de ler uma biografia de Ho Daijamaru, caso exista."
+      }
+    }
+  },
+  {
+    "id": "story-018",
+    "displayName": "このは",
+    "ageGroup": "10代",
+    "favoriteCharacter": "波風ミナト",
+    "firstSeries": "NARUTO",
+    "firstMedia": "TVアニメ",
+    "catchphrase": "ワクワクで始まり意味にたどり着いた人",
+    "mainStory": "小学生の頃にNARUTOに出会う。当時は戦闘シーンがおもしろくて内容は深く考えずただワクワクしながら見ていただけだった。完結してからもふとした瞬間にNARUTOが浮かんできたり、時折アニメを見返したり、ナルトの諦めないド根性精神で辛いことを乗り切ったりして生きていたところ、XでNARUTO好きな友達と出会う。それがきっかけで、この物語を深く考えるようになった。\nただの作品としてではなく、NARUTOのテーマや人物の心情に目を向けるようになり、再びNARUTOの世界に没頭していった。\n今ではNARUTOは私の人生の一部であり道標となっている。\nそして今は次世代のBORUTOを見てNARUTOとはまた違う世界観を楽しんでいる。",
+    "triggerScene": null,
+    "realization": null,
+    "currentRelationship": null,
+    "favoriteScene": "53巻503話「ミナトの屍鬼封尽!!」ミナトとクシナが命をかけてナルトを守るシーン。とても深いものを感じられる。",
+    "futureWish": "NARUTOに関してはそれぞれカップルの恋愛物語が見たい。どんなデートをしたのか、どんなふうに告白したのか、どんなふうにイチャイチャしたのかなど。笑\nあとはネジやがいる世界観が見たい。",
+    "message": null,
+    "imageUrl": null,
+    "imageCaption": null,
+    "publishedAt": "2026-03-27",
+    "isSeedContent": false,
+    "translations": {
+      "en": {
+        "catchphrase": "Who started with excitement and arrived at meaning.",
+        "mainStory": "I first encountered Naruto when I was in elementary school. At the time, the battle scenes were interesting and I didn't think much about the content, just watched it with excitement. Even after the story was finished, I still thought of Naruto at a moment's notice, rewatched the anime from time to time, and got through hard times with Naruto's never-giving-up, dogged spirit. This led me to think deeply about the story.\nI began to look at NARUTO not just as a work of art, but also at its themes and the emotions of its characters, and I became immersed in the world of NARUTO once again.\nNow NARUTO is a part of my life and a guidepost.\nAnd now I am watching the next generation of BORUTO and enjoying a different view of the world than NARUTO.",
+        "favoriteScene": "Volume 53, Episode 503: \"Minato's Corpse Demon Sealing!\" The scene where Minato and Kushina risk their lives to protect Naruto. You can feel something very deep.",
+        "futureWish": "As for Naruto, I would like to see the love stories of each couple. What kind of dates did they have, how did they confess their feelings, how did they make out, etc. LOL!\nI also want to see the worldview with Nejiya."
+      },
+      "fr": {
+        "catchphrase": "Des personnes qui ont commencé par l'excitation et qui sont arrivées à la signification.",
+        "mainStory": "J'ai découvert NARUTO lorsque j'étais à l'école primaire. À l'époque, les scènes de combat étaient intéressantes et je n'ai pas trop réfléchi au contenu, je l'ai simplement regardé avec excitation. Une fois le film terminé, j'étais encore en train de vivre ma vie, en pensant à Naruto à tout moment, en regardant de nouveau l'anime de temps en temps et en surmontant les moments difficiles grâce à l'esprit obstiné de Naruto qui ne renonce jamais, lorsque j'ai rencontré un ami qui aimait Naruto chez X. Cela m'a amené à réfléchir profondément à l'histoire.\nJ'ai commencé à regarder Naruto non seulement comme une œuvre d'art, mais aussi comme ses thèmes et les émotions de ses personnages, et je me suis à nouveau immergé dans le monde de Naruto.\nAujourd'hui, NARUTO fait partie de ma vie et me sert de guide.\nEt maintenant, je regarde la nouvelle génération de BORUTO et je profite d'une vision du monde différente de celle de NARUTO.",
+        "favoriteScene": "Volume 53, Épisode 503 : \"Le sceau démoniaque du cadavre de Minato !\" La scène où Minato et Kushina risquent leur vie pour protéger Naruto. On ressent quelque chose de très profond.",
+        "futureWish": "En ce qui concerne NARUTO, j'aimerais voir les histoires d'amour de chaque couple. Quel genre de rendez-vous ont-ils eu, comment ont-ils avoué leurs sentiments, comment se sont-ils embrassés, etc. [Rires.\nJ'aimerais aussi connaître la vision du monde de Nejiya."
+      },
+      "ar": {
+        "catchphrase": "الأشخاص الذين بدأوا بالحماس ووصلوا إلى المعنى.",
+        "mainStory": "تعرفت على ناروتو عندما كنت في المدرسة الابتدائية. في ذلك الوقت، كانت مشاهد المعركة مثيرة للاهتمام ولم أفكر كثيرًا في المحتوى، فقط كنت أشاهده بحماس. بعد انتهائه، كنت لا أزال أعيش حياتي، حيث كنت أعيش حياتي مع ناروتو في أي لحظة، وأعيد مشاهدة الأنمي من حين لآخر، وأتجاوز الأوقات الصعبة بروح ناروتو العنيدة التي لا تستسلم أبدًا، عندما قابلت صديقًا أحب ناروتو في إكس. قادني هذا إلى التفكير بعمق في القصة.\nبدأت أنظر إلى ناروتو ليس فقط كعمل فني، ولكن أيضًا في موضوعاتها وعواطف شخصياتها، وأصبحت منغمسًا في عالم ناروتو مرة أخرى.\nوالآن أصبح ناروتو جزءًا من حياتي ونبراسًا لي.\nوالآن أشاهد الجيل التالي من بوروتو وأستمتع برؤية مختلفة للعالم عن ناروتو.",
+        "favoriteScene": "المجلد 53، الحلقة 503: \"ختم ميناتو لشيطان الجثة!\" المشهد الذي يخاطر فيه ميناتو وكوشينا بحياتهما لحماية ناروتو. يمكنك أن تشعر بشيء عميق جداً",
+        "futureWish": "بقدر ما يتعلق الأمر بـ NARUTO، أود أن أرى قصص الحب لكل زوجين. ما نوع المواعيد الغرامية التي جمعتهما، وكيف اعترفا بمشاعرهما، وكيف تبادلا الحب وما إلى ذلك. [يضحك.\nكما أريد أن أرى أيضًا رؤية رؤية العالم مع نجية."
+      },
+      "es": {
+        "catchphrase": "Gente que empezó con ilusión y llegó a tener sentido.",
+        "mainStory": "Conocí NARUTO cuando estaba en la escuela primaria. En aquel momento, las escenas de batalla eran interesantes y no pensaba demasiado en el contenido, sólo lo veía con emoción. Después de terminarlo, seguía viviendo mi vida, con Naruto viniendo a mi mente en cualquier momento, volviendo a ver de vez en cuando el anime, y superando los momentos difíciles con el espíritu tenaz e inquebrantable de Naruto, cuando conocí a un amigo al que le gustaba Naruto en X. Esto me llevó a reflexionar profundamente sobre la historia.\nEmpecé a ver Naruto no sólo como una obra de arte, sino también sus temas y las emociones de sus personajes, y volví a sumergirme en el mundo de Naruto.\nAhora NARUTO forma parte de mi vida y es un punto de referencia.\nY ahora estoy viendo la nueva generación de BORUTO y disfrutando de una visión del mundo diferente a la de NARUTO.",
+        "favoriteScene": "Volumen 53, Episodio 503: \"¡El Sellado del Demonio Cadáver de Minato!\" La escena en la que Minato y Kushina arriesgan sus vidas para proteger a Naruto. Puedes sentir algo muy profundo.",
+        "futureWish": "En cuanto a NARUTO, me gustaría ver las historias de amor de cada pareja. Qué tipo de citas tuvieron, cómo confesaron sus sentimientos, cómo se enrollaron, etc. [Risas.\nTambién quiero ver la visión del mundo con Nejiya."
+      },
+      "pt": {
+        "catchphrase": "Pessoas que começaram com entusiasmo e chegaram ao significado.",
+        "mainStory": "Conheci NARUTO quando andava na escola primária. Na altura, as cenas de batalha eram interessantes e não pensei muito no conteúdo, apenas assisti com entusiasmo. Depois de ter terminado, estava ainda a viver a minha vida, com Naruto a vir-me à cabeça a qualquer momento, ocasionalmente a rever o anime, e a ultrapassar os momentos difíceis com o espírito obstinado e persistente de Naruto, quando conheci um amigo que gostava de Naruto no X. Isto levou-me a refletir profundamente sobre a história.\nComecei a olhar para Naruto não só como uma obra de arte, mas também para os seus temas e as emoções das suas personagens, e voltei a mergulhar no mundo de Naruto.\nAgora, NARUTO faz parte da minha vida e é um ponto de referência.\nE agora estou a ver a próxima geração de BORUTO e a desfrutar de uma visão do mundo diferente da de NARUTO.",
+        "favoriteScene": "Volume 53, Episódio 503: \"O Selamento do Demónio do Cadáver de Minato!\" A cena em que Minato e Kushina arriscam as suas vidas para proteger Naruto. Consegue-se sentir algo muito profundo.",
+        "futureWish": "No que diz respeito a NARUTO, gostaria de ver as histórias de amor de cada casal. Que tipo de encontros tiveram, como é que confessaram os seus sentimentos, como é que curtiram, etc. [Risos.\nTambém quero ver a visão do mundo com a Nejiya."
+      }
+    }
   }
 ]
