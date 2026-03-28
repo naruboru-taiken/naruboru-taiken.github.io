@@ -35,6 +35,20 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         </ul>
       </div>
 
+      <!-- 画像投稿ヒント -->
+      <details class="image-hint">
+        <summary>📷 グッズ写真や聖地写真を添付したい方へ</summary>
+        <div class="image-hint-body">
+          <p>画像はURLで受け付けています。以下の手順で投稿できます。</p>
+          <ol>
+            <li>X・Instagram・<a href="https://imgur.com" target="_blank" rel="noopener noreferrer">Imgur</a> などに画像をアップロード</li>
+            <li>画像の直リンクURLをコピー</li>
+            <li>フォームの「画像URL」欄に貼り付け</li>
+          </ol>
+          <p class="image-hint-note">※ 公式漫画・アニメのスクリーンショット等はご遠慮ください。詳しくは<a href={`${base}/guidelines#image`}>ガイドライン</a>をご確認ください。</p>
+        </div>
+      </details>
+
       <!-- フォーム埋め込みエリア -->
       <!-- フォームURLを変更する場合: src/pages/submit.astro 冒頭の FORM_URL を更新してください -->
       <div id="form-embed-wrapper" class="form-embed-wrapper">

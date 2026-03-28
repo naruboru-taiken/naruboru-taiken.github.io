@@ -1583,3 +1583,46 @@ a:hover { text-decoration: underline; }
   line-height: 1.8;
   margin-bottom: 3rem;
 }
+
+/* ========== Image hint (submit page) ========== */
+.image-hint {
+  border: 1px solid #ffe0b2;
+  border-radius: var(--radius);
+  background: #fff8f0;
+  margin-bottom: 1.5rem;
+}
+.image-hint summary {
+  padding: 0.875rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-primary);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.image-hint summary::-webkit-details-marker { display: none; }
+.image-hint[open] summary { border-bottom: 1px solid #ffe0b2; }
+.image-hint-body {
+  padding: 1rem 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.8;
+}
+.image-hint-body ol {
+  margin: 0.5rem 0 1rem 1.25rem;
+}
+.image-hint-note {
+  font-size: 0.8rem;
+  color: #888;
+  margin-top: 0.5rem;
+}
+
+/* ========== Guidelines steps ========== */
+.gl-steps {
+  margin: 0.75rem 0 1rem 1.25rem;
+  line-height: 1.9;
+}
+.gl-steps li {
+  margin-bottom: 0.5rem;
+}
