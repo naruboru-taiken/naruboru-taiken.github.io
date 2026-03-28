@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { events } from '../../data/events';
+import type { CalendarEvent } from '../../data/events';
+import { SUPPORTED_LANGS, useTranslations, isSupportedLang } from '../../i18n/ui';
+import type { SupportedLang } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return SUPPORTED_LANGS.map(lang => ({ params: { lang }, props: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: SupportedLang };
+if (!isSupportedLang(lang)) return Astro.redirect('/calendar');
+
+const t = useTranslations(lang);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// 月ごとにグループ化
+const MONTHS = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+
+function eventsForMonth(m: number) {
+  return events
+    .filter(e => e.month === m)
+    .sort((a, b) => a.day - b.day);
+}
+
+function typeLabel(type: string) {
+  switch(type) {
+    case 'real': return lang === 'ja' ? '作品史' : lang === 'fr' ? 'Histoire' : lang === 'ar' ? 'تاريخ' : lang === 'es' ? 'Historia' : lang === 'pt' ? 'História' : lang === 'zh' ? '历史' : lang === 'ko' ? '역사' : 'History';
+    case 'inuniverse': return lang === 'ja' ? '作中' : lang === 'fr' ? "Dans l'histoire" : lang === 'ar' ? 'داخل القصة' : lang === 'es' ? 'En la historia' : lang === 'pt' ? 'Na história' : lang === 'zh' ? '剧情' : lang === 'ko' ? '작품 내' : 'In-story';
+    case 'birthday_char': return lang === 'ja' ? 'キャラ誕' : lang === 'fr' ? 'Anniv. perso' : lang === 'ar' ? 'عيد ميلاد الشخصية' : lang === 'es' ? 'Cumple. perso.' : lang === 'pt' ? 'Aniv. perso.' : lang === 'zh' ? '角色生日' : lang === 'ko' ? '캐릭터 생일' : 'Character B-day';
+    case 'birthday_va': return lang === 'ja' ? '声優誕' : lang === 'fr' ? 'Anniv. VA' : lang === 'ar' ? 'عيد ميلاد الممثل' : lang === 'es' ? 'Cumple. VA' : lang === 'pt' ? 'Aniv. VA' : lang === 'zh' ? '声优生日' : lang === 'ko' ? '성우 생일' : 'VA Birthday';
+    default: return type;
+  }
+}
+
+// 「○年前の今日」のテキスト生成（ビルド時の現在年使用）
+const currentYear = new Date().getFullYear();
+function anniversaryText(event: CalendarEvent): string {
+  if (!event.year) return '';
+  const years = currentYear - event.year;
+  return `${event.year}年（${years}年前）`;
+}
+
+const pageTitle = t('calendar.title');
+const pageDesc = t('calendar.desc');
+---
+
+<BaseLayout title={pageTitle} description={pageDesc} lang={lang} pagePath="/calendar">
+  <div class="page-hero">
+    <p class="page-eyebrow">NARUTO・BORUTO</p>
+    <h1 class="page-title">{pageTitle}</h1>
+    <p class="page-desc">{pageDesc}</p>
+  </div>
+
+  <!-- 今日のできごと（JS動的表示） -->
+  <section class="calendar-today-section" id="today-section" hidden>
+    <div class="container">
+      <h2 class="today-heading">🎌 {lang === 'ja' ? '今日のできごと' : lang === 'fr' ? "Événements d'aujourd'hui" : lang === 'ar' ? 'أحداث اليوم' : lang === 'es' ? 'Eventos de hoy' : lang === 'pt' ? 'Eventos de hoje' : lang === 'zh' ? '今日事件' : lang === 'ko' ? '오늘의 이벤트' : "Today's Events"}</h2>
+      <div id="today-events" class="today-events-list"></div>
+    </div>
+  </section>
+
+  <!-- 凡例 -->
+  <div class="container">
+    <div class="calendar-legend">
+      <span class="legend-item legend-real">{typeLabel('real')}</span>
+      <span class="legend-item legend-inuniverse">{typeLabel('inuniverse')}</span>
+      <span class="legend-item legend-birthday-char">{typeLabel('birthday_char')}</span>
+      <span class="legend-item legend-birthday-va">{typeLabel('birthday_va')}</span>
+    </div>
+  </div>
+
+  <!-- 月別一覧 -->
+  <div class="container calendar-container">
+    {MONTHS.map((monthLabel, i) => {
+      const m = i + 1;
+      const monthEvents = eventsForMonth(m);
+      return (
+        <section class="calendar-month" id={`month-${m}`}>
+          <h2 class="calendar-month-heading">
+            <span class="month-number">{m}</span>
+            <span class="month-label">{monthLabel}</span>
+            {monthEvents.length > 0 && <span class="month-count">{monthEvents.length}件</span>}
+          </h2>
+          {monthEvents.length === 0 ? (
+            <p class="calendar-empty">登録されているイベントはありません。</p>
+          ) : (
+            <ul class="calendar-events">
+              {monthEvents.map(event => (
+                <li class={`calendar-event calendar-event--${event.type}`}>
+                  <div class="event-date">
+                    <span class="event-day">{event.day}</span>
+                    <span class="event-day-label">日</span>
+                  </div>
+                  <div class="event-body">
+                    <span class={`event-badge event-badge--${event.type}`}>{typeLabel(event.type)}</span>
+                    {event.series && (
+                      <span class={`event-series event-series--${event.series.toLowerCase()}`}>{event.series}</span>
+                    )}
+                    <p class="event-title">{event.title}</p>
+                    {event.year && (
+                      <p class="event-year">{anniversaryText(event)}</p>
+                    )}
+                    {event.description && (
+                      <p class="event-desc">{event.description}</p>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      );
+    })}
+  </div>
+
+  <p class="calendar-note container">※ キャラクター誕生日は公式データブック準拠。声優誕生日は公開情報に基づきます。情報の誤りや追加希望は <a href={`${base}/${lang}/submit`}>投稿フォーム</a> またはX（<a href="https://x.com/naruboru_taiken" target="_blank" rel="noopener">@naruboru_taiken</a>）までお知らせください。</p>
+</BaseLayout>
+
+<script define:vars={{ eventsData: events, currentLang: lang }}>
+  // 今日のイベントを動的表示
+  const today = new Date();
+  const m = today.getMonth() + 1;
+  const d = today.getDate();
+
+  const todayEvents = eventsData.filter(e => e.month === m && e.day === d);
+
+  if (todayEvents.length > 0) {
+    const section = document.getElementById('today-section');
+    const list = document.getElementById('today-events');
+    section.removeAttribute('hidden');
+
+    const typeLabelMap = {
+      ja: { real: '作品史', inuniverse: '作中', birthday_char: 'キャラ誕', birthday_va: '声優誕' },
+      en: { real: 'History', inuniverse: 'In-story', birthday_char: 'Character B-day', birthday_va: 'VA Birthday' },
+      fr: { real: 'Histoire', inuniverse: "Dans l'histoire", birthday_char: 'Anniv. perso', birthday_va: 'Anniv. VA' },
+      ar: { real: 'تاريخ', inuniverse: 'داخل القصة', birthday_char: 'عيد ميلاد الشخصية', birthday_va: 'عيد ميلاد الممثل' },
+      es: { real: 'Historia', inuniverse: 'En la historia', birthday_char: 'Cumple. perso.', birthday_va: 'Cumple. VA' },
+      pt: { real: 'História', inuniverse: 'Na história', birthday_char: 'Aniv. perso.', birthday_va: 'Aniv. VA' },
+      zh: { real: '历史', inuniverse: '剧情', birthday_char: '角色生日', birthday_va: '声优生日' },
+      ko: { real: '역사', inuniverse: '작품 내', birthday_char: '캐릭터 생일', birthday_va: '성우 생일' },
+    };
+    const typeLabel = typeLabelMap[currentLang] || typeLabelMap.en;
+
+    list.innerHTML = todayEvents.map(e => `
+      <div class="today-event today-event--${e.type}">
+        <span class="event-badge event-badge--${e.type}">${typeLabel[e.type] || e.type}</span>
+        <span class="today-event-title">${e.title}</span>
+        ${e.year ? `<span class="today-event-year">${e.year}年（${new Date().getFullYear() - e.year}年前）</span>` : ''}
+      </div>
+    `).join('');
+  }
+
+  // 今日の月へスクロール
+  const currentMonth = document.getElementById(`month-${m}`);
+  if (currentMonth) {
+    setTimeout(() => {
+      currentMonth.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+  }
+</script>

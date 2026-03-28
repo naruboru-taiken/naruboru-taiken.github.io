@@ -82,6 +82,7 @@ const allLangs: Lang[] = ['ja', ...SUPPORTED_LANGS];
         <nav class="site-nav" id="site-nav">
           <a href={lang === 'ja' ? `${base}/stories` : `${base}/${lang}/stories`}>{t('nav.read')}</a>
           <a href={lang === 'ja' ? `${base}/characters` : `${base}/${lang}/characters`}>{t('nav.characters')}</a>
+          <a href={lang === 'ja' ? `${base}/calendar` : `${base}/${lang}/calendar`}>{t('nav.calendar')}</a>
           <a href={lang === 'ja' ? `${base}/submit` : `${base}/${lang}/submit`} class="nav-cta">{t('nav.submit')}</a>
 
           <!-- 言語切り替え -->
@@ -124,6 +125,7 @@ const allLangs: Lang[] = ['ja', ...SUPPORTED_LANGS];
           <a href={lang === 'ja' ? `${base}/` : `${base}/${lang}/`}>{t('footer.home')}</a>
           <a href={lang === 'ja' ? `${base}/stories` : `${base}/${lang}/stories`}>{t('footer.stories')}</a>
           <a href={lang === 'ja' ? `${base}/characters` : `${base}/${lang}/characters`}>{t('footer.characters')}</a>
+          <a href={lang === 'ja' ? `${base}/calendar` : `${base}/${lang}/calendar`}>{t('footer.calendar')}</a>
           <a href={lang === 'ja' ? `${base}/guidelines` : `${base}/${lang}/guidelines`}>{t('footer.guidelines')}</a>
           <a href={lang === 'ja' ? `${base}/privacy` : `${base}/${lang}/privacy`}>{t('footer.privacy')}</a>
           <a href={lang === 'ja' ? `${base}/submit` : `${base}/${lang}/submit`}>{t('footer.submit')}</a>

@@ -1,0 +1,139 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { events } from '../data/events';
+import type { CalendarEvent } from '../data/events';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// 月ごとにグループ化
+const MONTHS = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+
+function eventsForMonth(m: number) {
+  return events
+    .filter(e => e.month === m)
+    .sort((a, b) => a.day - b.day);
+}
+
+function typeLabel(type: string) {
+  switch(type) {
+    case 'real': return '作品史';
+    case 'inuniverse': return '作中';
+    case 'birthday_char': return 'キャラ誕';
+    case 'birthday_va': return '声優誕';
+    default: return type;
+  }
+}
+
+// 「○年前の今日」のテキスト生成（ビルド時の現在年使用）
+const currentYear = new Date().getFullYear();
+function anniversaryText(event: CalendarEvent): string {
+  if (!event.year) return '';
+  const years = currentYear - event.year;
+  return `${event.year}年（${years}年前）`;
+}
+---
+
+<BaseLayout title="カレンダー" description="NARUTO・BORUTOに関連する記念日・声優誕生日・キャラ誕生日カレンダー" lang="ja" pagePath="/calendar">
+  <div class="page-hero">
+    <p class="page-eyebrow">NARUTO・BORUTO</p>
+    <h1 class="page-title">記念日カレンダー</h1>
+    <p class="page-desc">作品の歴史・キャラクターの誕生日・声優の誕生日をまとめました。</p>
+  </div>
+
+  <!-- 今日のできごと（JS動的表示） -->
+  <section class="calendar-today-section" id="today-section" hidden>
+    <div class="container">
+      <h2 class="today-heading">🎌 今日のできごと</h2>
+      <div id="today-events" class="today-events-list"></div>
+    </div>
+  </section>
+
+  <!-- 凡例 -->
+  <div class="container">
+    <div class="calendar-legend">
+      <span class="legend-item legend-real">作品史</span>
+      <span class="legend-item legend-inuniverse">作中</span>
+      <span class="legend-item legend-birthday-char">キャラ誕生日</span>
+      <span class="legend-item legend-birthday-va">声優誕生日</span>
+    </div>
+  </div>
+
+  <!-- 月別一覧 -->
+  <div class="container calendar-container">
+    {MONTHS.map((monthLabel, i) => {
+      const m = i + 1;
+      const monthEvents = eventsForMonth(m);
+      return (
+        <section class="calendar-month" id={`month-${m}`}>
+          <h2 class="calendar-month-heading">
+            <span class="month-number">{m}</span>
+            <span class="month-label">{monthLabel}</span>
+            {monthEvents.length > 0 && <span class="month-count">{monthEvents.length}件</span>}
+          </h2>
+          {monthEvents.length === 0 ? (
+            <p class="calendar-empty">登録されているイベントはありません。</p>
+          ) : (
+            <ul class="calendar-events">
+              {monthEvents.map(event => (
+                <li class={`calendar-event calendar-event--${event.type}`}>
+                  <div class="event-date">
+                    <span class="event-day">{event.day}</span>
+                    <span class="event-day-label">日</span>
+                  </div>
+                  <div class="event-body">
+                    <span class={`event-badge event-badge--${event.type}`}>{typeLabel(event.type)}</span>
+                    {event.series && (
+                      <span class={`event-series event-series--${event.series.toLowerCase()}`}>{event.series}</span>
+                    )}
+                    <p class="event-title">{event.title}</p>
+                    {event.year && (
+                      <p class="event-year">{anniversaryText(event)}</p>
+                    )}
+                    {event.description && (
+                      <p class="event-desc">{event.description}</p>
+                    )}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      );
+    })}
+  </div>
+
+  <p class="calendar-note container">※ キャラクター誕生日は公式データブック準拠。声優誕生日は公開情報に基づきます。情報の誤りや追加希望は <a href={`${base}/submit`}>投稿フォーム</a> またはX（<a href="https://x.com/naruboru_taiken" target="_blank" rel="noopener">@naruboru_taiken</a>）までお知らせください。</p>
+</BaseLayout>
+
+<script define:vars={{ eventsData: events }}>
+  // 今日のイベントを動的表示
+  const today = new Date();
+  const m = today.getMonth() + 1;
+  const d = today.getDate();
+
+  const todayEvents = eventsData.filter(e => e.month === m && e.day === d);
+
+  if (todayEvents.length > 0) {
+    const section = document.getElementById('today-section');
+    const list = document.getElementById('today-events');
+    section.removeAttribute('hidden');
+
+    const typeLabel = { real: '作品史', inuniverse: '作中', birthday_char: 'キャラ誕', birthday_va: '声優誕' };
+
+    list.innerHTML = todayEvents.map(e => `
+      <div class="today-event today-event--${e.type}">
+        <span class="event-badge event-badge--${e.type}">${typeLabel[e.type] || e.type}</span>
+        <span class="today-event-title">${e.title}</span>
+        ${e.year ? `<span class="today-event-year">${e.year}年（${new Date().getFullYear() - e.year}年前）</span>` : ''}
+      </div>
+    `).join('');
+  }
+
+  // 今日の月へスクロール
+  const currentMonth = document.getElementById(`month-${m}`);
+  if (currentMonth) {
+    setTimeout(() => {
+      currentMonth.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+  }
+</script>
