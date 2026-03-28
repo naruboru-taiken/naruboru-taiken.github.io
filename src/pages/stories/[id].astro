@@ -4,13 +4,19 @@ import StoryCard from '../../components/StoryCard.astro';
 import stories from '../../data/stories.json';
 
 export function getStaticPaths() {
-  return (stories as any[]).map((story) => ({
+  const list = stories as any[];
+  return list.map((story, index) => ({
     params: { id: story.id },
-    props: { story },
+    props: {
+      story,
+      prevStory: index > 0 ? { id: list[index-1].id, displayName: list[index-1].displayName } : null,
+      nextStory: index < list.length - 1 ? { id: list[index+1].id, displayName: list[index+1].displayName } : null,
+      allIds: list.map(s => s.id),
+    },
   }));
 }
 
-const { story } = Astro.props;
+const { story, prevStory, nextStory, allIds } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 function truncate(text: string, max = 60) {
@@ -178,6 +184,18 @@ const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
         </button>
       </div>
 
+      <!-- わかる！ & お気に入り -->
+      <div class="story-engagement">
+        <button type="button" id="like-btn" class="btn-like" aria-pressed="false">
+          <span class="like-icon">🍥</span>
+          <span class="like-label">わかる！</span>
+        </button>
+        <button type="button" id="fav-btn" class="btn-favorite" aria-pressed="false">
+          <span class="fav-icon">♡</span>
+          <span class="fav-label">保存</span>
+        </button>
+      </div>
+
       <!-- 関連体験談 -->
       {relatedStories.length > 0 && (
         <section class="related-stories">
@@ -188,10 +206,27 @@ const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
         </section>
       )}
 
-      <!-- ナビゲーション -->
+      <!-- 前後ナビ & ランダム -->
       <nav class="story-nav">
-        <a href={`${base}/stories`} class="btn btn-outline">&larr; 一覧に戻る</a>
-        <a href={`${base}/submit`} class="btn btn-primary">あなたの体験談を投稿する</a>
+        <div class="story-prev-next">
+          {prevStory ? (
+            <a href={`${base}/stories/${prevStory.id}`} class="prev-next-link prev-link">
+              <span class="prev-next-arrow">←</span>
+              <span class="prev-next-name">{prevStory.displayName}</span>
+            </a>
+          ) : <span />}
+          {nextStory ? (
+            <a href={`${base}/stories/${nextStory.id}`} class="prev-next-link next-link">
+              <span class="prev-next-name">{nextStory.displayName}</span>
+              <span class="prev-next-arrow">→</span>
+            </a>
+          ) : <span />}
+        </div>
+        <div class="story-nav-actions">
+          <button type="button" id="random-btn" class="btn btn-outline">🎲 ランダムに読む</button>
+          <a href={`${base}/stories`} class="btn btn-outline">← 一覧に戻る</a>
+          <a href={`${base}/submit`} class="btn btn-primary">あなたの体験談を投稿する</a>
+        </div>
       </nav>
 
     </div>
@@ -211,7 +246,62 @@ const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
   favoriteScene: story.favoriteScene ?? null,
   futureWish: story.futureWish ?? null,
   message: story.message ?? null,
+  storyId: story.id,
+  allIds,
+  base,
 }}>
+// ── 既読記録 ──
+const readList = JSON.parse(localStorage.getItem('naruboru-read') || '[]');
+if (!readList.includes(storyId)) {
+  readList.push(storyId);
+  localStorage.setItem('naruboru-read', JSON.stringify(readList));
+}
+
+// ── お気に入りボタン ──
+const favBtn = document.getElementById('fav-btn');
+const favList = () => JSON.parse(localStorage.getItem('naruboru-favorites') || '[]');
+function updateFavBtn() {
+  const isFav = favList().includes(storyId);
+  favBtn.querySelector('.fav-icon').textContent = isFav ? '♥' : '♡';
+  favBtn.querySelector('.fav-label').textContent = isFav ? '保存済み' : '保存';
+  favBtn.classList.toggle('favorited', isFav);
+  favBtn.setAttribute('aria-pressed', String(isFav));
+}
+updateFavBtn();
+favBtn?.addEventListener('click', () => {
+  const list = favList();
+  const idx = list.indexOf(storyId);
+  if (idx === -1) list.push(storyId); else list.splice(idx, 1);
+  localStorage.setItem('naruboru-favorites', JSON.stringify(list));
+  updateFavBtn();
+});
+
+// ── わかる！ボタン ──
+const likeBtn = document.getElementById('like-btn');
+const likeList = () => JSON.parse(localStorage.getItem('naruboru-likes') || '[]');
+function updateLikeBtn() {
+  const isLiked = likeList().includes(storyId);
+  likeBtn.querySelector('.like-label').textContent = isLiked ? 'わかった！' : 'わかる！';
+  likeBtn.classList.toggle('liked', isLiked);
+  likeBtn.setAttribute('aria-pressed', String(isLiked));
+}
+updateLikeBtn();
+likeBtn?.addEventListener('click', () => {
+  const list = likeList();
+  const idx = list.indexOf(storyId);
+  if (idx === -1) list.push(storyId); else list.splice(idx, 1);
+  localStorage.setItem('naruboru-likes', JSON.stringify(list));
+  updateLikeBtn();
+});
+
+// ── ランダムボタン ──
+document.getElementById('random-btn')?.addEventListener('click', () => {
+  const others = allIds.filter(id => id !== storyId);
+  if (others.length === 0) return;
+  const randomId = others[Math.floor(Math.random() * others.length)];
+  window.location.href = `${base}/stories/${randomId}`;
+});
+
 const btn = document.getElementById('ig-share-btn');
 const originalHTML = btn.innerHTML;
 

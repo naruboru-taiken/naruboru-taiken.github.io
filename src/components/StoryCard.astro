@@ -55,6 +55,7 @@ const storyPath = lang === 'ja'
   data-age-group={story.ageGroup ?? ''}
   data-chara={story.favoriteCharacter ?? ''}
   data-published-at={story.publishedAt}
+  data-story-id={story.id}
 >
   {story.imageUrl && (
     <div class="card-image">
@@ -63,6 +64,7 @@ const storyPath = lang === 'ja'
   )}
   <div class="card-body">
     <div class="card-tags">
+      <span class="badge-read" hidden>既読</span>
       <span class="badge-new" hidden>NEW</span>
       {story.firstSeries && <span class="tag">{story.firstSeries}</span>}
       {story.firstMedia && <span class="tag tag-media">{story.firstMedia}</span>}
@@ -78,16 +80,42 @@ const storyPath = lang === 'ja'
       )}
     </div>
   </div>
+  <button type="button" class="card-fav-btn" aria-label="お気に入り">♡</button>
   <a href={storyPath} class="card-link" aria-label={story.displayName}>
     <span class="card-link-text">{readMore}</span>
   </a>
 </article>
 
 <script>
-document.querySelectorAll<HTMLElement>('.story-card[data-published-at]').forEach(card => {
+document.querySelectorAll<HTMLElement>('.story-card[data-story-id]').forEach(card => {
+  const id = card.dataset.storyId!;
   const publishedAt = new Date(card.dataset.publishedAt!);
+
+  // NEWバッジ
   if ((Date.now() - publishedAt.getTime()) / 86400000 <= 7) {
     card.querySelector('.badge-new')?.removeAttribute('hidden');
+  }
+
+  // 既読バッジ
+  const readList = JSON.parse(localStorage.getItem('naruboru-read') || '[]');
+  if (readList.includes(id)) {
+    card.querySelector('.badge-read')?.removeAttribute('hidden');
+  }
+
+  // お気に入りアイコン
+  const favList = JSON.parse(localStorage.getItem('naruboru-favorites') || '[]');
+  const favBtn = card.querySelector<HTMLButtonElement>('.card-fav-btn');
+  if (favBtn) {
+    if (favList.includes(id)) favBtn.textContent = '♥';
+    favBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const list = JSON.parse(localStorage.getItem('naruboru-favorites') || '[]');
+      const idx = list.indexOf(id);
+      if (idx === -1) { list.push(id); favBtn.textContent = '♥'; }
+      else { list.splice(idx, 1); favBtn.textContent = '♡'; }
+      localStorage.setItem('naruboru-favorites', JSON.stringify(list));
+    });
   }
 });
 </script>
