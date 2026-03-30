@@ -41,17 +41,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <div class="image-hint-body">
           <p>画像はURLで受け付けています。以下の手順で投稿できます。</p>
           <ol>
-            <li>X・Instagram・<a href="https://imgur.com" target="_blank" rel="noopener noreferrer">Imgur</a> などに画像をアップロード</li>
-            <li>画像の直リンクURLをコピー</li>
-            <li>フォームの「画像URL」欄に貼り付け</li>
+            <li>XまたはInstagramに画像を投稿する</li>
+            <li>その投稿のURLをコピーする</li>
+            <li>フォームの「画像URL」欄に貼り付ける</li>
           </ol>
-          <div class="image-hint-url-example">
-            <p><strong>直リンクURLとは？</strong></p>
-            <p>ブラウザで開いたときに画像だけが表示されるURLです。<code>.jpg</code> や <code>.png</code> などの拡張子で終わることが多いです。</p>
-            <p class="image-hint-url-ok">✅ 直リンクの例：<code>https://i.imgur.com/xxxxxx.jpg</code></p>
-            <p class="image-hint-url-ng">❌ 投稿ページのURLは直リンクではありません：<code>https://x.com/i/status/...</code>　<code>https://www.instagram.com/p/...</code></p>
-            <p class="image-hint-url-tip">💡 Imgurを使うと直リンクURLが簡単に取得できておすすめです。</p>
-          </div>
+          <p class="image-hint-url-tip">💡 投稿のURLをそのまま貼っていただければOKです。運営側で画像を確認します。</p>
           <p class="image-hint-note">※ 公式漫画・アニメのスクリーンショット等はご遠慮ください。詳しくは<a href={`${base}/guidelines`}>ガイドライン</a>をご確認ください。</p>
         </div>
       </details>
