@@ -71,10 +71,12 @@ function getRelatedStories(current: any, all: any[], count = 3) {
 }
 const relatedStories = getRelatedStories(story, stories as any[]);
 
+const favoriteCharacter = getStoryText(story, lang, 'favoriteCharacter');
+
 const siteUrl = 'https://naruboru-taiken.github.io';
 const storyUrl = `${siteUrl}/${lang}/stories/${story.id}`;
-const ogpImageUrl = `${siteUrl}/ogp/${story.id}.png`;
-const shareText = `${story.displayName}'s NARUTO/BORUTO fan story${story.favoriteCharacter ? ` (fav: ${story.favoriteCharacter})` : ''}\nWhat was YOUR moment? Share yours too 🍃 #NaruboruFanStories`;
+const ogpImageUrl = `${siteUrl}/ogp/${lang}/${story.id}.png`;
+const shareText = `${story.displayName}'s NARUTO/BORUTO fan story${favoriteCharacter ? ` (fav: ${favoriteCharacter})` : ''}\nWhat was YOUR moment? Share yours too 🍃 #NaruboruFanStories`;
 const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(storyUrl)}`;
 
 const ageLabel = getAgeGroupLabel(story.ageGroup, lang);
@@ -111,8 +113,8 @@ const ageLabel = getAgeGroupLabel(story.ageGroup, lang);
           {ageLabel && (
             <span class="story-meta-item">{t('detail.age_met')}{ageLabel}</span>
           )}
-          {story.favoriteCharacter && (
-            <span class="story-meta-item">{t('detail.fav_prefix')}{story.favoriteCharacter}</span>
+          {favoriteCharacter && (
+            <span class="story-meta-item">{t('detail.fav_prefix')}{favoriteCharacter}</span>
           )}
           {story.country && (
             <span class="story-meta-item">{t('detail.country')}{getStoryText(story, lang, 'country')}</span>
