@@ -54,7 +54,7 @@ const relatedStories = getRelatedStories(story, stories as any[]);
 const siteUrl = 'https://naruboru-taiken.github.io';
 const storyUrl = `${siteUrl}/stories/${story.id}`;
 const ogpImageUrl = `${siteUrl}/ogp/${story.id}.png`;
-const shareText = `「${displayCatchphrase}」\n${story.displayName}さんのナルボル体験談 #ナルボル体験談`;
+const shareText = `${story.displayName}さんのナルボル体験談${story.favoriteCharacter ? `（推し：${story.favoriteCharacter}）` : ''}\nあなたのハマった瞬間も、ぜひ投稿してみてください🍃 #ナルボル体験談`;
 const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(storyUrl)}`;
 ---
 

@@ -74,7 +74,7 @@ const relatedStories = getRelatedStories(story, stories as any[]);
 const siteUrl = 'https://naruboru-taiken.github.io';
 const storyUrl = `${siteUrl}/${lang}/stories/${story.id}`;
 const ogpImageUrl = `${siteUrl}/ogp/${story.id}.png`;
-const shareText = `「${displayCatchphrase}」\n${story.displayName} — Naruboru Fan Stories #NaruboruFanStories`;
+const shareText = `${story.displayName}'s NARUTO/BORUTO fan story${story.favoriteCharacter ? ` (fav: ${story.favoriteCharacter})` : ''}\nWhat was YOUR moment? Share yours too 🍃 #NaruboruFanStories`;
 const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(storyUrl)}`;
 
 const ageLabel = getAgeGroupLabel(story.ageGroup, lang);
