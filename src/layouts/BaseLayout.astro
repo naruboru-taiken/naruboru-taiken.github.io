@@ -62,6 +62,13 @@ const allLangs: Lang[] = ['ja', ...SUPPORTED_LANGS];
     <meta name="twitter:description" content={resolvedDescription} />
     <meta name="twitter:image" content={ogImageUrl} />
 
+    <!-- Canonical & hreflang -->
+    <link rel="canonical" href={pageUrl} />
+    {allLangs.map(l => (
+      <link rel="alternate" hreflang={l === 'ja' ? 'ja' : l} href={`${siteUrl}${langUrl(l)}`} />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={`${siteUrl}${langUrl('ja')}`} />
+
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
 
