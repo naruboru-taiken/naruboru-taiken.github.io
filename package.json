@@ -8,6 +8,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.1.6",
     "@fontsource/noto-sans-jp": "^5.2.9",
     "astro": "^4.16.0",
     "satori": "^0.26.0",
