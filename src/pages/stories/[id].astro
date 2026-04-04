@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import StoryCard from '../../components/StoryCard.astro';
 import stories from '../../data/stories.json';
+import { getStoryText } from '../../i18n/ui';
 
 export function getStaticPaths() {
   const list = stories as any[];
@@ -19,13 +20,24 @@ export function getStaticPaths() {
 const { story, prevStory, nextStory, allIds } = Astro.props;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
+const mainStory = getStoryText(story, 'ja', 'mainStory');
+const triggerScene = getStoryText(story, 'ja', 'triggerScene');
+const realization = getStoryText(story, 'ja', 'realization');
+const currentRelationship = getStoryText(story, 'ja', 'currentRelationship');
+const favoriteScene = getStoryText(story, 'ja', 'favoriteScene');
+const futureWish = getStoryText(story, 'ja', 'futureWish');
+const catchphrase = getStoryText(story, 'ja', 'catchphrase');
+const favoriteCharacter = getStoryText(story, 'ja', 'favoriteCharacter');
+const country = getStoryText(story, 'ja', 'country');
+const isTranslatedToJa = (story as any).sourceLang && (story as any).sourceLang !== 'ja';
+
 function truncate(text: string, max = 60) {
   return text.length > max ? text.slice(0, max) + '…' : text;
 }
 const displayCatchphrase =
-  story.catchphrase ||
-  (story.mainStory ? truncate(story.mainStory) : null) ||
-  (story.triggerScene ? truncate(story.triggerScene) : null) ||
+  catchphrase ||
+  (mainStory ? truncate(mainStory) : null) ||
+  (triggerScene ? truncate(triggerScene) : null) ||
   '';
 
 // 関連体験談スコアリング
@@ -89,11 +101,11 @@ const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
           {story.ageGroup && (
             <span class="story-meta-item">出会いは{story.ageGroup}</span>
           )}
-          {story.favoriteCharacter && (
-            <span class="story-meta-item">推し：{story.favoriteCharacter}</span>
+          {favoriteCharacter && (
+            <span class="story-meta-item">推し：{favoriteCharacter}</span>
           )}
-          {story.country && (
-            <span class="story-meta-item">居住地：{story.country}</span>
+          {country && (
+            <span class="story-meta-item">居住地：{country}</span>
           )}
           <span class="story-meta-item story-date">
             {new Date(story.publishedAt).toLocaleDateString('ja-JP', {
@@ -101,6 +113,9 @@ const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
             })}
           </span>
         </div>
+        {isTranslatedToJa && (
+          <p class="translation-notice translation-notice--translated">※ この体験談は海外からの投稿を日本語に翻訳して掲載しています。</p>
+        )}
       </header>
 
       <!-- 画像（あれば） -->
@@ -113,54 +128,54 @@ const xShareUrl = `https://x.com/intent/tweet?text=${encodeURIComponent(shareTex
 
       <!-- 本文 -->
       <div class="story-body">
-        {story.mainStory ? (
+        {mainStory ? (
           <section class="story-section">
             <h2>体験談</h2>
-            <p>{story.mainStory}</p>
+            <p>{mainStory}</p>
           </section>
         ) : (
           <>
-            {story.triggerScene && (
+            {triggerScene && (
               <section class="story-section">
                 <h2>ハマるきっかけになったシーン</h2>
-                <p>{story.triggerScene}</p>
+                <p>{triggerScene}</p>
               </section>
             )}
 
-            {story.realization && (
+            {realization && (
               <section class="story-section">
                 <h2>「あ、自分これ好きだ」と気づいた瞬間</h2>
-                <p>{story.realization}</p>
+                <p>{realization}</p>
               </section>
             )}
 
-            {story.currentRelationship && (
+            {currentRelationship && (
               <section class="story-section">
                 <h2>今のあなたとナルボルの関係</h2>
-                <p>{story.currentRelationship}</p>
+                <p>{currentRelationship}</p>
               </section>
             )}
           </>
         )}
 
-        {story.favoriteScene && (
+        {favoriteScene && (
           <section class="story-section">
             <h2>特に好きなシーン・セリフ</h2>
-            <p>{story.favoriteScene}</p>
+            <p>{favoriteScene}</p>
           </section>
         )}
 
-        {story.futureWish && (
+        {futureWish && (
           <section class="story-section story-section--wish">
             <h2>こんな作品が観てみたい</h2>
-            <p>{story.futureWish}</p>
+            <p>{futureWish}</p>
           </section>
         )}
 
-        {story.message && (
+        {getStoryText(story, 'ja', 'message') && (
           <section class="story-message">
             <p class="message-label">同じ作品を好きな人へ</p>
-            <blockquote class="message-quote">&ldquo;{story.message}&rdquo;</blockquote>
+            <blockquote class="message-quote">&ldquo;{getStoryText(story, 'ja', 'message')}&rdquo;</blockquote>
           </section>
         )}
       </div>

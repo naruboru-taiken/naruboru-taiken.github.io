@@ -763,7 +763,6 @@ export function useTranslations(lang: Lang) {
 
 /** Get story text field with translation fallback */
 export function getStoryText(story: any, lang: Lang, field: string): string | null {
-  if (lang === 'ja') return story[field] ?? null;
   return story.translations?.[lang]?.[field] ?? story[field] ?? null;
 }
 

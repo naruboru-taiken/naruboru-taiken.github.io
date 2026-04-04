@@ -23,7 +23,9 @@ if (!API_KEY) {
 const FORCE = process.argv.includes('--force');
 const TARGET_LANGS = ['EN', 'FR', 'AR', 'ES', 'PT', 'ZH', 'KO'];
 // DeepL言語コード → stories.jsonのキー
-const LANG_MAP = { EN: 'en', FR: 'fr', AR: 'ar', ES: 'es', PT: 'pt', ZH: 'zh', KO: 'ko' };
+const LANG_MAP = { EN: 'en', FR: 'fr', AR: 'ar', ES: 'es', PT: 'pt', ZH: 'zh', KO: 'ko', JA: 'ja' };
+// DeepL言語コード（大文字）← sourceLang（小文字）
+const SOURCE_LANG_MAP = { ja: 'JA', en: 'EN', fr: 'FR', ar: 'AR', es: 'ES', pt: 'PT', zh: 'ZH', ko: 'KO' };
 
 // 翻訳対象フィールド
 const TRANSLATABLE_FIELDS = [
@@ -41,7 +43,7 @@ const TRANSLATABLE_FIELDS = [
 
 const STORIES_PATH = resolve(process.cwd(), 'src/data/stories.json');
 
-async function translate(text, targetLang) {
+async function translate(text, targetLang, sourceLang = 'JA') {
   const resp = await fetch('https://api-free.deepl.com/v2/translate', {
     method: 'POST',
     headers: {
@@ -50,7 +52,7 @@ async function translate(text, targetLang) {
     },
     body: JSON.stringify({
       text: [text],
-      source_lang: 'JA',
+      source_lang: sourceLang,
       target_lang: targetLang,
     }),
   });
@@ -93,7 +95,14 @@ async function main() {
     // translations フィールドがなければ初期化
     if (!story.translations) story.translations = {};
 
-    for (const deeplLang of TARGET_LANGS) {
+    // sourceLang が ja 以外の場合は JA にも翻訳する
+    const storySourceLang = story.sourceLang ?? 'ja';
+    const deeplSourceLang = SOURCE_LANG_MAP[storySourceLang] ?? 'JA';
+    const storyTargetLangs = storySourceLang === 'ja'
+      ? TARGET_LANGS
+      : [...TARGET_LANGS.filter(l => l !== deeplSourceLang), 'JA'];
+
+    for (const deeplLang of storyTargetLangs) {
       const storyLang = LANG_MAP[deeplLang];
       if (!story.translations[storyLang]) story.translations[storyLang] = {};
 
@@ -109,7 +118,7 @@ async function main() {
 
         console.log(`  翻訳中: ${story.id} → ${storyLang}.${field} (${originalText.length}文字)`);
         try {
-          const translated = await translate(originalText, deeplLang);
+          const translated = await translate(originalText, deeplLang, deeplSourceLang);
           story.translations[storyLang][field] = translated;
           totalTranslated++;
           totalChars += originalText.length;
