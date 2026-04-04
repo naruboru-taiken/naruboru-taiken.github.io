@@ -1636,5 +1636,84 @@
         "favoriteCharacter": "うずまきボルト"
       }
     }
+  },
+  {
+    "id": "story-021",
+    "displayName": "A",
+    "ageGroup": "〜10歳",
+    "favoriteCharacter": "うちはイタチ",
+    "firstSeries": "NARUTO",
+    "firstMedia": "TVアニメ",
+    "catchphrase": "人生のバイブル！",
+    "mainStory": "4歳の頃にサスケ奪還編を初めて観てNARUTOに出会いました。\nその後、アニメを観たり観なかったりでしたがサスケ再会編でアニメをまた観てそこから単行本を集め始めました！\n私をNARUTOと出会い初めてみて聞いたオープニングが『distance』、今でもこの曲を聴くと当時のことを思い出します。\n何かとうちはサスケくんに縁がある自分ですが、7歳の頃に集めて読んだ漫画16巻、レンタルして観たアニメ81話で初めて姿を現すサスケくんの実兄『うちはイタチ』に出会いそこから20年弱ずっと一筋でイタチ兄さんが大好きです。\n後々判明したのが、イタチ兄さんが初めて出てきた日が自分の誕生日でNARUTOにもイタチ兄さんにも出会うのは必然だったんだなと思いました。\n学生時代の部活でしんどい時、社会人になった今もナルトやイタチ、みんなの方が辛い思いしてる。私がこんなことで挫けてはいけない！と諦めない大切さも教えてくれました。\nNARUTOとうちはイタチは私の人生で必要不可欠な存在です！",
+    "triggerScene": null,
+    "realization": null,
+    "currentRelationship": null,
+    "favoriteScene": "54巻の自来也亡き後のナルトがアイスを持って涙しているシーン。静かに泣いているナルトが心に来ます。そしてナルトを救ってくれるのがイルカ先生。お二人の関係大好きです。\n\n61巻のうちはイタチの台詞\n「里がどんなに闇や矛盾を抱えていようとオレは木ノ葉のうちはイタチだ」\nこの台詞は個人的な解釈になりますが、自分1人で一族の名誉の代わりに汚名を背負い闇に消えていく。計り知れない優しさそして里を想う気持ち、弟の命、愛。\n好きな言葉が平和の彼だからこその言葉だと思います。\n\n62巻の「おれはお前をずっと愛している」\nイタチの一人称の表記はいつも「オレ」ですがこの時だけ「おれ」なのはたまたまかもしれませんがサスケに向けての言葉でひらがなになるのはなんだか素敵だなあ、と個人的に大好きです！",
+    "futureWish": "小説の迅雷伝のアニメ化ずっと待っています！\nイタチ兄さんの趣味が甘味処巡りなので甘味を永遠と探し求めてる兄さん…見たいです…",
+    "message": null,
+    "imageUrl": null,
+    "imageCaption": null,
+    "country": "日本",
+    "publishedAt": "2026-04-04",
+    "isSeedContent": false,
+    "translations": {
+      "en": {
+        "catchphrase": "Bible of life!",
+        "mainStory": "I was introduced to Naruto when I was 4 years old by watching the Sasuke Retrieval Arc for the first time.\nAfter that, I would watch and not watch the anime, but I started watching the anime again with the Sasuke Reunion Arc, and from there I started collecting the books!\nThe opening song I heard when I first met Naruto was \"distance,\" and I still remember those days when I hear this song.\nI have a connection with Sasuke Uchiha in some way. I collected and read 16 volumes of the manga when I was 7 years old, and I first encountered Sasuke's real brother \"Uchiha Itachi\" in episode 81 of the anime I rented and watched, and I have loved him for almost 20 years since then.\nI later found out that the day he first appeared was my birthday, so it was inevitable that I would meet both Naruto and his brother Itachi.\nWhen I was a student, I had a tough time in club activities, and even now that I am a working adult, Naruto, Itachi, and everyone else is having a harder time. I should not be discouraged by such things! He also taught me the importance of not giving up.\nNaruto and Itachi are indispensable in my life!",
+        "favoriteScene": "The scene in volume 54 where Naruto is crying with ice cream after Jiraiya's death. Naruto crying quietly comes to my heart. And Iruka-sensei is the one who saves Naruto. I love their relationship.\n\nIn volume 61, Uchiha is the Itachi's dialogue.\n\"No matter how much darkness and contradiction my village may have, I am the Itachi of Kinoha.\"\nThis line is a personal interpretation, but he alone bears the stigma instead of the honor of his family and disappears into the darkness. His immeasurable kindness and love for his village, his brother's life, and his love.\nI think it is because his favorite word is peace.\n\nI will always love you\" in volume 62.\nItachi's first person is always \"Ore,\" but this is the only time he says \"Ore.\" Maybe it is just a coincidence, but I personally love that he uses hiragana when he says this to Sasuke!",
+        "futureWish": "I've been waiting for the anime adaptation of the novel \"Xunraiden\" for a long time!\nBrother Itachi's hobby is visiting sweet shops, so I want to see him forever searching for sweetness...",
+        "country": "Japan",
+        "favoriteCharacter": "family weasel"
+      },
+      "fr": {
+        "catchphrase": "La Bible de la vie !",
+        "mainStory": "J'ai découvert NARUTO à l'âge de quatre ans en regardant pour la première fois l'arc Sasuke Retrieval.\nAprès cela, j'ai regardé l'anime par intermittence, mais j'ai recommencé à regarder l'anime avec l'arc de la réunion de Sasuke et j'ai commencé à collectionner les livres à partir de là !\nLa chanson d'ouverture que j'ai entendue lorsque j'ai découvert NARUTO était \" distance \", et je me souviens encore de cette époque lorsque j'écoute cette chanson.\nJ'ai un lien avec Sasuke Uchiha d'une certaine manière, mais quand j'avais sept ans, j'ai collectionné et lu 16 volumes du manga et j'ai loué et regardé l'épisode 81 de l'anime, j'ai rencontré le vrai frère de Sasuke, \" Uchiha Itachi \", qui apparaît pour la première fois dans l'anime, et je l'aime depuis près de 20 ans.\nJ'ai découvert plus tard que le jour où il est apparu pour la première fois était celui de mon anniversaire, il était donc inévitable que je rencontre à la fois Naruto et son frère Itachi.\nQuand j'étais étudiant, j'avais du mal à participer aux activités du club, et même maintenant que je suis un adulte actif, Naruto, Itachi et tous les autres ont encore du mal. Je ne devrais pas m'effondrer à cause de quelque chose comme ça ! Il m'a aussi appris l'importance de ne pas abandonner.\nNaruto et Uchiha Itachi font partie intégrante de ma vie !",
+        "favoriteScene": "La scène du volume 54 où Naruto pleure avec de la glace après la mort de Jiraiya. Naruto pleure tranquillement, c'est son cœur qui est touché. Et c'est Iruka-sensei qui sauve Naruto. J'adore leur relation.\n\nDialogue d'Uchiha Itachi dans le volume 61.\nPeu importe les ténèbres et les contradictions du village, je suis l'Uchiha Itachi de Kinoha.\nCette phrase est une interprétation personnelle, mais c'est lui seul qui porte le stigmate au lieu de l'honneur de la famille et qui disparaît dans les ténèbres. Une bonté et un amour incommensurables pour son village, la vie et l'amour de son frère.\nC'est parce que son mot préféré est la paix qu'il peut le dire.\n\nJe t'aimerai toujours\" dans le tome 62.\nLa première personne d'Itachi est toujours écrite comme 'Ore', mais c'est la seule fois où il utilise 'Ore', ce qui peut être une coïncidence, mais j'aime personnellement la façon dont il utilise les hiragana dans ses mots à Sasuke !",
+        "futureWish": "J'attendais avec impatience l'adaptation en anime du roman Xunrai Den !\nLe hobby de frère Itachi est de visiter des magasins de bonbons, alors je veux le voir toujours à la recherche de sucreries...",
+        "country": "Japon",
+        "favoriteCharacter": "Fouine."
+      },
+      "ar": {
+        "catchphrase": "الكتاب المقدس للحياة!",
+        "mainStory": "لقد تعرفت على NARUTO لأول مرة عندما كنت في الرابعة من عمري عندما شاهدت قوس استرجاع ساسكي لأول مرة.\nبعد ذلك، شاهدت الأنمي على فترات متقطعة، لكنني بدأت بمشاهدة الأنمي مرة أخرى مع قوس استرجاع ساسكي وبدأت بجمع الكتب من هناك!\nكانت الأغنية الافتتاحية التي سمعتها عندما تعرفت على NARUTO لأول مرة هي \"المسافة\"، وما زلت أتذكر تلك الأيام عندما أسمع هذه الأغنية.\nلديّ علاقة مع ساسوكي أوتشيها بطريقة ما، عندما كنت في السابعة من عمري، جمعت وقرأت 16 مجلداً من المانجا واستأجرت وشاهدت الحلقة 81 من الأنمي، قابلت شقيق ساسوكي الحقيقي 'أوتشيها إيتاشي'، الذي ظهر لأول مرة في الأنمي، وأحببته منذ ما يقرب من 20 عاماً منذ ذلك الحين.\nاكتشفت فيما بعد أن اليوم الذي ظهر فيه لأول مرة كان يوم عيد ميلادي، لذا كان من المحتم أن ألتقي بكل من ناروتو وشقيقه إيتاشي.\nعندما كنت طالباً كنت أواجه صعوبة في أنشطة النادي، وحتى الآن بعد أن أصبحت بالغاً عاملاً، لا يزال ناروتو وإيتاشي والجميع يواجهون صعوبة في ذلك. لا يجب أن أنهار بسبب شيء كهذا! كما علمني أيضاً أهمية عدم الاستسلام.\nناروتو وأوتشيها إيتاشي جزء أساسي من حياتي!",
+        "favoriteScene": "المشهد في المجلد 54 حيث يبكي ناروتو مع الآيس كريم بعد وفاة جيرايا. يأتي بكاء ناروتو بهدوء إلى قلبه. و إيروكا-سينسي هو من ينقذ ناروتو . أحب علاقتهما.\n\nحوار أوتشيها إيتاشي في المجلد 61\n\"مهما كانت الظلمة والتناقضات التي تحملها القرية، أنا أوتشيها إيتاشي من كينوها\".\nهذا السطر هو تفسير شخصي، لكنه يتحمل وحده وصمة العار بدلاً من شرف العائلة ويختفي في الظلام. عطفه وحبه الذي لا يقاس على قريته وحياة أخيه وحبه.\nإن الكلمة المفضلة لديه هي السلام لأنه قادر على قولها.\n\nسأحبك دائماً\" في المجلد 62.\nيُكتب ضمير المتكلم في إيتاشي دائماً بصيغة \"أوري\"، لكن هذه هي المرة الوحيدة التي يستخدم فيها كلمة \"أوري\"، وقد يكون ذلك مصادفة، لكنني شخصياً أحب الطريقة التي يستخدم فيها الهيراغانا في كلامه لساسوكي!",
+        "futureWish": "لقد كنت أنتظر اقتباس الأنمي لرواية شونراي دين!\nهواية الأخ إيتاشي هي زيارة محلات الحلويات، لذا أريد أن أراه يبحث عن الحلوى إلى الأبد...",
+        "country": "اليابان",
+        "favoriteCharacter": "ابن عرس"
+      },
+      "es": {
+        "catchphrase": "¡La Biblia de la vida!",
+        "mainStory": "Conocí NARUTO a los cuatro años, cuando vi por primera vez el arco de recuperación de Sasuke.\nDespués de eso, vi el anime de vez en cuando, pero empecé a verlo de nuevo con el arco de la reunión de Sasuke y empecé a coleccionar los libros a partir de ahí.\nLa canción de apertura que escuché cuando conocí NARUTO fue 'distance', y todavía recuerdo aquellos días cuando escucho esta canción.\nTengo una conexión con Sasuke Uchiha de alguna manera, pero cuando tenía siete años coleccioné y leí 16 volúmenes del manga y alquilé y vi el episodio 81 del anime, conocí al verdadero hermano de Sasuke 'Uchiha Itachi', que aparece por primera vez en el anime, y lo he amado durante casi 20 años desde entonces.\nMás tarde descubrí que el día en que apareció por primera vez era mi cumpleaños, así que era inevitable que conociera tanto a Naruto como a su hermano Itachi.\nCuando era estudiante, lo pasé mal en las actividades del club, e incluso ahora que soy una adulta en activo, Naruto, Itachi y todos los demás siguen pasándolo mal. ¡No debería derrumbarme por algo así! También me enseñó la importancia de no rendirse.\n¡Naruto y Uchiha Itachi son una parte esencial de mi vida!",
+        "favoriteScene": "La escena en el volumen 54 donde Naruto está llorando con helado después de la muerte de Jiraiya. Naruto llorando en silencio llega a su corazón. Y es Iruka-sensei quien salva a Naruto. Me encanta su relación.\n\nDiálogo de Uchiha Itachi en el Vol. 61.\n'No importa cuánta oscuridad y contradicción haya en la aldea, yo soy el Uchiha Itachi de Kinoha'.\nEsta línea es una interpretación personal, pero sólo él carga con el estigma en lugar del honor de la familia y desaparece en la oscuridad. Una bondad y un amor inconmensurables por su pueblo, la vida y el amor de su hermano.\nEs porque su palabra favorita es paz por lo que es capaz de decirlo.\n\nSiempre te querré\" en el vol. 62.\nLa primera persona de Itachi siempre se escribe como \"Ore\", pero esta es la única vez que utiliza \"Ore\", lo cual puede ser una coincidencia, ¡pero a mí personalmente me encanta cómo utiliza el hiragana en sus palabras a Sasuke!",
+        "futureWish": "¡He estado esperando la adaptación al anime de la novela Xunrai Den!\nEl hobby del hermano Itachi es visitar tiendas de dulces, así que quiero verlo siempre en busca de dulzura...",
+        "country": "Japón",
+        "favoriteCharacter": "Comadreja."
+      },
+      "pt": {
+        "catchphrase": "A Bíblia da vida!",
+        "mainStory": "Conheci NARUTO quando tinha quatro anos, ao ver pela primeira vez o Sasuke Retrieval Arc.\nDepois disso, vi o anime de vez em quando, mas recomecei a ver o anime com o Sasuke Reunion Arc e comecei a colecionar os livros a partir daí!\nA música de abertura que ouvi quando conheci o NARUTO foi \"distance\", e ainda me lembro desses dias quando ouço esta música.\nTenho uma ligação com Sasuke Uchiha de alguma forma, mas quando tinha sete anos de idade, coleccionei e li 16 volumes da manga e aluguei e vi o episódio 81 do anime, conheci o verdadeiro irmão de Sasuke, 'Uchiha Itachi', que aparece pela primeira vez no anime, e amei-o durante quase 20 anos desde então.\nMais tarde, descobri que o dia em que ele apareceu pela primeira vez era o dia do meu aniversário, por isso era inevitável que eu conhecesse tanto Naruto como o seu irmão Itachi.\nQuando era estudante, tinha dificuldades nas actividades do clube, e mesmo agora que sou um adulto trabalhador, Naruto, Itachi e todos os outros continuam a ter dificuldades. Não devia ir-me abaixo por causa de uma coisa destas! Ele também me ensinou a importância de não desistir.\nNaruto e Uchiha Itachi são uma parte essencial da minha vida!",
+        "favoriteScene": "A cena do volume 54 em que Naruto está a chorar com gelado após a morte de Jiraiya. Naruto a chorar calmamente chega ao seu coração. E é Iruka-sensei que salva Naruto. Adoro a relação entre eles.\n\nDiálogo de Uchiha Itachi no Vol. 61.\nNão importa quanta escuridão e contradição a aldeia tenha, eu sou o Uchiha Itachi de Kinoha.\nEsta frase é uma interpretação pessoal, mas só ele carrega o estigma em vez da honra da família e desaparece na escuridão. Bondade e amor incomensuráveis pela sua aldeia, pela vida e pelo amor do seu irmão.\nÉ porque a sua palavra favorita é paz que ele é capaz de a dizer.\n\nAmar-te-ei sempre\" no Vol. 62.\nA primeira pessoa de Itachi é sempre escrita como \"Ore\", mas esta é a única vez que ele usa \"Ore\", o que pode ser uma coincidência, mas eu pessoalmente adoro a forma como ele usa hiragana nas suas palavras para Sasuke!",
+        "futureWish": "Tenho estado à espera da adaptação para anime do romance Xunrai Den!\nO hobby do irmão Itachi é visitar lojas de doces, por isso quero vê-lo sempre à procura de doçura...",
+        "country": "Japão",
+        "favoriteCharacter": "Doninha."
+      },
+      "zh": {
+        "catchphrase": "生命圣经",
+        "mainStory": "我第一次接触《火影忍者》是在四岁那年，当时我第一次看了 \"佐助寻回记\"。\n之后，我断断续续地看动画，但从佐助重聚开始，我又重新开始看动画，并从那时起开始收集《NARUTO》的书籍！\n我第一次见到《NARUTO》时听到的片头曲是《距离》，听着这首歌，我仍然会想起那段日子。\n我和《火影忍者》中的宇智波佐助有着某种联系，7 岁那年，我收集并阅读了 16 卷漫画，租借并观看了 81 集动画，认识了佐助的亲哥哥 \"宇智波一太\"，他在动画中首次登场，从那时起，我喜欢了他将近 20 年。\n后来我才知道，他第一次出现的那一天是我的生日，所以我不可避免地同时遇到了鸣人和他的弟弟一田。\n学生时代，我在社团活动中过得很辛苦，即使现在我已经工作成人了，鸣人、伊达和其他人仍然过得很辛苦。我不应该因为这样的事情而崩溃！他还教会了我不放弃的重要性。\n火影忍者和宇智波伊达是我生命中不可或缺的一部分！",
+        "favoriteScene": "第 54 卷，自来也死后，鸣人拿着冰淇淋哭泣的场景。鸣人静静地哭泣，哭出了他的心声。是伊鲁卡老师救了鸣人。我喜欢他们之间的关系。\n\n宇智波一太郎在第 61 卷中的对白。\n不管村子里有多少黑暗和矛盾，我都是木叶的宇智波一太一。\n这句台词是他个人的诠释，但他一个人代替家族的荣誉背负污名，消失在黑暗中。对村庄、对弟弟的生命和爱，他的仁慈和爱是无可估量的。\n正因为他最喜欢的词是和平，所以他才能说出这句话。\n\n第 62 卷中的 \"我永远爱你\"。\n伊藤的第一人称总是写成 \"奥雷\"，但这是他唯一一次使用 \"奥雷\"，这可能是一个巧合，但我个人非常喜欢他在对佐助说话时使用平假名的方式！",
+        "futureWish": "我一直在等待小说《迅雷下载》的改编动画！\n一太哥的爱好就是逛甜品店，所以我想看到他永远都在寻找甜品的样子......",
+        "country": "日本",
+        "favoriteCharacter": "黄鼠狼"
+      },
+      "ko": {
+        "catchphrase": "인생의 바이블!",
+        "mainStory": "4살 때 사스케 탈환편을 처음 보고 나루토를 알게 되었습니다.\n그 후 애니메이션을 보거나 보지 않다가 사스케 재회편으로 애니메이션을 다시 보게 되었고, 거기서부터 단행본을 모으기 시작했습니다!\n제가 나루토를 처음 보고 들었던 오프닝 곡이 'distance'였는데, 지금도 이 곡을 들으면 그때가 생각나요.\n저는 사스케와 인연이 있는 사람인데, 7살 때 모은 만화책 16권, 대여해서 본 애니메이션 81화에서 처음 등장한 사스케의 친형 '우치하 이타치'를 만난 후 20년 넘게 한결같이 이타치 형을 사랑하고 있습니다.\n나중에 알고 보니 이타치 오빠가 처음 등장한 날이 제 생일이어서 나루토와 이타치 오빠와의 만남은 필연적이었구나 하는 생각이 들었습니다.\n학창시절 동아리 활동으로 힘들었을 때, 사회인이 된 지금도 나루토와 이타치, 모두들 더 힘들어하고 있다. 내가 이런 일로 좌절하면 안 되겠구나! 라고 포기하지 않는 것의 중요성도 가르쳐 주었습니다.\n나루토와 우리집 족제비는 제 인생에서 없어서는 안 될 존재입니다!",
+        "favoriteScene": "54권 자라이야가 죽은 후 나루토가 얼음을 들고 눈물을 흘리는 장면. 조용히 울고 있는 나루토가 마음에 와 닿는다. 그리고 나루토를 구해주는 것이 돌고래 선생님. 두 사람의 관계가 너무 좋아요.\n\n61권에서 이타치의 대사\n\"마을이 아무리 어둠과 모순을 안고 있더라도 나는 키노하바의 우치노하치다.\"\n이 대사는 개인적인 해석이지만, 혼자서 일족의 명예 대신 오명을 짊어지고 어둠 속으로 사라져 간다. 헤아릴 수 없는 친절과 마을을 생각하는 마음, 동생의 생명, 사랑.\n좋아하는 단어가 평화의 그이기에 가능한 말인 것 같다.\n\n62권의 '나는 너를 계속 사랑해'\n이타치의 1인칭 표기는 항상 '나'인데 이 때만 '나'인 것은 우연일지도 모르지만, 사스케를 향한 말에서 히라가나로 된 것은 왠지 멋지다고 개인적으로 좋아합니다!",
+        "futureWish": "소설 <신뢰전>의 애니메이션화를 계속 기다리고 있습니다!\n족제비 오빠의 취미가 단맛을 찾아다니는 것이기 때문에 단맛을 영원히 찾아다니는 오빠... 보고 싶어요...",
+        "country": "일본",
+        "favoriteCharacter": "우리집은 족제비"
+      }
+    }
   }
 ]
