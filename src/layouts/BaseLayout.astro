@@ -24,7 +24,7 @@ const resolvedDescription = description ?? defaultDesc;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const siteUrl = 'https://naruboru-taiken.github.io';
 const pageUrl = `${siteUrl}${Astro.url.pathname}`;
-const ogImageUrl = ogImage ?? `${siteUrl}/ogp.png`;
+const ogImageUrl = ogImage ?? (lang === 'ja' ? `${siteUrl}/ogp.png` : `${siteUrl}/ogp/${lang}.png`);
 const siteName = t('site.name');
 const fullTitle = `${title} | ${siteName}`;
 
