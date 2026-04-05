@@ -75,8 +75,12 @@ naruboru-fan-site/
 │       ├── submit.astro         投稿フォーム（日本語）
 │       ├── guidelines.astro     ガイドライン（日本語）
 │       ├── privacy.astro        プライバシーポリシー（日本語）
-│       ├── ogp.png.ts           共通OGP画像生成
-│       ├── ogp/[id].png.ts      体験談別OGP画像生成
+│       ├── ogp.png.ts           共通OGP画像生成（日本語）
+│       ├── ogp/
+│       │   ├── [id].png.ts      体験談別OGP画像生成（日本語）
+│       │   ├── [lang].png.ts    言語別サイトOGP画像生成（7言語）
+│       │   └── [lang]/
+│       │       └── [id].png.ts  体験談別OGP画像生成（多言語）
 │       └── [lang]/              ★ 多言語ページ（自動生成）
 │           ├── index.astro
 │           ├── stories/
@@ -92,7 +96,8 @@ naruboru-fan-site/
 │       └── global.css          全スタイル
 │
 ├── scripts/
-│   └── translate-stories.mjs  DeepL翻訳スクリプト
+│   ├── translate-stories.mjs   DeepL翻訳スクリプト
+│   └── gen-launch-announcement.mjs  SNS告知画像生成（1200×675px、ローカル実行専用）
 │
 ├── .github/
 │   └── workflows/
@@ -130,6 +135,7 @@ naruboru-fan-site/
   "imageUrl": null,
   "imageCaption": null,
   "country": "日本",
+  "sourceLang": "ja",
   "publishedAt": "2025-01-01",
   "isSeedContent": false,
   "translations": {
@@ -153,6 +159,7 @@ naruboru-fan-site/
 | `catchphrase` | — | nullの場合は`mainStory`冒頭60文字にフォールバック |
 | `mainStory` | — | 新フォーム形式。あれば旧3フィールドより優先 |
 | `country` | — | 居住国（自由記述・翻訳される） |
+| `sourceLang` | — | 省略時は `"ja"`。外国語投稿は `"pt"` 等を指定。翻訳スクリプトがJAを含む全言語に翻訳する |
 | `publishedAt` | ✅ | 表示順に影響（降順） |
 | `isSeedContent` | ✅ | 運営作成ならtrue |
 | `translations` | — | DeepL翻訳スクリプトが自動生成 |
@@ -194,10 +201,12 @@ src/i18n/ui.ts
 ### 体験談の翻訳フロー
 
 ```
-1. stories.json に日本語で投稿を追加
+1. stories.json に投稿を追加（日本語 or 外国語）
         ↓
 2. node scripts/translate-stories.mjs を実行
    （DeepL Free API: 500,000文字/月）
+   ※ sourceLang が ja の場合 → EN/FR/AR/ES/PT/ZH/KO に翻訳
+   ※ sourceLang が ja 以外の場合 → JA を含む全言語に翻訳
         ↓
 3. 翻訳結果が story.translations[lang][field] にキャッシュされる
    ※ 翻訳済みフィールドは再翻訳しない（API節約）
