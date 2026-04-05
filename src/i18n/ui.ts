@@ -65,7 +65,7 @@ export const ui: Record<Lang, Record<string, string>> = {
     'detail.current': '今のあなたとナルボルの関係',
     'detail.fav_scene': '特に好きなシーン・セリフ',
     'detail.future_wish': 'こんな作品が観てみたい',
-    'detail.message_label': 'ひとこと',
+    'detail.message_label': 'キャッチコピー',
     'detail.share_label': 'この体験談をシェアする',
     'detail.share_x': 'Xでシェア',
     'detail.share_ig': 'Instagramストーリーズ',

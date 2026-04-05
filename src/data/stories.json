@@ -2052,5 +2052,84 @@
         "favoriteCharacter": "우즈마키 나루토・우즈마키 히나타・우즈마키 볼트・우즈마키 해바라기"
       }
     }
+  },
+  {
+    "id": "story-026",
+    "displayName": "チャーリー",
+    "ageGroup": "20代",
+    "favoriteCharacter": "ナルト",
+    "firstSeries": "NARUTO",
+    "firstMedia": "TVアニメ",
+    "catchphrase": "上京して買った中古TVで、ちょうどナルトが始まっていた",
+    "mainStory": "社会人として上京し、寮になかったTVを中古ショップで買った頃にアニメ「ナルト」が始まって観始めました。\n即ハマり、コミックスを大人買いし最終巻までコミックスを買いましたが、ボルトには手が出ていません。\nいつかまとめて読みたいなとは思っています､､､。",
+    "triggerScene": null,
+    "realization": null,
+    "currentRelationship": null,
+    "favoriteScene": "好きなシーンは、カカシVSザブザで、カカシがザブザの技をコピーして、遂には追い越しちゃうシーンです🤣\nアレは痺れましたね😆",
+    "futureWish": null,
+    "message": "社会人になってもやっぱりアニメは面白いと思わせてくれた作品の１つ",
+    "imageUrl": null,
+    "imageCaption": null,
+    "country": "日本",
+    "publishedAt": "2026-04-05",
+    "isSeedContent": false,
+    "translations": {
+      "en": {
+        "catchphrase": "Naruto had just started on the used TV I bought when I moved to Tokyo.",
+        "mainStory": "When I moved to Tokyo as a working adult, I started watching the anime \"Naruto\" around the time I bought a TV set at a second-hand store that was not in my dormitory.\nI was hooked immediately and bought the comics up to the last volume, but I never got around to Bolt.\nI would like to read them all together someday, but....",
+        "favoriteScene": "My favorite scene is Kakashi vs Zabuza where Kakashi copies Zabuza's moves and finally overtakes him 🤣.\nThat was so cool 😆.",
+        "message": "One of the works that made me think that anime is still interesting even after I became a working adult.",
+        "country": "Japan",
+        "favoriteCharacter": "naruto (Nullis hrysuensis)"
+      },
+      "fr": {
+        "catchphrase": "Naruto venait de commencer sur la télévision d'occasion que j'avais achetée lorsque j'ai déménagé à Tokyo.",
+        "mainStory": "Lorsque j'ai déménagé à Tokyo en tant qu'adulte actif et que j'ai acheté une télévision dans un magasin d'occasion qui ne se trouvait pas dans mon dortoir, l'anime Naruto a commencé et j'ai commencé à le regarder.\nJ'ai été immédiatement accroché et j'ai acheté les bandes dessinées jusqu'au dernier volume, mais je n'ai pas encore eu le temps de lire Bolt.\nJ'aimerais la lire en entier un jour, mais...",
+        "favoriteScene": "Ma scène préférée est celle de Kakashi vs Zabuza, où Kakashi copie les mouvements de Zabuza et finit par le dépasser 🤣.\nC'était insoutenable 😆.",
+        "message": "C'est l'une des œuvres qui m'a fait comprendre que l'animation est toujours intéressante, même si l'on est un adulte actif.",
+        "country": "Japon",
+        "favoriteCharacter": "narcissique"
+      },
+      "ar": {
+        "catchphrase": "كان مسلسل ناروتو قد بدأ للتو على التلفاز المستعمل الذي اشتريته عندما انتقلت إلى طوكيو.",
+        "mainStory": "عندما انتقلت إلى طوكيو عندما كنت بالغاً عاملاً واشتريت تلفازاً من متجر للأشياء المستعملة لم يكن في مسكني، بدأ عرض الأنمي ناروتو وبدأت بمشاهدته.\nلقد تعلقت به على الفور واشتريت القصص المصورة حتى المجلد الأخير، لكنني لم أتمكن من قراءة بولت.\nأود أن أقرأها كلها معًا يومًا ما، لكن...",
+        "favoriteScene": "مشهدي المفضل هو مشهد كاكاشي ضد زابوزا، حيث يقلد كاكاشي حركات زابوزا و يتفوق عليه في النهاية 🤣.\nكان ذلك مخدراً 😆.",
+        "message": "أحد الأعمال التي جعلتني أدرك أن الرسوم المتحركة لا تزال مثيرة للاهتمام، حتى لو كنت بالغاً عاملاً.",
+        "country": "اليابان",
+        "favoriteCharacter": "نرجسي"
+      },
+      "es": {
+        "catchphrase": "Naruto acababa de empezar en el televisor de segunda mano que compré cuando me mudé a Tokio.",
+        "mainStory": "Cuando me mudé a Tokio como adulto trabajador y compré un televisor en una tienda de segunda mano que no estaba en mi residencia, empezó el anime Naruto y empecé a verlo.\nMe enganché enseguida y compré los cómics hasta el último volumen, pero no he llegado a Bolt.\nMe gustaría leerlo todo junto algún día, pero...",
+        "favoriteScene": "Mi escena favorita es la de Kakashi contra Zabuza, en la que Kakashi copia los movimientos de Zabuza y finalmente lo supera 🤣.\nEso fue adormecedor 😆.",
+        "message": "Una de las obras que me hizo darme cuenta de que la animación sigue siendo interesante, aunque seas un adulto que trabaja.",
+        "country": "Japón",
+        "favoriteCharacter": "narcisista"
+      },
+      "pt": {
+        "catchphrase": "Naruto tinha acabado de começar a dar na televisão em segunda mão que comprei quando me mudei para Tóquio.",
+        "mainStory": "Quando me mudei para Tóquio como trabalhador adulto e comprei uma televisão numa loja de segunda mão que não estava no meu dormitório, começou o anime Naruto e eu comecei a vê-lo. Fiquei imediatamente viciado e comprei a banda desenhada até ao último volume.\nFiquei imediatamente viciado e comprei a banda desenhada até ao último volume, mas ainda não cheguei a ler Bolt.\nGostava de a ler toda junta um dia, mas...",
+        "favoriteScene": "A minha cena favorita é Kakashi vs Zabuza, onde Kakashi copia os movimentos de Zabuza e finalmente o ultrapassa 🤣.\nIsso foi entorpecente 😆.",
+        "message": "Uma das obras que me fez perceber que a animação continua a ser interessante, mesmo quando se é um adulto trabalhador.",
+        "country": "Japão",
+        "favoriteCharacter": "narcisista"
+      },
+      "zh": {
+        "catchphrase": "我搬到东京时买的那台二手电视刚开始播放《火影忍者》。",
+        "mainStory": "我成年后搬到东京工作，从二手店买了一台电视机，当时我的宿舍还没有电视机，《火影忍者》这部动画片开播后，我就开始看这部动画片了。\n我立刻被吸引住了，并买了直到最后一卷的漫画，但我还没来得及看《博尔特》。\n我想有一天能把它全部读完，但是...",
+        "favoriteScene": "我最喜欢的场景是卡卡西对扎布扎，卡卡西模仿扎布扎的招式，最后超过了他 🤣。\n真是让人头皮发麻😆。",
+        "message": "其中一部作品让我意识到，即使你是一个工作的成年人，动画仍然很有趣。",
+        "country": "日本",
+        "favoriteCharacter": "自恋者"
+      },
+      "ko": {
+        "catchphrase": "상경해서 산 중고 TV에서 마침 나루토가 시작되고 있었다.",
+        "mainStory": "사회인이 되어 상경하여 기숙사에 없던 TV를 중고가게에서 구입했을 때 애니메이션 '나루토'가 시작되어 보기 시작했습니다.\n바로 빠져서 코믹스를 성인용으로 구입해 마지막 권까지 구입했지만, 볼트는 아직 손이 나가지 않고 있습니다.\n언젠가 한꺼번에 다 읽고 싶다는 생각을 하고 있습니다.",
+        "favoriteScene": "가장 좋아하는 장면은 허수아비 VS 자부자, 허수아비가 자부자의 기술을 따라하다가 결국 추월당하는 장면이에요 🤣!\n그 장면은 정말 무감각해졌어요 😆😆!",
+        "message": "사회인이 되어서도 역시 애니메이션은 재미있다고 생각하게 해준 작품 중 하나",
+        "country": "일본",
+        "favoriteCharacter": "나루토"
+      }
+    }
   }
 ]
