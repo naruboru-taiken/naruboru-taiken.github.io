@@ -1715,5 +1715,177 @@
         "favoriteCharacter": "우리집은 족제비"
       }
     }
+  },
+  {
+    "id": "story-022",
+    "displayName": "Moe",
+    "ageGroup": "10代",
+    "favoriteCharacter": "うずまきボルト、うちはサラダ",
+    "firstSeries": "BORUTO",
+    "firstMedia": "TVアニメ",
+    "catchphrase": "引越し先で偶然つけたテレビに、BORUTO1話が映っていた",
+    "mainStory": "テレ東系列が映らないとある県で生まれ育って今もその県で暮らしてる者です。高校生になる頃に市内で引っ越したんですが、何故か引っ越した先がテレ東系列が映るという事が起きた事が始まり、ある日偶然テレビをつけたらBORUTOアニメ1話が放送されていて面白くて好きになりました！自分は男女CP好きなので自然とボルサラに惹かれ、今では推しです。",
+    "triggerScene": null,
+    "realization": null,
+    "currentRelationship": null,
+    "favoriteScene": "親子の日編が特に好きです！後、舟戸一族編?のボルト達の瞳の描写が綺麗で好きです。",
+    "futureWish": "ミナトとボルトの精神世界でも構いません、2人のやり取りが見たい。",
+    "message": "初めて好きになった少年漫画",
+    "imageUrl": null,
+    "imageCaption": null,
+    "country": "日本",
+    "publishedAt": "2026-04-05",
+    "isSeedContent": false,
+    "translations": {
+      "en": {
+        "catchphrase": "I happened to turn on the TV at my new place and saw the first episode of Boruto.",
+        "mainStory": "I was born and raised in a certain prefecture where there is no TV station and I still live there. One day I happened to turn on the TV and saw the first episode of BORUTO on the air, and I liked it! I like both male and female characters, so I was naturally attracted to Borsara, and now he is my favorite.",
+        "favoriteScene": "I especially like the parent-child day version! I especially like the \"Oyako Oyako no Hi\" (Oyako and Father's Day). I like the beautiful depiction of the eyes of the bolts in the \"Funado Clan\".",
+        "futureWish": "I don't care if it's in Minato and Bolt's mental world, I want to see them interact.",
+        "message": "The first shonen manga I ever liked.",
+        "country": "Japan",
+        "favoriteCharacter": "Uzumaki bolt, ours is a salad."
+      },
+      "fr": {
+        "catchphrase": "La télévision que j'ai allumée par hasard lorsque j'ai emménagé dans une nouvelle maison a diffusé l'épisode 1 de Boruto.",
+        "mainStory": "Je suis né et j'ai grandi dans une certaine préfecture qui ne diffuse pas les séries télétexte, et je vis toujours dans cette préfecture. Un jour, j'ai allumé la télévision et j'ai vu le premier épisode de l'anime BORUTO, qui était intéressant et dont je suis tombée amoureuse ! J'aime le PC homme/femme, alors naturellement j'ai été attirée par Borsara, et maintenant je suis une fan.",
+        "favoriteScene": "J'aime particulièrement l'édition de la journée parents-enfants ! Plus loin, j'aime l'arc du clan Funado ? J'aime la belle représentation des yeux des boulons dans l'édition de la journée parents-enfants.",
+        "futureWish": "Je me fiche que ce soit dans le monde mental de Minato et Bolt, je veux les voir interagir.",
+        "message": "Le premier manga shounen que j'ai aimé.",
+        "country": "Japon",
+        "favoriteCharacter": "Uzumaki bolt, le nôtre est une salade."
+      },
+      "ar": {
+        "catchphrase": "عرض التلفزيون الذي تصادف أن أشغله عندما انتقلت إلى المنزل الحلقة الأولى من مسلسل BORUTO.",
+        "mainStory": "لقد وُلدت وترعرعت في محافظة معينة لا تعرض المسلسلات التليفزيونية، وما زلت أعيش في تلك المحافظة. في أحد الأيام حدث أن شغلت التلفاز وشاهدت الحلقة الأولى من أنمي بوروتو الذي كان ممتعاً وأحببته! أنا أحب الذكور والإناث CP، لذا من الطبيعي أن أنجذب إلى بوروتو بوروتو، والآن أنا من المعجبين به.",
+        "favoriteScene": "يعجبني بشكل خاص إصدار يوم الوالدين والطفل! لاحقاً، يعجبني قوس عشيرة فونادو؟ يعجبني التصوير الجميل لعيون البراغي في",
+        "futureWish": "لا أمانع إذا كان في عالم ميناتو وبولت العقلي، أريد أن أراهما يتفاعلان.",
+        "message": "أول مانغا شونين أحببتها على الإطلاق.",
+        "country": "اليابان",
+        "favoriteCharacter": "أوزوماكي بولت، لدينا سلطة."
+      },
+      "es": {
+        "catchphrase": "El televisor que encendí por casualidad cuando me mudé a una casa nueva mostraba el episodio 1 de Boruto.",
+        "mainStory": "Nací y me crié en cierta prefectura que no emite las series del teletexto, y sigo viviendo en ella. Un día, por casualidad, encendí la televisión y vi el primer episodio del anime BORUTO, que me pareció interesante y me enamoró. Me gusta el CP masculino/femenino, así que naturalmente me sentí atraído por Borsara, y ahora soy fan.",
+        "favoriteScene": "Me gusta especialmente la edición del día de padres e hijos. Más adelante, me gusta el Arco del Clan Funado? Me gusta la bella representación de los ojos de los tornillos en el",
+        "futureWish": "No me importa si es en el mundo mental de Minato y Bolt, quiero verlos interactuar.",
+        "message": "El primer manga shounen que me gustó.",
+        "country": "Japón",
+        "favoriteCharacter": "Perno Uzumaki, lo nuestro es una ensalada."
+      },
+      "pt": {
+        "catchphrase": "A televisão que liguei por acaso quando mudei de casa mostrou o episódio 1 de BORUTO.",
+        "mainStory": "Nasci e cresci numa certa província que não exibe as séries do Teletexto, e ainda vivo nessa província. Um dia, liguei por acaso a televisão e vi o primeiro episódio do anime BORUTO, que era interessante e apaixonei-me por ele! Gosto de CP masculino/feminino, por isso, naturalmente, senti-me atraído por Borsara e agora sou um fã.",
+        "favoriteScene": "Gosto particularmente da edição do dia dos pais e dos filhos! Mais tarde, gosto do Arco do Clã Funado? Gosto da bela representação dos olhos dos parafusos no",
+        "futureWish": "Não me importo que seja no mundo mental de Minato e Bolt, quero vê-los a interagir.",
+        "message": "A primeira manga shounen de que gostei.",
+        "country": "Japão",
+        "favoriteCharacter": "Parafuso Uzumaki, o nosso é uma salada."
+      },
+      "zh": {
+        "catchphrase": "搬到新家后，我偶然打开的电视上播放了《波鲁托》第一集。",
+        "mainStory": "我出生并成长在某个不播放大利市系列动画片的县，我现在仍然住在那个县。有一天，我偶然打开电视，看到了《BORUTO》动画的第一集，觉得很有意思，便爱上了这部动画！我喜欢男女 CP，所以很自然地被 Borsara 所吸引，现在我已经是她的粉丝了。",
+        "favoriteScene": "我特别喜欢亲子日版本！后来，我喜欢 Funado Clan Arc?我喜欢《栓子》中对栓子眼睛的美丽描绘。",
+        "futureWish": "我不介意是在港和博尔特的精神世界里，我想看到他们的互动。",
+        "message": "我喜欢的第一部青春漫画。",
+        "country": "日本",
+        "favoriteCharacter": "乌云栓，我们的是沙拉。"
+      },
+      "ko": {
+        "catchphrase": "이사한 곳에서 우연히 켠 TV에 보루토 1화가 방영되고 있었다.",
+        "mainStory": "텔레토 계열이 방영되지 않는 지방에서 태어나서 자랐고 지금도 그 지방에서 살고 있는 사람입니다. 고등학생이 될 무렵에 시내로 이사를 갔는데, 이사한 곳에 텔레토 계열이 나오는 일이 생겼고, 어느 날 우연히 TV를 틀어보니 보루토 애니메이션 1화가 방영되고 있어서 재미있어서 좋아하게 되었어요! 저는 남녀 CP를 좋아해서 자연스럽게 보루토에 끌렸고, 지금은 추리물입니다.",
+        "favoriteScene": "저는 특히 부모와 자식의 날 편을 좋아합니다! 후, 후나토 일족 편? 의 볼트들의 눈동자 묘사가 아름답고 마음에 듭니다.",
+        "futureWish": "미나토와 볼트의 정신세계에서도 상관없습니다, 두 사람의 교류를 보고 싶습니다.",
+        "message": "처음으로 좋아하게 된 소년만화",
+        "country": "일본",
+        "favoriteCharacter": "우즈마키볼트, 우치하 샐러드"
+      }
+    }
+  },
+  {
+    "id": "story-023",
+    "displayName": "Hana",
+    "ageGroup": "10代",
+    "favoriteCharacter": "うずまきボルト、うちはサラダ、うちはサスケ",
+    "firstSeries": "NARUTO",
+    "firstMedia": "TVアニメ",
+    "catchphrase": "叔父さんと見たナルトが、ずっと私にとって特別な存在になったんだよね",
+    "mainStory": "子どもの頃、8〜9歳くらいのときに、叔父さんがレンタルショップでCDを借りてきて、よくナルトを見てたの。叔父さんがナルト大好きで、その影響で私も一緒に見るようになって、気づいたら私もナルトが大好きになってた🥺🍥\n\n休みの日はいつも「叔父さんの家行きたい！」ってママにお願いして、一緒にナルト見てたのがすごくいい思い出💭💗 それで、ナルトはずっと私にとって特別な存在になったんだよね。\n\nボルトは最初ちょっと不安で、見るの迷ってたんだけど、「ナルト外伝」を読んで、サラダちゃんが自分のママは誰なのか、パパはどこにいるのか悩んでるストーリーがめっちゃ好きで…🥹💔 サラダちゃんのことすごく愛しくなって、それでやっとボルトも見てみようって思えたの✨",
+    "triggerScene": null,
+    "realization": null,
+    "currentRelationship": null,
+    "favoriteScene": "ナルトで一番好きなシーンは、ヒナタがペインからナルトを守ろうとするところ🥺💔\nあのシーン本当に尊敬してる…。ヒナタって普段はすごく優しくて儚い感じなのに、大切な人が危険な時は命をかけてでも守ろうとするのが本当にかっこよくて…😭✨\n\nボルトで好きなシーンは、うちは家族が揃ってる時の全部の瞬間が大好き🖤\nサラダちゃんがサスケを尊敬してるところもすごく好きだし、何よりボルトが「サラダの夢を支える」って約束して、ちゃんと守ろうとするシーンが本当に大好きなの🥹💞\nあのシーン可愛すぎて何回も見返した…ほんとにこの2人尊いすぎる…💘\n\nそれに、Borutoの終盤でサラダちゃんがボルトのために万華鏡写輪眼を開眼したところもやばくて…😭\nずっと辛い思いをしてるボルトを見ていられなくて、サスケに必死にお願いするシーンは鳥肌立ったし、めっちゃ感動した…🥲\n\nサスケって本当にいいお父さんで、最高の師匠だなって思ったし、普通に泣いた😭💔",
+    "futureWish": "イタチがもし生きてて、サスケと一緒に過ごしてたらっていうif世界めっちゃ見たい🥺🖤\n\nサラダちゃんのこと絶対めっちゃ可愛がるおじさんになってそうじゃない？🥹✨\nもう甘やかしまくりで、「サラダ、欲しいものある？」とか言ってそうだし、サラダちゃんも「イタチおじさん大好き！」ってなってそうで尊すぎる…😭💞\n\nサスケがちょっと厳しくしても、イタチが横からフォローしてくれそうだし、うちは家族の空気が今よりもっとあったかくなってた気がするの🥹🫶\n\nサラダちゃんと一緒にお出かけしたり、頭ぽんぽんしてるイタチとか想像するだけで幸せすぎる…🫠💗\nほんとにおじさんイタチのモーメント見せてほしいよね😭✨",
+    "message": "ナルトとボルトを読んでから、私の人生の見方が少し変わった気がする。大切な人の存在にちゃんと気づけるようになったし、憎しみ続けるよりも、許すことの方がずっと優しくて、強いことなんだって思えるようになった。つらいことや傷つくことがあっても、その先にある繋がりとか想いを信じてみようって思えたし、ちゃんと誰かを大切にしたいって心から思えるようになったんだよね🥺✨\nナルトたちみたいに、完璧じゃなくてもいいから、自分なりに誰かを守れる強さを持ちたいし、どんな時でも大事な人のそばにいられる人になりたい。これからもずっと、この作品たちは私の中で特別な存在で、大事なことを思い出させてくれるものなんだと思う🍥🖤",
+    "imageUrl": null,
+    "imageCaption": null,
+    "country": "タイ",
+    "publishedAt": "2026-04-05",
+    "isSeedContent": false,
+    "translations": {
+      "en": {
+        "catchphrase": "The Naruto I saw with my uncle has always been special to me.",
+        "mainStory": "When I was a kid, around 8-9 years old, my uncle rented CDs from the rental store and we used to watch Naruto. My uncle loved Naruto, and because of his influence, I started watching it with him, and before I knew it, I loved Naruto too🥺🍥.\n\nOn my days off, I would always ask my mom, \"I want to go to my uncle's house!\" and we would watch Naruto together 💭💗 So Naruto has always had a special place in my heart.\n\nI was a little nervous about Bolt at first and wasn't sure about watching it, but then I read \"Naruto Gaiden\" and I really liked the story of Sarada-chan wondering who her mom is and where her dad is... 🥹💔💔 I started to really love her, That's how I finally decided to watch Bolt too ✨",
+        "favoriteScene": "My favorite scene in Naruto is when Hinata tries to protect Naruto from Pain 🥺💔.\nI really admire that scene... Hinata is usually so kind and fragile, but when someone she cares about is in danger, she tries to protect them even if it means risking her life, it's really cool 😭✨...\n\nMy favorite scene in Bolt, we love all the moments when the family is together 🖤.\nI also really love the way Salada looks up to Sasuke, and most of all I really love the scene where Bolt promises to \"support Salada's dream\" and tries to keep it 🥹💞.\nThat scene was so cute that I watched it over and over again... really these two are too precious... 💘\n\nAnd the part at the end of Boruto where Sarada-chan opened her kaleidoscopic photographic eye for Bolt was also so bad 😭.\nI couldn't stand to see Boruto in pain for so long and the scene where he desperately asks Sasuke for help gave me goosebumps and I was so moved 🥲....\n\nI thought Sasuke is a really good father and the best mentor I've ever had 😭💔 I cried in general.",
+        "futureWish": "I would love to see an if-world where Itachi is still alive and spends time with Sasuke 🥺🖤.\n\nI'm sure he'd be a very loving uncle to Salad-chan, wouldn't he? 🥹✨\nI'm sure he'd spoil her all over again and say \"Salad, is there anything you want?\" I'm sure he's going to say, \"Salad, do you want anything? I think he's too precious 😭💞.\n\nEven if Sasuke is a little harsh, Itachi will follow him from the side and I feel like our family atmosphere was even warmer than it is now 🥹🫶.\n\nI'm just too happy just imagining the weasel going out with Saladie or popping his head... 🫠💗.\nI really wish you could show me some Uncle Weasel moments 😭✨.",
+        "message": "After reading Naruto and Bolt, I think my perspective on life has changed a bit. I have come to realize that it is much kinder and stronger to forgive than to continue to hate. Even when things get hard or hurtful, I can trust the connection and feelings that lie beyond them, and I can truly believe that I want to take good care of someone 🥺✨.\nI want to have the strength to protect someone in my own way, even if I'm not perfect like Naruto and his friends, and I want to be someone who can be there for the people I care about at any time. I think these works will always have a special place in my heart and remind me of what is important 🍥🖤.",
+        "country": "tai (species of reddish-brown Pacific sea bream, Pagrus major)",
+        "favoriteCharacter": "Uzumaki bolt, Uchiwa salad, Uchiwa Sasuke"
+      },
+      "fr": {
+        "catchphrase": "Le Naruto que j'ai vu avec mon oncle a toujours été spécial pour moi.",
+        "mainStory": "Quand j'étais enfant, vers huit ou neuf ans, mon oncle louait des CD au magasin de location et nous avions l'habitude de regarder Naruto. Mon oncle aimait Naruto, et grâce à son influence, j'ai commencé à le regarder avec lui, et j'ai réalisé que j'aimais Naruto aussi🥺🍥.\n\nPendant les vacances, je demandais toujours à ma mère : \"Je veux aller chez mon oncle !\" et je demandais à ma mère d'aller regarder Naruto avec elle 💭💗💗 Donc Naruto a toujours été spécial pour moi.\n\nJ'étais un peu nerveuse à propos de Bolt au début et je n'étais pas sûre de le regarder, mais ensuite j'ai lu Naruto Gaiden et j'ai vraiment aimé l'histoire de Sarada-chan qui se demandait qui était sa maman et où était son papa 🥹💔💔 et j'ai commencé à l'aimer beaucoup, C'est comme ça que j'ai finalement décidé de regarder Bolt aussi ✨.",
+        "favoriteScene": "Ma scène préférée dans Naruto est celle où Hinata essaie de protéger Naruto de Pain 🥺💔.\nJ'admire vraiment cette scène... Hinata est d'habitude si gentille et fragile, mais quand quelqu'un à qui elle tient est en danger, elle essaie de le protéger quitte à risquer sa vie, ce qui est vraiment cool 😭✨.\n\nMa scène préférée dans Bolt, on adore tous les moments où la famille est réunie 🖤.\nJ'aime aussi beaucoup la façon dont Salada admire Sasuke, et surtout j'aime beaucoup la scène où Bolt promet de soutenir le rêve de Salada et essaie de le garder 🥹💞.\nCette scène était tellement mignonne que je l'ai regardée encore et encore... vraiment ces deux là sont trop précieux... 💘\n\nEt la partie à la fin de Boruto où Sarada-chan a ouvert son kaléidoscope sharanigans pour Bolt était aussi si mauvaise 😭.\nLa scène où elle ne supportait pas de voir Boruto en difficulté depuis si longtemps et demandait désespérément de l'aide à Sasuke m'a donné la chair de poule et était vraiment émouvante... 🥲.\n\nJe me suis dit que Sasuke est vraiment un bon père et le meilleur maître 😭💔 et j'ai pleuré en général 😭💔.",
+        "futureWish": "J'aimerais bien voir un if-world où Itachi est vivant et passe du temps avec Sasuke 🥺🖤.\n\nJe suis sûr qu'il serait un oncle très aimant pour Salad-chan, n'est-ce pas ? 🥹✨\nIl la gâte déjà tellement, il va être comme, \"Salad, il y a quelque chose que tu veux ?\" Et Salad-chan sera comme \"Je t'aime, Oncle Weasel !\" C'est trop précieux 😭💞.\n\nMême si Sasuke est un peu dur, Itachi semble le suivre sur le côté et j'ai l'impression que notre atmosphère familiale était encore plus chaleureuse qu'elle ne l'est maintenant 🥹🫶.\n\nJe suis trop heureuse rien qu'en imaginant la belette sortir avec Salada et lui faire sauter la tête 🫠💗... 🫠💗💗.\nJ'aimerais vraiment que vous me montriez des moments de l'Oncle Fouine 😭✨.",
+        "message": "Depuis que j'ai lu Naruto et Bolt, j'ai l'impression que mon point de vue sur la vie a un peu changé. Je suis devenue plus consciente de l'existence des gens que j'aime et j'ai réalisé que le pardon est une chose bien plus douce et forte que de continuer à haïr. Même quand les choses sont difficiles ou blessantes, je peux maintenant croire aux liens et aux sentiments qui se trouvent au-delà, et je peux vraiment croire que je veux prendre soin de quelqu'un 🥺✨.\nJe veux avoir la force de protéger quelqu'un à ma façon, même si je ne suis pas parfait comme Naruto et ses amis, et je veux être quelqu'un qui peut être là pour les gens auxquels je tiens à tout moment. Je pense qu'ils auront toujours une place spéciale dans mon cœur et qu'ils me rappelleront ce qui est important 🍥🖤.",
+        "country": "Thaïlande",
+        "favoriteCharacter": "Uzumaki bolt, Uchiha salad, Uchiha sasuke"
+      },
+      "ar": {
+        "catchphrase": "لطالما كان ناروتو الذي رأيته مع عمي مميزاً بالنسبة لي.",
+        "mainStory": "عندما كنت طفلاً، عندما كنت في الثامنة أو التاسعة من عمري تقريباً، كان عمي يستأجر أقراصاً مدمجة من متجر تأجير الأقراص المدمجة وكنا نشاهد ناروتو. كان عمي يحب ناروتو، وبسبب تأثيره بدأت أشاهده معه، وأدركت أنني أحب ناروتو أيضاً🥺🍥🍥.\n\nفي العطل، كنت دائماً ما أطلب من أمي \"أريد أن أذهب إلى منزل خالي!\" و كنت أطلب من أمي أن أذهب و أشاهد ناروتو معها 💭💗💗 لذا كان ناروتو دائماً مميزاً بالنسبة لي.\n\nكنت متوترة قليلاً بشأن بولت في البداية ولم أكن متأكدة من مشاهدته، ولكن بعد ذلك قرأت ناروتو جايدن وأعجبتني قصة سارادا تشان التي تتساءل عن أمها وأين والدها ... 🥹🥹💔💔💔💔💙🥹💙 بدأت أحب سارادا تشان كثيراً, هكذا قررت أخيرا أن أشاهد بولت أيضا ✨✨.",
+        "favoriteScene": "مشهدي المفضل في ناروتو هو عندما حاولت هيناتا حماية ناروتو من الألم 🥺🥺🥺🥺.\nأنا حقاً معجب بهذا المشهد... هيناتا عادة ما تكون لطيفة و هشة جداً، لكن عندما يكون شخص ما تهتم لأمره في خطر، تحاول حمايته حتى لو كان ذلك يعني المخاطرة بحياتها، و هذا رائع حقاً 😭 ✨.\n\nمشهدي المفضل في بولت، نحب كل اللحظات التي تكون فيها العائلة معاً 🖤.\nأنا أيضاً أحب حقاً الطريقة التي تتطلع بها سالادا إلى ساسوكي، و الأهم من ذلك كله أحببت حقاً المشهد الذي يعد فيه بولت بدعم حلم سالادا و يحاول الحفاظ عليه 🥹💞💞.\nكان ذلك المشهد لطيفاً جداً شاهدته مراراً وتكراراً... حقاً هذان الاثنان رائعان جداً... 💘\n\nو الجزء الذي في نهاية بوروتو عندما فتحت سارادا-تشان شاليدكال شارانيجانز لبولت كان سيئاً جداً 😭.\nالمشهد الذي لم تحتمل فيه رؤية بوروتو يمر بوقت عصيب لفترة طويلة و تطلب المساعدة من ساسوكي بيأس، أصابني بالقشعريرة و كان مؤثراً جداً 🥲... 🥲...\n\nاعتقدت أن ساسوكي أب جيد حقاً و أفضل معلم 😭💔 💔 و بكيت بشكل عام 😭 💔.",
+        "futureWish": "أود أن أرى عالماً يكون فيه إيتاشي على قيد الحياة ويقضي بعض الوقت مع ساسوكي 🥺🖤🖤.\n\nأنا متأكد أنه سيكون عمًا محبًا جدًا لـ سالاد-تشان، أليس كذلك؟ 🥹✨\nإنه بالفعل يدللها كثيراً، سيقول لها: \"سلطة، هل هناك أي شيء تريدينه؟\" وسلطة تشان ستكون مثل \"أحبك يا عمي ابن عرس!\" إنه ثمين جدا 😭💞💞.\n\nحتى لو كان ساسوكي قاسيًا بعض الشيء، يبدو أن إيتاشي يتبعه من الجانب و أشعر أن جو عائلتنا كان أكثر دفئًا مما هو عليه الآن 🥹💖💖.\n\nأنا فقط سعيد جداً لمجرد تخيل خروج إبن عرس مع سالادا و فرقعة رأسها 💗💗💗... 💗💗💗.\nأتمنى حقًا أن تريني بعض لحظات العم ابن عرس 😭 ✨.",
+        "message": "منذ قراءة ناروتو وبولت، أشعر أن منظوري للحياة قد تغير قليلاً. لقد أصبحت أكثر وعيًا بوجود الأشخاص الذين أحبهم، وأدركت أن المسامحة شيء ألطف وأقوى بكثير من الاستمرار في الكراهية. حتى عندما تكون الأمور صعبة أو مؤلمة، يمكنني الآن أن أؤمن بالتواصل والمشاعر التي تكمن وراءها، ويمكنني أن أؤمن حقًا بأنني أريد أن أعتني بشخص ما 🥺✨.\nأريد أن أمتلك القوة لحماية شخص ما بطريقتي الخاصة، حتى لو لم أكن مثاليًا مثل ناروتو وأصدقائه، وأريد أن أكون شخصًا يمكن أن أكون موجودًا للأشخاص الذين أهتم بهم في أي وقت. أعتقد أنهم سيحظون دائماً بمكانة خاصة في قلبي و يذكرونني بما هو مهم 🍥🖤🖤.",
+        "country": "تايلاند",
+        "favoriteCharacter": "أوزوماكي بولت، أوتشيها سلطة، أوتشيها ساسوكي"
+      },
+      "es": {
+        "catchphrase": "El Naruto que vi con mi tío siempre ha sido especial para mí.",
+        "mainStory": "De pequeño, cuando tenía unos ocho o nueve años, mi tío alquilaba CD en la tienda de alquiler y solíamos ver Naruto. A mi tío le encantaba Naruto y, por su influencia, empecé a verlo con él, y me di cuenta de que a mí también me encantaba Naruto🥺🍥.\n\nEn vacaciones, siempre le pedía a mi mamá: \"¡Quiero ir a la casa de mi tío!\". y le pedía a mi mamá ir a ver Naruto con ella 💭💗 Así que Naruto siempre ha sido especial para mí.\n\nAl principio Bolt me ponía un poco nerviosa y no estaba segura de verlo, pero luego leí Naruto Gaiden y me gustó mucho la historia de Sarada-chan preguntándose quién era su mamá y dónde estaba su papá... 🥹💔💔 Empecé a querer mucho a Sarada-chan, Así es como finalmente decidí ver Bolt también ✨.",
+        "favoriteScene": "Mi escena favorita de Naruto es cuando Hinata intenta proteger a Naruto de Pain 🥺💔.\nRealmente admiro esa escena.... Hinata suele ser tan amable y frágil, pero cuando alguien que le importa está en peligro, trata de protegerlo aunque eso signifique arriesgar su vida, lo cual es realmente genial 😭✨....\n\nMi escena favorita de Bolt, nos encantan todos los momentos en los que la familia está junta 🖤.\nTambién me gusta mucho como Salada admira a Sasuke, y sobre todo me encanta mucho la escena en la que Bolt promete apoyar el sueño de Salada e intenta cumplirlo 🥹💞.\nEsa escena fue tan tierna que la vi una y otra vez... de verdad que estos dos son demasiado preciosos... 💘\n\nY la parte del final de Boruto donde Salad-chan abrió sus sharanigans de caleidoscopio para Bolt también fue tan mala 😭.\nLa escena en la que no soportaba ver a Boruto pasándolo mal durante tanto tiempo y pidiendo ayuda desesperadamente a Sasuke me puso la piel de gallina y fue realmente conmovedora 🥲....\n\nSasuke me pareció muy buen padre y el mejor maestro 😭💔 y lloré en general 😭💔.",
+        "futureWish": "Me encantaría ver un mundo if en el que Itachi esté vivo y pase tiempo con Sasuke 🥺🖤.\n\nSeguro que sería un tío muy cariñoso para Salad-chan, ¿no? 🥹✨\nYa la está mimando tanto que le dirá: \"Ensalada, ¿quieres algo?\". Y Salad-chan le dirá: \"¡Te quiero, tío Comadreja!\". Es demasiado precioso 😭💞.\n\nAunque Sasuke sea un poco duro, Itachi parece seguirle de cerca y siento que nuestro ambiente familiar era aún más cálido de lo que es ahora 🥹🫶.\n\nSoy demasiado feliz solo de imaginarme a la comadreja saliendo con Salada y asomando la cabeza 🫠💗💗.\nDe verdad que me gustaría que me enseñaras algún momento tío Comadreja 😭✨.",
+        "message": "Desde que leí Naruto y Bolt, siento que mi perspectiva de la vida ha cambiado un poco. Me he vuelto más consciente de la existencia de las personas a las que quiero, y me he dado cuenta de que perdonar es algo mucho más amable y fuerte que seguir odiando. Incluso cuando las cosas son duras o hirientes, ahora puedo creer en las conexiones y sentimientos que hay más allá de ellas, y puedo creer de verdad que quiero cuidar de alguien 🥺✨.\nQuiero tener la fuerza para proteger a alguien a mi manera, aunque no sea perfecta como Naruto y sus amigos, y quiero ser alguien que pueda estar ahí para las personas que me importan en cualquier momento. Creo que siempre tendrán un lugar especial en mi corazón y me recordarán lo que es importante 🍥🖤.",
+        "country": "Tailandia",
+        "favoriteCharacter": "Uzumaki bolt, Uchiha salad, Uchiha sasuke"
+      },
+      "pt": {
+        "catchphrase": "O Naruto que vi com o meu tio sempre foi especial para mim.",
+        "mainStory": "Quando eu era criança, quando tinha uns oito ou nove anos, meu tio alugava CDs na locadora e a gente costumava assistir Naruto. O meu tio adorava Naruto, e por influência dele, comecei a ver com ele, e apercebi-me que também adorava Naruto🥺🍥.\n\nNas férias, eu pedia sempre à minha mãe: \"Quero ir a casa do meu tio!\" e pedia à minha mãe para ir ver Naruto com ela 💭💗 Por isso Naruto sempre foi especial para mim.\n\nNo início, eu estava um pouco nervosa com Bolt e não tinha certeza sobre assisti-lo, mas depois eu li Naruto Gaiden e gostei muito da história de Sarada-chan se perguntando quem era sua mãe e onde estava seu pai... 🥹💔💔 Comecei a gostar muito de Sarada-chan, Foi assim que finalmente decidi assistir Bolt também ✨.",
+        "favoriteScene": "Minha cena favorita em Naruto é quando Hinata tenta proteger Naruto de Pain 🥺💔.\nEu realmente admiro essa cena.... Hinata geralmente é tão gentil e frágil, mas quando alguém com quem ela se importa está em perigo, ela tenta protegê-lo mesmo que isso signifique arriscar sua vida, o que é muito legal 😭✨.\n\nA minha cena favorita em Bolt, adoramos todos os momentos em que a família está junta 🖤.\nEu também amo muito a forma como Salada admira Sasuke, e principalmente amo muito a cena em que Bolt promete apoiar o sonho de Salada e tenta cumprir 🥹💞.\nEssa cena foi tão fofa que eu assisti várias vezes... realmente esses dois são preciosos demais... 💘\n\nE a parte no final do Boruto em que a Sarada-chan abriu os seus sharanigans de caleidoscópio para o Bolt também foi tão má 😭.\nA cena em que ela não aguentou ver o Boruto a passar mal durante tanto tempo e a pedir desesperadamente ajuda ao Sasuke deu-me arrepios e foi mesmo comovente... 🥲...\n\nAchei que o Sasuke é um pai muito bom e o melhor mestre 😭💔 e chorei no geral 😭💔.",
+        "futureWish": "Eu adoraria ver um mundo if onde Itachi está vivo e passa um tempo com Sasuke 🥺🖤.\n\nTenho certeza que ele seria um tio muito amoroso para Salad-chan, não é mesmo? 🥹✨\nEle já a está a mimar tanto, que vai ser do tipo: \"Salada, há alguma coisa que queiras?\" E a Salad-chan vai dizer: \"Adoro-te, tio Weasel!\" É demasiado precioso 😭💞.\n\nMesmo que Sasuke seja um pouco duro, Itachi parece segui-lo de lado e eu sinto que nossa atmosfera familiar era ainda mais quente do que é agora 🥹🫶.\n\nFico feliz demais só de imaginar a doninha saindo com o Salada e estourando a cabeça 🫠💗... 🫠💗.\nGostava mesmo que me mostrassem alguns momentos do tio Doninha 😭✨.",
+        "message": "Desde que li Naruto e Bolt, sinto que a minha perspetiva de vida mudou um pouco. Tornei-me mais consciente da existência das pessoas que amo e apercebi-me de que o perdão é uma coisa muito mais gentil e forte do que continuar a odiar. Mesmo quando as coisas são difíceis ou magoam, agora posso acreditar nas ligações e sentimentos que estão para além delas, e posso acreditar verdadeiramente que quero cuidar de alguém 🥺✨.\nEu quero ter a força para proteger alguém do meu jeito, mesmo que eu não seja perfeita como Naruto e seus amigos, e eu quero ser alguém que pode estar lá para as pessoas que eu gosto a qualquer momento. Acho que eles sempre terão um lugar especial no meu coração e me lembrarão do que é importante 🍥🖤.",
+        "country": "Tailândia",
+        "favoriteCharacter": "Parafuso Uzumaki, salada Uchiha, Uchiha Sasuke"
+      },
+      "zh": {
+        "catchphrase": "我和叔叔一起看过的《火影忍者》对我来说一直很特别。",
+        "mainStory": "在我小时候，大概八九岁的时候，我叔叔从租碟店租来 CD，我们经常一起看《火影忍者》。我叔叔很喜欢《火影忍者》，受他的影响，我开始和他一起看，后来我发现自己也喜欢《火影忍者》在线观看(🥺ω🍥)。\n\n放假时，我总是问妈妈：\"我想去叔叔家！\"所以《火影忍者》对我来说一直很特别。\n\n一开始我对《博尔特》有点紧张，不确定要不要看，但后来我看了《火影忍者外传》，我非常喜欢萨拉达子想知道她妈妈是谁，她爸爸在哪里的故事🥹💔💔，我开始非常喜欢她、就这样，我最终决定也看《閃電》✨。",
+        "favoriteScene": "火影忍者》中我最喜欢的场景是雏田试图保护鸣人免受痛苦🥺💔。\n我真的很佩服那一幕...雏田平时是那么善良和脆弱，但当她在乎的人有危险时，她会想方设法保护他们，即使这意味着要冒生命危险，这真的很酷😭✨。\n\n博尔特》中我最喜欢的场景，我们喜欢一家人在一起的时刻🖤。\n我也非常喜欢萨拉达仰望佐助的样子，最重要的是，我非常喜欢博尔特承诺支持萨拉达的梦想并努力实现梦想的场景🥹💞。\n那一幕太可爱了，我看了一遍又一遍......真的，这两个人太珍贵了...... 💘。\n\n还有《波鲁托》最后沙拉子为博尔特打开万花筒的那段也很糟糕😭。\n她不忍心看到博人那么辛苦，拼命向佐助求助的那一幕，让我起了一身鸡皮疙瘩，真的很感动...... 🥲......\n\n我觉得佐助真是个好父亲，是最好的师傅😭💔，我哭了一般😭💔。",
+        "futureWish": "我很想看到一个 \"如果世界\"，伊达还活着，并且和佐助在一起🥺🖤。\n\n我相信他会是一个非常疼爱沙拉子的叔叔，不是吗？🥹✨\n他已经把她宠坏了，他会说：\"沙拉，你想要什么吗？\"沙拉就会说 \"我爱你，黄鼠狼叔叔！\"太珍贵了😭💞。\n\n虽然佐助有点严厉，但伊藤似乎也从侧面跟着他，我感觉我们家的气氛比现在还要温暖🥹。\n\n想象着黄鼠狼和沙拉达一起出门，爆头的样子，我就觉得太幸福了🫠💗......🫠💗。\n我真希望你能给我看一些黄鼠狼叔叔的瞬间😭✨。",
+        "message": "自从读了《火影忍者》和《博尔特》，我觉得自己的人生观发生了一些变化。我更加意识到我所爱的人的存在，我也意识到宽恕比继续憎恨要仁慈和强大得多。即使遇到困难或伤害，我现在也能相信事情之外的联系和感情，我也能真正相信我想要照顾一个人🥺✨。\n我想拥有用自己的方式保护一个人的力量，即使我不像鸣人和他的朋友们那样完美，我也想成为一个可以随时陪伴在我在乎的人身边的人。我想他们会一直在我心中占据特殊的位置，提醒我什么才是最重要的🍥🖤。",
+        "country": "泰国",
+        "favoriteCharacter": "宇智波斑, 宇智波沙拉, 宇智波佐助"
+      },
+      "ko": {
+        "catchphrase": "삼촌과 함께 본 나루토는 나에게 특별한 존재가 되어버렸어요.",
+        "mainStory": "어렸을 때 8~9살 때 삼촌이 대여점에서 CD를 빌려와서 나루토를 자주 봤어요. 삼촌이 나루토를 좋아하셔서 그 영향으로 저도 같이 보게 되었고, 어느새 저도 나루토를 좋아하게 되었어요🥺🍥🥺🍥\n\n쉬는 날에는 항상 \"삼촌네 집에 가고 싶어!\" 라고 엄마에게 부탁해서 함께 나루토를 봤던 게 정말 좋은 추억💭💗 그래서 나루토는 계속 나에게 특별한 존재가 되었지.\n\n보루토는 처음엔 조금 불안해서 보기를 망설였는데, '나루토 외전'을 읽고 샐러드 양이 자신의 엄마가 누구인지, 아빠는 어디에 있는지 고민하는 스토리가 너무 좋아서...🥹💔 샐러드 양이 너무 사랑스러워졌어요, 그래서 드디어 볼트도 보고 싶다는 생각이 들었어 ✨✨...",
+        "favoriteScene": "나루토에서 가장 좋아하는 장면은 히나타가 페인으로부터 나루토를 지키려고 하는 장면🥺💔💔!\n그 장면이 정말 존경스러워요.... 히나타는 평소에는 굉장히 상냥하고 여린 느낌인데, 소중한 사람이 위험에 처했을 때 목숨을 걸고라도 지키려고 하는 모습이 정말 멋져요...😭✨....\n\n볼트에서 가장 좋아하는 장면은 우리 가족들이 다 모였을 때의 모든 순간을 좋아해요 🖤🖤 ....\n샐러드짱이 사스케를 존경하는 모습도 너무 좋고, 무엇보다도 볼트가 '샐러드의 꿈을 지켜주겠다'고 약속하고 제대로 지키려고 하는 장면이 정말 좋아🥹💞\n그 장면이 너무 귀여워서 몇 번이나 다시 봤어... 정말 이 둘이 너무 귀엽다... 💘💘💘💘\n\n\n계속 괴로워하는 보루토를 보고 있을 수 없어서 사스케에게 간절히 부탁하는 장면은 소름이 돋고 정말 감동적이었어...🥲\n\n사스케는 정말 좋은 아빠였고, 최고의 스승이라는 생각이 들었고, 그냥 울었어😭💔😭💔",
+        "futureWish": "이타치가 만약 살아서 사스케와 함께 지내고 있었다면 하는 IF 세계가 정말 보고 싶어요🥺🖤.\n\n샐러드짱을 엄청나게 귀여워하는 삼촌이 될 것 같지 않나요? 🥹✨\n벌써부터 애지중지하며 \"샐러드, 갖고 싶은 거 있어?\" 라고 말하는 것 같고, 샐러드도 \"족제비 아저씨 사랑해!\" 라고 할 것 같아서 너무 귀엽다... 😭💞💞\n\n사스케가 조금 엄격해도 족제비가 옆에서 따라와 줄 것 같고, 우리 집은 가족 분위기가 지금보다 더 따뜻해졌을 것 같아🥹🫶🥹🫶\n\n샐러드와 함께 외출하거나, 머리 뽀뽀뽀하고 있는 족제비를 상상하는 것만으로도 너무 행복해...🫠💗\n정말 아저씨 족제비의 순간을 보여줬으면 좋겠어 😭✨✨.",
+        "message": "나루토와 볼트를 읽고 나서 내 인생관이 조금 달라진 것 같다. 소중한 사람의 존재를 제대로 알아차리게 되었고, 계속 미워하는 것보다 용서하는 것이 훨씬 더 부드럽고 강한 일이라는 것을 알게 되었다. 힘들고 상처받는 일이 있어도 그 너머에 있는 인연이나 마음을 믿어보자고 생각하게 되었고, 누군가를 소중히 여기고 싶다고 진심으로 생각하게 되었어요 🥺✨.\n나루토들처럼 완벽하지 않아도 괜찮으니까 나답게 누군가를 지킬 수 있는 힘을 갖고 싶고, 어떤 상황에서도 소중한 사람 곁에 있을 수 있는 사람이 되고 싶어요. 앞으로도 계속 이 작품들은 내 안에서 특별한 존재로, 소중한 것을 일깨워주는 존재가 될 것 같아요🍥🖤.",
+        "country": "태국",
+        "favoriteCharacter": "우즈마키 볼트, 우치하 샐러드, 우치하 사스케"
+      }
+    }
   }
 ]
