@@ -1966,5 +1966,91 @@
         "favoriteCharacter": "우즈마키 볼트, 케이크키 제비꽃"
       }
     }
+  },
+  {
+    "id": "story-025",
+    "displayName": "千",
+    "ageGroup": "10代",
+    "favoriteCharacter": "うずまきナルト・日向（うずまき）ヒナタ・うずまきボルト・うずまきヒマワリ",
+    "firstSeries": "NARUTO",
+    "firstMedia": "漫画（連載・単行本）",
+    "catchphrase": "中忍試験で泣いてハマって、今もVジャンプで毎月追っている",
+    "mainStory": "本屋さんで単行本を見かけたのがNARUTOとの出会いでした。当時クラスメイトが話題にしていたことを思い出して、読んでみようかなと思ったのがきっかけです。中忍試験の、特にネジとヒナタ、我愛羅とリーの戦いで泣いてハマりました。私だけでなく、家族もNARUTOが好きで、父と兄弟と一緒に単行本を購入し続け、家族で楽しみました。最終回手前からはジャンプも購入して、リアルタイムで最終回を味わえて大興奮でした！最終回後もNARUTO展、THE LAST、BORUTOと展開を楽しみながら、今はBORUTOをVジャンプで毎月追っています。今でもコンテンツが続きNARUTO・BORUTOを楽しめる状況で、本当にありがたいです。これからも楽しみたいです……！！",
+    "triggerScene": null,
+    "realization": null,
+    "currentRelationship": null,
+    "favoriteScene": "たくさんあって選べないほどですが、今選ぶとしたら、ナルトとヒナタの第98話「誇り高き失敗者!!」が特に好きです。\n実はほぼナルトとヒナタの話で、一話まるまる使って二人の交流を描いてるところがとても印象的でした。\n上手くいかないことがあっても、それでも頑張っているナルトの本質と強さは、最初から最後までずっと作品の根底に流れているものだと思います。\nナルトを励ますヒナタの言葉が大好きです。当時思春期だった私も励まされました。ナルトが弱音を吐ける同世代の相手がヒナタというのも好きです。\nヒナタは早くからナルトの強さを認めている人で、ここで彼のある意味での弱さも知るけれど、それを含めて強い人だと思っている。そんなヒナタだから、ナルトは弱音を吐けたし、ヒナタは受け止められたんだと思います。\nナルトはその頑張りと笑顔で、ヒナタに自分を変えたいと思わせるほどの影響を与えていて、ヒナタもまた中忍試験での頑張りや、誇り高き失敗者のナルトへの励ましでナルトに影響を与えているというところもとても好きです。",
+    "futureWish": "BORUTOの映画をまた観たいですね。次世代の活躍を大スクリーンで！あとはナルトとヒナタの関係やうずまき家族を掘り下げたエピソードも、もっと読んでみたいですね。",
+    "message": "本当の強さを学べた道しるべ",
+    "imageUrl": null,
+    "imageCaption": null,
+    "country": "日本",
+    "publishedAt": "2026-04-05",
+    "isSeedContent": false,
+    "translations": {
+      "en": {
+        "catchphrase": "I cried during the chunin exams, got hooked, and still follow it every month on V-Jump.",
+        "mainStory": "My first encounter with NARUTO was when I saw a book in a bookstore. I remembered that my classmates were talking about it at the time and thought I should read it. I cried and got hooked on the chuunin exams, especially the battles between Neji and Hinata, and Gaoira and Lee. Not only me, but my family also liked Naruto, and I continued to buy the book with my father and siblings, and we enjoyed it as a family. I was so excited to be able to experience the final episode in real time, that I even bought Jump just before the final episode! After the last episode, I continued to enjoy the development of NARUTO Exhibition, THE LAST, and BORUTO, and now I follow BORUTO every month in V Jump. I am so grateful that I am still in a situation where I can continue to enjoy NARUTO and BORUTO with continued content. I hope to continue to enjoy it. ......!",
+        "favoriteScene": "There are so many to choose from, but if I had to choose now, I would say that Naruto and Hinata's episode 98, \"The Proud Failure! is my favorite.\nIt is actually almost entirely about Naruto and Hinata, and I was very impressed with the way the entire episode depicts their interaction.\nI think the essence and strength of Naruto, who still tries his best even when things don't go well, is something that runs through the foundation of the work from the beginning to the end.\nI love Hinata's words of encouragement to Naruto. I was an adolescent at the time and was also encouraged. I also like the fact that Hinata is the one person of his generation to whom Naruto can express his feelings of weakness.\nHinata is someone who recognizes Naruto's strength from early on, and here we learn that he is also weak in a way, but I think he is a strong person including that. Because he is such a Hinata, Naruto was able to be vulnerable and Hinata was able to accept it.\nI also love the fact that Naruto's hard work and his smile have influenced Hinata enough to make her want to change herself, and Hinata has also influenced Naruto through her hard work in the chunin exams and her encouragement to the proud and failed Naruto.",
+        "futureWish": "I would love to see another BORUTO movie. The next generation's exploits on the big screen! I would also like to read more episodes that delve into the relationship between Naruto and Hinata and the Uzumaki family.",
+        "message": "A roadmap to learn true strength.",
+        "country": "Japan",
+        "favoriteCharacter": "Uzumaki Naruto, Hinata Hinata, Uzumaki Bolt, Uzumaki Himawari"
+      },
+      "fr": {
+        "catchphrase": "J'ai pleuré pendant les examens chunin, je suis devenu accro et je le suis encore chaque mois sur V Jump.",
+        "mainStory": "Ma première rencontre avec NARUTO s'est faite lorsque j'ai vu un livre dans une librairie. Je me suis souvenu que mes camarades de classe en parlaient à l'époque et j'ai pensé que je devais le lire. J'ai pleuré et je suis devenu accro aux examens chunin, en particulier aux batailles entre Neji et Hinata et Gaoira et Lee. Non seulement moi, mais ma famille aussi aimait Naruto, alors j'ai continué à acheter le livre avec mon père et mes frères et sœurs et nous l'avons apprécié en famille. Avant l'épisode final, j'ai également acheté Jump et j'étais très excité de pouvoir vivre l'épisode final en temps réel ! Après l'épisode final, j'ai continué à apprécier le développement de NARUTO Exhibition, THE LAST et BORUTO, et maintenant je suis BORUTO tous les mois dans V Jump. Je suis vraiment reconnaissant que le contenu se poursuive et que je puisse encore apprécier NARUTO et BORUTO. Je veux continuer à en profiter. ...... !",
+        "favoriteScene": "Il y en a tellement qu'il est difficile de choisir, mais si je devais choisir maintenant, l'épisode 98 de Naruto et Hinata, \" Le fier échec \", est mon préféré. est mon préféré.\nIl est en fait presque entièrement consacré à Naruto et Hinata, et j'ai été très impressionné par le fait qu'il utilise un épisode entier pour dépeindre leur interaction.\nL'essence et la force de Naruto, qui fait de son mieux même quand les choses ne vont pas bien, est quelque chose qui a traversé les fondations de l'œuvre du début à la fin.\nJ'adore les mots d'encouragement de Hinata à l'égard de Naruto. J'étais adolescent à l'époque et ils m'ont encouragé moi aussi. J'aime aussi le fait que Hinata soit la personne de sa génération à qui Naruto peut dire ce qu'il pense en toute faiblesse.\nHinata est quelqu'un qui reconnaît la force de Naruto dès le début, et ici nous apprenons sa faiblesse d'une certaine manière, mais je pense que c'est une personne forte malgré cela. C'est parce que Hinata est comme ça que Naruto a pu être vulnérable et que Hinata a pu l'accepter.\nJ'aime aussi le fait que Naruto, avec son travail acharné et son sourire, influence Hinata à vouloir changer elle-même, et Hinata influence aussi Naruto avec son travail acharné lors des examens chunin et ses encouragements à Naruto, qui était fier et avait échoué.",
+        "futureWish": "J'aimerais beaucoup voir un autre film sur BORUTO. Les exploits de la prochaine génération sur grand écran ! J'aimerais aussi lire plus d'épisodes qui approfondissent la relation entre Naruto et Hinata et la famille Uzumaki.",
+        "message": "Des points de repère où l'on peut apprendre à être vraiment fort.",
+        "country": "Japon",
+        "favoriteCharacter": "Uzumaki Naruto, Hinata (Uzumaki) Hinata, Uzumaki Bolt, Uzumaki Himawari"
+      },
+      "ar": {
+        "catchphrase": "بكيت أثناء امتحانات الشونين وتعلقت به وما زلت أتابعه كل شهر على V Jump.",
+        "mainStory": "كان أول لقاء لي مع NARUTO عندما رأيت كتابًا في إحدى المكتبات. تذكرت أن زملائي في الفصل كانوا يتحدثون عنه في ذلك الوقت واعتقدت أنه يجب أن أقرأه. بكيت وتعلقت بامتحانات الشونين، وخاصة المعارك بين نيجي وهيناتا وغاويرا ولي. ليس أنا فقط، ولكن عائلتي أيضًا أحبت ناروتو، لذا واصلت شراء الكتاب مع والدي وإخوتي واستمتعنا به كعائلة. منذ ما قبل الحلقة الأخيرة، اشتريت أيضًا مسلسل Jump وكنت متحمسًا جدًا لأتمكن من تجربة الحلقة الأخيرة في الوقت الحقيقي! بعد الحلقة الأخيرة، واصلت الاستمتاع بتطوير معرض NARUTO و THE LAST و BORUTO، والآن أتابع BORUTO كل شهر في V Jump. أنا ممتن حقًا لأن المحتوى لا يزال مستمرًا وما زلت قادرًا على الاستمتاع بـ NARUTO و BORUTO. أريد أن أستمر في الاستمتاع بها. ......!",
+        "favoriteScene": "هناك الكثير منها لدرجة أنه من الصعب الاختيار، ولكن إذا كان عليّ الاختيار الآن، فإن حلقة ناروتو وهيناتا 98، \"الفاشل الفخور!\" هي المفضلة لدي.\nإنها في الواقع تدور بالكامل تقريبًا حول ناروتو وهيناتا، وقد أعجبتني حقيقة أنها تستغل حلقة كاملة لتصوير تفاعلهما.\nجوهر وقوة ناروتو، الذي لا يزال يبذل قصارى جهده حتى عندما لا تسير الأمور على ما يرام، هو شيء يسري في أساس العمل من البداية إلى النهاية.\nأحب كلمات هيناتا المشجعة لناروتو. كنت مراهقاً في ذلك الوقت وشجعتني أيضاً. أحب أيضاً حقيقة أن هيناتا هي الشخص الذي يستطيع ناروتو أن يتحدث إليه في ضعفه.\nهيناتا هي الشخص الذي يدرك قوة ناروتو منذ البداية، وهنا نتعرف على ضعفه بطريقة ما، ولكنني أعتقد أنه شخص قوي بما في ذلك ذلك. لأن هيناتا هكذا، استطاع ناروتو أن يكون ضعيفاً واستطاعت هيناتا أن تتقبل ذلك.\nأحب أيضًا حقيقة أن عمل ناروتو الجاد وابتسامته قد أثرت على هيناتا بما يكفي لجعلها ترغب في تغيير نفسها، وقد أثرت هيناتا أيضًا على ناروتو من خلال عملها الجاد في امتحانات الشونين وتشجيعها لناروتو الفاشل الفخور.",
+        "futureWish": "أود مشاهدة فيلم آخر عن بوروتو. مآثر الجيل القادم على الشاشة الكبيرة! أود أيضًا قراءة المزيد من الحلقات التي تتعمق في العلاقة بين ناروتو وهيناتا وعائلة أوزوماكي.",
+        "message": "علامات يمكن من خلالها تعلم القوة الحقيقية.",
+        "country": "اليابان",
+        "favoriteCharacter": "أوزوماكي ناروتو، هيناتا (أوزوماكي) هيناتا، أوزوماكي بولت، أوزوماكي هيماواري"
+      },
+      "es": {
+        "catchphrase": "Lloré durante los exámenes chunin, me enganché y aún lo sigo cada mes en V Jump.",
+        "mainStory": "Mi primer encuentro con NARUTO fue cuando vi un libro en una librería. Recordé que mis compañeros de clase hablaban de él por aquel entonces y pensé que debía leerlo. Lloré y me enganché con los exámenes chunin, especialmente con las batallas entre Neji y Hinata y Gaoira y Lee. No sólo a mí, a mi familia también le gustaba Naruto, así que seguí comprando el libro con mi padre y mis hermanos y lo disfrutamos en familia. Desde antes del episodio final, también compré Jump y estaba muy emocionada por poder vivir el episodio final en tiempo real. Después del episodio final, seguí disfrutando del desarrollo de NARUTO Exhibition, THE LAST y BORUTO, y ahora sigo BORUTO todos los meses en la V Jump. Estoy muy agradecido de que el contenido siga adelante y de poder seguir disfrutando de NARUTO y BORUTO. ¡Quiero seguir disfrutando de ello. ......!",
+        "favoriteScene": "Hay tantos que es difícil elegir, pero si tuviera que escoger ahora, el episodio 98 de Naruto e Hinata, \"¡El orgulloso fracaso!\". es mi favorito en particular.\nEn realidad, trata casi por completo de Naruto e Hinata, y me impresionó mucho el hecho de que utilizara un episodio entero para representar su interacción.\nLa esencia y la fuerza de Naruto, que sigue esforzándose al máximo incluso cuando las cosas no van bien, es algo que ha recorrido la base de la obra de principio a fin.\nMe encantan las palabras de ánimo de Hinata hacia Naruto. Yo era una adolescente en aquella época y a mí también me animaban. También me gusta el hecho de que Hinata sea la persona de su generación a la que Naruto puede decir lo que piensa con debilidad.\nHinata es alguien que reconoce la fuerza de Naruto desde el principio, y aquí nos enteramos de su debilidad en cierto modo, pero creo que es una persona fuerte incluso con eso. Gracias a que Hinata es así, Naruto pudo ser vulnerable y Hinata pudo aceptarlo.\nTambién me encanta el hecho de que Naruto, con su esfuerzo y su sonrisa, influye en Hinata para que quiera cambiar ella misma, y Hinata también influye en Naruto con su esfuerzo en los exámenes chunin y su ánimo al orgulloso y fracasado Naruto.",
+        "futureWish": "Me encantaría ver otra película de BORUTO. ¡Las hazañas de la próxima generación en la gran pantalla! También me gustaría leer más episodios que profundicen en la relación entre Naruto y Hinata y la familia Uzumaki.",
+        "message": "Señales de dónde se puede aprender la verdadera fuerza.",
+        "country": "Japón",
+        "favoriteCharacter": "Uzumaki Naruto, Hinata (Uzumaki) Hinata, Uzumaki Bolt, Uzumaki Himawari"
+      },
+      "pt": {
+        "catchphrase": "Chorei durante os exames chunin, fiquei viciada e ainda hoje acompanho todos os meses o V Jump.",
+        "mainStory": "O meu primeiro encontro com NARUTO foi quando vi um livro numa livraria. Lembrei-me que os meus colegas de turma estavam a falar sobre ele na altura e achei que devia lê-lo. Chorei e fiquei viciada nos exames chunin, especialmente nas batalhas entre Neji e Hinata e Gaoira e Lee. Não só eu, mas a minha família também gostava de Naruto, por isso continuei a comprar o livro com o meu pai e os meus irmãos e divertimo-nos em família. Antes do episódio final, também comprei a Jump e estava muito entusiasmado por poder ver o episódio final em tempo real! Depois do episódio final, continuei a apreciar o desenvolvimento de NARUTO Exhibition, THE LAST e BORUTO, e agora sigo BORUTO todos os meses na V Jump. Estou muito grato pelo facto de os conteúdos continuarem a ser transmitidos e de eu poder continuar a desfrutar de NARUTO e BORUTO. Quero continuar a divertir-me. ......!",
+        "favoriteScene": "Há tantos que é difícil escolher, mas se tivesse de escolher agora, o episódio 98 de Naruto e Hinata, \"O Fracasso Orgulhoso! é o meu favorito.\nNa verdade, é quase inteiramente sobre Naruto e Hinata, e fiquei muito impressionado com o facto de usar um episódio inteiro para retratar a sua interação.\nA essência e a força de Naruto, que continua a dar o seu melhor mesmo quando as coisas não correm bem, é algo que tem estado presente na base da obra desde o início até ao fim.\nAdoro as palavras de encorajamento de Hinata para Naruto. Eu era um adolescente na altura e elas também me encorajaram. Também gosto do facto de Hinata ser a pessoa da sua geração a quem Naruto pode dizer o que pensa com fraqueza.\nHinata é uma pessoa que reconhece a força de Naruto desde cedo, e aqui ficamos a conhecer a sua fraqueza de certa forma, mas penso que ele é uma pessoa forte apesar disso. Porque Hinata é assim, Naruto foi capaz de ser vulnerável e Hinata foi capaz de o aceitar.\nTambém adoro o facto de Naruto, com o seu trabalho árduo e sorriso, influenciar Hinata a querer mudar a si própria, e Hinata também influencia Naruto com o seu trabalho árduo nos exames chunin e o seu encorajamento ao orgulhoso e falhado Naruto.",
+        "futureWish": "Gostaria de ver outro filme do BORUTO. As façanhas da próxima geração no grande ecrã! Também gostaria de ler mais episódios que aprofundem a relação entre Naruto e Hinata e a família Uzumaki.",
+        "message": "Sinais onde se pode aprender a verdadeira força.",
+        "country": "Japão",
+        "favoriteCharacter": "Uzumaki Naruto, Hinata (Uzumaki) Hinata, Uzumaki Bolt, Uzumaki Himawari"
+      },
+      "zh": {
+        "catchphrase": "我在中忍考试的时候哭了，后来就迷上了，现在每个月还在 V Jump 上关注它。",
+        "mainStory": "我第一次接触《NARUTO》是在书店里看到的一本书。我记得当时同学们都在谈论这本书，我觉得我应该读一读。我看哭了，被中忍考试迷住了，尤其是根治和雏田、高伊拉和李之间的战斗。不仅是我，我的家人也喜欢《火影忍者》，所以我和父亲、兄弟姐妹一起不断地买书，我们一家人都很喜欢。从最后一集之前，我也买了《跳跃》，非常期待能够实时体验最后一集！最后一集结束后，我继续关注《NARUTO 展》、《THE LAST》和《BORUTO》的发展，现在我每个月都会在《V Jump》上关注《BORUTO》。我真的很感激《NARUTO》和《BORUTO》的内容还在继续，我还能继续享受《NARUTO》和《BORUTO》。......！",
+        "favoriteScene": "太多了，很难选择，但如果现在让我选择的话，鸣人和雏田的第 98 集 \"骄傲的失败者！\"是我特别喜欢的。是我特别喜欢的一集。\n实际上，这几乎完全是关于鸣人和雏田的故事，用整整一集的篇幅来描绘他们之间的互动给我留下了深刻的印象。\n鸣人的精髓和力量，即使在不顺利的情况下仍然竭尽全力，是这部作品自始至终贯穿始终的基础。\n我喜欢雏田鼓励鸣人的话。我当时也是青少年，他们也鼓励了我。我还喜欢雏田是鸣人这一代人中可以向其倾诉内心软弱的人。\n雏田是一个很早就认识到鸣人的力量的人，在这里我们从某种程度上了解到了他的弱点，但我认为他是一个坚强的人。正因为雏田是这样的人，鸣人才能够变得脆弱，而雏田也能够接受这一点。\n我还喜欢鸣人的努力和微笑影响了雏田，足以让她想要改变自己，而雏田也通过她在中忍考试中的努力和对鸣人这个骄傲的失败者的鼓励影响了鸣人。",
+        "futureWish": "我很想再看一部《BORUTO》。在大银幕上再现下一代的辉煌！我还希望能看到更多深入探讨鸣人和雏田以及宇智波家族之间关系的剧集。",
+        "message": "可以学到真正力量的路标。",
+        "country": "日本",
+        "favoriteCharacter": "乌丸鸣人、雏田（乌丸）雏田、乌丸博尔特、乌丸绯月"
+      },
+      "ko": {
+        "catchphrase": "중닌 시험에 울며 겨자 먹기로 빠져서 지금도 매달 V점프에서 쫓아다니고 있다.",
+        "mainStory": "서점에서 단행본을 본 것이 나루토와의 만남이었습니다. 당시 반 친구들이 이야기하던 것이 생각나서 한번 읽어볼까 하는 생각이 들었던 것이 계기가 되었어요. 중닌 시험, 특히 나루토와 히나타, 가아라와 리의 싸움에서 울면서 빠져들었어요. 저뿐만 아니라 가족들도 나루토를 좋아해서 아버지와 동생과 함께 단행본을 계속 구입해서 가족들과 함께 즐겼습니다. 마지막 회를 앞두고는 점프도 구매해 실시간으로 마지막 회를 맛보며 흥분했다! 최종회 이후에도 NARUTO전, THE LAST, BORUTO로 이어지는 전개를 즐기면서 지금은 BORUTO를 V점프에서 매달 보고 있습니다. 지금도 콘텐츠가 계속 이어져 NARUTO・BORUTO를 즐길 수 있는 상황이라 정말 감사한 마음입니다. 앞으로도 계속 즐기고 싶습니다 ......!",
+        "favoriteScene": "너무 많아서 고를 수 없을 정도로 많지만, 지금 고르자면 나루토와 히나타 98화 '자랑스러운 실패자! 를 특히 좋아합니다.\n사실 거의 나루토와 히나타의 이야기로, 한 회를 통째로 할애해 두 사람의 교류를 그린 점이 매우 인상적이었습니다.\n잘 안 될 때도 있지만, 그럼에도 불구하고 열심히 노력하는 나루토의 본질과 강인함이 처음부터 끝까지 작품의 근간을 이루고 있는 것 같아요.\n나루토를 격려하는 히나타의 말이 정말 좋아요. 당시 사춘기였던 저도 용기를 얻었습니다. 나루토가 약점을 털어놓을 수 있는 동년배가 히나타라는 점도 마음에 듭니다.\n히나타는 일찍부터 나루토의 강인함을 인정하는 사람이고, 여기서 그의 어떤 의미에서의 약점도 알지만, 그것을 포함한 강한 사람이라고 생각한다. 그런 히나타이기에 나루토는 약점을 토로할 수 있었고, 히나타는 그것을 받아들일 수 있었던 것 같아요.\n나루토는 그 노력과 미소로 히나타에게 자신을 바꾸고 싶게 만들 정도로 영향을 주고 있고, 히나타 역시 중닌 시험에서 열심히 노력하는 모습이나 자랑스러운 실패자 나루토를 격려하는 모습에서 나루토에게 영향을 주고 있다는 점도 매우 마음에 듭니다.",
+        "futureWish": "BORUTO의 영화를 다시 보고 싶네요. 다음 세대의 활약을 큰 화면으로! 그리고 나루토와 히나타의 관계나 우즈마키 가족을 파헤친 에피소드도 더 읽어보고 싶네요.",
+        "message": "진정한 힘을 배울 수 있는 길잡이",
+        "country": "일본",
+        "favoriteCharacter": "우즈마키 나루토・우즈마키 히나타・우즈마키 볼트・우즈마키 해바라기"
+      }
+    }
   }
 ]
