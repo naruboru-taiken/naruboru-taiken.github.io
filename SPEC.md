@@ -1,6 +1,6 @@
 # ナルボル体験談 — サイト仕様書
 
-> 最終更新: 2026-04-04
+> 最終更新: 2026-04-05
 
 ---
 
@@ -42,7 +42,9 @@
 | `astro ^4.16.0` | フレームワーク本体 |
 | `satori ^0.26.0` | OGP画像生成（SVG→PNG） |
 | `sharp ^0.34.5` | 画像処理 |
-| `@fontsource/noto-sans-jp` | OGP画像内の日本語フォント |
+| `@fontsource/noto-sans-jp` | OGP画像内の日本語・Latin フォント |
+| `@fontsource/noto-sans-kr` | OGP画像内の韓国語フォント |
+| `@fontsource/cairo` | OGP画像内のアラビア語フォント（Noto Sans Arabic はsatori非互換のため Cairo を採用） |
 
 ---
 
@@ -318,8 +320,8 @@ https://naruboru-taiken.github.io に反映（数分以内）
 | お気に入り保存 | 詳細ページ＋カードのハートアイコン。localStorageで管理 |
 | お気に入り一覧 | `/favorites` ページ。保存済み体験談をクライアント側レンダリング |
 | Xシェア | 体験談詳細からワンクリックでシェア |
-| Instagramストーリーズ | Canvas APIで1080×1920px画像を生成してDL |
-| OGP画像 | satori+sharpでビルド時に体験談別画像を生成（日本語 + 言語別の2種） |
+| Instagramストーリーズ | Canvas APIで1080×1920px画像を生成してDL。各言語ページで表示言語に合わせたテキストを出力（外国語投稿も日本語ページでは日本語翻訳を表示） |
+| OGP画像 | satori+sharpでビルド時に体験談別画像を生成（日本語 + 言語別の2種）。韓国語・アラビア語は専用フォント（Noto Sans KR / Cairo）を追加して文字化けを解消 |
 | 推しキャラ名の多言語表示 | favoriteCharacterをDeepLで翻訳。詳細ページ・Xシェアテキストで言語別表示 |
 | Google Analytics 4 | 訪問者数・国別・言語別・流入元の計測（ID: G-H3Q2S0XNS3） |
 | 言語切り替え | ヘッダーのドロップダウンで8言語を切り替え |
@@ -388,3 +390,4 @@ https://naruboru-taiken.github.io に反映（数分以内）
 - ページネーション未実装
 - 旧フォームフィールド（triggerScene等）の将来的な廃止
 - コメント機能（サイトが十分に育ったタイミングで導入。候補：Supabase+自前実装）
+- Instagramストーリーズ画像のアラビア語対応：Canvas 2D API がデフォルトLTR描画のためアラビア語（RTL）は正常出力不可。対応には `ctx.direction = 'rtl'` 設定と折り返しロジックの全面書き直しが必要
