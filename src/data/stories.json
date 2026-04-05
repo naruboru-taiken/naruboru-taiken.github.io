@@ -2131,5 +2131,92 @@
         "favoriteCharacter": "나루토"
       }
     }
+  },
+  {
+    "id": "story-027",
+    "displayName": "Saradaisuki",
+    "ageGroup": "10代",
+    "favoriteCharacter": "사라다 우치하",
+    "firstSeries": "NARUTO",
+    "firstMedia": "TVアニメ",
+    "catchphrase": "사쿠라와 사스케를 좋아해서 읽기 시작했는데, 나루토에게 제일 감동받고 말았다",
+    "mainStory": "나루토를 맨 처음에 접한 것은 초등학생때로, TV 속 애니메이션을 통해서 였습니다. 그 이후 제대로 작품을 처음부터 끝까지 읽은 것은 19살 무렵이었습니다. 원래는 사쿠라와 사스케를 좋아해서 읽기 시작한 작품에서, 절대로 포기하지 않고 누구에게든 사랑을 전하는 나루토의 의지에 감동해, 그 이후 제 인생 작품이 되었습니다.\n\n보루토를 제대로 읽게 된 것은 제법 최근이었는데, 나루토가 그리워져서 후속작을 읽게 된 것을 계기로 생각보다 엄청나게 흥미진진한 스토리에 엄청나게 빠져버렸습니다. 나루토가 인생 작품이라면, 보루토는 제 최애 작품이 된 것 같습니다.\n\n나루토들이 커서 부모가 되어, 어설프기도 하고 어긋나기도 하지만 자신이 충분히 받지 못했던 사랑을 주는 모습을 보며 그 어리던 나루토들이 정말 성장해 어른이 되었구나 싶어 뭉클하기도 하며, 이제는 2세대들의 성장을 지켜보는 것이 너무나 흥미롭고 재미있어서 매달이 기다려집니다. 보루토가 나와줘서 정말 진심으로 감사하다고 생각하고 있습니다.",
+    "triggerScene": null,
+    "realization": null,
+    "currentRelationship": null,
+    "favoriteScene": "사라다가 중급닌자가 되고, 더이상 선생님과 임무를 할 수 없다는 생각에 방에서 풀이 죽어있을 때, 위로해주는 사스케 장면을 좋아합니다. 한때 증오와 복수심으로 가득해 모든 사람과의 유대를 끊어버렸던 사스케가, 나루토에게 구원받은 뒤 지금은 사랑하는 사람과 가정을 꾸리고 자식을 따뜻하게 바라보며 다정하게 조언해주는 장면에서 어릴적의 상처가 다 치유되었구나… 라는 생각과 함께 이제는 정말 성숙한 어른이자 부모가 되었다는 걸 느낄 수 있어서 사스케와 사쿠라 팬으로서 그 성장과 변화가 느껴져 너무 행복하고 감동적이었습니다.",
+    "futureWish": "보루토들의 어린 시절 에피소드가 보고싶어요. 특히 보루토와 사라다는 소꿉친구 설정이 있는데, 서로 얼마나 자주 교류하고 지냈는지 등의 일상 에피소드가 보고싶습니다.\n\n그 외에도 나루토들의 육아일기 라던가 임신 후 어떻게 반응했는지 등의 이야기가 보고싶습니다~",
+    "message": "사랑의 전도서처럼 느껴질 만큼 사람의 마음을 움직이는 작품",
+    "imageUrl": null,
+    "imageCaption": null,
+    "country": "한국",
+    "sourceLang": "ko",
+    "publishedAt": "2026-04-06",
+    "isSeedContent": false,
+    "translations": {
+      "en": {
+        "catchphrase": "I started reading it because I love Sakura and Sasuke, but I was most moved by Naruto.",
+        "mainStory": "I was first introduced to Naruto when I was in elementary school, through the anime on TV, and it wasn't until I was 19 that I actually read the series from cover to cover. I originally started reading it because I liked Sakura and Sasuke, but I was so moved by Naruto's determination to never give up and spread his love to anyone who would listen that it has been my life's work ever since.\n\nIt wasn't until fairly recently that I got around to reading Boruto properly, and when I started reading the sequel because I missed Naruto, I got incredibly hooked on the incredibly compelling story. If Naruto is the work of my life, then Boruto has become my favorite work of art.\n\nWatching the Narutos grow up and become parents, clumsy and inconsistent as they are, and give the love they never got enough of, it's so heartwarming to see them grow up and become adults, and now watching the second generation grow up is so interesting and fun that I look forward to it every month. I'm really, really grateful that Boruto came out.",
+        "favoriteScene": "I love the scene where Sasuke comforts Sarada when she becomes an intermediate ninja and dies in her room at the thought of no longer being able to go on missions with her teacher. The scene where Sasuke, who was once so full of hatred and revenge that he cut off his ties with everyone, was saved by Naruto and now has a family with the one he loves and looks at his children warmly and gives them loving advice, makes me feel that all of his childhood wounds have been healed and that he is now a truly mature adult and parent, and as a Sasuke and Sakura fan, I am so happy and touched to feel that growth and change.",
+        "futureWish": "I'd like to see episodes from the Borutos' childhood, especially the childhood of Boruto and Sarada, and how often they interacted and spent time with each other.\n\nI'd also like to see stories about the Narutos' parenting, how they reacted to pregnancy, and so on~.",
+        "message": "It's like Ecclesiastes of Love, but with a human touch.",
+        "country": "United Kingdom",
+        "favoriteCharacter": "Sarada Uchiha"
+      },
+      "fr": {
+        "catchphrase": "J'ai commencé à le lire parce que j'aime Sakura et Sasuke, mais c'est Naruto qui m'a le plus ému.",
+        "mainStory": "J'ai découvert Naruto pour la première fois à l'école primaire, en regardant l'anime à la télévision, et ce n'est qu'à l'âge de 19 ans que j'ai lu la série de A à Z. J'ai d'abord commencé à la lire parce que j'aimais Sakura et Sasuke. À l'origine, j'ai commencé à la lire parce que j'aimais Sakura et Sasuke, mais j'ai été tellement ému par la détermination de Naruto à ne jamais abandonner et à répandre son amour à tout le monde que c'est devenu l'œuvre de ma vie depuis lors.\n\nCe n'est que très récemment que j'ai commencé à lire Boruto correctement, mais Naruto me manquait tellement que j'ai pris la suite et je suis devenu incroyablement accro à l'histoire incroyablement passionnante. Si Naruto est l'œuvre de ma vie, Boruto est devenu mon œuvre d'art préférée.\n\nRegarder les Naruto grandir et devenir des parents, aussi maladroits et incohérents soient-ils, mais leur donner l'amour dont ils n'ont jamais assez, m'a fait réaliser à quel point ces petits Naruto ont grandi et sont devenus des adultes, et maintenant regarder la deuxième génération grandir est si intéressant et amusant que je l'attends avec impatience chaque mois. Je suis très, très reconnaissant à Boruto d'être sorti.",
+        "favoriteScene": "J'aime la scène où Sasuke réconforte Sarada lorsqu'elle devient ninja intermédiaire et meurt dans sa chambre à l'idée de ne plus pouvoir partir en mission avec son professeur. La scène où Sasuke, qui était autrefois si plein de haine et de vengeance qu'il a coupé ses liens avec tout le monde, a été sauvé par Naruto et a maintenant une famille avec la personne qu'il aime et regarde ses enfants chaleureusement et leur donne des conseils, me fait sentir que toutes les blessures de son enfance ont été guéries et qu'il est maintenant un adulte et un parent vraiment mature, et en tant que fan de Sasuke et Sakura, je suis si heureuse et touchée de sentir cette croissance et ce changement.",
+        "futureWish": "J'aimerais voir des épisodes de l'enfance des Borutos, en particulier de l'enfance de Boruto et Sarada, et voir à quelle fréquence ils interagissent entre eux et dans leur vie quotidienne.\n\nJ'aimerais aussi voir des histoires sur l'éducation des Narutos, comment ils réagissent à la grossesse, etc~.",
+        "message": "C'est comme l'Ecclésiaste de l'amour, mais avec une touche humaine.",
+        "country": "英国",
+        "favoriteCharacter": "Sarada Uchiha"
+      },
+      "ar": {
+        "catchphrase": "لقد بدأت بقراءته لأنني أحب ساكورا وساسوكي، لكنني تأثرت أكثر بناروتو.",
+        "mainStory": "أول تعرفي على ناروتو كان في المدرسة الابتدائية، حيث كنت أشاهد الأنمي على التلفزيون، ولم أقرأ السلسلة من الغلاف إلى الغلاف إلا عندما بلغت التاسعة عشر من عمري. بدأت بقراءتها في البداية لأنني أحببت ساكورا وساسوكي، ولكنني تأثرت كثيراً بإصرار ناروتو على عدم الاستسلام أبداً ونشر حبه لأي شخص لدرجة أنها أصبحت عمل حياتي منذ ذلك الحين.\n\nلم أتمكن من قراءة \"بوروتو\" بشكل صحيح إلا في الآونة الأخيرة إلى حد ما، لكنني افتقدت ناروتو كثيراً لدرجة أنني التقطت الجزء الثاني من الرواية وتعلقت بالقصة المثيرة بشكل لا يصدق. إذا كان ناروتو هو عمل حياتي، فقد أصبح بوروتو عملي الفني المفضل.\n\nلقد جعلتني مشاهدة ناروتو يكبرون ويصبحون آباءً وأمهات، رغم كونهم خرقاء وغير متناسقين، لكنهم يمنحون الحب الذي لم يحصلوا عليه بما فيه الكفاية، جعلتني أدرك كم كبر هؤلاء الصغار وأصبحوا بالغين، والآن مشاهدة الجيل الثاني يكبرون أمر ممتع ومثير للاهتمام لدرجة أنني أتطلع إليه كل شهر. أنا ممتن جداً جداً لبوروتو لخروجه.",
+        "favoriteScene": "أحب المشهد الذي يواسي فيه ساسوكي سارادا عندما تصبح نينجا متوسطة وتموت في غرفتها عند التفكير في أنها لم تعد قادرة على الذهاب في مهمات مع معلمها. المشهد الذي أنقذ ناروتو فيه ساسوكي الذي كان في يوم من الأيام مليئًا بالكراهية والانتقام لدرجة أنه قطع روابطه مع الجميع، وأنقذ ناروتو أسرته الآن مع من يحب وينظر إلى أطفاله بحرارة ويقدم لهم النصائح، يجعلني أشعر أن كل جروح طفولته قد شفيت وأنه الآن بالغ ووالد ناضج حقًا، وبصفتي من معجبي ساسوكي وساكورا، فأنا سعيد جدًا ومتأثر لشعوري بهذا النمو والتغيير.",
+        "futureWish": "أرغب في مشاهدة حلقات من طفولة آل بوروتو، وخاصة طفولة بوروتو وسارادا، ومدى تفاعلهم مع بعضهم البعض وحياتهم اليومية.\n\nأود أيضًا أن أرى قصصًا عن تربية عائلة ناروتو لأبويهما، وكيف كانت ردة فعلهما تجاه الحمل وما إلى ذلك~.",
+        "message": "إنه مثل سفر الجامعة في الحب، ولكن بلمسة إنسانية.",
+        "country": "英国",
+        "favoriteCharacter": "سارادا أوتشيها"
+      },
+      "es": {
+        "catchphrase": "Empecé a leerlo porque me encantan Sakura y Sasuke, pero lo que más me conmovió fue Naruto.",
+        "mainStory": "Mi primer contacto con Naruto fue en la escuela primaria, viendo el anime en la televisión, y no fue hasta los 19 años cuando realmente leí la serie de principio a fin. Al principio empecé a leerla porque me gustaban Sakura y Sasuke, pero me conmovió tanto la determinación de Naruto de no rendirse nunca y de contagiar su amor a todo el mundo, que desde entonces se ha convertido en la obra de mi vida.\n\nNo fue hasta hace poco que me puse a leer Boruto como es debido, pero echaba tanto de menos Naruto que cogí la secuela y me enganché increíblemente a la apasionante historia. Si Naruto es la obra de mi vida, Boruto se ha convertido en mi obra de arte favorita.\n\nVer a los Naruto crecer y convertirse en padres, por torpes e incoherentes que sean, pero dando el amor que nunca tuvieron suficiente, me ha hecho darme cuenta de lo mucho que han crecido y se han hecho adultos aquellos pequeños Naruto, y ahora ver crecer a la segunda generación es tan interesante y divertido que espero con ansia cada mes. Estoy muy, muy agradecido a Boruto por haber salido.",
+        "favoriteScene": "Me encanta la escena en la que Sasuke consuela a Sarada cuando se convierte en ninja intermedio y se muere en su habitación al pensar que ya no podrá ir a misiones con su maestro. La escena en la que Sasuke, que antes estaba tan lleno de odio y venganza que cortaba sus lazos con todo el mundo, fue salvado por Naruto y ahora tiene una familia con la persona que ama y mira a sus hijos con cariño y les da consejos cariñosos, me hace pensar que todas las heridas de su infancia se han curado... y que ahora es un adulto y un padre verdaderamente maduro, y como fan de Sasuke y Sakura, me siento tan feliz y emocionada de ver ese crecimiento y cambio.",
+        "futureWish": "Me gustaría ver episodios de la infancia de los Boruto, especialmente la infancia de Boruto y Sarada, y la frecuencia con la que interactuaban entre ellos y su vida cotidiana.\n\nTambién me gustaría ver historias sobre la paternidad de los Naruto, cómo reaccionaban ante el embarazo, etc~.",
+        "message": "Es como el Eclesiastés del Amor, pero con un toque humano.",
+        "country": "英国",
+        "favoriteCharacter": "Sarada Uchiha"
+      },
+      "pt": {
+        "catchphrase": "Comecei a lê-lo porque adoro a Sakura e o Sasuke, mas o que mais me comoveu foi o Naruto.",
+        "mainStory": "A minha primeira exposição a Naruto foi na escola primária, a ver o anime na televisão, e só aos 19 anos é que li a série de uma ponta à outra. Comecei a lê-la porque gostava da Sakura e do Sasuke, mas fiquei tão comovida com a determinação do Naruto em nunca desistir e espalhar o seu amor a toda a gente que se tornou o trabalho da minha vida desde então.\n\nSó há pouco tempo é que comecei a ler Boruto como deve ser, mas tinha tantas saudades de Naruto que peguei na sequela e fiquei incrivelmente viciado na história incrivelmente emocionante. Se Naruto é a obra da minha vida, então Boruto tornou-se a minha obra de arte favorita.\n\nVer os Narutos crescerem e tornarem-se pais, por mais desajeitados e inconsistentes que sejam, mas dando o amor que nunca lhes chega, fez-me perceber o quanto aqueles pequenos Narutos cresceram e se tornaram adultos, e agora ver a segunda geração crescer é tão interessante e divertido que aguardo ansiosamente todos os meses. Estou muito, muito grato a Boruto por ter saído.",
+        "favoriteScene": "Adoro a cena em que Sasuke conforta Sarada quando ela se torna uma ninja intermédia e morre no seu quarto com a ideia de já não poder ir em missões com o seu professor. A cena em que Sasuke, que outrora estava tão cheio de ódio e vingança que cortou os laços com toda a gente, foi salvo por Naruto e agora tem uma família com a pessoa que ama e olha para os seus filhos calorosamente e dá-lhes conselhos amorosos, faz-me pensar que todas as feridas da sua infância foram curadas... e que ele é agora um adulto e um pai verdadeiramente maduro, e como fã de Sasuke e Sakura, sinto-me tão feliz e tocada por ver esse crescimento e mudança.",
+        "futureWish": "Gostava de ver episódios da infância dos Borutos, especialmente a infância de Boruto e Sarada, e a frequência com que interagiam um com o outro e a sua vida quotidiana.\n\nTambém gostava de ver histórias sobre a parentalidade dos Narutos, como reagiam à gravidez, etc.",
+        "message": "É como o Eclesiastes do Amor, mas com um toque humano.",
+        "country": "英国",
+        "favoriteCharacter": "Sarada Uchiha"
+      },
+      "zh": {
+        "catchphrase": "我开始读这本书是因为我喜欢小樱和佐助，但最让我感动的还是《火影忍者》。",
+        "mainStory": "我第一次接触《火影忍者》是在小学时，当时我在电视上看动画片，直到 19 岁我才真正从头到尾读完了这套书。我最初是因为喜欢小樱和佐助才开始看的，但鸣人永不放弃、将爱传递给任何人的决心深深打动了我，从那时起，《火影忍者》就成了我毕生的事业。\n\n直到最近，我才开始认真阅读《博人传》，但我太想念《火影忍者》了，于是我拿起了续集，难以置信地迷上了这个令人兴奋的故事。如果说《火影忍者》是我一生的作品，那么《博人传》就是我最喜欢的艺术作品。\n\n看着火影忍者们长大成人并为人父母，虽然他们笨拙而不协调，但却给予了他们从未得到过的爱，这让我意识到那些小火影们已经长大成人，现在看着第二代的成长是如此有趣和好玩，我期待着每个月的到来。我非常非常感谢《博人传》的问世。",
+        "favoriteScene": "我喜欢佐助安慰萨拉达的场景，当她成为中级忍者后，一想到再也不能和老师一起执行任务，她就死在了自己的房间里。曾经充满仇恨和报复，与所有人断绝关系的佐助，被鸣人所救，现在与自己所爱的人组成了家庭，温暖地看着自己的孩子，给他们充满爱意的建议，这一幕让我觉得他童年的创伤已经全部愈合......现在的他是一个真正成熟的成年人和父母，作为佐助和小樱的粉丝，看到这样的成长和变化，我感到无比的幸福和感动。",
+        "futureWish": "我希望能看到波鲁托一家童年的情节，尤其是波鲁托和萨拉达的童年，以及他们之间的互动频率和日常生活。\n\n我还想看看鸣人的育儿故事，他们对怀孕的反应等等~。",
+        "message": "它就像《爱的传道书》，但又充满人情味。",
+        "country": "英国",
+        "favoriteCharacter": "萨拉达-内叶"
+      },
+      "ja": {
+        "catchphrase": "サクラとサスケが好きで読み始めましたが、ナルトに一番感動してしまいました。",
+        "mainStory": "ナルトに初めて触れたのは小学生の頃、テレビのアニメを通してでした。 その後、本格的に作品を最初から最後まで読んだのは19歳の頃でした。もともとはサクラとサスケが好きで読み始めた作品から、決して諦めずに誰にでも愛を届けるナルトの意志に感動し、それ以来、私のライフワークとなりました。\n\nナルトを本格的に読むようになったのは結構最近なのですが、ナルトが懐かしくなり続編を読むようになったのがきっかけで、思ったよりめちゃくちゃ面白いストーリーにめちゃくちゃハマってしまいました。ナルトがライフワークなら、ナルトは私の最愛の作品になったような気がします。\n\nナルトたちが成長し、親になり、不器用で不器用ではありますが、自分が十分に受けられなかった愛を与える姿を見て、あの幼いナルトたちが本当に成長して大人になったんだなと感慨深いものがあり、今では2世代の成長を見るのがとても興味深く、楽しくて毎月が楽しみです。ナルトが出てきてくれて本当に心から感謝しています。",
+        "favoriteScene": "サラーダが中級忍者になり、もう先生と任務ができないと思い、部屋で草臥れるサスケを慰めるシーンが好きです。かつては憎しみと復讐心で満ち溢れていたサスケが、ナルトに救われ、今は愛する人と家庭を築き、子供を温かく見守り、優しくアドバイスしてくれるシーンで、子供の頃の傷が癒されたんだな...と思うとともに、今は本当に大人になり、親になったんだなと感じることができ、サスケとサクラファンとしてその成長と変化が感じられてとても幸せで感動しました。",
+        "futureWish": "特にボルトとサラダの幼少期のエピソードが見たいです。 特にボルトとサラダは幼なじみという設定があるのですが、お互いにどのくらいの頻度で交流していたかなどの日常のエピソードが見たいです。\n\nそのほかにも、ナルトたちの育児日記や、妊娠後の反応などのエピソードが見たいです。",
+        "message": "愛の伝道の書と感じるほど人の心を揺さぶる作品。",
+        "country": "韓国",
+        "favoriteCharacter": "うちはサラダ"
+      }
+    }
   }
 ]
