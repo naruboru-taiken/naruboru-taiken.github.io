@@ -70,14 +70,17 @@ const storyPath = lang === 'ja'
       {story.firstMedia && <span class="tag tag-media">{story.firstMedia}</span>}
     </div>
     <blockquote class="card-catchphrase">
-      &ldquo;{displayCatchphrase}&rdquo;
+      {displayCatchphrase}
     </blockquote>
     <div class="card-meta">
-      <span class="card-name">{story.displayName}</span>
-      {ageLabel && <span class="card-age">・{agePrefix}{ageLabel}</span>}
-      {story.favoriteCharacter && (
-        <span class="card-chara">・{favPrefix}{story.favoriteCharacter}</span>
-      )}
+      <span class="card-avatar" aria-hidden="true">{story.displayName.charAt(0)}</span>
+      <div>
+        <span class="card-name">{story.displayName}</span>
+        {ageLabel && <span class="card-age">・{agePrefix}{ageLabel}</span>}
+        {story.favoriteCharacter && (
+          <span class="card-chara">・{favPrefix}{story.favoriteCharacter}</span>
+        )}
+      </div>
     </div>
   </div>
   <button type="button" class="card-fav-btn" aria-label="お気に入り">♡</button>
