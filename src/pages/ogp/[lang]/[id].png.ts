@@ -8,13 +8,19 @@ import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
 // ── フォント読み込み ──
-const fontDir = resolve(process.cwd(), 'node_modules/@fontsource/noto-sans-jp/files');
+const fontDir    = resolve(process.cwd(), 'node_modules/@fontsource/noto-sans-jp/files');
+const fontDirKr  = resolve(process.cwd(), 'node_modules/@fontsource/noto-sans-kr/files');
+const fontDirAr  = resolve(process.cwd(), 'node_modules/@fontsource/cairo/files');
 
 const fonts = [
-  { name: 'Noto Sans JP', data: readFileSync(resolve(fontDir, 'noto-sans-jp-japanese-700-normal.woff')), weight: 700 as const, style: 'normal' as const },
-  { name: 'Noto Sans JP', data: readFileSync(resolve(fontDir, 'noto-sans-jp-latin-700-normal.woff')),   weight: 700 as const, style: 'normal' as const },
-  { name: 'Noto Sans JP', data: readFileSync(resolve(fontDir, 'noto-sans-jp-japanese-400-normal.woff')), weight: 400 as const, style: 'normal' as const },
-  { name: 'Noto Sans JP', data: readFileSync(resolve(fontDir, 'noto-sans-jp-latin-400-normal.woff')),   weight: 400 as const, style: 'normal' as const },
+  { name: 'Noto Sans JP', data: readFileSync(resolve(fontDir,   'noto-sans-jp-japanese-700-normal.woff')),   weight: 700 as const, style: 'normal' as const },
+  { name: 'Noto Sans JP', data: readFileSync(resolve(fontDir,   'noto-sans-jp-latin-700-normal.woff')),       weight: 700 as const, style: 'normal' as const },
+  { name: 'Noto Sans JP', data: readFileSync(resolve(fontDir,   'noto-sans-jp-japanese-400-normal.woff')),   weight: 400 as const, style: 'normal' as const },
+  { name: 'Noto Sans JP', data: readFileSync(resolve(fontDir,   'noto-sans-jp-latin-400-normal.woff')),       weight: 400 as const, style: 'normal' as const },
+  { name: 'Noto Sans KR', data: readFileSync(resolve(fontDirKr, 'noto-sans-kr-korean-700-normal.woff')),     weight: 700 as const, style: 'normal' as const },
+  { name: 'Noto Sans KR', data: readFileSync(resolve(fontDirKr, 'noto-sans-kr-korean-400-normal.woff')),     weight: 400 as const, style: 'normal' as const },
+  { name: 'Cairo',        data: readFileSync(resolve(fontDirAr, 'cairo-arabic-700-normal.woff')),             weight: 700 as const, style: 'normal' as const },
+  { name: 'Cairo',        data: readFileSync(resolve(fontDirAr, 'cairo-arabic-400-normal.woff')),             weight: 400 as const, style: 'normal' as const },
 ];
 
 // ── satori用 要素ヘルパー ──
@@ -29,6 +35,11 @@ function h(type: string, props: Record<string, any> = {}, ...children: (Child | 
   };
 }
 
+const FONT_FAMILY: Record<string, string> = {
+  ko: '"Noto Sans KR", "Noto Sans JP"',
+  ar: 'Cairo, "Noto Sans JP"',
+};
+
 function getDisplayCatchphrase(story: (typeof stories)[number], lang: SupportedLang): string {
   const tr = (story as any).translations?.[lang];
   const cp = tr?.catchphrase || story.catchphrase;
@@ -41,7 +52,8 @@ function getDisplayCatchphrase(story: (typeof stories)[number], lang: SupportedL
 function buildCard(story: (typeof stories)[number], lang: SupportedLang): SNode {
   const cp = getDisplayCatchphrase(story, lang);
   const fontSize = cp.length > 34 ? '40px' : cp.length > 22 ? '46px' : '54px';
-  const siteName = ui[lang]?.['site.name'] ?? 'Naruboru Fan Stories';
+  const siteName   = ui[lang]?.['site.name'] ?? 'Naruboru Fan Stories';
+  const fontFamily = FONT_FAMILY[lang] ?? '"Noto Sans JP"';
 
   const pill = (text: string, bg: string) =>
     h('div', {
@@ -63,7 +75,7 @@ function buildCard(story: (typeof stories)[number], lang: SupportedLang): SNode 
       display: 'flex',
       backgroundColor: '#1a1a2e',
       position: 'relative',
-      fontFamily: '"Noto Sans JP"',
+      fontFamily,
     }
   },
     // 左アクセントバー

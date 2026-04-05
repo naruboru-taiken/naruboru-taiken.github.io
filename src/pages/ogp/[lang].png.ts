@@ -6,12 +6,18 @@ import sharp from 'sharp';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 
-const fontDir = resolve(process.cwd(), 'node_modules/@fontsource/noto-sans-jp/files');
+const fontDir    = resolve(process.cwd(), 'node_modules/@fontsource/noto-sans-jp/files');
+const fontDirKr  = resolve(process.cwd(), 'node_modules/@fontsource/noto-sans-kr/files');
+const fontDirAr  = resolve(process.cwd(), 'node_modules/@fontsource/cairo/files');
 const fonts = [
-  { name: 'Noto Sans JP', data: readFileSync(resolve(fontDir, 'noto-sans-jp-japanese-700-normal.woff')), weight: 700 as const, style: 'normal' as const },
-  { name: 'Noto Sans JP', data: readFileSync(resolve(fontDir, 'noto-sans-jp-latin-700-normal.woff')),   weight: 700 as const, style: 'normal' as const },
-  { name: 'Noto Sans JP', data: readFileSync(resolve(fontDir, 'noto-sans-jp-japanese-400-normal.woff')), weight: 400 as const, style: 'normal' as const },
-  { name: 'Noto Sans JP', data: readFileSync(resolve(fontDir, 'noto-sans-jp-latin-400-normal.woff')),   weight: 400 as const, style: 'normal' as const },
+  { name: 'Noto Sans JP', data: readFileSync(resolve(fontDir,   'noto-sans-jp-japanese-700-normal.woff')),   weight: 700 as const, style: 'normal' as const },
+  { name: 'Noto Sans JP', data: readFileSync(resolve(fontDir,   'noto-sans-jp-latin-700-normal.woff')),       weight: 700 as const, style: 'normal' as const },
+  { name: 'Noto Sans JP', data: readFileSync(resolve(fontDir,   'noto-sans-jp-japanese-400-normal.woff')),   weight: 400 as const, style: 'normal' as const },
+  { name: 'Noto Sans JP', data: readFileSync(resolve(fontDir,   'noto-sans-jp-latin-400-normal.woff')),       weight: 400 as const, style: 'normal' as const },
+  { name: 'Noto Sans KR', data: readFileSync(resolve(fontDirKr, 'noto-sans-kr-korean-700-normal.woff')),     weight: 700 as const, style: 'normal' as const },
+  { name: 'Noto Sans KR', data: readFileSync(resolve(fontDirKr, 'noto-sans-kr-korean-400-normal.woff')),     weight: 400 as const, style: 'normal' as const },
+  { name: 'Cairo',        data: readFileSync(resolve(fontDirAr, 'cairo-arabic-700-normal.woff')),             weight: 700 as const, style: 'normal' as const },
+  { name: 'Cairo',        data: readFileSync(resolve(fontDirAr, 'cairo-arabic-400-normal.woff')),             weight: 400 as const, style: 'normal' as const },
 ];
 
 type Child = string | number | SNode | null | undefined;
@@ -24,11 +30,17 @@ function h(type: string, props: Record<string, any> = {}, ...children: (Child | 
   };
 }
 
+const FONT_FAMILY: Record<string, string> = {
+  ko: '"Noto Sans KR", "Noto Sans JP"',
+  ar: 'Cairo, "Noto Sans JP"',
+};
+
 function buildCard(lang: SupportedLang): SNode {
-  const siteName  = ui[lang]?.['site.name']    ?? 'Naruboru Fan Stories';
-  const title     = ui[lang]?.['home.title']   ?? '';
-  const eyebrow   = ui[lang]?.['home.eyebrow'] ?? '';
-  const fontSize  = title.length > 28 ? '48px' : title.length > 20 ? '54px' : '58px';
+  const siteName   = ui[lang]?.['site.name']    ?? 'Naruboru Fan Stories';
+  const title      = ui[lang]?.['home.title']   ?? '';
+  const eyebrow    = ui[lang]?.['home.eyebrow'] ?? '';
+  const fontSize   = title.length > 28 ? '48px' : title.length > 20 ? '54px' : '58px';
+  const fontFamily = FONT_FAMILY[lang] ?? '"Noto Sans JP"';
 
   return h('div', {
     style: {
@@ -37,7 +49,7 @@ function buildCard(lang: SupportedLang): SNode {
       display: 'flex',
       backgroundColor: '#1a1a2e',
       position: 'relative',
-      fontFamily: '"Noto Sans JP"',
+      fontFamily,
     }
   },
     // 左アクセントバー
