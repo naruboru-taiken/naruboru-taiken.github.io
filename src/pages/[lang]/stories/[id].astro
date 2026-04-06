@@ -2,7 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import StoryCard from '../../../components/StoryCard.astro';
 import stories from '../../../data/stories.json';
-import { SUPPORTED_LANGS, useTranslations, isSupportedLang, getStoryText, getAgeGroupLabel } from '../../../i18n/ui';
+import { SUPPORTED_LANGS, useTranslations, isSupportedLang, getStoryText, getAgeGroupLabel, getCharaName } from '../../../i18n/ui';
 import type { SupportedLang } from '../../../i18n/ui';
 
 export function getStaticPaths() {
@@ -71,7 +71,7 @@ function getRelatedStories(current: any, all: any[], count = 3) {
 }
 const relatedStories = getRelatedStories(story, stories as any[]);
 
-const favoriteCharacter = getStoryText(story, lang, 'favoriteCharacter');
+const favoriteCharacter = getCharaName(story.favoriteCharacter, lang);
 
 const siteUrl = 'https://naruboru-taiken.github.io';
 const storyUrl = `${siteUrl}/${lang}/stories/${story.id}`;

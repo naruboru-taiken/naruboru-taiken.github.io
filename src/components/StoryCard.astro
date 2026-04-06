@@ -1,5 +1,5 @@
 ---
-import { getStoryText, getAgeGroupLabel } from '../i18n/ui';
+import { getStoryText, getAgeGroupLabel, getCharaName } from '../i18n/ui';
 import type { Lang } from '../i18n/ui';
 
 export interface Props {
@@ -38,6 +38,7 @@ const displayCatchphrase =
   '';
 
 const ageLabel = getAgeGroupLabel(story.ageGroup, lang);
+const charaName = getCharaName(story.favoriteCharacter, lang);
 
 // 国旗絵文字マッピング（country フィールドがある投稿に表示）
 const countryFlagMap: Record<string, string> = {
@@ -110,8 +111,8 @@ const storyPath = lang === 'ja'
       <div>
         <span class="card-name">{story.displayName}</span>
         {ageLabel && <span class="card-age">・{agePrefix}{ageLabel}</span>}
-        {story.favoriteCharacter && (
-          <span class="card-chara">・{favPrefix}{story.favoriteCharacter}</span>
+        {charaName && (
+          <span class="card-chara">・{favPrefix}{charaName}</span>
         )}
         {(story as any).country && (
           <span class="card-country">・{(story as any).country}{countryFlag ? ` ${countryFlag}` : ''}</span>

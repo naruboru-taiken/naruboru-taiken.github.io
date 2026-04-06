@@ -766,6 +766,51 @@ export function getStoryText(story: any, lang: Lang, field: string): string | nu
   return story.translations?.[lang]?.[field] ?? story[field] ?? null;
 }
 
+/** Character name translations (hardcoded – DeepL literally translates proper names) */
+const CHARA_TRANSLATIONS: Record<string, Record<SupportedLang, string>> = {
+  'うずまきナルト':         { en: 'Naruto Uzumaki',           fr: 'Naruto Uzumaki',           ar: 'ناروتو أوزوماكي',         es: 'Naruto Uzumaki',           pt: 'Naruto Uzumaki',           zh: '漩涡鸣人',   ko: '나루토 우즈마키' },
+  'うずまきボルト':         { en: 'Boruto Uzumaki',           fr: 'Boruto Uzumaki',           ar: 'بوروتو أوزوماكي',        es: 'Boruto Uzumaki',           pt: 'Boruto Uzumaki',           zh: '漩涡博人',   ko: '보루토 우즈마키' },
+  'うちはサスケ':           { en: 'Sasuke Uchiha',            fr: 'Sasuke Uchiha',            ar: 'ساسكي أوتشيها',           es: 'Sasuke Uchiha',            pt: 'Sasuke Uchiha',            zh: '宇智波佐助', ko: '우치하 사스케' },
+  'うちはサラダ':           { en: 'Sarada Uchiha',            fr: 'Sarada Uchiha',            ar: 'سارادا أوتشيها',          es: 'Sarada Uchiha',            pt: 'Sarada Uchiha',            zh: '宇智波沙拉达', ko: '우치하 사라다' },
+  'うちはイタチ':           { en: 'Itachi Uchiha',            fr: 'Itachi Uchiha',            ar: 'إيتاشي أوتشيها',          es: 'Itachi Uchiha',            pt: 'Itachi Uchiha',            zh: '宇智波鼬',   ko: '우치하 이타치' },
+  'うちはオビト':           { en: 'Obito Uchiha',             fr: 'Obito Uchiha',             ar: 'أوبيتو أوتشيها',          es: 'Obito Uchiha',             pt: 'Obito Uchiha',             zh: '宇智波带土', ko: '우치하 오비토' },
+  'はたけカカシ':           { en: 'Kakashi Hatake',           fr: 'Kakashi Hatake',           ar: 'كاكاشي هاتاكي',           es: 'Kakashi Hatake',           pt: 'Kakashi Hatake',           zh: '旗木卡卡西', ko: '하타케 카카시' },
+  '春野サクラ':             { en: 'Sakura Haruno',            fr: 'Sakura Haruno',            ar: 'ساكورا هارونو',           es: 'Sakura Haruno',            pt: 'Sakura Haruno',            zh: '春野樱',     ko: '하루노 사쿠라' },
+  '自来也':                 { en: 'Jiraiya',                  fr: 'Jiraiya',                  ar: 'جيرايا',                  es: 'Jiraiya',                  pt: 'Jiraiya',                  zh: '自来也',     ko: '지라이야' },
+  '我愛羅':                 { en: 'Gaara',                    fr: 'Gaara',                    ar: 'غارا',                    es: 'Gaara',                    pt: 'Gaara',                    zh: '我爱罗',     ko: '가아라' },
+  'ペイン（長門）':         { en: 'Pain (Nagato)',            fr: 'Pain (Nagato)',            ar: 'بين (ناغاتو)',            es: 'Pain (Nagato)',            pt: 'Pain (Nagato)',            zh: '佩恩（长门）', ko: '페인 (나가토)' },
+  '波風ミナト':             { en: 'Minato Namikaze',          fr: 'Minato Namikaze',          ar: 'ميناتو ناميكازي',         es: 'Minato Namikaze',          pt: 'Minato Namikaze',          zh: '波风水门',   ko: '나미카제 미나토' },
+  '日向ヒナタ':             { en: 'Hinata Hyuga',             fr: 'Hinata Hyuga',             ar: 'هيناتا هيوغا',            es: 'Hinata Hyuga',             pt: 'Hinata Hyuga',             zh: '日向雏田',   ko: '히나타 효가' },
+  '日向（うずまき）ヒナタ': { en: 'Hinata (Uzumaki) Hyuga', fr: 'Hinata (Uzumaki) Hyuga', ar: 'هيناتا (أوزوماكي) هيوغا', es: 'Hinata (Uzumaki) Hyuga', pt: 'Hinata (Uzumaki) Hyuga', zh: '日向（漩涡）雏田', ko: '히나타 (우즈마키) 효가' },
+  '奈良シカマル':           { en: 'Shikamaru Nara',          fr: 'Shikamaru Nara',          ar: 'شيكامارو نارا',           es: 'Shikamaru Nara',          pt: 'Shikamaru Nara',          zh: '奈良鹿丸',   ko: '나라 시카마루' },
+  'ロック・リー':           { en: 'Rock Lee',                 fr: 'Rock Lee',                 ar: 'روك لي',                  es: 'Rock Lee',                 pt: 'Rock Lee',                 zh: '罗克·李',    ko: '록 리' },
+  'テマリ':                 { en: 'Temari',                   fr: 'Temari',                   ar: 'تيماري',                  es: 'Temari',                   pt: 'Temari',                   zh: '手鞠',       ko: '테마리' },
+  '千手柱間':               { en: 'Hashirama Senju',         fr: 'Hashirama Senju',         ar: 'هاشيراما سينجو',          es: 'Hashirama Senju',         pt: 'Hashirama Senju',         zh: '千手柱间',   ko: '센주 하시라마' },
+  '筧スミレ':               { en: 'Sumire Kakei',            fr: 'Sumire Kakei',            ar: 'سوميري كاكي',             es: 'Sumire Kakei',            pt: 'Sumire Kakei',            zh: '筧菫',       ko: '카케이 스미레' },
+  'うずまきヒマワリ':       { en: 'Himawari Uzumaki',        fr: 'Himawari Uzumaki',        ar: 'هيماواري أوزوماكي',       es: 'Himawari Uzumaki',        pt: 'Himawari Uzumaki',        zh: '漩涡向日葵', ko: '우즈마키 히마와리' },
+};
+
+/**
+ * Translate a favoriteCharacter value (Japanese canonical) to the given language.
+ * Handles compound names separated by ・ or 、.
+ * Falls back to the original Japanese string for unknown names.
+ */
+export function getCharaName(jaName: string | null | undefined, lang: Lang): string {
+  if (!jaName) return '';
+  if (lang === 'ja') return jaName;
+  // Try the whole string first (e.g. "ロック・リー", "ペイン（長門）")
+  const direct = CHARA_TRANSLATIONS[jaName]?.[lang as SupportedLang];
+  if (direct) return direct;
+  // Split compound names (e.g. "うずまきナルト・千手柱間")
+  const parts = jaName.split(/[・、]/);
+  if (parts.length > 1) {
+    return parts
+      .map(p => CHARA_TRANSLATIONS[p.trim()]?.[lang as SupportedLang] ?? p.trim())
+      .join(', ');
+  }
+  return jaName;
+}
+
 /** Age group label for display */
 export function getAgeGroupLabel(ageGroup: string | null | undefined, lang: Lang): string {
   if (!ageGroup) return '';

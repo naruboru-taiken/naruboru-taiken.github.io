@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import stories from '../../data/stories.json';
-import { SUPPORTED_LANGS, useTranslations, isSupportedLang } from '../../i18n/ui';
+import { SUPPORTED_LANGS, useTranslations, isSupportedLang, getCharaName } from '../../i18n/ui';
 import type { SupportedLang } from '../../i18n/ui';
 
 export function getStaticPaths() {
@@ -48,7 +48,7 @@ const noCharaCount = stories.filter(s => !s.favoriteCharacter).length;
             href={`${base}/${lang}/stories?chara=${encodeURIComponent(name)}`}
             class="chara-card"
           >
-            <span class="chara-card-name">{name}</span>
+            <span class="chara-card-name">{getCharaName(name, lang)}</span>
             <span class="chara-card-count">{t('characters.stories_of', { count })}</span>
           </a>
         ))}

@@ -38,7 +38,7 @@ const TRANSLATABLE_FIELDS = [
   'futureWish',
   'message',
   'country',
-  'favoriteCharacter',
+  // 'favoriteCharacter' は getCharaName() ハードコード辞書で処理するため除外
 ];
 
 const STORIES_PATH = resolve(process.cwd(), 'src/data/stories.json');
