@@ -395,9 +395,9 @@ a:hover { text-decoration: underline; }
 
 /* scaleではなくtranslateYで「炎が下から湧き上がる」可視の動きを表現 */
 @keyframes emitter-breathe {
-  0%   { opacity: 0.65; transform: translateY(0)   scaleX(1.00); }
-  45%  { opacity: 0.95; transform: translateY(-6%) scaleX(1.03); }
-  100% { opacity: 0.65; transform: translateY(0)   scaleX(1.00); }
+  0%   { opacity: 0.50; transform: translateY(0)   scaleX(1.00); }
+  45%  { opacity: 1.00; transform: translateY(-6%) scaleX(1.03); }
+  100% { opacity: 0.50; transform: translateY(0)   scaleX(1.00); }
 }
 
 /* ヒーロー ノイズテクスチャー
