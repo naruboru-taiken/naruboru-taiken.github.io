@@ -2108,5 +2108,49 @@
         "catchphrase": "第1話のラストで私は心を奪われ、ナルトは私の最大の情熱となった。"
       }
     }
+  },
+  {
+    "id": "story-029",
+    "displayName": "しろ",
+    "ageGroup": "10代",
+    "favoriteCharacter": "うずまきボルト、うちはサラダ",
+    "firstSeries": "BORUTO",
+    "firstMedia": "漫画（連載・単行本）",
+    "catchphrase": "映画でボルサラに出会い、次世代の行く先を見届けたくなった",
+    "mainStory": "映画を見てボルトとサラダが好きになり、次世代がどんな物語を作っていくのか気になり、『BORUTO』を追い始めました。\nナルトたちの時代を知っているからこそ、新しい世代がどんな未来を選んでいくのか、その行く先を見届けたいと思ったのが最初のきっかけです。",
+    "triggerScene": null,
+    "realization": null,
+    "currentRelationship": null,
+    "favoriteScene": "・サラダが里に帰ってきたうずまきボルトにハグした瞬間、長い時間を経て再会した2人の想いが伝わってきて、特に印象に残っております。\n\n・最新話でサラダが意識を失ったとき、ボルトが真っ先に受け止めたところ、迷いなく動いた姿に、2人の信頼関係や絆の深さを強く感じました。\n\n・ボルトがカワキと共闘すると決まった瞬間、対立していた2人が同じ方向を向く決断をした場面に、物語の大きな転換点を感じた。\n\n・サラダが万華鏡写輪眼を開眼した瞬間。大切な人を想う気持ちが力になった場面が、とても心に残っている。\n\n・青年編で成長したうずまきボルトが登場したシーンもあまりにもカッコ良くて、思わず目を奪われた。",
+    "futureWish": "映画がみたい。スピンオフとしてボルトの里を抜けてからのそれぞれの3年間が知りたいです。",
+    "message": null,
+    "imageUrl": "https://pbs.twimg.com/media/HEs8mUZbUAAScX-?format=jpg&name=large",
+    "imageCaption": null,
+    "country": "日本",
+    "publishedAt": "2026-04-06",
+    "isSeedContent": false,
+    "translations": {}
+  },
+  {
+    "id": "story-030",
+    "displayName": "あゆ",
+    "ageGroup": "〜10歳",
+    "favoriteCharacter": "うちはサスケ",
+    "firstSeries": "NARUTO",
+    "firstMedia": "TVアニメ",
+    "catchphrase": "幼い頃から家族で楽しんで、大人になって見返すとまた別の感動がある",
+    "mainStory": "子供の頃アニメで。幼馴染が男の子しかいなかったのもあり、兄や幼馴染とNARUTOごっこをして遊んでいた。母も好きになりNARUTOのDVDBOXが家にあったので繰り返し観ていた。\n小学生の頃から本誌を読んでいたので、途中からだが完結まで見届けた。アニメは疾風伝の途中までしか見ていないような…大戦途中あたりまでかな…？\n\nこの間の244話無料期間にサスケ奪還まで読み返して、やっぱり面白い！となり、今アニメ1話から見返している。子供の頃の記憶が蘇ってきたし、当時と違う感じ方をしていて、自分の成長も実感でき不思議な感覚。何度見ても素晴らしい作品だなあと。",
+    "triggerScene": null,
+    "realization": null,
+    "currentRelationship": null,
+    "favoriteScene": "波の国でサスケがナルトを守るために動くところ。第7班のことを大切に思っているサスケの描写が結構ある事に、大人になってから気付いて( ◠‿◠ )👈🏻この顔で見守っている",
+    "futureWish": null,
+    "message": null,
+    "imageUrl": null,
+    "imageCaption": null,
+    "country": "日本",
+    "publishedAt": "2026-04-06",
+    "isSeedContent": false,
+    "translations": {}
   }
 ]
