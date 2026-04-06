@@ -343,51 +343,76 @@ a:hover { text-decoration: underline; }
 }
 .hero-count strong { color: var(--color-primary); }
 
-/* ヒーロー エミッター（チャクラ炎） */
+/* ヒーロー エミッター（チャクラ炎）
+ * filter と mix-blend-mode を同一要素に併用すると、ブラウザが compositing layer
+ * を分離して mix-blend-mode が機能しなくなる。
+ * → 親要素に mix-blend-mode のみ、::before に filter+gradient+animation を分離。
+ */
 .hero-emitter {
   position: absolute;
   bottom: 0;
   left: -20%;
   right: -20%;
   height: 70%;
-  transform-origin: bottom center;
-  background: radial-gradient(ellipse 85% 80% at 50% 110%,
-    rgba(232,98,26,1.0) 0%, rgba(220,75,10,0.85) 18%,
-    rgba(190,50,5,0.50) 38%, rgba(140,30,2,0.15) 60%, transparent 78%);
-  filter: blur(72px);
   mix-blend-mode: screen;
-  animation: emitter-breathe 6s ease-in-out infinite;
   pointer-events: none;
+}
+.hero-emitter::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform-origin: bottom center;
+  background: radial-gradient(ellipse 90% 85% at 50% 108%,
+    rgba(255,110,20,1.0) 0%,
+    rgba(232,80,10,0.92) 15%,
+    rgba(200,55,5,0.60) 35%,
+    rgba(150,35,2,0.22) 58%,
+    transparent 76%);
+  filter: blur(64px);
+  animation: emitter-breathe 5s ease-in-out infinite;
 }
 
 .hero-emitter-core {
   position: absolute;
   bottom: 0;
-  left: 20%;
-  right: 20%;
-  height: 45%;
-  transform-origin: bottom center;
-  background: radial-gradient(ellipse 60% 70% at 50% 115%,
-    rgba(255,130,40,0.9) 0%, rgba(232,98,26,0.6) 25%,
-    rgba(200,60,10,0.2) 55%, transparent 80%);
-  filter: blur(48px);
+  left: 18%;
+  right: 18%;
+  height: 50%;
   mix-blend-mode: screen;
-  animation: emitter-breathe 6s ease-in-out 0.8s infinite;
   pointer-events: none;
+}
+.hero-emitter-core::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform-origin: bottom center;
+  background: radial-gradient(ellipse 65% 75% at 50% 112%,
+    rgba(255,160,60,1.0) 0%,
+    rgba(245,110,25,0.85) 22%,
+    rgba(220,70,10,0.40) 50%,
+    transparent 78%);
+  filter: blur(36px);
+  animation: emitter-breathe 5s ease-in-out 0.7s infinite;
 }
 
 @keyframes emitter-breathe {
-  0%, 100% { opacity: 0.85; transform: scaleX(1) scaleY(1); }
-  50% { opacity: 1; transform: scaleX(1.04) scaleY(1.06); }
+  0%, 100% { opacity: 0.82; transform: scaleX(1)    scaleY(1);    }
+  40%       { opacity: 1;    transform: scaleX(1.06) scaleY(1.10); }
+  70%       { opacity: 0.88; transform: scaleX(1.02) scaleY(1.04); }
 }
 
-/* ヒーロー ノイズテクスチャー（SVGフィルター） */
+/* ヒーロー ノイズテクスチャー
+ * 空 div に filter:url(#grain-filter) + mix-blend-mode を併用すると
+ * SourceGraphic が空でクリップされ何も表示されない。
+ * → background-image に SVG data URI でノイズを直接埋め込む方式に変更。
+ */
 .hero-noise {
   position: absolute;
   inset: 0;
-  filter: url(#grain-filter);
-  mix-blend-mode: overlay;
-  opacity: 0.35;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 300px 300px;
+  mix-blend-mode: soft-light;
+  opacity: 0.55;
   pointer-events: none;
 }
 
@@ -1613,8 +1638,8 @@ body { background-color: var(--color-bg); }
   .hero-snippet-1 { animation-delay: 1.8s; }
 
   /* モバイル: エミッター blur を軽減（GPU 負荷対策） */
-  .hero-emitter { filter: blur(40px); }
-  .hero-emitter-core { filter: blur(28px); }
+  .hero-emitter::before { filter: blur(40px); }
+  .hero-emitter-core::before { filter: blur(24px); }
 
   /* ヒーロー タイトル: モバイルは高さ制約を解除 */
   .hero.has-snippets .hero-title { min-height: auto; }
@@ -2125,8 +2150,8 @@ body { background-color: var(--color-bg); }
 
 /* ============ アクセシビリティ: アニメーション軽減設定 ============ */
 @media (prefers-reduced-motion: reduce) {
-  .hero-emitter,
-  .hero-emitter-core,
+  .hero-emitter::before,
+  .hero-emitter-core::before,
   .scroll-arrow,
   .hero-snippet,
   .hero-cursor {
