@@ -11,37 +11,88 @@ const latestStories = [...stories]
   .slice(0, 9);
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// スタッツバー用
+const countries = [...new Set(stories.map((s: any) => s.country).filter(Boolean))];
+const countryCount = countries.length;
+
+// クライアント JS に渡すスニペット用ミニマルデータ（catchphrase がある投稿のみ）
+const storyPool = stories
+  .filter((s: any) => s.catchphrase)
+  .map((s: any) => ({
+    id: s.id as string,
+    q: s.catchphrase as string,           // quote
+    n: s.displayName as string,           // name
+    co: ((s as any).country as string) ?? null, // country
+    s: s.firstSeries as string,           // series
+    m: s.firstMedia as string,            // media
+  }));
 ---
 
 <BaseLayout title="ホーム" description="NARUTO・BORUTOファンの「作品に引き込まれた瞬間」のリアルな体験談を集めたサイトです。" lang="ja" pagePath="/">
 
+  <!-- SVG ノイズフィルター定義 -->
+  <svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
+    <defs>
+      <filter id="grain-filter" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+        <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch" result="noise"/>
+        <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise"/>
+        <feComposite in="grayNoise" in2="SourceGraphic" operator="in"/>
+      </filter>
+    </defs>
+  </svg>
+
   <!-- ヒーローセクション -->
-  <section class="hero">
-    <div class="hero-bg">
+  <section class="hero has-snippets">
+    <div class="hero-bg" aria-hidden="true">
       <div class="hero-pattern"></div>
+      <div class="hero-emitter"></div>
+      <div class="hero-emitter-core"></div>
+      <div class="hero-noise"></div>
     </div>
     <div class="hero-inner">
-      <p class="hero-eyebrow">NARUTO・BORUTO ファン体験談</p>
-      <h1 class="hero-title">
-        引き込まれたのは、<br />どんな瞬間でしたか。
-      </h1>
-      <p class="hero-desc">
-        「友達のジャンプが目に入った」「たまたまつけたテレビで流れていた」——<br />
-        きっかけは小さくても、あの瞬間がすべてを変えた。<br />
-        ナルボルファンの、リアルな体験談を集めています。
-      </p>
-      <div class="hero-actions">
-        <a href={`${base}/stories`} class="btn btn-primary">体験談をすべて読む</a>
-        <a href={`${base}/submit`} class="btn btn-outline">自分の体験談を投稿する</a>
+
+      <!-- 左カラム: コピー -->
+      <div class="hero-copy">
+        <p class="hero-eyebrow">NARUTO・BORUTO ファン体験談</p>
+        <h1 class="hero-title" aria-label="引き込まれたのは、どんな瞬間でしたか。">
+          <span class="hero-typing-target"></span>
+        </h1>
+        <p class="hero-desc">
+          「友達のジャンプが目に入った」「たまたまつけたテレビで流れていた」——<br />
+          きっかけは小さくても、あの瞬間がすべてを変えた。
+        </p>
+        <div class="hero-actions">
+          <a href={`${base}/stories`} class="btn btn-primary">体験談をすべて読む</a>
+          <a href={`${base}/submit`} class="btn btn-outline">あの記憶を投稿する</a>
+        </div>
       </div>
-      <p class="hero-count">
-        現在 <strong>{stories.length}</strong> 件の体験談が集まっています
-      </p>
+
+      <!-- 右カラム: Voice 型スニペット（JS でランダム生成・タイピング完了後フェードイン） -->
+      <div id="hero-stories" class="hero-stories" data-base={base} aria-label="体験談のサンプル" role="complementary">
+        <!-- populated by client JS -->
+      </div>
+
     </div>
   </section>
 
+  <!-- スタッツバー -->
+  <div class="stats-bar" aria-label="サイト統計">
+    <div class="stats-inner">
+      <div class="stat">
+        <span class="stat-num">{stories.length}</span>
+        <span class="stat-label">件の体験談</span>
+      </div>
+      <span class="stat-sep" aria-hidden="true">·</span>
+      <div class="stat">
+        <span class="stat-num">{countryCount}</span>
+        <span class="stat-label">ヶ国から</span>
+      </div>
+    </div>
+  </div>
+
   <!-- 最新投稿 -->
-  <section class="section">
+  <section class="section has-hero-bleed">
     <div class="section-inner">
       <div class="section-header">
         <h2 class="section-title">最新の体験談</h2>
@@ -58,16 +109,147 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   <!-- 投稿CTA -->
   <section class="cta-section">
     <div class="cta-inner">
-      <h2 class="cta-title">あなたの体験談も聞かせてください</h2>
+      <h2 class="cta-title">あの記憶を、ここに残しませんか。</h2>
       <p class="cta-desc">
         長文でなくていい。うまく書けなくてもいい。<br />
-        あの日の記憶を、このサイトに残しませんか。
+        あなたの投稿が、誰かの背中を押すかもしれない。
       </p>
-      <a href={`${base}/submit`} class="btn btn-primary btn-large">体験談を投稿する（無料）</a>
+      <a href={`${base}/submit`} class="btn btn-primary btn-large">あの記憶を投稿する</a>
       <p class="cta-note">
         <a href={`${base}/guidelines`}>投稿ガイドライン</a>を必ずご確認ください。
       </p>
     </div>
   </section>
 
+  <script type="application/json" id="hero-story-pool" set:html={JSON.stringify(storyPool)}></script>
+
 </BaseLayout>
+
+<script>
+// =====================================================================
+// ① ヒーロータイトル タイピングエフェクト
+// =====================================================================
+const target = document.querySelector<HTMLElement>('.hero-typing-target');
+if (target) {
+  const segments = ['引き込まれたのは、', 'どんな瞬間でしたか。'];
+  const allChars: Array<string | 'br'> = [];
+  segments.forEach((seg, idx) => {
+    for (const ch of seg) allChars.push(ch);
+    if (idx < segments.length - 1) allChars.push('br');
+  });
+
+  let i = 0;
+  const cursor = document.createElement('span');
+  cursor.className = 'hero-cursor';
+  target.after(cursor);
+
+  function typeNext() {
+    if (i >= allChars.length) {
+      setTimeout(() => {
+        cursor.style.transition = 'opacity 0.4s ease-out';
+        cursor.style.opacity = '0';
+        setTimeout(() => cursor.remove(), 400);
+      }, 900);
+      return;
+    }
+    const ch = allChars[i++];
+    if (ch === 'br') {
+      target.appendChild(document.createElement('br'));
+    } else {
+      target.appendChild(document.createTextNode(ch));
+    }
+    setTimeout(typeNext, i <= 8 ? 60 : 52);
+  }
+
+  typeNext();
+}
+</script>
+
+<script>
+// =====================================================================
+// ② Voice スニペット ランダム抽出 & 描画
+// =====================================================================
+
+interface StoryEntry {
+  id: string;
+  q: string;
+  n: string;
+  co: string | null;
+  s: string;
+  m: string;
+}
+
+const flagMap: Record<string, string> = {
+  '日本': '🇯🇵', 'ブラジル': '🇧🇷', '韓国': '🇰🇷',
+  'フランス': '🇫🇷', 'アメリカ': '🇺🇸', 'イギリス': '🇬🇧',
+  'アラブ首長国連邦': '🇦🇪', 'スペイン': '🇪🇸', 'ポルトガル': '🇵🇹',
+  '中国': '🇨🇳', 'カナダ': '🇨🇦', 'オーストラリア': '🇦🇺',
+  'ドイツ': '🇩🇪', 'インドネシア': '🇮🇩', 'タイ': '🇹🇭',
+  'フィリピン': '🇵🇭', 'メキシコ': '🇲🇽', 'アルゼンチン': '🇦🇷',
+  'イタリア': '🇮🇹', 'インド': '🇮🇳', 'ベトナム': '🇻🇳',
+  'マレーシア': '🇲🇾', '台湾': '🇹🇼', '香港': '🇭🇰', 'シンガポール': '🇸🇬',
+};
+
+/** Fisher-Yates shuffle */
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+const poolEl = document.getElementById('hero-story-pool');
+const container = document.getElementById('hero-stories') as HTMLElement | null;
+
+if (poolEl && container) {
+  const storyPool: StoryEntry[] = JSON.parse(poolEl.textContent || '[]');
+  const base = container.dataset.base ?? '';
+
+  if (storyPool.length > 0) {
+    const picked = shuffle(storyPool).slice(0, 3);
+
+    picked.forEach((story, idx) => {
+      const flag = story.co ? (flagMap[story.co] ?? '') : '';
+      const countryStr = story.co ? `${story.co}${flag ? ' ' + flag : ''}` : '';
+      const seriesStr = [story.s, story.m, countryStr].filter(Boolean).join(' · ');
+      const avatarChar = story.n.charAt(0);
+
+      const el = document.createElement('a');
+      el.href = `${base}/stories/${story.id}`;
+      el.className = `hero-snippet hero-snippet-${idx + 1}`;
+
+      // series ラベル
+      const seriesEl = document.createElement('div');
+      seriesEl.className = 'hero-snippet-series';
+      seriesEl.textContent = seriesStr;
+
+      // quote
+      const quoteEl = document.createElement('p');
+      quoteEl.className = 'hero-snippet-quote';
+      quoteEl.textContent = story.q;
+
+      // author
+      const authorEl = document.createElement('div');
+      authorEl.className = 'hero-snippet-author';
+
+      const avatarEl = document.createElement('span');
+      avatarEl.className = 'hero-snippet-avatar';
+      avatarEl.setAttribute('aria-hidden', 'true');
+      avatarEl.textContent = avatarChar;
+
+      const nameEl = document.createElement('span');
+      nameEl.textContent = story.n;
+
+      authorEl.appendChild(avatarEl);
+      authorEl.appendChild(nameEl);
+
+      el.appendChild(seriesEl);
+      el.appendChild(quoteEl);
+      el.appendChild(authorEl);
+      container.appendChild(el);
+    });
+  }
+}
+</script>

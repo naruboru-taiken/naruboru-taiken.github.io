@@ -1,6 +1,6 @@
 # ナルボル体験談 — サイト仕様書
 
-> 最終更新: 2026-04-05（story-025追加・同日付ソートIDタイブレーカー修正）
+> 最終更新: 2026-04-05（story-026追加・詳細ページQ11ラベルを「キャッチコピー」に変更）
 
 ---
 
@@ -167,15 +167,18 @@ naruboru-fan-site/
 
 ### 現在のデータ状況
 
-- **総件数**: 25件
+- **総件数**: 28件
 - **シードコンテンツ**: 14件（運営作成サンプル）
-- **実投稿**: 11件（story-005, 016, 017, 018, 019, 020, 021, 022, 023, 024, 025）
+- **実投稿**: 14件（story-005, 016, 017, 018, 019, 020, 021, 022, 023, 024, 025, 026, 027, 028）
   - story-020: Defensor de Boruto（ブラジル・ポルトガル語投稿、`sourceLang: "pt"`）
   - story-021: "A"（@itami_0513、うちはイタチ、〜10歳、日本）
   - story-022: Moe（m_7144_、ボルサラ推し、BORUTO TVアニメ、日本）
   - story-023: Hana（@jujuborusara、ボルサラ・サスケ推し、NARUTO TVアニメ、タイ在住）
   - story-024: リエン（韓国、ボルト推し、BORUTO、日本語勉強のきっかけ）
   - story-025: 千（@ra0hdj、ナルヒナ・ボルヒマ推し、NARUTO 漫画、日本）
+  - story-026: チャーリー（@charlyoden、ナルト推し、NARUTO TVアニメ、日本）
+  - story-027: Saradaisuki（@Himesara_da、うちはサラダ推し、NARUTO TVアニメ、韓国、sourceLang: ko）
+  - story-028: Hatake（@Hatakesant、うずまきナルト推し、NARUTO TVアニメ、ブラジル、sourceLang: pt）
 
 ---
 
@@ -233,7 +236,7 @@ src/i18n/ui.ts
 |---|---|
 | `/` | トップ |
 | `/stories` | 体験談一覧 |
-| `/stories/[id]` | 体験談詳細（25件×1言語） |
+| `/stories/[id]` | 体験談詳細（28件×1言語） |
 | `/characters` | 推し一覧 |
 | `/submit` | 投稿フォーム |
 | `/guidelines` | 投稿ガイドライン |
@@ -250,8 +253,8 @@ src/i18n/ui.ts
 |---|---|
 | `/ogp.png` | サイト共通OGP画像・日本語 |
 | `/ogp/[lang].png` | サイト共通OGP画像・多言語版（7言語）各言語のsite.name・home.titleを使用 |
-| `/ogp/[id].png` | 体験談別OGP画像・日本語（25件分） |
-| `/ogp/[lang]/[id].png` | 体験談別OGP画像・多言語版（25件×7言語）翻訳済みキャッチコピー・言語別サイト名を使用 |
+| `/ogp/[id].png` | 体験談別OGP画像・日本語（28件分） |
+| `/ogp/[lang]/[id].png` | 体験談別OGP画像・多言語版（28件×7言語）翻訳済みキャッチコピー・言語別サイト名を使用 |
 
 ---
 

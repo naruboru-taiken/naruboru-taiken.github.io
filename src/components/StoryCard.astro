@@ -39,6 +39,39 @@ const displayCatchphrase =
 
 const ageLabel = getAgeGroupLabel(story.ageGroup, lang);
 
+// 国旗絵文字マッピング（country フィールドがある投稿に表示）
+const countryFlagMap: Record<string, string> = {
+  '日本': '🇯🇵',
+  'ブラジル': '🇧🇷', 'Brasil': '🇧🇷',
+  '韓国': '🇰🇷',
+  'フランス': '🇫🇷', 'France': '🇫🇷',
+  'アメリカ': '🇺🇸', 'United States': '🇺🇸', 'USA': '🇺🇸',
+  'イギリス': '🇬🇧', 'UK': '🇬🇧',
+  'アラブ首長国連邦': '🇦🇪',
+  'スペイン': '🇪🇸',
+  'ポルトガル': '🇵🇹',
+  '中国': '🇨🇳',
+  'カナダ': '🇨🇦',
+  'オーストラリア': '🇦🇺',
+  'ドイツ': '🇩🇪',
+  'インドネシア': '🇮🇩',
+  'タイ': '🇹🇭',
+  'フィリピン': '🇵🇭',
+  'メキシコ': '🇲🇽',
+  'アルゼンチン': '🇦🇷',
+  'イタリア': '🇮🇹',
+  'ロシア': '🇷🇺',
+  'インド': '🇮🇳',
+  'ベトナム': '🇻🇳',
+  'マレーシア': '🇲🇾',
+  '台湾': '🇹🇼',
+  '香港': '🇭🇰',
+  'シンガポール': '🇸🇬',
+};
+const countryFlag = (story as any).country
+  ? (countryFlagMap[(story as any).country] ?? null)
+  : null;
+
 // Labels
 const agePrefix = lang === 'ja' ? '出会いは' : (lang === 'ar' ? 'عمر الاكتشاف: ' : '');
 const favPrefix = lang === 'ja' ? '推し：' : (lang === 'ar' ? 'المفضل: ' : '');
@@ -79,6 +112,9 @@ const storyPath = lang === 'ja'
         {ageLabel && <span class="card-age">・{agePrefix}{ageLabel}</span>}
         {story.favoriteCharacter && (
           <span class="card-chara">・{favPrefix}{story.favoriteCharacter}</span>
+        )}
+        {(story as any).country && (
+          <span class="card-country">・{(story as any).country}{countryFlag ? ` ${countryFlag}` : ''}</span>
         )}
       </div>
     </div>
