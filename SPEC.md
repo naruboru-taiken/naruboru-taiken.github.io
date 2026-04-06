@@ -1,6 +1,6 @@
 # ナルボル体験談 — サイト仕様書
 
-> 最終更新: 2026-04-05（story-026追加・詳細ページQ11ラベルを「キャッチコピー」に変更）
+> 最終更新: 2026-04-06（投稿2件追加・多言語ソート修正・チャクラ演出修正・アニメーション調整）
 
 ---
 
@@ -159,15 +159,16 @@ naruboru-fan-site/
 | `catchphrase` | ✅ | **運営が編集して記入する**一覧カードの大見出し。nullの場合は`mainStory`冒頭60文字にフォールバック |
 | `message` | — | 投稿者のQ11原文（投稿者が書いたキャッチコピー）。詳細ページ「ひとこと」セクションに表示 |
 | `mainStory` | — | 新フォーム形式（Q8）。あれば旧3フィールドより優先 |
-| `country` | — | 居住国（自由記述・翻訳される） |
+| `favoriteCharacter` | — | **必ず日本語の正規形で入力すること**（例: `うずまきナルト`）。多言語表示は `getCharaName()` がハードコード辞書で処理するため、DeepLで翻訳しない |
+| `country` | — | 居住国。**日本語の正規形で入力**（例: `韓国`、`ブラジル`）。英語・他言語での入力不可 |
 | `sourceLang` | — | 省略時は `"ja"`。外国語投稿は `"pt"` 等を指定。翻訳スクリプトがJAを含む全言語に翻訳する |
 | `publishedAt` | ✅ | 表示順に影響（降順） |
 | `isSeedContent` | ✅ | 運営作成ならtrue |
-| `translations` | — | DeepL翻訳スクリプトが自動生成 |
+| `translations` | — | DeepL翻訳スクリプトが自動生成（`favoriteCharacter` は含まない） |
 
 ### 現在のデータ状況
 
-- **総件数**: 28件
+- **総件数**: 30件
 - **シードコンテンツ**: 14件（運営作成サンプル）
 - **実投稿**: 14件（story-005, 016, 017, 018, 019, 020, 021, 022, 023, 024, 025, 026, 027, 028）
   - story-020: Defensor de Boruto（ブラジル・ポルトガル語投稿、`sourceLang: "pt"`）
@@ -179,6 +180,8 @@ naruboru-fan-site/
   - story-026: チャーリー（@charlyoden、ナルト推し、NARUTO TVアニメ、日本）
   - story-027: Saradaisuki（@Himesara_da、うちはサラダ推し、NARUTO TVアニメ、韓国、sourceLang: ko）
   - story-028: Hatake（@Hatakesant、うずまきナルト推し、NARUTO TVアニメ、ブラジル、sourceLang: pt）
+  - story-029: しろ（@shiro_boru0327、ボルサラ推し、BORUTO 漫画、日本）
+  - story-030: あゆ（R_tag_uTxTu、うちはサスケ推し、NARUTO TVアニメ、日本）
 
 ---
 
@@ -335,6 +338,12 @@ https://naruboru-taiken.github.io に反映（数分以内）
 
 | 機能 | 説明 |
 |---|---|
+| ヒーロータイピングエフェクト | トップページ（日本語）のh1タイトルを1文字ずつタイプする演出。完了後カーソルフェードアウト |
+| ヒーローVoiceスニペット | トップページ右カラム。`catchphrase`を持つ投稿からランダム3件を抽出し、タイピング完了後に時差フェードイン表示。`<script type="application/json">` 経由でデータ注入（define:vars のTypeScript制約回避） |
+| スタッツバー | トップページ（日本語）ヒーロー直下に総投稿件数・国数を数値表示 |
+| チャクラ発光エフェクト | ヒーロー背景の炎エフェクト（日本語・多言語トップ共通）。`filter`と`mix-blend-mode`の同一要素競合を回避するため`::before`に分離。`translateY(-6%)`で炎が湧き上がるアニメーション（7s、opacity 0.30→1.00）。ノイズテクスチャはSVG data URIをbackground-imageに直接埋め込み（`mix-blend-mode: soft-light`） |
+| 国旗絵文字 | StoryCard の card-meta エリアに `・国名 🇯🇵` 形式で表示。日本を含む25ヶ国対応 |
+| キャラ名多言語表示 | `getCharaName(jaName, lang)` 関数（`src/i18n/ui.ts`）が正規日本語名→8言語に変換。21キャラ対応、`・`/`、` 区切りの複合名も分割翻訳。DeepLは使用しない（直訳で壊れるため） |
 | NARUTO/BORUTOフィルター | 一覧ページで作品別に絞り込み |
 | 年齢層ソート | 新しい順 / 若い順 / 年上順 |
 | キャラクターフィルター | `?chara=` URLパラメータで絞り込み |
@@ -349,7 +358,7 @@ https://naruboru-taiken.github.io に反映（数分以内）
 | Xシェア | 体験談詳細からワンクリックでシェア |
 | Instagramストーリーズ | Canvas APIで1080×1920px画像を生成してDL。各言語ページで表示言語に合わせたテキストを出力（外国語投稿も日本語ページでは日本語翻訳を表示） |
 | OGP画像 | satori+sharpでビルド時に体験談別画像を生成（日本語 + 言語別の2種）。韓国語・アラビア語は専用フォント（Noto Sans KR / Cairo）を追加して文字化けを解消 |
-| 推しキャラ名の多言語表示 | favoriteCharacterをDeepLで翻訳。詳細ページ・Xシェアテキストで言語別表示 |
+| 推しキャラ名の多言語表示 | `getCharaName()`ハードコード辞書で変換（DeepLは直訳で壊れるため不使用）。詳細ページ・カード・推し一覧・Xシェアテキストで言語別表示 |
 | Google Analytics 4 | 訪問者数・国別・言語別・流入元の計測（ID: G-H3Q2S0XNS3） |
 | 言語切り替え | ヘッダーのドロップダウンで8言語を切り替え |
 | ハンバーガーメニュー | 640px以下でモバイル対応メニュー表示 |
@@ -411,7 +420,8 @@ https://naruboru-taiken.github.io に反映（数分以内）
 - カレンダーページ データ整備中（`src/data/events.ts` に追記後、ナビリンクを復活させて公開）
 
 ### 🟡 中優先度
-- （完了済み案件なし）
+- ヒーロースニペット（多言語トップ `/[lang]/`）未実装。現在は日本語トップのみ
+- `getCharaName()` 未登録のキャラは日本語にフォールバック。新キャラが登場したら `src/i18n/ui.ts` の `CHARA_TRANSLATIONS` に追記が必要
 
 ### 🟢 低優先度
 - ページネーション未実装
