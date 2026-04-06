@@ -2129,7 +2129,57 @@
     "country": "日本",
     "publishedAt": "2026-04-06",
     "isSeedContent": false,
-    "translations": {}
+    "translations": {
+      "en": {
+        "catchphrase": "I met Borsala at the movies and wanted to see where the next generation was going.",
+        "mainStory": "I started following \"Boruto\" because I fell in love with Bolt and Salad after seeing the movie and was curious to see what kind of story the next generation would create.\nKnowing the era of Naruto and his friends, I first wanted to see where the new generation would go and what kind of future they would choose.",
+        "favoriteScene": "The moment when Salad hugged Uzumaki Bolt back in the village was particularly memorable, as it conveyed the feelings of two people reunited after a long time.\n\nWhen Salad lost consciousness in the latest episode, Bolt was the first to receive her and the way he moved without hesitation made me strongly feel the depth of trust and bond between the two.\n\nThe moment it was decided that Bolt would fight together with Kawaki, I felt a major turning point in the story when the two, who had been at odds with each other, made a decision to face the same direction.\n\nThe moment when Sarada opened her kaleidoscope-sharan eye. The moment when Sarada opened her kaleidoscopic vision and her feelings for her loved ones became her power is a scene that has stayed with me.\n\nThe scene where Uzumaki Bolt, who had grown up in the youth version, appeared was also so cool that I was taken aback.",
+        "futureWish": "I would like to see a movie. As a spin-off, I would like to know about each of the three years after leaving Bolt's village.",
+        "country": "Japan"
+      },
+      "fr": {
+        "catchphrase": "J'ai rencontré Borsala dans le film et j'ai voulu voir où allait la nouvelle génération.",
+        "mainStory": "J'ai commencé à suivre BORUTO parce que je suis tombé amoureux de Bolt et Salad après avoir vu le film et j'étais curieux de voir quel genre d'histoires la nouvelle génération allait créer.\nConnaissant l'époque de Naruto et de ses amis, je voulais d'abord voir où la nouvelle génération irait et quel genre d'avenir elle choisirait.",
+        "favoriteScene": "Le moment où Salad a serré Bolt Uzumaki dans ses bras, au village, était particulièrement mémorable, car il traduisait les sentiments de deux personnes réunies après une longue période.\n\nLorsque Salad a perdu connaissance dans le dernier épisode, Bolt a été le premier à la recevoir et la façon dont il a agi sans hésitation m'a fait ressentir la profondeur de la confiance et du lien entre les deux.\n\nAu moment où il a été décidé que Bolt se battrait aux côtés de Kawaki, j'ai senti un tournant majeur dans l'histoire lorsque les deux, qui étaient en désaccord l'un avec l'autre, ont pris la décision d'aller dans la même direction.\n\nLe moment où Sarada a ouvert son œil de kaléidoscope-sharan. La scène où les sentiments qu'elle éprouve pour ses proches deviennent une source de force m'a profondément marquée.\n\nLa scène où Uzumaki Bolt, qui avait grandi dans l'Arc Jeunesse, est apparu était aussi tellement cool que j'en ai été abasourdi.",
+        "futureWish": "Je veux voir un film. En guise de spin-off, j'aimerais connaître chacune des trois années qui ont suivi le départ du village de Bolt.",
+        "country": "Japon"
+      },
+      "ar": {
+        "catchphrase": "لقد قابلت بورسالا في الفيلم وأردت أن أرى إلى أين يتجه الجيل القادم.",
+        "mainStory": "لقد بدأت بمتابعة بوروتو لأنني وقعت في حب بولت وسلاد بعد مشاهدة الفيلم وكنت أشعر بالفضول لمعرفة نوع القصص التي سيخلقها الجيل الجديد.\nوبمعرفتي بعصر ناروتو وأصدقائه، أردت أولاً أن أرى إلى أين سيذهب الجيل الجديد ونوع المستقبل الذي سيختارونه.",
+        "favoriteScene": "كانت اللحظة التي عانق فيها سالاد أوزوماكي بولت في القرية لا تنسى بشكل خاص، حيث نقلت مشاعر شخصين تم لم شملهما بعد وقت طويل.\n\nعندما فقدت صلاد وعيها في الحلقة الأخيرة، كان بولت أول من استقبلها والطريقة التي تحرك بها دون تردد جعلتني أشعر بقوة بعمق الثقة والرابطة بين الاثنين.\n\nفي اللحظة التي تقرر فيها أن يقاتل بولت مع كواكي، شعرت بنقطة تحول كبيرة في القصة عندما اتخذ الاثنان اللذان كانا على خلاف مع بعضهما البعض قرارًا بالتحول في نفس الاتجاه.\n\nاللحظة التي فتحت فيها \"سارادا\" عينها التي تشبه عين شاران. ترك المشهد الذي أصبحت فيه مشاعرها تجاه أحبائها مصدر قوة لها انطباعًا عميقًا في نفسي.\n\nكما كان المشهد الذي ظهر فيه أوزوماكي بولت، الذي نشأ في قوس الشباب، رائعًا جدًا لدرجة أنني فوجئت به.",
+        "futureWish": "أريد مشاهدة فيلم. كجزء ثانوي، أود أن أعرف عن كل سنة من السنوات الثلاث بعد مغادرة قرية بولت.",
+        "country": "اليابان"
+      },
+      "es": {
+        "catchphrase": "Conocí a Borsala en la película y quise ver hacia dónde se dirigía la siguiente generación.",
+        "mainStory": "Empecé a seguir BORUTO porque me enamoré de Bolt y Salad después de ver la película y tenía curiosidad por ver qué tipo de historias crearía la nueva generación.\nConociendo la época de Naruto y sus amigos, primero quería ver hacia dónde iría la nueva generación y qué tipo de futuro elegirían.",
+        "favoriteScene": "El momento en que Salad abrazó a Uzumaki Bolt en la aldea fue especialmente memorable, ya que transmitía los sentimientos de dos personas reunidas después de mucho tiempo.\n\nCuando Salad perdió el conocimiento en el último episodio, Bolt fue el primero en recibirla y la forma en que se movió sin vacilar me hizo sentir con fuerza la profundidad de la confianza y el vínculo entre ambos.\n\nEn el momento en que se decidió que Bolt lucharía junto a Kawaki, sentí un giro importante en la historia, cuando los dos, que habían estado enfrentados, tomaron la decisión de girar en la misma dirección.\n\nEl momento en que Sarada abrió su ojo caleidoscópico-sharan. La escena en la que sus sentimientos por sus seres queridos se convirtieron en una fuerza a tener en cuenta me impresionó profundamente.\n\nLa escena en la que apareció Uzumaki Bolt, que había crecido en el Arco de la Juventud, también fue tan genial que me sorprendió.",
+        "futureWish": "Quiero ver una película. Como un spin-off, me gustaría saber acerca de cada uno de los tres años después de salir de la aldea de Bolt.",
+        "country": "Japón"
+      },
+      "pt": {
+        "catchphrase": "Conheci o Borsala no filme e quis ver para onde estava a ir a próxima geração.",
+        "mainStory": "Comecei a seguir BORUTO porque me apaixonei por Bolt e Salad depois de ver o filme e estava curioso para ver que tipo de histórias a próxima geração iria criar.\nConhecendo a era de Naruto e dos seus amigos, queria primeiro ver para onde iria a nova geração e que tipo de futuro escolheriam.",
+        "favoriteScene": "O momento em que Salada abraçou Uzumaki Bolt na aldeia foi particularmente memorável, pois transmitiu o sentimento de duas pessoas que se reencontram depois de muito tempo.\n\nQuando Salad perdeu a consciência no último episódio, Bolt foi o primeiro a recebê-la e a forma como ele se moveu sem hesitação fez-me sentir fortemente a profundidade da confiança e da ligação entre os dois.\n\nNo momento em que foi decidido que Bolt lutaria com Kawaki, senti uma grande reviravolta na história, quando os dois, que tinham estado em desacordo um com o outro, tomaram a decisão de seguir na mesma direção.\n\nO momento em que Sarada abriu o seu olho de caleidoscópio-sharan. A cena em que os sentimentos dela pelos seus entes queridos se tornaram uma fonte de força deixou-me profundamente impressionada.\n\nA cena em que Uzumaki Bolt, que tinha crescido no Arco da Juventude, apareceu também foi tão fixe que fiquei surpreendido.",
+        "futureWish": "Quero ver um filme. Como um spin-off, gostaria de saber sobre cada um dos três anos depois de deixar a aldeia de Bolt.",
+        "country": "Japão"
+      },
+      "zh": {
+        "catchphrase": "我在影片中认识了 Borsala，并想看看下一代的发展方向。",
+        "mainStory": "我开始关注《BORUTO》，是因为在看完电影后爱上了博尔特和沙拉，很想知道下一代会创造出什么样的故事。\n在了解了鸣人和他的朋友们所处的时代后，我首先想看看新一代会走向何方，选择什么样的未来。",
+        "favoriteScene": "沙拉在村子里拥抱乌云博尔特的那一刻尤其令人难忘，因为它传达了两个人久别重逢的感情。\n\n在最新的剧情中，当沙拉失去知觉时，博尔特第一个去接她，他毫不犹豫的举动让我强烈地感受到了两人之间深厚的信任和羁绊。\n\n在决定由博尔特与川木一起战斗的那一刻，我感受到了故事的一个重要转折点，一直互不相让的两人决定转向同一个方向。\n\n萨拉达睁开万花筒沙兰眼的那一刻。她对亲人的感情成为力量源泉的那一幕给我留下了深刻的印象。\n\n在 \"青春之弧 \"中成长起来的宇智波斑出现的那一幕也酷得让我大吃一惊。",
+        "futureWish": "我想看一部电影。作为附带内容，我想了解离开博尔特村庄后三年中的每一年。",
+        "country": "日本"
+      },
+      "ko": {
+        "catchphrase": "영화에서 볼사라를 만나고 다음 세대가 어디로 가는지 지켜보고 싶었다.",
+        "mainStory": "영화를 보고 보루토와 샐러드를 좋아하게 되었고, 다음 세대가 어떤 이야기를 만들어 갈지 궁금해져 'BORUTO'를 쫓기 시작했다.\n나루토들의 시대를 알고 있기에 새로운 세대가 어떤 미래를 선택할지, 그 행보를 지켜보고 싶다는 생각이 첫 번째 계기였습니다.",
+        "favoriteScene": "고향으로 돌아온 샐러드가 우즈마키 볼트를 안아주는 순간, 오랜만에 재회한 두 사람의 마음이 전해져 특히 인상 깊게 남아있다.\n\n최근 에피소드에서 샐러드가 의식을 잃었을 때, 보루트가 가장 먼저 달려와서 미동도 하지 않는 모습에서 두 사람의 신뢰와 유대감의 깊이를 느낄 수 있었다.\n\n볼트가 가와키와 함께 싸우기로 결정한 순간, 대립하던 두 사람이 같은 방향을 향하는 결단을 내리는 장면에서 이야기의 큰 전환점을 느꼈다.\n\n샐러드가 만화경 사륜안을 개안한 순간. 소중한 사람을 생각하는 마음이 힘이 되는 장면이 매우 기억에 남는다.\n\n청년편에서 성장한 우즈마키 볼트가 등장하는 장면도 너무 멋있어서 눈을 뗄 수 없었다.",
+        "futureWish": "영화가 보고 싶다. 스핀오프로서 볼트 마을을 빠져나온 후의 각 3년이 궁금하다.",
+        "country": "일본"
+      }
+    }
   },
   {
     "id": "story-030",
@@ -2151,6 +2201,49 @@
     "country": "日本",
     "publishedAt": "2026-04-06",
     "isSeedContent": false,
-    "translations": {}
+    "translations": {
+      "en": {
+        "catchphrase": "Enjoy it as a family from a young age, and then look back on it as an adult with a different emotional experience.",
+        "mainStory": "In anime when I was a kid. Since my childhood friends were only boys, I played NARUTO with my brother and childhood friends. My mother also fell in love with it, and we had a NARUTO DVD box at home, so I watched it repeatedly.\nI had been reading the magazine since I was in elementary school, so I watched it all the way through to its completion, although I started in the middle. I think I only watched the anime up to the middle of Shippuden...maybe around the middle of the Great War...?\n\nDuring the free period of 244 episodes, I read up to Sasuke's recapture and found it interesting! And now I'm watching it again from the first episode of the anime. It brought back memories of my childhood and I feel differently than I did back then, and it's a strange feeling to realize how much I've grown. It is still a wonderful work no matter how many times I watch it.",
+        "favoriteScene": "Where Sasuke moves to protect Naruto in the Land of Waves. I've noticed that there are quite a few depictions of Sasuke caring for Team 7 as an adult (◠‿◠◠)👈🏻 watching over them with this look on his face",
+        "country": "Japan"
+      },
+      "fr": {
+        "catchphrase": "L'apprécier en famille dès le plus jeune âge, puis le revoir à l'âge adulte est une autre expérience émotionnelle.",
+        "mainStory": "Dans l'anime quand j'étais enfant. Comme mes amis d'enfance n'étaient que des garçons, j'avais l'habitude de jouer à NARUTO avec mon frère et mes amis d'enfance. Ma mère en est également tombée amoureuse et avait un coffret DVD de NARUTO à la maison, ce qui m'a permis de le regarder à plusieurs reprises.\nJe lisais le magazine depuis l'école primaire, et je l'ai donc regardé jusqu'au bout, même si j'ai commencé au milieu. Je crois que je n'ai regardé l'anime que jusqu'au milieu de Shippuden... peut-être vers le milieu de la Grande Guerre... ?\n\nPendant la période de 244 épisodes gratuits l'autre jour, j'ai lu jusqu'à Sasuke Reclaimed et je l'ai trouvé intéressant ! Et maintenant, je le regarde à nouveau depuis le premier épisode de l'anime. Cela m'a rappelé des souvenirs de mon enfance, et je me sens différent de ce que j'étais à l'époque, et c'est un sentiment étrange de réaliser à quel point j'ai grandi. C'est un sentiment étrange de réaliser à quel point j'ai grandi. C'est une œuvre merveilleuse, peu importe le nombre de fois que je la regarde.",
+        "favoriteScene": "Où Sasuke se déplace pour protéger Naruto au pays des vagues. J'ai remarqué qu'il y a pas mal de représentations de Sasuke prenant soin de l'équipe 7 quand je grandissais (◠‿◠◠)👈🏻 et veillant sur eux avec ce visage.",
+        "country": "Japon"
+      },
+      "ar": {
+        "catchphrase": "إن الاستمتاع به كعائلة منذ الصغر ثم مشاهدته مرة أخرى في الكبر تجربة مختلفة.",
+        "mainStory": "في الأنمي في طفولتي. نظرًا لأن أصدقاء طفولتي كانوا من الأولاد فقط، فقد اعتدت على لعب NARUTO مع أخي وأصدقاء الطفولة. كما أن والدتي كانت تعشقه أيضًا وكان لديها علبة أقراص NARUTO DVD في المنزل، لذا شاهدته مرارًا وتكرارًا.\nكنت أقرأ المجلة منذ أن كنت في المدرسة الابتدائية، لذلك شاهدتها حتى النهاية، على الرغم من أنني بدأت في منتصفها. أعتقد أنني شاهدت الأنمي حتى منتصف \"شيبودن\" فقط... ربما في منتصف الحرب العظمى تقريبًا...؟\n\nخلال فترة الـ 244 حلقة المجانية في ذلك اليوم، قرأت حتى استصلاح ساسوكي ووجدته ممتعاً! والآن أنا أشاهده مرة أخرى من الحلقة الأولى من الأنمي. لقد أعاد لي ذكرياتي عندما كنت طفلاً، وأشعر بشعور مختلف عما كنت أشعر به آنذاك، إنه شعور غريب أن أدرك كم كبرت. إنه عمل رائع بغض النظر عن عدد المرات التي أشاهده فيها.",
+        "favoriteScene": "حيث يتحرك ساسوكي لحماية ناروتو في أرض الأمواج. لقد لاحظت أن هناك عدد غير قليل من الصور لساسوكي وهو يعتني بالفريق السابع عندما كنت صغيراً (◠◠◠◠◠◠) 👈🏻 ويراقبهم بهذا الوجه.",
+        "country": "اليابان"
+      },
+      "es": {
+        "catchphrase": "Disfrutarla en familia desde pequeños y volver a verla de adultos es una experiencia diferente.",
+        "mainStory": "Al anime de niño. Como mis amigos de la infancia eran sólo chicos, solía jugar a NARUTO con mi hermano y mis amigos de la infancia. Mi madre también se enamoró de él y tenía una caja de DVD de NARUTO en casa, así que lo veía repetidamente.\nHabía estado leyendo la revista desde que estaba en la escuela primaria, así que la vi hasta el final, aunque empecé por la mitad. Creo que sólo vi el anime hasta la mitad de Shippuden... ¿quizá hacia la mitad de la Gran Guerra?\n\nEl otro día, durante el periodo gratuito de 244 episodios, leí hasta Sasuke Reclaimed, ¡y me pareció interesante! Y ahora lo estoy viendo de nuevo desde el primer episodio del anime. Me trajo recuerdos de cuando era niño, y me siento diferente a como me sentía entonces, y es una sensación extraña darse cuenta de lo mucho que he crecido. Es una obra maravillosa, no importa cuántas veces la vea.",
+        "favoriteScene": "Donde Sasuke se mueve para proteger a Naruto en el País de las Olas. Me di cuenta de que hay bastantes representaciones de Sasuke cuidando del Equipo 7 cuando estaba creciendo (◠‿◠◠)👈🏻 y velando por ellos con esta cara.",
+        "country": "Japón"
+      },
+      "pt": {
+        "catchphrase": "Apreciar o filme em família desde tenra idade e voltar a vê-lo em adulto é uma experiência diferente.",
+        "mainStory": "Em criança, gostava de anime. Como os meus amigos de infância eram só rapazes, costumava jogar NARUTO com o meu irmão e os meus amigos de infância. A minha mãe também se apaixonou pelo anime e tinha uma caixa de DVD do NARUTO em casa, pelo que o via repetidamente.\nJá lia a revista desde a escola primária, por isso vi-a até ao fim, embora tenha começado a meio. Acho que só vi o anime até ao meio do Shippuden... talvez a meio da Grande Guerra...?\n\nNo outro dia, durante o período gratuito de 244 episódios, li até Sasuke Reclaimed e achei interessante! E agora estou a ver novamente desde o primeiro episódio do anime. Trouxe-me recordações de quando era criança, e sinto-me diferente do que era na altura, e é uma sensação estranha perceber o quanto cresci. É uma obra maravilhosa, independentemente do número de vezes que a vejo.",
+        "favoriteScene": "Onde Sasuke se move para proteger Naruto na Terra das Ondas. Eu notei que há bastantes representações de Sasuke cuidando do Time 7 quando estava crescendo (◠‿◠◠◠)👈🏻 e cuidando deles com esse rosto.",
+        "country": "Japão"
+      },
+      "zh": {
+        "catchphrase": "从小一家人一起欣赏这部电影，成年后再看一遍，是另一种情感体验。",
+        "mainStory": "小时候喜欢看动画片。因为儿时的伙伴都是男孩，所以我经常和哥哥以及儿时的伙伴们一起玩《NARUTO》。母亲也爱上了这部动画片，家里有一盒《NARUTO》的 DVD，于是我就反复观看。\n我从小学开始就一直在看杂志，所以虽然是从中间开始看的，但我一直看完了。我想我只看到了 \"少年SHIPUNDEN \"的中间部分......也许是在 \"大战 \"的中间部分吧？\n\n在前几天免费的 244 集期间，我读到了《佐助再起》，觉得很有意思！现在我又从动画的第一集开始看了一遍。它勾起了我小时候的回忆，我的感觉和那时不一样了，意识到自己已经长大了，这种感觉很奇怪。无论看多少遍，这都是一部精彩的作品。",
+        "favoriteScene": "在波之国，佐助为了保护鸣人而行动。我注意到，在我成长的过程中(◠‿◠◠◠)👈🏻，有不少关于佐助照顾第七组的描写，并以这样的面容注视着他们。",
+        "country": "日本"
+      },
+      "ko": {
+        "catchphrase": "어릴 적부터 가족과 함께 즐기다가 어른이 되어서 다시 보면 또 다른 감동이 있다.",
+        "mainStory": "어렸을 때 애니메이션으로. 어릴 적 친구들이 남자아이들만 있었기 때문에 형이나 어린 시절 친구들과 나루토 놀이를 하며 놀았다. 어머니도 좋아해서 집에 나루토 DVDBOX가 있어서 반복해서 보고 있었다.\n초등학교 때부터 본지를 읽었기 때문에 중간부터 시작해서 완결까지 다 봤다. 애니메이션은 질풍전 중반까지만 본 것 같은데... 대전 중반 정도까지만 본 것 같다...?\n\n지난 244화 무료 기간에 사스케 탈환까지 다시 읽었는데, 역시 재미있었다! 라는 생각이 들어 지금 애니메이션 1화부터 다시 보고 있다. 어린 시절의 기억이 되살아나고, 당시와는 다른 느낌으로, 자신의 성장도 실감할 수 있는 신기한 느낌. 몇 번을 봐도 훌륭한 작품이라고 생각한다.",
+        "favoriteScene": "파도의 나라에서 사스케가 나루토를 지키기 위해 움직이는 장면. 제 7반을 소중히 여기는 사스케의 묘사가 상당히 많다는 것을 어른이 되고 나서야 깨닫고( ◠‿◠ )👈🏻 이 얼굴로 지켜보고 있다.",
+        "country": "일본"
+      }
+    }
   }
 ]
