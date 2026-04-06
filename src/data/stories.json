@@ -2245,5 +2245,149 @@
         "country": "일본"
       }
     }
+  },
+  {
+    "id": "story-031",
+    "displayName": "ハリー",
+    "ageGroup": "10代",
+    "favoriteCharacter": "うずまきボルト",
+    "firstSeries": "NARUTO",
+    "firstMedia": "TVアニメ",
+    "catchphrase": "なんとなく1巻買ったら止まらなくて、母になった今は二度泣かされた",
+    "mainStory": "中学生から漫画アニメにハマり、なんとなくNARUTOを見始めたところ、漫画を1巻買い、その後数巻買い、え面白いとなりあっという間に最新巻まで買い、アニメイトに行きグッズを買うまでになりました。",
+    "triggerScene": null,
+    "realization": null,
+    "currentRelationship": null,
+    "favoriteScene": "ミナトとクシナが九尾からナルトを守りながら八卦封印をするところ....とくにクシナが最後に残す言葉は感情移入して、親の前でボロボロ涙を流しながら見ていました。\n実際に母親になった今見返すと、子供の幸せ心から願う言葉と、「一緒にいたい」という母親の本音が刺さりすぎてまた泣きました。",
+    "futureWish": "何らかの形で、ミナトとクシナがボルトとヒマワリに会う話が見てみたいです。",
+    "message": null,
+    "imageUrl": null,
+    "imageCaption": null,
+    "country": "日本",
+    "publishedAt": "2026-04-06",
+    "isSeedContent": false,
+    "translations": {
+      "en": {
+        "catchphrase": "I kind of bought the first volume and couldn't stop, and now that I'm a mother, it made me cry twice.",
+        "mainStory": "I started watching Naruto in junior high school. I bought one volume of the manga, then several volumes, and it became so interesting that I quickly bought the latest volume and went to animate to buy merchandise.",
+        "favoriteScene": "The part where Minato and Kushina perform the bagua seal while protecting Naruto from the nine tails: .... I was especially moved by Kushina's final words, and watched them with tears streaming down my face in front of my parents.\nNow that I am a mother, the words of her sincere wish for her child's happiness and the mother's true feelings of \"I want to be with her\" were so piercing that I cried again.",
+        "futureWish": "I would like to see a story where Minato and Kushina meet Bolt and Sunflower in some form.",
+        "country": "Japan"
+      },
+      "fr": {
+        "catchphrase": "J'ai en quelque sorte acheté le premier volume et je n'ai pas pu m'arrêter, et maintenant que je suis mère, il m'a fait pleurer deux fois.",
+        "mainStory": "J'ai commencé à m'intéresser aux mangas au collège et j'ai commencé à regarder Naruto d'une manière ou d'une autre et j'ai acheté un volume du manga, puis plusieurs volumes, et puis c'est devenu intéressant et j'ai rapidement acheté le dernier volume et je suis allé chez animate et j'ai acheté des produits dérivés.",
+        "favoriteScene": "La partie où Minato et Kushina exécutent le sceau Bagua tout en protégeant Naruto des Neuf Queues. .... Les mots que Kushina prononce à la fin sont si émouvants que je les ai regardés en pleurant devant mes parents.\nMaintenant que je suis devenue mère, je pleure à nouveau en repensant à ces mots et au souhait sincère de la mère pour le bonheur de son enfant et ses vrais sentiments de \" je veux être avec elle \".",
+        "futureWish": "J'aimerais voir une histoire où Minato et Kushina rencontrent Bolt et Sunflower sous une forme ou une autre.",
+        "country": "Japon"
+      },
+      "ar": {
+        "catchphrase": "لقد اشتريت المجلد الأول نوعًا ما ولم أستطع التوقف، والآن بما أنني أم، فقد أبكاني مرتين.",
+        "mainStory": "بدأت بمشاهدة أنمي المانجا في المرحلة الإعدادية وبدأت بمشاهدة ناروتو بطريقة ما واشتريت مجلداً واحداً من المانجا، ثم عدة مجلدات، ثم أصبح الأمر مثيراً للاهتمام وسرعان ما اشتريت المجلد الأخير وذهبت إلى أنيميشن واشتريت بعض البضائع.",
+        "favoriteScene": "الجزء الذي يؤدي فيه ميناتو و كوشينا ختم باغوا أثناء حماية ناروتو من التسعة ذيول. .... خاصة الكلمات التي تركتها كوشينا في النهاية كانت مؤثرة للغاية لدرجة أنني شاهدتها والدموع تنهمر على وجهي أمام والديّ.\nالآن بعد أن أصبحت أماً بالفعل، أبكي مرة أخرى عندما أنظر إلى تلك الكلمات وأمنية الأم الصادقة لسعادة طفلها ومشاعرها الحقيقية \"أريد أن أكون معها\".",
+        "futureWish": "أرغب في رؤية قصة يلتقي فيها ميناتو وكوشينا مع بولت وزهرة دوار الشمس بشكل ما.",
+        "country": "اليابان"
+      },
+      "es": {
+        "catchphrase": "Compré el primer volumen y no pude parar, y ahora que soy madre, me hizo llorar dos veces.",
+        "mainStory": "Me aficioné al anime manga en el instituto, y cuando empecé a ver Naruto, me compré un volumen del manga, luego varios volúmenes, y entonces se volvió interesante, y rápidamente me compré el último volumen, y luego fui a animar y compré merchandising.",
+        "favoriteScene": "La parte en la que Minato y Kushina realizan el Sello Bagua mientras protegen a Naruto de las Nueve Colas. .... Especialmente las palabras que Kushina deja al final fueron tan emotivas que las vi con lágrimas corriendo por mi cara delante de mis padres.\nAhora que ya soy madre, vuelvo a llorar cuando recuerdo esas palabras y el sincero deseo de la madre por la felicidad de su hijo y sus verdaderos sentimientos de \"quiero estar con ella\".",
+        "futureWish": "Me gustaría ver una historia en la que Minato y Kushina se encontraran con Bolt y Sunflower de alguna forma.",
+        "country": "Japón"
+      },
+      "pt": {
+        "catchphrase": "Comprei o primeiro volume e não consegui parar, e agora que sou mãe, fez-me chorar duas vezes.",
+        "mainStory": "Comecei a gostar de manga anime no liceu, e quando comecei a ver Naruto, comprei um volume da manga, depois vários volumes, e depois tornou-se interessante, e comprei rapidamente o último volume, e depois fui à Animate e comprei mercadoria.",
+        "favoriteScene": "A parte em que Minato e Kushina executam o Selo Bagua enquanto protegem Naruto das Nove Caudas. .... Especialmente as palavras que Kushina deixa no final foram tão emocionantes que as vi em frente aos meus pais com lágrimas a escorrer pela cara.\nAgora que sou mãe, volto a chorar quando vejo essas palavras e o desejo sincero da mãe pela felicidade da filha e os seus verdadeiros sentimentos de \"quero estar com ela\".",
+        "futureWish": "Gostaria de ver uma história em que Minato e Kushina se encontrassem com Bolt e Sunflower de alguma forma.",
+        "country": "Japão"
+      },
+      "zh": {
+        "catchphrase": "我有点买了第一卷就停不下来的感觉，现在我当了妈妈，这本书让我哭了两次。",
+        "mainStory": "我是在初中时喜欢上漫画动漫的，开始看《火影忍者》时，我买了一卷漫画，后来买了几卷，再后来就觉得很有意思，很快就买了最新的一卷，然后就去动画公司买商品。",
+        "favoriteScene": "在九尾保护鸣人的过程中，凑和栉名施展八卦封印的那一段。....特别是最后栉名留下的那段话，让我激动不已，以至于我在父母面前看的时候泪流满面。\n如今，我已为人母，回想起这些话，回想起母亲对孩子幸福的真诚祝愿和'我想和她在一起'的真情实感，我又一次泪流满面。",
+        "futureWish": "我希望看到一个故事，让港和栉名以某种形式遇到博尔特和向日葵。",
+        "country": "日本"
+      },
+      "ko": {
+        "catchphrase": "왠지 한 권 사면 멈출 수 없었고, 엄마가 된 지금은 두 번 울었다.",
+        "mainStory": "중학생 때부터 만화애니메이션에 빠져서, 우연히 나루토를 보기 시작했는데, 만화 1권을 사서 몇 권을 사고, 재미있어서 최신권까지 사서 애니메이트에 가서 굿즈까지 사게 되었어요.",
+        "favoriteScene": "미나토와 쿠시나가 구테로부터 나루토를 지키며 괘봉을 하는 장면 .... 특히 쿠시나가 마지막으로 남기는 말은 감정이입이 되어 부모 앞에서 눈물을 펑펑 흘리며 지켜보았다.\n실제로 엄마가 된 지금 다시 보니 아이의 행복을 진심으로 바라는 말과 '함께하고 싶다'는 엄마의 진심이 너무 가슴에 와 닿아 또 울컥했다.",
+        "futureWish": "어떤 형태로든 미나토와 쿠시나가 볼트와 해바라기를 만나는 이야기를 보고 싶다.",
+        "country": "일본"
+      }
+    }
+  },
+  {
+    "id": "story-032",
+    "displayName": "的",
+    "ageGroup": "10代",
+    "favoriteCharacter": "うちはサスケ",
+    "firstSeries": "NARUTO",
+    "firstMedia": "漫画（連載・単行本）",
+    "catchphrase": "6巻を借りたら面白すぎて、最新の8巻を自分で買っていた",
+    "mainStory": "原作コミック6巻発売当時、友人から借りて読んだ。あまりに面白くて、貸してくれるのを待ちきれずに８巻（当時最新巻）を買った。以降、ずっと一番好きな漫画です。",
+    "triggerScene": null,
+    "realization": null,
+    "currentRelationship": null,
+    "favoriteScene": "うちはイタチの真実と、それを知ったときのサスケの泣き顔からの「木ノ葉を潰す」\n衝撃でした。",
+    "futureWish": "大戦後からナルトが火影になるまでの各キャラのミニエピソード誰でも。とくにいのとサイ、シカマルとテマリ。",
+    "message": null,
+    "imageUrl": null,
+    "imageCaption": null,
+    "country": "日本",
+    "publishedAt": "2026-04-06",
+    "isSeedContent": false,
+    "translations": {
+      "en": {
+        "catchphrase": "I borrowed volume 6 and found it so interesting that I bought myself the latest volume 8.",
+        "mainStory": "When the original comic volume 6 was released, I borrowed it from a friend and read it. It was so interesting that I couldn't wait to lend it to him and bought volume 8 (the latest volume at the time). Since then, it has always been my favorite manga.",
+        "favoriteScene": "Ours was the truth about Itachi and Sasuke's crying face when he found out and then \"crushed the tree leaves.\"\nIt was a shock.",
+        "futureWish": "Anyone for mini-episodes of each character from after the Great War until Naruto becomes a fire shadow. Especially Ino, Sai, Shikamaru and Temari.",
+        "country": "Japan"
+      },
+      "fr": {
+        "catchphrase": "J'ai emprunté le volume 6 et je l'ai trouvé si intéressant que je me suis acheté le dernier volume 8.",
+        "mainStory": "Lorsque le volume 6 de la bande dessinée originale est sorti, je l'ai emprunté à un ami et je l'ai lu. C'était tellement intéressant que j'ai eu hâte de le lui prêter et j'ai acheté le volume 8 (le dernier volume à l'époque). Depuis, c'est mon manga préféré.",
+        "favoriteScene": "La nôtre était la vérité sur Itachi et le visage en pleurs de Sasuke lorsqu'il l'a découvert et a ensuite \"écrasé les feuilles de l'arbre\".\nC'était un choc.",
+        "futureWish": "Des mini-épisodes de chaque personnage depuis la fin de la Grande Guerre jusqu'à ce que Naruto devienne une Ombre de feu, n'importe qui. Surtout Ino, Sai, Shikamaru et Temari.",
+        "country": "Japon"
+      },
+      "ar": {
+        "catchphrase": "لقد استعرت المجلد 6 ووجدته مثيرًا للاهتمام لدرجة أنني اشتريت لنفسي المجلد 8 الأخير.",
+        "mainStory": "عندما صدر المجلد 6 من المجلد الأصلي من القصص المصورة، استعرته من صديق وقرأته. كان الأمر مثيرًا للاهتمام لدرجة أنني لم أستطع الانتظار حتى أعرته المجلد 8 (المجلد الأخير في ذلك الوقت). ومنذ ذلك الحين، كانت دائمًا المانجا المفضلة لدي.",
+        "favoriteScene": "لقد كانت حقيقة إيتاتشي ووجه ساسوكي الباكي عندما اكتشف الأمر ثم \"سحق أوراق الشجرة\".\nلقد كانت صدمة",
+        "futureWish": "حلقات مصغرة من كل شخصية من بعد الحرب العظمى حتى يصبح ناروتو ظل النار، أي شخص. خاصة إينو وساي وشيكامارو وتيماري.",
+        "country": "اليابان"
+      },
+      "es": {
+        "catchphrase": "Tomé prestado el volumen 6 y me pareció tan interesante que me compré el último volumen 8.",
+        "mainStory": "Cuando salió a la venta el volumen 6 del cómic original, se lo pedí prestado a un amigo y lo leí. Me pareció tan interesante que no pude esperar a prestárselo y me compré el volumen 8 (el último de la época). Desde entonces, siempre ha sido mi manga favorito.",
+        "favoriteScene": "La nuestra era la verdad sobre Itachi y la cara de llanto de Sasuke cuando se enteró y luego \"aplastó las hojas del árbol\".\nFue un shock.",
+        "futureWish": "Miniepisodios de cada personaje desde después de la Gran Guerra hasta que Naruto se convierte en Sombra de Fuego, cualquiera. Especialmente Ino, Sai, Shikamaru y Temari.",
+        "country": "Japón"
+      },
+      "pt": {
+        "catchphrase": "Pedi emprestado o volume 6 e achei-o tão interessante que comprei o último volume 8.",
+        "mainStory": "Quando o volume 6 da banda desenhada original foi lançado, pedi-o emprestado a um amigo e li-o. Era tão interessante que mal podia esperar para lho emprestar e comprei o volume 8 (o último volume na altura). Desde então, tem sido sempre a minha manga preferida.",
+        "favoriteScene": "Nossa foi a verdade sobre Itachi e a cara de choro de Sasuke quando ele descobriu e depois \"esmagou as folhas da árvore\".\nFoi um choque.",
+        "futureWish": "Mini-episódios de cada personagem desde depois da Grande Guerra até Naruto se tornar uma Sombra de Fogo, qualquer um. Especialmente Ino, Sai, Shikamaru e Temari.",
+        "country": "Japão"
+      },
+      "zh": {
+        "catchphrase": "我借阅了第 6 卷，觉得非常有趣，于是自己买了最新的第 8 卷。",
+        "mainStory": "原版漫画第 6 卷发行时，我从朋友那里借来阅读。这本书非常有趣，我迫不及待地把它借给了他，并买了第 8 卷（当时最新的一卷）。从那以后，它一直是我最喜欢的漫画。",
+        "favoriteScene": "我们的是伊藤的真相，还有佐助发现后哭泣的表情，然后 \"压碎了树叶\"。\n真是令人震惊",
+        "futureWish": "从大战之后到鸣人成为火影之前的每个角色的迷你剧集，任何人都可以。尤其是井野、赛、志丸和天泪。",
+        "country": "日本"
+      },
+      "ko": {
+        "catchphrase": "6권을 빌렸더니 너무 재미있어서 최신 8권을 직접 사서 읽었다.",
+        "mainStory": "원작 만화 6권 발매 당시 친구에게 빌려서 읽었다. 너무 재미있어서 빌려줄 때까지 기다릴 수 없어 8권(당시 최신판)을 샀다. 이후 지금까지 가장 좋아하는 만화다.",
+        "favoriteScene": "우치하 이타치의 진실과 그 사실을 알게 된 사스케의 울먹이는 얼굴에서 나온 '나무 잎을 부숴버린다'\n충격이었습니다.",
+        "futureWish": "전쟁 후부터 나루토가 호카게가 될 때까지의 각 캐릭터의 미니 에피소드 누구라도. 특히 이노와 사이, 시카마루와 테마리.",
+        "country": "일본"
+      }
+    }
   }
 ]
