@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SUPPORTED_LANGS, useTranslations, isSupportedLang } from '../../i18n/ui';
+import type { SupportedLang } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return SUPPORTED_LANGS.map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: SupportedLang };
+if (!isSupportedLang(lang)) return Astro.redirect('/about');
+
+const t = useTranslations(lang);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const content = {
+  en: {
+    title: 'About This Site',
+    description: 'Why we built this site and what we hope it becomes.',
+    intro_quote: '"I want to know the real story of how today\'s NARUTO/BORUTO fans discovered the series — from first encounter to full obsession. And I want to collect those stories."',
+    intro: 'One day I wrote that thought on X, and it got more resonance than I expected. So I decided to actually collect them. That\'s why I built this site.',
+    why_title: 'Why "first encounter" stories?',
+    why_1: 'I have my own story with NARUTO — a time the series really meant a lot to me. Maybe that\'s why I found myself genuinely curious: what was it like for everyone else?',
+    why_2: 'Reading the stories that have come in, I find things like someone flipping on the TV in their new apartment and catching BORUTO\'s first episode by chance, or someone borrowing volume 6 from a friend and finding it so good they ran out to buy the latest volume. Every situation is different, but each story makes you think "oh, so that\'s how it happened for them" — you just keep reading.',
+    why_3: 'Every story has a context that belongs only to that person.',
+    langs_title: 'Why 8 languages?',
+    langs_1: 'NARUTO and BORUTO have fans all over the world. But the personal moments — "I cried at that scene," "that\'s when I got hooked" — rarely have a place to be shared.',
+    langs_2: 'This site is a space to collect those real stories. Submissions are translated and published in 8 languages, so a story from a fan in Japan can reach a fan in Brazil, and a story from Korea can be read in Japanese.',
+    anniversary_title: 'In 2027, two milestones arrive at once',
+    anniversary_1: 'The NARUTO anime turns 25 and the BORUTO anime turns 10 — both in the same year.',
+    anniversary_2: 'We\'d love to build excitement with fans toward those dates, but they\'re not the finish line. The goal is a place where fan stories keep accumulating long after 2027.',
+    anniversary_3: 'Whether you\'ve been thinking "I wish someone would read my story" or "mine probably isn\'t that interesting" — please consider sharing it.',
+    cta_submit: 'Submit your story',
+    cta_admin: 'Read the admin\'s story',
+  },
+  fr: {
+    title: 'À propos de ce site',
+    description: 'Pourquoi nous avons créé ce site et ce que nous espérons qu\'il deviendra.',
+    intro_quote: '« Je veux connaître la vraie histoire de la façon dont les fans de NARUTO/BORUTO d\'aujourd\'hui ont découvert la série — de la première rencontre à la passion totale. Et je veux les rassembler. »',
+    intro: 'Un jour j\'ai écrit cette pensée sur X et elle a résonné plus que prévu. Alors j\'ai décidé de vraiment les collecter. C\'est pourquoi j\'ai créé ce site.',
+    why_title: 'Pourquoi les histoires de « première rencontre » ?',
+    why_1: 'J\'ai ma propre histoire avec NARUTO — une période où la série a vraiment compté pour moi. C\'est peut-être pourquoi j\'étais sincèrement curieux : comment cela s\'était-il passé pour les autres ?',
+    why_2: 'En lisant les témoignages reçus, je découvre des choses comme quelqu\'un qui allume la TV dans son nouvel appartement et tombe sur le premier épisode de BORUTO par hasard, ou quelqu\'un qui emprunte le tome 6 à un ami et le trouve si bon qu\'il court acheter le dernier volume. Chaque situation est différente, mais chaque histoire donne envie de continuer à lire.',
+    why_3: 'Chaque histoire a un contexte qui n\'appartient qu\'à cette personne.',
+    langs_title: 'Pourquoi 8 langues ?',
+    langs_1: 'NARUTO et BORUTO ont des fans dans le monde entier. Mais les moments personnels — « j\'ai pleuré à cette scène », « c\'est là que j\'ai été accroché » — ont rarement un endroit pour être partagés.',
+    langs_2: 'Ce site est un espace pour collecter ces vraies histoires. Les témoignages sont traduits et publiés en 8 langues, pour que l\'histoire d\'un fan japonais atteigne un fan brésilien, et qu\'une histoire coréenne soit lue en japonais.',
+    anniversary_title: 'En 2027, deux jalons se rejoignent',
+    anniversary_1: 'L\'anime NARUTO fête ses 25 ans et l\'anime BORUTO ses 10 ans — tous les deux la même année.',
+    anniversary_2: 'Nous aimerions créer l\'élan avec les fans vers ces dates, mais ce ne sont pas la ligne d\'arrivée. L\'objectif est un endroit où les histoires de fans continuent de s\'accumuler bien après 2027.',
+    anniversary_3: 'Que vous pensiez « j\'aimerais que quelqu\'un lise mon histoire » ou « la mienne n\'est probablement pas si intéressante » — pensez à la partager.',
+    cta_submit: 'Soumettre votre histoire',
+    cta_admin: "Lire l'histoire de l'admin",
+  },
+  ar: {
+    title: 'عن هذا الموقع',
+    description: 'لماذا أنشأنا هذا الموقع وما الذي نأمل أن يصبح عليه.',
+    intro_quote: '"أريد أن أعرف القصة الحقيقية لكيفية اكتشاف محبي NARUTO/BORUTO اليوم للمسلسل — من اللقاء الأول إلى الانبهار التام. وأريد جمع هذه القصص."',
+    intro: 'ذات يوم كتبت هذه الفكرة على X فلاقت صدى أكبر مما توقعت. فقررت أن أجمعها فعلاً. لهذا أنشأت هذا الموقع.',
+    why_title: 'لماذا قصص «اللقاء الأول»؟',
+    why_1: 'لديّ قصتي الخاصة مع NARUTO — فترة أثّر فيها المسلسل كثيراً في حياتي. ربما لهذا وجدت نفسي فضولياً بصدق: كيف كانت تجربة الآخرين؟',
+    why_2: 'قراءة القصص الواردة كشفت لي أشياء كشخص يفتح التلفاز في شقته الجديدة ويصادف الحلقة الأولى من BORUTO صدفة، أو شخص يستعير المجلد السادس من صديق ويجده رائعاً لدرجة أنه ذهب ليشتري أحدث إصدار. كل قصة مختلفة، لكن كل واحدة تجعلك تستمر في القراءة.',
+    why_3: 'لكل قصة سياقها الخاص الذي لا يشاركها إياه أحد.',
+    langs_title: 'لماذا 8 لغات؟',
+    langs_1: 'NARUTO وBORUTO لهما محبون في جميع أنحاء العالم. لكن اللحظات الشخصية — «بكيت في ذلك المشهد»، «من هناك انجذبت» — نادراً ما تجد مكاناً تُشارَك فيه.',
+    langs_2: 'هذا الموقع مساحة لجمع تلك القصص الحقيقية. تُترجم المشاركات وتُنشر بـ 8 لغات، فقصة محب ياباني يمكن أن تصل إلى محب برازيلي، وقصة كورية يمكن قراءتها باليابانية.',
+    anniversary_title: '2027 — مناسبتان في عام واحد',
+    anniversary_1: 'الأنمي NARUTO يحتفل بعيده الـ25، والأنمي BORUTO يحتفل بعيده الـ10 — كلاهما في نفس العام.',
+    anniversary_2: 'نريد بناء الزخم مع المحبين نحو تلك التواريخ، لكنها ليست خط النهاية. الهدف هو مكان تتراكم فيه قصص المحبين طويلاً بعد 2027.',
+    anniversary_3: 'سواء كنت تفكر «أتمنى أن يقرأ أحد قصتي» أو «قصتي ليست مثيرة للاهتمام» — نرحب بمشاركتها.',
+    cta_submit: 'شارك قصتك',
+    cta_admin: 'اقرأ قصة المشرف',
+  },
+  es: {
+    title: 'Sobre este sitio',
+    description: 'Por qué creamos este sitio y en qué esperamos que se convierta.',
+    intro_quote: '"Quiero conocer la historia real de cómo los fans de NARUTO/BORUTO de hoy descubrieron la serie — desde el primer encuentro hasta la obsesión total. Y quiero recopilarlas."',
+    intro: 'Un día escribí ese pensamiento en X y resonó más de lo esperado. Entonces decidí recopilarlos de verdad. Por eso creé este sitio.',
+    why_title: '¿Por qué historias de «primer encuentro»?',
+    why_1: 'Tengo mi propia historia con NARUTO — un período en que la serie significó mucho para mí. Quizás por eso sentí genuina curiosidad: ¿cómo fue para los demás?',
+    why_2: 'Leyendo los testimonios recibidos encuentro cosas como alguien que enciende la TV en su nuevo apartamento y descubre el primer episodio de BORUTO por casualidad, o alguien que le pide prestado el volumen 6 a un amigo y lo encuentra tan bueno que corre a comprar el último volumen. Cada situación es diferente, pero cada historia te hace seguir leyendo.',
+    why_3: 'Cada historia tiene un contexto que pertenece únicamente a esa persona.',
+    langs_title: '¿Por qué 8 idiomas?',
+    langs_1: 'NARUTO y BORUTO tienen fans en todo el mundo. Pero los momentos personales — «lloré en esa escena», «ahí me enganchó» — rara vez tienen un lugar donde compartirse.',
+    langs_2: 'Este sitio es un espacio para recopilar esas historias reales. Las publicaciones se traducen y publican en 8 idiomas, para que la historia de un fan en Japón llegue a un fan en Brasil, y la de un fan coreano pueda leerse en japonés.',
+    anniversary_title: 'En 2027, dos hitos se unen',
+    anniversary_1: 'El anime NARUTO cumple 25 años y el anime BORUTO cumple 10 — ambos en el mismo año.',
+    anniversary_2: 'Nos gustaría generar expectativa con los fans hacia esas fechas, pero no son la meta final. El objetivo es un lugar donde las historias de fans sigan acumulándose mucho después de 2027.',
+    anniversary_3: 'Tanto si piensas «ojalá alguien leyera mi historia» como si crees que «la mía no es tan interesante» — por favor, compártela.',
+    cta_submit: 'Envía tu historia',
+    cta_admin: 'Lee la historia del admin',
+  },
+  pt: {
+    title: 'Sobre este site',
+    description: 'Por que criamos este site e o que esperamos que ele se torne.',
+    intro_quote: '"Quero conhecer a história real de como os fãs de NARUTO/BORUTO de hoje descobriram a série — do primeiro encontro à obsessão total. E quero colecionar essas histórias."',
+    intro: 'Um dia escrevi esse pensamento no X e ele gerou mais eco do que esperava. Então decidi realmente coletá-las. Foi por isso que criei este site.',
+    why_title: 'Por que histórias de «primeiro encontro»?',
+    why_1: 'Tenho minha própria história com NARUTO — um período em que a série significou muito para mim. Talvez por isso fiquei genuinamente curioso: como foi para os outros?',
+    why_2: 'Lendo as histórias recebidas, encontro coisas como alguém ligando a TV no novo apartamento e assistindo ao primeiro episódio de BORUTO por acaso, ou alguém pegando emprestado o volume 6 de um amigo e achando tão bom que correu para comprar o volume mais recente. Cada situação é diferente, mas cada história faz você querer continuar lendo.',
+    why_3: 'Cada história tem um contexto que pertence apenas àquela pessoa.',
+    langs_title: 'Por que 8 idiomas?',
+    langs_1: 'NARUTO e BORUTO têm fãs em todo o mundo. Mas os momentos pessoais — «chorei naquela cena», «foi aí que me viciou» — raramente têm um lugar para ser compartilhados.',
+    langs_2: 'Este site é um espaço para coletar essas histórias reais. As publicações são traduzidas e publicadas em 8 idiomas, para que a história de um fã no Japão alcance um fã no Brasil, e a de um fã coreano possa ser lida em japonês.',
+    anniversary_title: 'Em 2027, dois marcos se encontram',
+    anniversary_1: 'O anime NARUTO completa 25 anos e o anime BORUTO completa 10 — ambos no mesmo ano.',
+    anniversary_2: 'Adoraríamos criar expectativa com os fãs em direção a essas datas, mas elas não são a linha de chegada. O objetivo é um lugar onde as histórias de fãs continuem se acumulando muito depois de 2027.',
+    anniversary_3: 'Seja você alguém que pensa «queria que alguém lesse minha história» ou «a minha provavelmente não é tão interessante» — por favor considere compartilhá-la.',
+    cta_submit: 'Envie sua história',
+    cta_admin: 'Leia a história do admin',
+  },
+  zh: {
+    title: '关于本站',
+    description: '我们为何创建这个网站，以及我们希望它成为什么样的地方。',
+    intro_quote: '"我想了解当今NARUTO/BORUTO粉丝是如何发现这部作品的真实故事——从初次相遇到完全沉迷。我想把这些故事收集起来。"',
+    intro: '某天我在X上写下了这个想法，没想到引起了比预期更多的共鸣。于是我决定真正去收集这些故事。这就是我创建这个网站的原因。',
+    why_title: '为什么是「初次相遇」的故事？',
+    why_1: '我自己也有与NARUTO相遇的故事——那段时期这部作品对我意义重大。也许正因如此，我对「其他人是怎样开始的」产生了真正的好奇心。',
+    why_2: '阅读收到的故事，我发现有人搬进新公寓随手打开电视，恰好看到了BORUTO的第一集；有人向朋友借了第6卷，觉得太精彩，跑去买了最新卷。每个人的经历都不同，但每个故事都让人忍不住继续读下去。',
+    why_3: '每个故事都有属于那个人独特的背景。',
+    langs_title: '为什么是8种语言？',
+    langs_1: 'NARUTO和BORUTO在全世界都有粉丝。但「我在那个场景哭了」「就是从那时开始迷上的」这样的个人体验，却很少有地方可以分享。',
+    langs_2: '这个网站就是收集这些真实故事的地方。投稿会被翻译成8种语言发布，日本粉丝的故事可以传到巴西粉丝那里，韩国粉丝的故事也能用日语阅读。',
+    anniversary_title: '2027年——两个里程碑交汇',
+    anniversary_1: 'NARUTO动画25周年，BORUTO动画10周年——两部作品在同一年迎来重要节点。',
+    anniversary_2: '我们希望与粉丝一起为这些日子造势，但那不是终点。目标是打造一个让粉丝故事在2027年之后继续积累的地方。',
+    anniversary_3: '无论你在想「希望有人读读我的故事」，还是觉得「我的故事可能没什么特别的」——都欢迎分享。',
+    cta_submit: '投稿故事',
+    cta_admin: '阅读管理员的故事',
+  },
+  ko: {
+    title: '이 사이트에 대하여',
+    description: '왜 이 사이트를 만들었는지, 그리고 어떤 곳이 되길 바라는지에 대해 이야기합니다.',
+    intro_quote: '"오늘날의 NARUTO/BORUTO 팬들이 이 시리즈를 어떻게 발견했는지—첫 만남부터 완전한 몰입까지의 진짜 이야기를 알고 싶고, 모으고 싶다."',
+    intro: '어느 날 그런 생각을 X에 적었더니 예상보다 많은 공감을 받았습니다. 그렇다면 정말로 모아보자고 생각해서 이 사이트를 만들었습니다.',
+    why_title: '왜 「첫 만남」 이야기인가요?',
+    why_1: '저 자신도 NARUTO와의 만남이 있고, 그 작품에 도움받은 시기가 있었습니다. 그래서인지 「다른 사람들은 어떤 계기가 있었을까?」라는 순수한 호기심이 생겼습니다.',
+    why_2: '실제로 모인 체험담을 읽어보면, 이사한 곳에서 우연히 TV를 켰더니 BORUTO가 나오고 있었다거나, 친구에게 6권을 빌렸더니 너무 재미있어서 최신권을 직접 사러 달려갔다거나 하는 이야기들이 있습니다. 상황은 모두 다르지만, 어떤 이야기를 읽어도 「그런 만남이 있구나」 하며 계속 읽게 됩니다.',
+    why_3: '모든 이야기에는 그 사람만의 맥락이 있습니다.',
+    langs_title: '왜 8개 언어인가요?',
+    langs_1: 'NARUTO와 BORUTO는 지금 전 세계에 팬이 있는 작품입니다. 하지만 「그 장면에서 울었다」「거기서 빠졌다」는 개인적인 경험이 이야기될 곳은 의외로 없습니다.',
+    langs_2: '이 사이트는 그 진짜 기록을 모으는 곳입니다. 투고는 8개 언어로 번역해서 공개하기 때문에, 일본 팬의 체험담이 브라질 팬에게 닿기도 하고, 한국 팬의 이야기를 일본어로 읽을 수도 있습니다.',
+    anniversary_title: '2027년, 두 가지 기념일이 겹칩니다',
+    anniversary_1: 'NARUTO 애니메이션 25주년, BORUTO 애니메이션 10주년. 같은 해에 두 작품이 큰 기념일을 맞이합니다.',
+    anniversary_2: '그것을 향해 팬들과 함께 분위기를 만들어가고 싶지만, 그게 목표는 아닙니다. 그 이후에도 팬들의 기록이 계속 쌓여가는 곳으로 만들고 싶습니다.',
+    anniversary_3: '「이런 이야기, 누군가에게 읽어줬으면 했다」든, 「별거 아닌 것 같지만」이든, 꼭 투고해 보세요.',
+    cta_submit: '체험담 투고하기',
+    cta_admin: '운영자의 체험담 읽기',
+  },
+};
+
+const c = content[lang];
+---
+
+<BaseLayout
+  title={c.title}
+  description={c.description}
+  lang={lang}
+  pagePath="/about"
+>
+  <section class="page-header">
+    <div class="page-header-inner">
+      <h1 class="page-title">{c.title}</h1>
+    </div>
+  </section>
+
+  <article class="guidelines-article">
+    <div class="guidelines-inner">
+
+      <section class="gl-section">
+        <p class="about-quote">{c.intro_quote}</p>
+        <p>{c.intro}</p>
+      </section>
+
+      <section class="gl-section">
+        <h2>{c.why_title}</h2>
+        <p>{c.why_1}</p>
+        <p>{c.why_2}</p>
+        <p>{c.why_3}</p>
+      </section>
+
+      <section class="gl-section">
+        <h2>{c.langs_title}</h2>
+        <p>{c.langs_1}</p>
+        <p>{c.langs_2}</p>
+      </section>
+
+      <section class="gl-section">
+        <h2>{c.anniversary_title}</h2>
+        <p>{c.anniversary_1}</p>
+        <p>{c.anniversary_2}</p>
+        <p>{c.anniversary_3}</p>
+      </section>
+
+      <section class="gl-section gl-section--cta">
+        <a href={`${base}/${lang}/submit`} class="btn btn-primary">{c.cta_submit}</a>
+        <a href={`${base}/${lang}/stories/story-005`} class="btn btn-outline">{c.cta_admin}</a>
+      </section>
+
+    </div>
+  </article>
+</BaseLayout>
