@@ -14,7 +14,7 @@ type Story = {
   isSeedContent?: boolean;
   translations?: Record<string, Record<string, string | null>>;
 };
-const stories = (storiesRaw as Story[]).filter(s => !s.isSeedContent);
+const stories = storiesRaw as Story[];
 const total = stories.length;
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -69,8 +69,9 @@ for (const s of stories) {
 const countryRanking = Object.entries(countryCount).sort((a, b) => b[1] - a[1]);
 const countryMax = countryRanking[0]?.[1] ?? 1;
 
-// futureWish
+// futureWish（wishカードはシードコンテンツを除外）
 const wishStories = stories.filter(s => {
+  if (s.isSeedContent) return false;
   const ja = s.translations?.ja?.futureWish;
   return s.futureWish || ja;
 });

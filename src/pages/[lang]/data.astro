@@ -25,11 +25,11 @@ type Story = {
   isSeedContent?: boolean;
   translations?: Record<string, Record<string, string | null>>;
 };
-const stories = (storiesRaw as Story[]).filter(s => !s.isSeedContent);
+const stories = storiesRaw as Story[];
 const total = stories.length;
 
-// Label translations
-const wishCount = stories.filter(s => s.futureWish || s.translations?.ja?.futureWish).length;
+// Label translations（wishカウントはシードコンテンツを除外）
+const wishCount = stories.filter(s => !s.isSeedContent && (s.futureWish || s.translations?.ja?.futureWish)).length;
 
 const content = {
   en: {
@@ -207,7 +207,7 @@ const countryRanking = Object.entries(countryCount).sort((a, b) => b[1] - a[1]);
 const countryMax = countryRanking[0]?.[1] ?? 1;
 
 // futureWish（シードコンテンツを除外）
-const wishStories = stories.filter(s => s.futureWish || s.translations?.ja?.futureWish);
+const wishStories = stories.filter(s => !s.isSeedContent && (s.futureWish || s.translations?.ja?.futureWish));
 const wishSample = wishStories.slice(0, 6);
 
 // ドーナツ
