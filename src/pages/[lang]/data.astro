@@ -22,12 +22,15 @@ type Story = {
   firstMedia?: string | null;
   futureWish?: string | null;
   country?: string | null;
+  isSeedContent?: boolean;
   translations?: Record<string, Record<string, string | null>>;
 };
 const stories = storiesRaw as Story[];
 const total = stories.length;
 
 // Label translations
+const wishCount = stories.filter(s => !s.isSeedContent && (s.futureWish || s.translations?.ja?.futureWish)).length;
+
 const content = {
   en: {
     title: 'Fan Stats',
@@ -41,7 +44,7 @@ const content = {
     chara_title: 'Favorite Characters — Top 10',
     country_title: 'Countries & Regions',
     wish_title: 'Stories Fans Want to See',
-    wish_note: `From ${(stories.filter(s => s.futureWish || s.translations?.ja?.futureWish)).length} stories (selected excerpts)`,
+    wish_note: `From ${wishCount} stories (selected excerpts)`,
     read_all: 'Read All Stories',
     unit: '',
     ageLabels: { '〜10歳': 'Under 10', '10代': 'Teens', '20代': '20s', '30代': '30s', '40代以上': '40s+', '覚えていない': 'Unknown' },
@@ -59,7 +62,7 @@ const content = {
     chara_title: "Personnages préférés — Top 10",
     country_title: "Pays et régions",
     wish_title: "Ce que les fans aimeraient voir",
-    wish_note: `Parmi ${(stories.filter(s => s.futureWish || s.translations?.ja?.futureWish)).length} témoignages (extraits)`,
+    wish_note: `Parmi ${wishCount} témoignages (extraits)`,
     read_all: 'Lire tous les témoignages',
     unit: '',
     ageLabels: { '〜10歳': 'Moins de 10 ans', '10代': 'Ados', '20代': '20 ans', '30代': '30 ans', '40代以上': '40 ans +', '覚えていない': 'Inconnu' },
@@ -77,7 +80,7 @@ const content = {
     chara_title: 'الشخصيات المفضلة — أفضل 10',
     country_title: 'الدول والمناطق',
     wish_title: 'قصص يتمنى المحبون رؤيتها',
-    wish_note: `من ${(stories.filter(s => s.futureWish || s.translations?.ja?.futureWish)).length} قصة (مقتطفات مختارة)`,
+    wish_note: `من ${wishCount} قصة (مقتطفات مختارة)`,
     read_all: 'قراءة جميع القصص',
     unit: '',
     ageLabels: { '〜10歳': 'أقل من 10', '10代': 'مراهق', '20代': 'عشرينيات', '30代': 'ثلاثينيات', '40代以上': '40+', '覚えていない': 'غير معروف' },
@@ -95,7 +98,7 @@ const content = {
     chara_title: 'Personajes favoritos — Top 10',
     country_title: 'Países y regiones',
     wish_title: 'Historias que los fans quieren ver',
-    wish_note: `De ${(stories.filter(s => s.futureWish || s.translations?.ja?.futureWish)).length} historias (extractos seleccionados)`,
+    wish_note: `De ${wishCount} historias (extractos seleccionados)`,
     read_all: 'Leer todas las historias',
     unit: '',
     ageLabels: { '〜10歳': 'Menos de 10', '10代': 'Adolescentes', '20代': '20 años', '30代': '30 años', '40代以上': '40+ años', '覚えていない': 'Desconocido' },
@@ -113,7 +116,7 @@ const content = {
     chara_title: 'Personagens favoritos — Top 10',
     country_title: 'Países e regiões',
     wish_title: 'Histórias que os fãs gostariam de ver',
-    wish_note: `De ${(stories.filter(s => s.futureWish || s.translations?.ja?.futureWish)).length} histórias (trechos selecionados)`,
+    wish_note: `De ${wishCount} histórias (trechos selecionados)`,
     read_all: 'Ler todas as histórias',
     unit: '',
     ageLabels: { '〜10歳': 'Menos de 10', '10代': 'Adolescentes', '20代': '20 anos', '30代': '30 anos', '40代以上': '40+ anos', '覚えていない': 'Desconhecido' },
@@ -131,7 +134,7 @@ const content = {
     chara_title: '最爱角色 — Top 10',
     country_title: '国家和地区',
     wish_title: '粉丝想看的故事',
-    wish_note: `来自${(stories.filter(s => s.futureWish || s.translations?.ja?.futureWish)).length}篇故事（摘选）`,
+    wish_note: `来自${wishCount}篇故事（摘选）`,
     read_all: '阅读所有故事',
     unit: '篇',
     ageLabels: { '〜10歳': '10岁以下', '10代': '10多岁', '20代': '20多岁', '30代': '30多岁', '40代以上': '40岁以上', '覚えていない': '不记得' },
@@ -149,7 +152,7 @@ const content = {
     chara_title: '최애 캐릭터 — Top 10',
     country_title: '국가 및 지역',
     wish_title: '팬들이 보고 싶은 이야기',
-    wish_note: `${(stories.filter(s => s.futureWish || s.translations?.ja?.futureWish)).length}개 이야기에서 (일부 발췌)`,
+    wish_note: `${wishCount}개 이야기에서 (일부 발췌)`,
     read_all: '모든 이야기 읽기',
     unit: '개',
     ageLabels: { '〜10歳': '10세 미만', '10代': '10대', '20代': '20대', '30代': '30대', '40代以上': '40대 이상', '覚えていない': '모름',
@@ -210,8 +213,8 @@ for (const s of stories) {
 const countryRanking = Object.entries(countryCount).sort((a, b) => b[1] - a[1]);
 const countryMax = countryRanking[0]?.[1] ?? 1;
 
-// futureWish
-const wishStories = stories.filter(s => s.futureWish || s.translations?.ja?.futureWish);
+// futureWish（シードコンテンツを除外）
+const wishStories = stories.filter(s => !s.isSeedContent && (s.futureWish || s.translations?.ja?.futureWish));
 const wishSample = wishStories.slice(0, 6);
 
 // ドーナツ

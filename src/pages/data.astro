@@ -11,6 +11,7 @@ type Story = {
   firstMedia?: string | null;
   futureWish?: string | null;
   country?: string | null;
+  isSeedContent?: boolean;
   translations?: Record<string, Record<string, string | null>>;
 };
 const stories = storiesRaw as Story[];
@@ -68,8 +69,9 @@ for (const s of stories) {
 const countryRanking = Object.entries(countryCount).sort((a, b) => b[1] - a[1]);
 const countryMax = countryRanking[0]?.[1] ?? 1;
 
-// futureWish
+// futureWish（シードコンテンツを除外）
 const wishStories = stories.filter(s => {
+  if (s.isSeedContent) return false;
   const ja = s.translations?.ja?.futureWish;
   return s.futureWish || ja;
 });
