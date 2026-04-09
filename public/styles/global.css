@@ -2167,6 +2167,245 @@ body { background-color: var(--color-bg); }
 .image-hint-url-ng { color: #c62828; }
 .image-hint-url-tip { color: #e65100; margin-top: 0.5rem; }
 
+/* ============ データページ ============ */
+.data-page .page-subtitle {
+  color: rgba(255,255,255,0.7);
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.data-section h2::after { content: none; }
+
+.data-note {
+  font-size: 0.875rem;
+  color: var(--color-text-sub);
+  margin-bottom: 1.25rem;
+}
+
+/* ドーナツグラフ */
+.donut-wrap {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.donut {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.donut-hole {
+  position: absolute;
+  inset: 30px;
+  background: var(--color-surface);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.donut-total {
+  font-size: 1.75rem;
+  font-weight: 900;
+  color: var(--color-accent);
+  line-height: 1;
+}
+
+.donut-label-sm {
+  font-size: 0.75rem;
+  color: var(--color-text-sub);
+}
+
+.donut-legend {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.donut-legend li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-name {
+  flex: 1;
+  font-weight: 600;
+}
+
+.legend-count {
+  color: var(--color-text-sub);
+  font-size: 0.85rem;
+}
+
+/* 棒グラフ */
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bar-row {
+  display: grid;
+  grid-template-columns: 10rem 1fr 2.5rem;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.bar-label {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+.bar-track {
+  background: #eee;
+  border-radius: 100px;
+  height: 18px;
+  overflow: hidden;
+}
+
+.bar-track--sm {
+  height: 12px;
+  flex: 1;
+}
+
+.bar-fill {
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 100px;
+  transition: width 0.4s ease;
+}
+
+.bar-count {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-text-sub);
+  text-align: right;
+}
+
+/* キャラランキング */
+.chara-ranking {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.chara-row {
+  display: grid;
+  grid-template-columns: 1.8rem 8rem 1fr 2.5rem;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.chara-rank {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  background: #eee;
+  color: var(--color-text-sub);
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.chara-rank--top {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.chara-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* 国リスト */
+.country-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.country-row {
+  display: grid;
+  grid-template-columns: 7rem 1fr 2.5rem;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.country-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* Wish カード */
+.wish-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.wish-card {
+  display: block;
+  background: var(--color-primary-light);
+  border: 1px solid rgba(232, 98, 26, 0.2);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  text-decoration: none;
+  transition: box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.wish-card:hover {
+  box-shadow: var(--shadow-sm);
+  border-color: var(--color-primary);
+  text-decoration: none;
+}
+
+.wish-text {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+.wish-name {
+  font-size: 0.8rem;
+  color: var(--color-text-sub);
+}
+
+.data-cta {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+@media (max-width: 640px) {
+  .donut-wrap { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  .bar-row { grid-template-columns: 7rem 1fr 2rem; }
+  .chara-row { grid-template-columns: 1.8rem 6rem 1fr 2rem; }
+  .country-row { grid-template-columns: 5.5rem 1fr 2rem; }
+  .wish-grid { grid-template-columns: 1fr; }
+}
+
 /* ============ アクセシビリティ: アニメーション軽減設定 ============ */
 @media (prefers-reduced-motion: reduce) {
   .hero-emitter::before,

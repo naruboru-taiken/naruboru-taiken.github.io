@@ -98,6 +98,35 @@ naruboru-fan-site/
 - `mainStory` がなければ `triggerScene` / `realization` / `currentRelationship` を個別表示（旧形式）
 - `favoriteScene` / `futureWish` / `message` は条件付き表示（nullなら非表示）
 
+#### 投稿追加時に必ず出力する付帯情報
+
+stories.json への追記が完了したら、以下を **毎回セットで出力すること**。
+
+**① SNS投稿文案**（X / Twitter 用・140字以内）
+- 出会いのシチュエーションをフックにしたテキスト
+- `[URL]` プレースホルダー付き
+- 末尾に `#NARUTO #BORUTO #ナルボル体験談`
+
+**② 画像生成プロンプト**（Gemini Imagen 用・英語）
+
+投稿者が NARUTO/BORUTO に出会った**シチュエーション**を情景として描写する。以下のルールを厳守すること：
+
+- NARUTO・BORUTO のキャラクター・ロゴ・固有名詞を一切含めない
+- 「manga」「anime」「comic」「NARUTO」「BORUTO」などIP想起ワードを使わない
+  - 代替: manga volumes → `a stack of books` / TV showing anime → `a television casting soft warm glow`
+- 人物が登場する場合は **後ろ姿・シルエット・手元のみ**（顔は描写しない）
+- 投稿者の性別・年齢が推定できる場合は反映する（例: `a teenage girl's silhouette`, `a young man's hands`）。不明な場合は中性的に
+- スタイル指定: `watercolor illustration, seen from behind, no face`
+- 全体統一オプション（スタイルを揃えたい場合末尾に追加）: `consistent style, muted warm palette, soft grain texture`
+
+**出力例（story-022 Moe）:**
+
+SNS文案:
+> 引越し先でなんとなくつけたテレビに、BORUTO1話が映っていた。「初めて好きになった少年漫画」との出会いは、運命のリモコンだった📺 [URL] #NARUTO #BORUTO #ナルボル体験談
+
+画像プロンプト:
+> A teenage girl's silhouette sitting among half-unpacked cardboard boxes in a bare new room, a television in the corner casting soft warm glow, late afternoon light through bare windows, quiet atmosphere of new beginnings, watercolor illustration, seen from behind, no face
+
 ### 「投稿を非公開/削除したい」
 → `src/data/stories.json` から該当オブジェクトを削除するか、ファイルから取り除く
 

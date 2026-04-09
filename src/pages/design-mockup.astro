@@ -1,0 +1,1276 @@
+---
+// src/pages/design-mockup.astro
+// デザインモックアップ v6
+// ・noindex設定済み
+// ・既存コンポーネント・i18nは一切変更しない
+// ・mk-* プレフィックスで既存スタイルと完全分離
+---
+
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>デザインモックアップ v6 | ナルボル体験談</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles/global.css" />
+</head>
+<body>
+
+<!-- ノイズフィルター定義 -->
+<svg class="mk-svg-defs" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="mk-grain-filter" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise"/>
+      <feComposite in="grayNoise" in2="SourceGraphic" operator="in"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- NOTICE -->
+<div class="mk-notice">🎨 デザインモックアップ v6 — 本番未適用・noindex設定済み</div>
+
+<!-- ================================================================
+     HEADER
+     ================================================================ -->
+<header class="mk-header">
+  <div class="mk-header-inner">
+    <a href="#" class="mk-logo">
+      <span class="mk-logo-mark">忍</span>
+      <span class="mk-logo-text">ナルボル体験談</span>
+    </a>
+    <nav class="mk-nav">
+      <a href="#" class="mk-nav-link">体験談を読む</a>
+      <a href="#" class="mk-nav-link">推しキャラ</a>
+      <a href="#" class="mk-btn mk-btn-primary mk-btn-sm">体験談を投稿する</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================================================================
+     HERO — ダーク + チャクラ炎 + コンテンツ予告
+     ================================================================ -->
+<section class="mk-hero">
+  <div class="mk-hero-bg" aria-hidden="true">
+    <div class="mk-hero-ambient"></div>
+    <div class="mk-hero-chakra"></div>
+    <div class="mk-hero-emitter"></div>
+    <div class="mk-hero-emitter-core"></div>
+    <div class="mk-hero-noise"></div>
+    <div class="mk-hero-kanji" aria-hidden="true">忍</div>
+  </div>
+
+  <div class="mk-hero-inner">
+    <!-- 左: コピー -->
+    <div class="mk-hero-copy">
+      <p class="mk-eyebrow">NARUTO · BORUTO ファン体験談</p>
+      <h1 class="mk-hero-title" aria-label="引き込まれたのは、どんな瞬間でしたか。">
+        <span class="mk-typing-target">引き込まれたのは、<br>どんな瞬間でしたか。</span>
+      </h1>
+      <p class="mk-hero-sub">
+        「友達のジャンプが目に入った」「たまたまつけたテレビで流れていた」——<br>
+        きっかけは小さくても、あの瞬間がすべてを変えた。
+      </p>
+      <div class="mk-hero-actions">
+        <a href="#" class="mk-btn mk-btn-primary mk-btn-lg">体験談をすべて読む</a>
+        <a href="#" class="mk-btn mk-btn-outline-white">あの記憶を投稿する</a>
+      </div>
+      <!-- グローバル感の強調 -->
+      <p class="mk-hero-count">
+        日本・ブラジル・韓国など <strong>8ヶ国</strong> から
+        <strong>28</strong> の物語が集まっています
+      </p>
+      <!-- スクロールインジケーター -->
+      <div class="mk-scroll-hint" aria-hidden="true">
+        <span class="mk-scroll-arrow">↓</span>
+      </div>
+    </div>
+
+    <!-- 右: 体験談の断片（コンテンツ予告） -->
+    <!-- タイピング完了後にフェードイン（animation-delayで制御） -->
+    <div class="mk-hero-stories" aria-label="体験談のサンプル" role="complementary">
+
+      <div class="mk-snippet mk-snippet-1">
+        <div class="mk-snippet-series">NARUTO · 漫画 · 日本</div>
+        <p class="mk-snippet-quote">
+          中忍試験で泣いてハマって、今もVジャンプで毎月追っている
+        </p>
+        <div class="mk-snippet-author">
+          <span class="mk-snippet-avatar">千</span>
+          <span>千 · 10代</span>
+        </div>
+      </div>
+
+      <div class="mk-snippet mk-snippet-2">
+        <div class="mk-snippet-series">NARUTO · TVアニメ · ブラジル</div>
+        <p class="mk-snippet-quote">
+          第1話のラストで心を奪われ、ナルトは私の最大の情熱となった
+        </p>
+        <div class="mk-snippet-author">
+          <span class="mk-snippet-avatar">H</span>
+          <span>Hatake · 10代</span>
+        </div>
+      </div>
+
+      <div class="mk-snippet mk-snippet-3">
+        <div class="mk-snippet-series">NARUTO · TVアニメ · 韓国</div>
+        <p class="mk-snippet-quote">
+          字幕なしで観て泣いた。言葉より先に心に届いた
+        </p>
+        <div class="mk-snippet-author">
+          <span class="mk-snippet-avatar">S</span>
+          <span>Saradaisuki · 10代</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     STATS BAR — 数字で語る橋渡し
+     ================================================================ -->
+<div class="mk-stats-bar" aria-label="サイト統計">
+  <div class="mk-stats-inner">
+    <div class="mk-stat">
+      <span class="mk-stat-num">28</span>
+      <span class="mk-stat-label">の物語</span>
+    </div>
+    <span class="mk-stat-sep" aria-hidden="true">·</span>
+    <div class="mk-stat">
+      <span class="mk-stat-num">8</span>
+      <span class="mk-stat-label">ヶ国から</span>
+    </div>
+    <span class="mk-stat-sep" aria-hidden="true">·</span>
+    <div class="mk-stat">
+      <span class="mk-stat-label">NARUTO</span>
+      <span class="mk-stat-amp"> & </span>
+      <span class="mk-stat-label">BORUTO</span>
+    </div>
+    <span class="mk-stat-sep" aria-hidden="true">·</span>
+    <div class="mk-stat">
+      <span class="mk-stat-label">全年代・全メディア</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================================================================
+     CARD SECTION — 体験談リスト
+     ================================================================ -->
+<section class="mk-section">
+  <div class="mk-inner">
+    <div class="mk-section-head">
+      <h2 class="mk-section-title">最新の体験談</h2>
+      <a href="#" class="mk-section-link">すべて見る →</a>
+    </div>
+    <div class="mk-grid">
+
+      <article class="mk-card">
+        <div class="mk-card-top">
+          <div class="mk-card-series">NARUTO · 漫画</div>
+        </div>
+        <blockquote class="mk-card-quote">
+          中忍試験で泣いてハマって、今もVジャンプで毎月追っている
+        </blockquote>
+        <footer class="mk-card-footer">
+          <span class="mk-avatar">千</span>
+          <div class="mk-card-meta">
+            <span class="mk-card-name">千</span>
+            <span class="mk-card-detail">10代 · ナルヒナ推し · 日本</span>
+          </div>
+          <span class="mk-card-arrow">→</span>
+        </footer>
+      </article>
+
+      <article class="mk-card">
+        <div class="mk-card-top">
+          <div class="mk-card-series">NARUTO · TVアニメ</div>
+        </div>
+        <blockquote class="mk-card-quote">
+          上京して買った中古TVで、ちょうどナルトが始まっていた
+        </blockquote>
+        <footer class="mk-card-footer">
+          <span class="mk-avatar">チ</span>
+          <div class="mk-card-meta">
+            <span class="mk-card-name">チャーリー</span>
+            <span class="mk-card-detail">20代 · ナルト推し · 日本</span>
+          </div>
+          <span class="mk-card-arrow">→</span>
+        </footer>
+      </article>
+
+      <article class="mk-card">
+        <div class="mk-card-top">
+          <div class="mk-card-series">NARUTO · TVアニメ</div>
+          <span class="mk-card-country">🇧🇷</span>
+        </div>
+        <blockquote class="mk-card-quote">
+          第1話のラストで心を奪われ、ナルトは私の最大の情熱となった
+        </blockquote>
+        <footer class="mk-card-footer">
+          <span class="mk-avatar">H</span>
+          <div class="mk-card-meta">
+            <span class="mk-card-name">Hatake</span>
+            <span class="mk-card-detail">10代 · ナルト推し · ブラジル</span>
+          </div>
+          <span class="mk-card-arrow">→</span>
+        </footer>
+      </article>
+
+      <article class="mk-card">
+        <div class="mk-card-top">
+          <div class="mk-card-series">BORUTO · TVアニメ</div>
+        </div>
+        <blockquote class="mk-card-quote">
+          ボルサラに落ちたのは、きっとあの一話があったから
+        </blockquote>
+        <footer class="mk-card-footer">
+          <span class="mk-avatar">M</span>
+          <div class="mk-card-meta">
+            <span class="mk-card-name">Moe</span>
+            <span class="mk-card-detail">20代 · ボルサラ推し · 日本</span>
+          </div>
+          <span class="mk-card-arrow">→</span>
+        </footer>
+      </article>
+
+      <article class="mk-card">
+        <div class="mk-card-top">
+          <div class="mk-card-series">
+            <span class="mk-badge-new">NEW</span>
+            NARUTO · TVアニメ
+          </div>
+          <span class="mk-card-country">🇰🇷</span>
+        </div>
+        <blockquote class="mk-card-quote">
+          韓国で字幕なしで観て泣いた。言葉より先に心に届いた
+        </blockquote>
+        <footer class="mk-card-footer">
+          <span class="mk-avatar">S</span>
+          <div class="mk-card-meta">
+            <span class="mk-card-name">Saradaisuki</span>
+            <span class="mk-card-detail">10代 · サラダ推し · 韓国</span>
+          </div>
+          <span class="mk-card-arrow">→</span>
+        </footer>
+      </article>
+
+      <article class="mk-card mk-card-read">
+        <div class="mk-card-top">
+          <div class="mk-card-series">
+            <span class="mk-badge-read">既読</span>
+            NARUTO · TVアニメ
+          </div>
+        </div>
+        <blockquote class="mk-card-quote">
+          友達のジャンプを一ページ立ち読みしただけで、気づいたら全巻買っていた
+        </blockquote>
+        <footer class="mk-card-footer">
+          <span class="mk-avatar">A</span>
+          <div class="mk-card-meta">
+            <span class="mk-card-name">A</span>
+            <span class="mk-card-detail">〜10歳 · イタチ推し · 日本</span>
+          </div>
+          <span class="mk-card-arrow">→</span>
+        </footer>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     CTA — エモーショナルコピー
+     ================================================================ -->
+<section class="mk-cta-section">
+  <div class="mk-inner mk-cta-inner">
+    <p class="mk-cta-eyebrow">YOUR STORY</p>
+    <h2 class="mk-cta-title">あの記憶を、ここに残しませんか。</h2>
+    <p class="mk-cta-desc">
+      長文でなくていい。うまく書けなくてもいい。<br>
+      あなたの「あの瞬間」が、誰かの背中を押すかもしれない。
+    </p>
+    <a href="#" class="mk-btn mk-btn-primary mk-btn-lg">あの記憶を投稿する</a>
+    <p class="mk-cta-note">
+      <a href="#">投稿ガイドライン</a>を必ずご確認ください。
+    </p>
+  </div>
+</section>
+
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
+<footer class="mk-footer">
+  <div class="mk-footer-inner">
+    <div class="mk-footer-top">
+      <a href="#" class="mk-footer-logo">
+        <span class="mk-footer-logo-mark">忍</span>
+        <span>ナルボル体験談</span>
+      </a>
+      <nav class="mk-footer-nav">
+        <a href="#">体験談を読む</a>
+        <a href="#">推しキャラ</a>
+        <a href="#">投稿する</a>
+        <a href="#">ガイドライン</a>
+        <a href="#">プライバシー</a>
+      </nav>
+      <a href="https://x.com/naruboru_taiken" class="mk-footer-x" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+        @naruboru_taiken
+      </a>
+    </div>
+    <p class="mk-footer-note">
+      このサイトはNARUTO・BORUTOの非公式ファンサイトです。掲載情報は権利者と無関係です。
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
+
+<style>
+/* ================================================================
+   モックアップ v6 専用スタイル (mk-* prefix)
+   global.css の CSS変数のみ参照。Satori対象外。
+   ================================================================ */
+
+/* ===== Keyframes ===== */
+
+@keyframes mk-emitter-breathe {
+  0%   { opacity: 0.82; transform: scaleY(1)    scaleX(1); }
+  25%  { opacity: 1;    transform: scaleY(1.18) scaleX(1.06); }
+  55%  { opacity: 0.88; transform: scaleY(0.96) scaleX(1.02); }
+  80%  { opacity: 0.95; transform: scaleY(1.10) scaleX(0.98); }
+  100% { opacity: 0.82; transform: scaleY(1)    scaleX(1); }
+}
+@keyframes mk-emitter-core-pulse {
+  0%, 100% { opacity: 0.70; transform: scaleY(1)    scaleX(1); }
+  35%       { opacity: 1;    transform: scaleY(1.24) scaleX(1.10); }
+  65%       { opacity: 0.80; transform: scaleY(0.92) scaleX(0.96); }
+}
+@keyframes mk-ambient-drift {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(16px, -12px); }
+}
+@keyframes mk-cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+@keyframes mk-quote-in {
+  from { opacity: 0; transform: translateY(6px) scale(0.96); }
+  to   { opacity: 0.085; transform: translateY(0) scale(1); }
+}
+/* スクロール矢印のバウンス */
+@keyframes mk-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+/* ヒーロースニペットのフェードイン（タイピング完了後） */
+@keyframes mk-snippet-in {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ===== SVG定義（非表示） ===== */
+.mk-svg-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* ===== Notice ===== */
+.mk-notice {
+  background: #0d0d1e;
+  color: rgba(255,255,255,0.45);
+  font-size: 0.76rem;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  letter-spacing: 0.04em;
+  font-family: var(--font-body);
+}
+
+/* ===== Header ===== */
+.mk-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(26,26,46,0.96);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(232,98,26,0.18);
+  box-shadow: 0 1px 24px rgba(0,0,0,0.22);
+}
+.mk-header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.mk-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.05rem;
+  font-family: var(--font-body);
+}
+.mk-logo:hover { color: var(--color-primary); text-decoration: none; }
+.mk-logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #c04e10 100%);
+  color: white;
+  border-radius: 50%;
+  font-size: 0.95rem;
+  font-weight: 700;
+  box-shadow: 0 0 12px rgba(232,98,26,0.4);
+  flex-shrink: 0;
+  font-family: var(--font-body);
+}
+.mk-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+.mk-nav-link {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.72);
+  font-weight: 500;
+  text-decoration: none;
+  font-family: var(--font-body);
+  transition: color 0.18s;
+}
+.mk-nav-link:hover { color: var(--color-primary); text-decoration: none; }
+
+/* ===== Buttons ===== */
+.mk-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.7rem 1.6rem;
+  border-radius: 100px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.18s, border-color 0.18s, color 0.18s,
+              box-shadow 0.18s, transform 0.18s;
+  border: 2px solid transparent;
+  cursor: pointer;
+  font-family: var(--font-body);
+  white-space: nowrap;
+}
+.mk-btn-primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #d4561a 100%);
+  color: #fff;
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 14px rgba(232,98,26,0.28);
+}
+.mk-btn-primary:hover {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, #b34412 100%);
+  border-color: var(--color-primary-dark);
+  text-decoration: none;
+  color: #fff;
+  box-shadow: 0 6px 22px rgba(232,98,26,0.48);
+  transform: translateY(-1px);
+}
+.mk-btn-outline-white {
+  background: transparent;
+  color: rgba(255,255,255,0.9);
+  border-color: rgba(255,255,255,0.42);
+}
+.mk-btn-outline-white:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.7);
+  color: #fff;
+  text-decoration: none;
+}
+.mk-btn-sm  { padding: 0.45rem 1.1rem; font-size: 0.82rem; }
+.mk-btn-lg  { padding: 0.95rem 2.4rem; font-size: 1rem; }
+
+/* ===== Hero ===== */
+.mk-hero {
+  position: relative;
+  background: var(--color-accent);
+  color: white;
+  overflow: hidden;
+  padding: 5rem 0 5.5rem;
+}
+
+/* --- 背景レイヤー群 --- */
+.mk-hero-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+/* 環境光 */
+.mk-hero-ambient {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 45% 40% at 12% 22%, rgba(232,98,26,0.10) 0%, transparent 55%),
+    radial-gradient(ellipse 30% 35% at 88% 18%, rgba(232,98,26,0.06) 0%, transparent 50%);
+  animation: mk-ambient-drift 14s ease-in-out infinite;
+}
+/* チャクラ炎ベース */
+.mk-hero-chakra {
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  bottom: 0;
+  height: 65%;
+  background: radial-gradient(ellipse 110% 85% at 50% 120%,
+    rgba(140,50,8,0.45) 0%,
+    rgba(100,30,3,0.18) 40%,
+    transparent 68%
+  );
+}
+/* 発光体（blur + screen） */
+.mk-hero-emitter {
+  position: absolute;
+  bottom: 0;
+  left: -20%;
+  right: -20%;
+  height: 70%;
+  transform-origin: bottom center;
+  background: radial-gradient(ellipse 85% 80% at 50% 110%,
+    rgba(232,98,26,1.0)  0%,
+    rgba(220,75,10,0.85) 18%,
+    rgba(190,50, 5,0.50) 38%,
+    rgba(140,30, 2,0.15) 60%,
+    transparent 78%
+  );
+  filter: blur(72px);
+  mix-blend-mode: screen;
+  animation: mk-emitter-breathe 6s ease-in-out infinite;
+  pointer-events: none;
+}
+/* 発光コア */
+.mk-hero-emitter-core {
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 40%;
+  transform-origin: bottom center;
+  background: radial-gradient(ellipse 70% 85% at 50% 115%,
+    rgba(255,140,50,1.0)  0%,
+    rgba(245,100,20,0.90) 20%,
+    rgba(220, 70, 5,0.45) 50%,
+    transparent 75%
+  );
+  filter: blur(48px);
+  mix-blend-mode: screen;
+  animation: mk-emitter-core-pulse 4s ease-in-out infinite;
+  pointer-events: none;
+}
+/* ノイズテクスチャ */
+.mk-hero-noise {
+  position: absolute;
+  inset: 0;
+  background: #aaa;
+  filter: url(#mk-grain-filter);
+  opacity: 0.042;
+  mix-blend-mode: overlay;
+}
+/* 忍の透かし — 2カラム化に伴い中央寄りに移動・opacity微調整 */
+.mk-hero-kanji {
+  position: absolute;
+  right: 0%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: clamp(12rem, 22vw, 22rem);
+  font-weight: 700;
+  font-family: var(--font-body);
+  color: rgba(255,255,255,0.032);
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* --- ヒーロー 2カラムレイアウト --- */
+.mk-hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+}
+.mk-hero-copy {
+  flex: 0 0 54%;
+  min-width: 0;
+}
+
+/* eyebrow */
+.mk-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  font-family: var(--font-body);
+}
+.mk-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* タイトル */
+.mk-hero-title {
+  font-size: clamp(2rem, 4.5vw, 3.1rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-body);
+  min-height: 2.8em;
+}
+.mk-hero-title.mk-typing .mk-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 0.85em;
+  background: var(--color-primary);
+  margin-left: 3px;
+  vertical-align: middle;
+  border-radius: 1px;
+  animation: mk-cursor-blink 0.85s ease-in-out infinite;
+}
+
+.mk-hero-sub {
+  font-size: 0.975rem;
+  color: rgba(255,255,255,0.76);
+  line-height: 1.9;
+  margin-bottom: 2rem;
+  font-family: var(--font-body);
+}
+.mk-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+/* グローバル感を強調した件数表示 */
+.mk-hero-count {
+  font-size: 0.84rem;
+  color: rgba(255,255,255,0.48);
+  line-height: 1.6;
+  font-family: var(--font-body);
+  margin-bottom: 2rem;
+}
+.mk-hero-count strong { color: var(--color-primary); font-weight: 700; }
+
+/* スクロールインジケーター */
+.mk-scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.mk-scroll-arrow {
+  display: inline-block;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.35);
+  animation: mk-bounce 2s ease-in-out infinite;
+  line-height: 1;
+}
+
+/* --- 右側: 体験談スニペット --- */
+.mk-hero-stories {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.mk-snippet {
+  background: rgba(255,255,255,0.055);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  /* タイピング完了後にフェードイン */
+  opacity: 0;
+  animation: mk-snippet-in 0.55s ease forwards;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+/* 時差フェードイン — タイピング完了（約1.7s）の後 */
+.mk-snippet-1 { animation-delay: 1.8s; }
+.mk-snippet-2 { animation-delay: 2.15s; }
+.mk-snippet-3 { animation-delay: 2.5s; }
+
+.mk-snippet-series {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-body);
+}
+.mk-snippet-quote {
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.9);
+  margin: 0 0 0.6rem;
+  font-family: var(--font-body);
+}
+.mk-snippet-author {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.45);
+  font-family: var(--font-body);
+}
+.mk-snippet-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #1a1a2e 100%);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  font-family: var(--font-body);
+}
+
+/* ===== Stats Bar ===== */
+.mk-stats-bar {
+  background: #fff;
+  /* 上端にオレンジの余熱を受け止める */
+  border-top: 2px solid rgba(232,98,26,0.18);
+  border-bottom: 1px solid #e8e8e8;
+  box-shadow:
+    0 -6px 24px rgba(232,98,26,0.08), /* 上方向: heroからの滲み */
+    0  2px  8px rgba(0,0,0,0.04);      /* 下方向: セクションへの影 */
+  position: relative;
+  z-index: 2;
+}
+.mk-stats-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.mk-stats-inner::-webkit-scrollbar { display: none; }
+.mk-stat {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+.mk-stat-num {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  font-family: var(--font-body);
+  line-height: 1;
+}
+.mk-stat-label {
+  font-size: 0.8rem;
+  color: #666;
+  font-weight: 500;
+  font-family: var(--font-body);
+}
+.mk-stat-amp {
+  font-size: 0.8rem;
+  color: #aaa;
+  font-family: var(--font-body);
+}
+.mk-stat-sep {
+  font-size: 1rem;
+  color: #ccc;
+  font-family: var(--font-body);
+  flex-shrink: 0;
+}
+
+/* ===== Section ===== */
+.mk-section {
+  padding: 4.5rem 0;
+  background: #f4f4f6;
+  position: relative;
+  z-index: 1;
+}
+.mk-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.mk-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 2.25rem;
+}
+.mk-section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #111;
+  font-family: var(--font-body);
+}
+.mk-section-link {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-decoration: none;
+  font-family: var(--font-body);
+}
+.mk-section-link:hover { text-decoration: underline; }
+
+/* ===== Card Grid ===== */
+.mk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ===== Card ===== */
+.mk-card {
+  background: #fff;
+  border-radius: 16px;
+  /* 常時表示の左オレンジ帯 — モバイルでも確実に見える */
+  border: none;
+  border-left: 4px solid var(--color-primary);
+  box-shadow:
+    0 4px 18px rgba(0,0,0,0.08),
+    0 1px 4px rgba(0,0,0,0.05);
+  /* カードの内側: 引用符のためにtop paddingを確保 */
+  padding: 0 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  transition:
+    box-shadow 0.28s cubic-bezier(0.4,0,0.2,1),
+    transform  0.28s cubic-bezier(0.4,0,0.2,1),
+    border-left-color 0.2s;
+  cursor: pointer;
+}
+.mk-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+}
+/* ホバー: 影がふわりと広がる */
+.mk-card:hover {
+  box-shadow:
+    0 18px 48px rgba(0,0,0,0.13),
+    0 4px 12px rgba(0,0,0,0.06);
+  transform: translateY(-5px);
+  border-left-color: var(--color-primary-dark);
+}
+.mk-card-read { opacity: 0.65; }
+
+.mk-card-series {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #aaa;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+}
+/* 国旗emoji: カード右上に小さく */
+.mk-card-country {
+  font-size: 1rem;
+  line-height: 1;
+  opacity: 0.75;
+  flex-shrink: 0;
+}
+
+/* ===== エディトリアル引用符 + キャッチフレーズ ===== */
+/*
+ * 感情タグを使わない代わりに:
+ * - 引用符を大きく・存在感を強める
+ * - キャッチフレーズのフォントサイズを上げる
+ * - 十分な余白でキャッチフレーズが「主役」に見えるようにする
+ */
+.mk-card-quote {
+  position: relative;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.7;
+  color: #111;
+  flex: 1;
+  quotes: none;
+  margin: 0;
+  /* 引用符とテキストが重ならないよう余白 */
+  padding-top: 1.75rem;
+  padding-bottom: 0.25rem;
+  font-family: var(--font-body);
+  z-index: 1;
+}
+/* 巨大な引用符を背景に */
+.mk-card-quote::before {
+  content: '\201C';
+  position: absolute;
+  top: -0.2rem;
+  left: -0.5rem;
+  /* より大きく・より存在感を強める */
+  font-size: 6.5rem;
+  line-height: 1;
+  font-weight: 900;
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--color-primary);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  animation: mk-quote-in 0.5s ease-out 0.05s forwards;
+}
+
+.mk-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding-top: 0.875rem;
+  padding-bottom: 0.375rem;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* ===== Avatar ===== */
+.mk-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #1a1a2e 100%);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  font-family: var(--font-body);
+}
+.mk-card-meta { flex: 1; min-width: 0; }
+.mk-card-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #222;
+  display: block;
+  font-family: var(--font-body);
+}
+.mk-card-detail {
+  font-size: 0.72rem;
+  color: #bbb;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-body);
+  margin-top: 0.1rem;
+}
+.mk-card-arrow {
+  font-size: 0.88rem;
+  color: #d0d0d0;
+  flex-shrink: 0;
+  transition: color 0.18s, transform 0.18s;
+}
+.mk-card:hover .mk-card-arrow {
+  color: var(--color-primary);
+  transform: translateX(4px);
+}
+
+/* ===== Badges ===== */
+.mk-badge-new {
+  display: inline-block;
+  padding: 0.1rem 0.42rem;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: 700;
+  border-radius: 4px;
+  letter-spacing: 0.06em;
+  font-family: var(--font-body);
+  vertical-align: middle;
+}
+.mk-badge-read {
+  display: inline-block;
+  padding: 0.1rem 0.42rem;
+  background: #e8e8e8;
+  color: #999;
+  font-size: 0.6rem;
+  font-weight: 700;
+  border-radius: 4px;
+  letter-spacing: 0.06em;
+  font-family: var(--font-body);
+  vertical-align: middle;
+}
+
+/* ===== CTA Section ===== */
+.mk-cta-section {
+  position: relative;
+  background: linear-gradient(135deg, var(--color-accent) 0%, #2a2a4a 100%);
+  color: white;
+  padding: 5.5rem 0;
+  text-align: center;
+  overflow: hidden;
+}
+.mk-cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+.mk-cta-section::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(232,98,26,0.14) 0%, transparent 68%);
+  pointer-events: none;
+}
+.mk-cta-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.mk-cta-eyebrow {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  font-family: var(--font-body);
+}
+.mk-cta-title {
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  margin-bottom: 1rem;
+  font-family: var(--font-body);
+}
+.mk-cta-desc {
+  color: rgba(255,255,255,0.75);
+  line-height: 1.9;
+  margin-bottom: 2.25rem;
+  font-size: 1rem;
+  font-family: var(--font-body);
+}
+.mk-cta-note {
+  margin-top: 1.25rem;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.38);
+  font-family: var(--font-body);
+}
+.mk-cta-note a { color: rgba(255,255,255,0.55); }
+.mk-cta-note a:hover { color: rgba(255,255,255,0.8); text-decoration: underline; }
+
+/* ===== Footer ===== */
+.mk-footer {
+  background: #13132a;
+  color: rgba(255,255,255,0.6);
+  padding: 2.5rem 0 2rem;
+  font-family: var(--font-body);
+}
+.mk-footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.mk-footer-top {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.mk-footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255,255,255,0.85);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  font-family: var(--font-body);
+  flex-shrink: 0;
+}
+.mk-footer-logo:hover { color: var(--color-primary); text-decoration: none; }
+.mk-footer-logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.mk-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+  flex: 1;
+}
+.mk-footer-nav a {
+  font-size: 0.83rem;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  font-family: var(--font-body);
+  transition: color 0.15s;
+}
+.mk-footer-nav a:hover { color: rgba(255,255,255,0.9); text-decoration: none; }
+.mk-footer-x {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.83rem;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  font-family: var(--font-body);
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+.mk-footer-x:hover { color: rgba(255,255,255,0.9); text-decoration: none; }
+.mk-footer-note {
+  font-size: 0.76rem;
+  color: rgba(255,255,255,0.28);
+  line-height: 1.7;
+  font-family: var(--font-body);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  /* ヒーロー: 2カラム→1カラム */
+  .mk-hero-inner {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .mk-hero-copy { flex: none; width: 100%; }
+  .mk-hero-stories { width: 100%; flex-direction: row; overflow-x: auto; gap: 0.75rem; }
+  .mk-snippet { flex: 0 0 260px; }
+}
+@media (max-width: 640px) {
+  .mk-header-inner { padding: 0 1rem; }
+  .mk-nav-link { display: none; }
+  .mk-hero { padding: 3.5rem 0 4rem; }
+  .mk-hero-title { min-height: 3.2em; }
+  .mk-hero-kanji { font-size: clamp(10rem, 40vw, 13rem); opacity: 0.025; }
+  /* モバイル: スニペット非表示（ヒーローが縦に長くなりすぎる） */
+  .mk-hero-stories { display: none; }
+  .mk-stats-bar { padding: 0 1rem; }
+  .mk-section { padding: 3rem 0; }
+  .mk-cta-section { padding: 3.5rem 0; }
+  .mk-footer-top { flex-direction: column; gap: 1rem; }
+  .mk-card-quote::before { font-size: 5rem; }
+}
+</style>
+
+<script>
+// ================================================================
+// タイピングエフェクト（ヒーロータイトル）
+// タイピング完了時刻をスニペットのアニメーション遅延と揃えている
+// ================================================================
+(function () {
+  const target = document.querySelector<HTMLElement>('.mk-typing-target');
+  const titleEl = target?.parentElement;
+  if (!target || !titleEl) return;
+
+  const lines: string[] = [
+    '引き込まれたのは、',
+    'どんな瞬間でしたか。',
+  ];
+
+  titleEl.classList.add('mk-typing');
+  target.innerHTML = '';
+
+  const cursor = document.createElement('span');
+  cursor.className = 'mk-cursor';
+  cursor.setAttribute('aria-hidden', 'true');
+
+  let lineIdx = 0;
+  let charIdx = 0;
+  let currentSpan: HTMLElement | null = null;
+
+  function tick() {
+    if (lineIdx >= lines.length) {
+      // タイピング完了 — カーソルを短時間だけ残してフェード
+      // スニペットのアニメーションは animation-delay で CSS 側制御済み
+      setTimeout(() => {
+        cursor.style.transition = 'opacity 0.6s';
+        cursor.style.opacity = '0';
+        setTimeout(() => cursor.remove(), 700);
+      }, 900); // 0.9s 点滅後フェード（スニペット開始: 1.8s）
+      return;
+    }
+    const line = lines[lineIdx];
+    if (!currentSpan) {
+      currentSpan = document.createElement('span');
+      currentSpan.style.display = 'block';
+      target.appendChild(currentSpan);
+      if (lineIdx === 0) target.appendChild(cursor);
+    }
+    if (charIdx < line.length) {
+      currentSpan.textContent += line[charIdx];
+      charIdx++;
+      setTimeout(tick, 62 + Math.random() * 32);
+    } else {
+      lineIdx++;
+      charIdx = 0;
+      currentSpan = null;
+      setTimeout(tick, 200);
+    }
+  }
+
+  setTimeout(tick, 350);
+})();
+</script>

@@ -1,0 +1,240 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import storiesRaw from '../data/stories.json';
+
+type Story = {
+  id: string;
+  displayName: string;
+  ageGroup?: string | null;
+  favoriteCharacter?: string | null;
+  firstSeries?: string | null;
+  firstMedia?: string | null;
+  futureWish?: string | null;
+  country?: string | null;
+  translations?: Record<string, Record<string, string | null>>;
+};
+const stories = storiesRaw as Story[];
+const total = stories.length;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// ageGroup 集計
+const ageGroupOrder = ['〜10歳', '10代', '20代', '30代', '40代以上', '覚えていない'];
+const ageCount: Record<string, number> = {};
+for (const g of ageGroupOrder) ageCount[g] = 0;
+for (const s of stories) {
+  const g = s.ageGroup ?? '覚えていない';
+  ageCount[g] = (ageCount[g] ?? 0) + 1;
+}
+
+// firstMedia 集計
+const mediaOrder = ['TVアニメ', '漫画（連載・単行本）', '映画', '二次創作・SNS・人の話', 'その他'];
+const mediaCount: Record<string, number> = {};
+for (const s of stories) {
+  const m = s.firstMedia ?? 'その他';
+  mediaCount[m] = (mediaCount[m] ?? 0) + 1;
+}
+const mediaMax = Math.max(...Object.values(mediaCount));
+
+// firstSeries 集計
+const seriesCount: Record<string, number> = {};
+for (const s of stories) {
+  const sr = s.firstSeries ?? 'NARUTO';
+  seriesCount[sr] = (seriesCount[sr] ?? 0) + 1;
+}
+const seriesSorted = Object.entries(seriesCount).sort((a, b) => b[1] - a[1]);
+
+// キャラランキング
+const charaCount: Record<string, number> = {};
+for (const s of stories) {
+  if (!s.favoriteCharacter) continue;
+  const parts = s.favoriteCharacter.split(/[・、]/);
+  for (const p of parts) {
+    const name = p.trim();
+    if (name) charaCount[name] = (charaCount[name] ?? 0) + 1;
+  }
+}
+const charaRanking = Object.entries(charaCount)
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 10);
+const charaMax = charaRanking[0]?.[1] ?? 1;
+
+// 国集計
+const countryCount: Record<string, number> = {};
+for (const s of stories) {
+  const c = s.country ?? '不明';
+  countryCount[c] = (countryCount[c] ?? 0) + 1;
+}
+const countryRanking = Object.entries(countryCount).sort((a, b) => b[1] - a[1]);
+const countryMax = countryRanking[0]?.[1] ?? 1;
+
+// futureWish
+const wishStories = stories.filter(s => {
+  const ja = s.translations?.ja?.futureWish;
+  return s.futureWish || ja;
+});
+const wishCount = wishStories.length;
+const wishSample = wishStories.slice(0, 6);
+
+// ドーナツグラフ用 conic-gradient
+const donutColors = ['#e8621a', '#f5a623', '#4a9eff', '#a855f7', '#22c55e', '#94a3b8'];
+const activeGroups = ageGroupOrder.filter(g => ageCount[g] > 0);
+let cumulative = 0;
+const donutSegments = activeGroups.map((g, i) => {
+  const pct = (ageCount[g] / total) * 100;
+  const start = cumulative;
+  cumulative += pct;
+  return { label: g, count: ageCount[g], pct, start, color: donutColors[i % donutColors.length] };
+});
+const donutGradient = donutSegments
+  .map(s => `${s.color} ${s.start.toFixed(1)}% ${(s.start + s.pct).toFixed(1)}%`)
+  .join(', ');
+---
+
+<BaseLayout
+  title="ファンデータ"
+  description={`${total}件のナルボル体験談から見えるファンの傾向をグラフで可視化しています。`}
+  lang="ja"
+  pagePath="/data"
+>
+  <section class="page-header">
+    <div class="page-header-inner">
+      <h1 class="page-title">ファンデータ</h1>
+      <p class="page-subtitle">{total}件の体験談から見えること</p>
+    </div>
+  </section>
+
+  <article class="guidelines-article data-page">
+    <div class="guidelines-inner">
+
+      <!-- 年代層 -->
+      <section class="gl-section data-section">
+        <h2>出会いの年代層</h2>
+        <p class="data-note">NARUTOまたはBORUTOに最初に触れたときの年齢</p>
+        <div class="donut-wrap">
+          <div
+            class="donut"
+            style={`background: conic-gradient(${donutGradient})`}
+            role="img"
+            aria-label={`年代層の内訳: ${donutSegments.map(s => `${s.label} ${s.count}件`).join('、')}`}
+          >
+            <div class="donut-hole">
+              <span class="donut-total">{total}</span>
+              <span class="donut-label-sm">件</span>
+            </div>
+          </div>
+          <ul class="donut-legend">
+            {donutSegments.map(s => (
+              <li>
+                <span class="legend-dot" style={`background: ${s.color}`}></span>
+                <span class="legend-name">{s.label}</span>
+                <span class="legend-count">{s.count}件 ({s.pct.toFixed(0)}%)</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <!-- 最初に触れたメディア -->
+      <section class="gl-section data-section">
+        <h2>最初に触れたメディア</h2>
+        <div class="bar-chart">
+          {mediaOrder.filter(m => mediaCount[m] > 0).map(m => (
+            <div class="bar-row">
+              <span class="bar-label">{m}</span>
+              <div class="bar-track">
+                <div
+                  class="bar-fill"
+                  style={`width: ${((mediaCount[m] / mediaMax) * 100).toFixed(1)}%`}
+                ></div>
+              </div>
+              <span class="bar-count">{mediaCount[m]}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- 最初に触れた作品 -->
+      <section class="gl-section data-section">
+        <h2>最初に触れた作品</h2>
+        <div class="bar-chart">
+          {seriesSorted.map(([series, count]) => (
+            <div class="bar-row">
+              <span class="bar-label">{series}</span>
+              <div class="bar-track">
+                <div
+                  class="bar-fill"
+                  style={`width: ${((count / total) * 100).toFixed(1)}%`}
+                ></div>
+              </div>
+              <span class="bar-count">{count}</span>
+            </div>
+          ))}
+        </div>
+        <p class="data-note">BORUTOが入り口のファンも多い</p>
+      </section>
+
+      <!-- 推しキャラランキング -->
+      <section class="gl-section data-section">
+        <h2>推しキャラ TOP10</h2>
+        <ol class="chara-ranking">
+          {charaRanking.map(([name, count], i) => (
+            <li class="chara-row">
+              <span class={`chara-rank${i < 3 ? ' chara-rank--top' : ''}`}>{i + 1}</span>
+              <span class="chara-name">{name}</span>
+              <div class="bar-track bar-track--sm">
+                <div
+                  class="bar-fill"
+                  style={`width: ${((count / charaMax) * 100).toFixed(1)}%`}
+                ></div>
+              </div>
+              <span class="bar-count">{count}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <!-- 国・地域 -->
+      <section class="gl-section data-section">
+        <h2>投稿者の国・地域</h2>
+        <ul class="country-list">
+          {countryRanking.map(([country, count]) => (
+            <li class="country-row">
+              <span class="country-name">{country}</span>
+              <div class="bar-track bar-track--sm">
+                <div
+                  class="bar-fill"
+                  style={`width: ${((count / countryMax) * 100).toFixed(1)}%`}
+                ></div>
+              </div>
+              <span class="bar-count">{count}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- みんなが見てみたい作品 -->
+      <section class="gl-section data-section">
+        <h2>みんなが見てみたい作品</h2>
+        <p class="data-note">{wishCount}件の体験談から（一部抜粋）</p>
+        <div class="wish-grid">
+          {wishSample.map(s => {
+            const raw = (s.translations?.ja?.futureWish ?? s.futureWish) as string;
+            const firstLine = raw.split('\n')[0];
+            const short = firstLine.length > 90 ? firstLine.slice(0, 90) + '…' : firstLine;
+            return (
+              <a href={`${base}/stories/${s.id}`} class="wish-card">
+                <p class="wish-text">{short}</p>
+                <span class="wish-name">— {s.displayName}</span>
+              </a>
+            );
+          })}
+        </div>
+        <div class="data-cta">
+          <a href={`${base}/stories`} class="btn btn-outline">すべての体験談を読む</a>
+        </div>
+      </section>
+
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,379 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SUPPORTED_LANGS, isSupportedLang, getCharaName } from '../../i18n/ui';
+import type { SupportedLang } from '../../i18n/ui';
+import storiesRaw from '../../data/stories.json';
+
+export function getStaticPaths() {
+  return SUPPORTED_LANGS.map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: SupportedLang };
+if (!isSupportedLang(lang)) return Astro.redirect('/data');
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+type Story = {
+  id: string;
+  displayName: string;
+  ageGroup?: string | null;
+  favoriteCharacter?: string | null;
+  firstSeries?: string | null;
+  firstMedia?: string | null;
+  futureWish?: string | null;
+  country?: string | null;
+  translations?: Record<string, Record<string, string | null>>;
+};
+const stories = storiesRaw as Story[];
+const total = stories.length;
+
+// Label translations
+const content = {
+  en: {
+    title: 'Fan Stats',
+    description: `Data insights from ${total} fan stories.`,
+    subtitle: `Insights from ${total} stories`,
+    age_title: 'Age When They Discovered the Series',
+    age_note: 'Age when first encountering NARUTO or BORUTO',
+    media_title: 'First Medium',
+    series_title: 'First Series',
+    series_note: 'Many fans started with BORUTO',
+    chara_title: 'Favorite Characters — Top 10',
+    country_title: 'Countries & Regions',
+    wish_title: 'Stories Fans Want to See',
+    wish_note: `From ${(stories.filter(s => s.futureWish || s.translations?.ja?.futureWish)).length} stories (selected excerpts)`,
+    read_all: 'Read All Stories',
+    unit: '',
+    ageLabels: { '〜10歳': 'Under 10', '10代': 'Teens', '20代': '20s', '30代': '30s', '40代以上': '40s+', '覚えていない': 'Unknown' },
+    mediaLabels: { 'TVアニメ': 'TV Anime', '漫画（連載・単行本）': 'Manga', '映画': 'Film', '二次創作・SNS・人の話': 'Fan content / SNS / Word of mouth', 'その他': 'Other' },
+  },
+  fr: {
+    title: 'Statistiques',
+    description: `Données issues de ${total} témoignages de fans.`,
+    subtitle: `Données issues de ${total} témoignages`,
+    age_title: "Âge à la découverte de la série",
+    age_note: "Âge lors du premier contact avec NARUTO ou BORUTO",
+    media_title: "Premier support",
+    series_title: "Première série",
+    series_note: "Beaucoup ont commencé par BORUTO",
+    chara_title: "Personnages préférés — Top 10",
+    country_title: "Pays et régions",
+    wish_title: "Ce que les fans aimeraient voir",
+    wish_note: `Parmi ${(stories.filter(s => s.futureWish || s.translations?.ja?.futureWish)).length} témoignages (extraits)`,
+    read_all: 'Lire tous les témoignages',
+    unit: '',
+    ageLabels: { '〜10歳': 'Moins de 10 ans', '10代': 'Ados', '20代': '20 ans', '30代': '30 ans', '40代以上': '40 ans +', '覚えていない': 'Inconnu' },
+    mediaLabels: { 'TVアニメ': 'Anime TV', '漫画（連載・単行本）': 'Manga', '映画': 'Film', '二次創作・SNS・人の話': 'Fan art / Réseaux sociaux / Bouche-à-oreille', 'その他': 'Autre' },
+  },
+  ar: {
+    title: 'إحصائيات',
+    description: `بيانات مستخلصة من ${total} قصة من قصص المحبين.`,
+    subtitle: `رؤى من ${total} قصة`,
+    age_title: 'العمر عند اكتشاف السلسلة',
+    age_note: 'العمر عند اللقاء الأول مع NARUTO أو BORUTO',
+    media_title: 'الوسيلة الأولى',
+    series_title: 'السلسلة الأولى',
+    series_note: 'كثيرون بدأوا مع BORUTO',
+    chara_title: 'الشخصيات المفضلة — أفضل 10',
+    country_title: 'الدول والمناطق',
+    wish_title: 'قصص يتمنى المحبون رؤيتها',
+    wish_note: `من ${(stories.filter(s => s.futureWish || s.translations?.ja?.futureWish)).length} قصة (مقتطفات مختارة)`,
+    read_all: 'قراءة جميع القصص',
+    unit: '',
+    ageLabels: { '〜10歳': 'أقل من 10', '10代': 'مراهق', '20代': 'عشرينيات', '30代': 'ثلاثينيات', '40代以上': '40+', '覚えていない': 'غير معروف' },
+    mediaLabels: { 'TVアニメ': 'أنيمي تلفزيوني', '漫画（連載・単行本）': 'مانغا', '映画': 'فيلم', '二次創作・SNS・人の話': 'محتوى معجبين / شبكات اجتماعية', 'その他': 'أخرى' },
+  },
+  es: {
+    title: 'Estadísticas',
+    description: `Datos extraídos de ${total} historias de fans.`,
+    subtitle: `Perspectivas de ${total} historias`,
+    age_title: 'Edad al descubrir la serie',
+    age_note: 'Edad al tener el primer contacto con NARUTO o BORUTO',
+    media_title: 'Primer medio',
+    series_title: 'Primera serie',
+    series_note: 'Muchos fans comenzaron con BORUTO',
+    chara_title: 'Personajes favoritos — Top 10',
+    country_title: 'Países y regiones',
+    wish_title: 'Historias que los fans quieren ver',
+    wish_note: `De ${(stories.filter(s => s.futureWish || s.translations?.ja?.futureWish)).length} historias (extractos seleccionados)`,
+    read_all: 'Leer todas las historias',
+    unit: '',
+    ageLabels: { '〜10歳': 'Menos de 10', '10代': 'Adolescentes', '20代': '20 años', '30代': '30 años', '40代以上': '40+ años', '覚えていない': 'Desconocido' },
+    mediaLabels: { 'TVアニメ': 'Anime TV', '漫画（連載・単行本）': 'Manga', '映画': 'Película', '二次創作・SNS・人の話': 'Fan art / Redes sociales / Boca a boca', 'その他': 'Otro' },
+  },
+  pt: {
+    title: 'Estatísticas',
+    description: `Dados de ${total} histórias de fãs.`,
+    subtitle: `Perspectivas de ${total} histórias`,
+    age_title: 'Idade ao descobrir a série',
+    age_note: 'Idade no primeiro contato com NARUTO ou BORUTO',
+    media_title: 'Primeiro meio',
+    series_title: 'Primeira série',
+    series_note: 'Muitos fãs começaram com BORUTO',
+    chara_title: 'Personagens favoritos — Top 10',
+    country_title: 'Países e regiões',
+    wish_title: 'Histórias que os fãs gostariam de ver',
+    wish_note: `De ${(stories.filter(s => s.futureWish || s.translations?.ja?.futureWish)).length} histórias (trechos selecionados)`,
+    read_all: 'Ler todas as histórias',
+    unit: '',
+    ageLabels: { '〜10歳': 'Menos de 10', '10代': 'Adolescentes', '20代': '20 anos', '30代': '30 anos', '40代以上': '40+ anos', '覚えていない': 'Desconhecido' },
+    mediaLabels: { 'TVアニメ': 'Anime TV', '漫画（連載・単行本）': 'Mangá', '映画': 'Filme', '二次創作・SNS・人の話': 'Fan art / Redes sociais / Boca a boca', 'その他': 'Outro' },
+  },
+  zh: {
+    title: '数据统计',
+    description: `来自${total}篇粉丝故事的数据洞察。`,
+    subtitle: `来自${total}篇故事的洞察`,
+    age_title: '接触系列时的年龄',
+    age_note: '第一次接触 NARUTO 或 BORUTO 时的年龄',
+    media_title: '首次接触的媒介',
+    series_title: '首部接触的作品',
+    series_note: '许多粉丝从 BORUTO 开始',
+    chara_title: '最爱角色 — Top 10',
+    country_title: '国家和地区',
+    wish_title: '粉丝想看的故事',
+    wish_note: `来自${(stories.filter(s => s.futureWish || s.translations?.ja?.futureWish)).length}篇故事（摘选）`,
+    read_all: '阅读所有故事',
+    unit: '篇',
+    ageLabels: { '〜10歳': '10岁以下', '10代': '10多岁', '20代': '20多岁', '30代': '30多岁', '40代以上': '40岁以上', '覚えていない': '不记得' },
+    mediaLabels: { 'TVアニメ': '电视动画', '漫画（連載・単行本）': '漫画', '映画': '电影', '二次創作・SNS・人の話': '同人/社交媒体/口碑', 'その他': '其他' },
+  },
+  ko: {
+    title: '통계',
+    description: `${total}개의 팬 이야기에서 나온 데이터 인사이트.`,
+    subtitle: `${total}개의 이야기에서 보이는 것`,
+    age_title: '시리즈를 처음 만난 나이',
+    age_note: 'NARUTO 또는 BORUTO를 처음 접했을 때의 나이',
+    media_title: '처음 접한 미디어',
+    series_title: '처음 접한 작품',
+    series_note: 'BORUTO에서 시작한 팬도 많다',
+    chara_title: '최애 캐릭터 — Top 10',
+    country_title: '국가 및 지역',
+    wish_title: '팬들이 보고 싶은 이야기',
+    wish_note: `${(stories.filter(s => s.futureWish || s.translations?.ja?.futureWish)).length}개 이야기에서 (일부 발췌)`,
+    read_all: '모든 이야기 읽기',
+    unit: '개',
+    ageLabels: { '〜10歳': '10세 미만', '10代': '10대', '20代': '20대', '30代': '30대', '40代以上': '40대 이상', '覚えていない': '모름',
+      '10代': '10대', '20代': '20대', '30代': '30대', '40代以上': '40대 이상' },
+    mediaLabels: { 'TVアニメ': 'TV 애니메이션', '漫画（連載・単行本）': '만화', '映画': '영화', '二次創作・SNS・人の話': '팬 콘텐츠/SNS/소문', 'その他': '기타' },
+  },
+};
+
+const c = content[lang];
+
+// ageGroup 집계
+const ageGroupOrder = ['〜10歳', '10代', '20代', '30代', '40代以上', '覚えていない'];
+const ageCount: Record<string, number> = {};
+for (const g of ageGroupOrder) ageCount[g] = 0;
+for (const s of stories) {
+  const g = s.ageGroup ?? '覚えていない';
+  ageCount[g] = (ageCount[g] ?? 0) + 1;
+}
+
+// firstMedia 집계
+const mediaOrder = ['TVアニメ', '漫画（連載・単行本）', '映画', '二次創作・SNS・人の話', 'その他'];
+const mediaCount: Record<string, number> = {};
+for (const s of stories) {
+  const m = s.firstMedia ?? 'その他';
+  mediaCount[m] = (mediaCount[m] ?? 0) + 1;
+}
+const mediaMax = Math.max(...Object.values(mediaCount));
+
+// firstSeries 집계
+const seriesCount: Record<string, number> = {};
+for (const s of stories) {
+  const sr = s.firstSeries ?? 'NARUTO';
+  seriesCount[sr] = (seriesCount[sr] ?? 0) + 1;
+}
+const seriesSorted = Object.entries(seriesCount).sort((a, b) => b[1] - a[1]);
+
+// キャラランキング
+const charaCount: Record<string, number> = {};
+for (const s of stories) {
+  if (!s.favoriteCharacter) continue;
+  const parts = s.favoriteCharacter.split(/[・、]/);
+  for (const p of parts) {
+    const name = p.trim();
+    if (name) charaCount[name] = (charaCount[name] ?? 0) + 1;
+  }
+}
+const charaRanking = Object.entries(charaCount)
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 10);
+const charaMax = charaRanking[0]?.[1] ?? 1;
+
+// 国집계
+const countryCount: Record<string, number> = {};
+for (const s of stories) {
+  const co = s.country ?? '不明';
+  countryCount[co] = (countryCount[co] ?? 0) + 1;
+}
+const countryRanking = Object.entries(countryCount).sort((a, b) => b[1] - a[1]);
+const countryMax = countryRanking[0]?.[1] ?? 1;
+
+// futureWish
+const wishStories = stories.filter(s => s.futureWish || s.translations?.ja?.futureWish);
+const wishSample = wishStories.slice(0, 6);
+
+// ドーナツ
+const donutColors = ['#e8621a', '#f5a623', '#4a9eff', '#a855f7', '#22c55e', '#94a3b8'];
+const activeGroups = ageGroupOrder.filter(g => ageCount[g] > 0);
+let cumulative = 0;
+const donutSegments = activeGroups.map((g, i) => {
+  const pct = (ageCount[g] / total) * 100;
+  const start = cumulative;
+  cumulative += pct;
+  return { label: g, count: ageCount[g], pct, start, color: donutColors[i % donutColors.length] };
+});
+const donutGradient = donutSegments
+  .map(s => `${s.color} ${s.start.toFixed(1)}% ${(s.start + s.pct).toFixed(1)}%`)
+  .join(', ');
+---
+
+<BaseLayout
+  title={c.title}
+  description={c.description}
+  lang={lang}
+  pagePath="/data"
+>
+  <section class="page-header">
+    <div class="page-header-inner">
+      <h1 class="page-title">{c.title}</h1>
+      <p class="page-subtitle">{c.subtitle}</p>
+    </div>
+  </section>
+
+  <article class="guidelines-article data-page">
+    <div class="guidelines-inner">
+
+      <!-- 年代層 -->
+      <section class="gl-section data-section">
+        <h2>{c.age_title}</h2>
+        <p class="data-note">{c.age_note}</p>
+        <div class="donut-wrap">
+          <div
+            class="donut"
+            style={`background: conic-gradient(${donutGradient})`}
+            role="img"
+            aria-label={c.age_title}
+          >
+            <div class="donut-hole">
+              <span class="donut-total">{total}</span>
+              <span class="donut-label-sm">{c.unit}</span>
+            </div>
+          </div>
+          <ul class="donut-legend">
+            {donutSegments.map(s => (
+              <li>
+                <span class="legend-dot" style={`background: ${s.color}`}></span>
+                <span class="legend-name">{c.ageLabels[s.label as keyof typeof c.ageLabels] ?? s.label}</span>
+                <span class="legend-count">{s.count} ({s.pct.toFixed(0)}%)</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <!-- 最初のメディア -->
+      <section class="gl-section data-section">
+        <h2>{c.media_title}</h2>
+        <div class="bar-chart">
+          {mediaOrder.filter(m => mediaCount[m] > 0).map(m => (
+            <div class="bar-row">
+              <span class="bar-label">{c.mediaLabels[m as keyof typeof c.mediaLabels] ?? m}</span>
+              <div class="bar-track">
+                <div
+                  class="bar-fill"
+                  style={`width: ${((mediaCount[m] / mediaMax) * 100).toFixed(1)}%`}
+                ></div>
+              </div>
+              <span class="bar-count">{mediaCount[m]}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- 最初の作品 -->
+      <section class="gl-section data-section">
+        <h2>{c.series_title}</h2>
+        <div class="bar-chart">
+          {seriesSorted.map(([series, count]) => (
+            <div class="bar-row">
+              <span class="bar-label">{series}</span>
+              <div class="bar-track">
+                <div
+                  class="bar-fill"
+                  style={`width: ${((count / total) * 100).toFixed(1)}%`}
+                ></div>
+              </div>
+              <span class="bar-count">{count}</span>
+            </div>
+          ))}
+        </div>
+        <p class="data-note">{c.series_note}</p>
+      </section>
+
+      <!-- キャラランキング -->
+      <section class="gl-section data-section">
+        <h2>{c.chara_title}</h2>
+        <ol class="chara-ranking">
+          {charaRanking.map(([jaName, count], i) => (
+            <li class="chara-row">
+              <span class={`chara-rank${i < 3 ? ' chara-rank--top' : ''}`}>{i + 1}</span>
+              <span class="chara-name">{getCharaName(jaName, lang)}</span>
+              <div class="bar-track bar-track--sm">
+                <div
+                  class="bar-fill"
+                  style={`width: ${((count / charaMax) * 100).toFixed(1)}%`}
+                ></div>
+              </div>
+              <span class="bar-count">{count}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <!-- 国 -->
+      <section class="gl-section data-section">
+        <h2>{c.country_title}</h2>
+        <ul class="country-list">
+          {countryRanking.map(([country, count]) => (
+            <li class="country-row">
+              <span class="country-name">{country}</span>
+              <div class="bar-track bar-track--sm">
+                <div
+                  class="bar-fill"
+                  style={`width: ${((count / countryMax) * 100).toFixed(1)}%`}
+                ></div>
+              </div>
+              <span class="bar-count">{count}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <!-- みんなが見てみたい作品 -->
+      <section class="gl-section data-section">
+        <h2>{c.wish_title}</h2>
+        <p class="data-note">{c.wish_note}</p>
+        <div class="wish-grid">
+          {wishSample.map(s => {
+            const raw = (s.translations?.[lang]?.futureWish ?? s.translations?.ja?.futureWish ?? s.futureWish) as string;
+            if (!raw) return null;
+            const firstLine = raw.split('\n')[0];
+            const short = firstLine.length > 90 ? firstLine.slice(0, 90) + '…' : firstLine;
+            return (
+              <a href={`${base}/${lang}/stories/${s.id}`} class="wish-card">
+                <p class="wish-text">{short}</p>
+                <span class="wish-name">— {s.displayName}</span>
+              </a>
+            );
+          })}
+        </div>
+        <div class="data-cta">
+          <a href={`${base}/${lang}/stories`} class="btn btn-outline">{c.read_all}</a>
+        </div>
+      </section>
+
+    </div>
+  </article>
+</BaseLayout>

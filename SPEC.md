@@ -1,6 +1,6 @@
 # ナルボル体験談 — サイト仕様書
 
-> 最終更新: 2026-04-06（投稿2件追加・多言語ソート修正・チャクラ演出修正・アニメーション調整）
+> 最終更新: 2026-04-08（Aboutページ追加・SNS告知文作成）
 
 ---
 
@@ -168,9 +168,9 @@ naruboru-fan-site/
 
 ### 現在のデータ状況
 
-- **総件数**: 30件
+- **総件数**: 32件
 - **シードコンテンツ**: 14件（運営作成サンプル）
-- **実投稿**: 14件（story-005, 016, 017, 018, 019, 020, 021, 022, 023, 024, 025, 026, 027, 028）
+- **実投稿**: 18件（story-005, 016〜032）
   - story-020: Defensor de Boruto（ブラジル・ポルトガル語投稿、`sourceLang: "pt"`）
   - story-021: "A"（@itami_0513、うちはイタチ、〜10歳、日本）
   - story-022: Moe（m_7144_、ボルサラ推し、BORUTO TVアニメ、日本）
@@ -182,6 +182,8 @@ naruboru-fan-site/
   - story-028: Hatake（@Hatakesant、うずまきナルト推し、NARUTO TVアニメ、ブラジル、sourceLang: pt）
   - story-029: しろ（@shiro_boru0327、ボルサラ推し、BORUTO 漫画、日本）
   - story-030: あゆ（R_tag_uTxTu、うちはサスケ推し、NARUTO TVアニメ、日本）
+  - story-031: ハリー（@Hedgehog_kwkw、ボルト推し、NARUTO TVアニメ→漫画、10代・女、日本）
+  - story-032: 的（wolkiger_ks、サスケ推し、NARUTO 漫画、10代、日本）
 
 ---
 
@@ -239,16 +241,17 @@ src/i18n/ui.ts
 |---|---|
 | `/` | トップ |
 | `/stories` | 体験談一覧 |
-| `/stories/[id]` | 体験談詳細（28件×1言語） |
+| `/stories/[id]` | 体験談詳細（32件×1言語） |
 | `/characters` | 推し一覧 |
 | `/submit` | 投稿フォーム |
 | `/guidelines` | 投稿ガイドライン |
 | `/privacy` | プライバシーポリシー |
+| `/about` | このサイトについて |
 | `/favorites` | お気に入り一覧（クライアント側レンダリング） |
 
 ### 多言語（`/[lang]/`）× 7言語
 
-同じ構成が en/fr/ar/es/pt/zh/ko 各言語に展開される（favoritesは日本語のみ）。
+同じ構成が en/fr/ar/es/pt/zh/ko 各言語に展開される（favoritesは日本語のみ）。aboutページは全8言語で各言語の翻訳をページ内にハードコード。
 
 ### OGP画像
 
@@ -256,8 +259,8 @@ src/i18n/ui.ts
 |---|---|
 | `/ogp.png` | サイト共通OGP画像・日本語 |
 | `/ogp/[lang].png` | サイト共通OGP画像・多言語版（7言語）各言語のsite.name・home.titleを使用 |
-| `/ogp/[id].png` | 体験談別OGP画像・日本語（28件分） |
-| `/ogp/[lang]/[id].png` | 体験談別OGP画像・多言語版（28件×7言語）翻訳済みキャッチコピー・言語別サイト名を使用 |
+| `/ogp/[id].png` | 体験談別OGP画像・日本語（32件分） |
+| `/ogp/[lang]/[id].png` | 体験談別OGP画像・多言語版（32件×7言語）翻訳済みキャッチコピー・言語別サイト名を使用 |
 
 ---
 
@@ -399,6 +402,7 @@ https://naruboru-taiken.github.io に反映（数分以内）
 5. `DEEPL_API_KEY=... node scripts/translate-stories.mjs` で翻訳
 6. `git push` → 自動デプロイ
 7. X（@naruboru_taiken）で投稿者に掲載通知
+8. SNS投稿文案・画像生成プロンプトを出力（CLAUDE.md の「投稿追加時に必ず出力する付帯情報」参照）
 
 ### CSSカスタマイズの変更箇所
 
@@ -414,9 +418,42 @@ https://naruboru-taiken.github.io に反映（数分以内）
 
 ---
 
-## 12. 残課題
+## 12. SNS運用フロー（X / @naruboru_taiken）
+
+### 投稿スケジュール
+
+| 曜日 | 本数 | 時間 |
+|---|---|---|
+| 平日（月〜金） | 1本 | 21:00 JST |
+| 土・日 | 各2本 | 10:00 / 21:00 JST |
+| 週計 | 9本 | |
+
+### 投稿フォーマット
+
+各投稿には以下をセットにする：
+
+1. **本文**（140字以内）：出会いのシチュエーションをフックにしたテキスト＋`[URL]`＋`#NARUTO #BORUTO #ナルボル体験談`
+2. **添付画像**：出会いシチュエーションを描いた情景イラスト（Gemini Imagen 生成）
+
+### 画像生成ルール
+
+- NARUTOキャラクター・ロゴ等のIP要素を一切含めない
+- 「manga」「anime」「NARUTO」「BORUTO」などIP想起ワードを使わない（`a stack of books` / `a television casting soft warm glow` に置換）
+- 人物は後ろ姿・シルエット・手元のみ（顔なし）
+- 性別・年齢が判明している場合はシルエットに反映
+- スタイル: `watercolor illustration, seen from behind, no face, consistent style, muted warm palette, soft grain texture`
+
+### 進捗（2026-04-07時点）
+
+- story-016〜032（UGC 17件）の文案・プロンプト作成済み
+- 投稿期間: 2026-04-06（月）〜 2026-04-19（日）
+
+---
+
+## 13. 残課題
 
 ### 🟠 高優先度
+
 - カレンダーページ データ整備中（`src/data/events.ts` に追記後、ナビリンクを復活させて公開）
 
 ### 🟡 中優先度
