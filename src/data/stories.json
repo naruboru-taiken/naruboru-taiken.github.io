@@ -2390,4 +2390,26 @@
       }
     }
   }
+,
+  {
+    "id": "story-033",
+    "displayName": "だってばよ",
+    "ageGroup": "20代",
+    "favoriteCharacter": "うちはサスケ",
+    "firstSeries": "NARUTO",
+    "firstMedia": "TVアニメ",
+    "catchphrase": "凄い迫力のアニメが、監督とファンとの出会いを運んできた。",
+    "mainStory": "アニメを見て凄い迫力だと思った、監督やファンに出会えた",
+    "triggerScene": null,
+    "realization": null,
+    "currentRelationship": null,
+    "favoriteScene": "うちは兄弟の対決",
+    "futureWish": "体験型アトラクション",
+    "message": null,
+    "imageUrl": null,
+    "imageCaption": null,
+    "country": "日本",
+    "publishedAt": "2026-04-10",
+    "isSeedContent": false
+  }
 ]
