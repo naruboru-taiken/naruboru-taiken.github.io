@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import stories from '../data/stories.json';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const GOAL = 100;
+const participants = (stories as any[]).filter(s => !s.isSeedContent);
+const realCount = participants.length;
+const pct = Math.min(100, Math.round((realCount / GOAL) * 100));
+
+const milestones = [
+  { count: 20, label: '最初の20人', reward: 'X でプロジェクト発足アナウンス' },
+  { count: 30, label: '30の声', reward: '月ごとのまとめポストを開始' },
+  { count: 50, label: '折り返し', reward: '体験談ハイライト記事を公開' },
+  { count: 75, label: 'あと25人', reward: 'ファンブック企画をアナウンス' },
+  { count: 100, label: 'PROJECT 100 達成！', reward: 'ファンブック制作プロジェクトをスタート' },
+];
+
+function milestoneStatus(m: number): 'done' | 'next' | 'upcoming' {
+  if (realCount >= m) return 'done';
+  const nextMilestone = milestones.find(ms => ms.count > realCount);
+  if (nextMilestone && nextMilestone.count === m) return 'next';
+  return 'upcoming';
+}
+
+const nextMilestone = milestones.find(m => m.count > realCount) ?? milestones[milestones.length - 1];
+const toNext = nextMilestone.count - realCount;
+---
+
+<BaseLayout
+  title="PROJECT 100 — 100人の記憶を集めるプロジェクト"
+  description={`NARUTO・BORUTOに引き込まれた瞬間を100人分集めるプロジェクト。現在${realCount}人が参加中。`}
+  lang="ja"
+  pagePath="/project100"
+>
+
+  <!-- ヒーロー -->
+  <section class="p100-hero">
+    <div class="p100-hero-inner">
+      <p class="p100-eyebrow">PROJECT 100</p>
+      <h1 class="p100-title">100人の記憶を、<br />ここに残す。</h1>
+      <p class="p100-desc">
+        NARUTO・BORUTOに引き込まれた瞬間は、みんな違う。<br />
+        その100通りの記憶を集めることが、このプロジェクトの目標です。
+      </p>
+    </div>
+  </section>
+
+  <!-- カウンター -->
+  <section class="p100-counter-section">
+    <div class="container">
+      <div class="p100-counter">
+        <div class="p100-numbers-row">
+          <span class="p100-big-num">{realCount}</span>
+          <span class="p100-slash">/</span>
+          <span class="p100-goal-num">{GOAL}</span>
+          <span class="p100-unit">人</span>
+        </div>
+        <div class="p100-bar-wrap" role="progressbar" aria-valuenow={realCount} aria-valuemin={0} aria-valuemax={GOAL} aria-label={`進捗: ${realCount}/${GOAL}人`}>
+          <div class="p100-bar-track">
+            <div class="p100-bar-fill" style={`width: ${pct}%`}></div>
+            {milestones.slice(0, -1).map(m => (
+              <span class="p100-bar-marker" style={`left: ${m.count}%`} title={`${m.count}人`}></span>
+            ))}
+          </div>
+          <div class="p100-bar-labels">
+            <span>0</span>
+            <span>{GOAL}人</span>
+          </div>
+        </div>
+        <p class="p100-next-label">
+          次の節目「{nextMilestone.label}」まで、あと <strong>{toNext}人</strong>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- プロジェクトの意義 -->
+  <section class="p100-why-section">
+    <div class="container">
+      <div class="p100-why-grid">
+        <div class="p100-why-card">
+          <div class="p100-why-icon">📖</div>
+          <h3>あなたの記憶は、あなただけのもの</h3>
+          <p>NARUTOに出会った瞬間は人それぞれ。友達のジャンプ、偶然つけたテレビ、図書館の古い単行本。どれも本物の物語です。</p>
+        </div>
+        <div class="p100-why-card">
+          <div class="p100-why-icon">🌍</div>
+          <h3>世界中のファンと繋がる</h3>
+          <p>投稿者はすでに複数の国から集まっています。言語は違っても、「あの瞬間」の感動は同じ。</p>
+        </div>
+        <div class="p100-why-card">
+          <div class="p100-why-icon">📚</div>
+          <h3>100人集まったら</h3>
+          <p>100通りの体験談をもとにしたファンブックの制作を企画しています。あなたの投稿がその1ページになるかもしれません。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- マイルストーン -->
+  <section class="p100-milestones-section">
+    <div class="container">
+      <h2 class="p100-section-heading">マイルストーン</h2>
+      <ol class="p100-milestones">
+        {milestones.map(m => {
+          const status = milestoneStatus(m.count);
+          return (
+            <li class={`p100-milestone p100-milestone--${status}`}>
+              <div class="p100-milestone-indicator">
+                {status === 'done' ? '✓' : status === 'next' ? '→' : m.count}
+              </div>
+              <div class="p100-milestone-body">
+                <div class="p100-milestone-header">
+                  <span class="p100-milestone-count">{m.count}人</span>
+                  <span class="p100-milestone-label">{m.label}</span>
+                  {status === 'done' && <span class="p100-milestone-badge p100-milestone-badge--done">達成</span>}
+                  {status === 'next' && <span class="p100-milestone-badge p100-milestone-badge--next">次の目標</span>}
+                </div>
+                <p class="p100-milestone-reward">{m.reward}</p>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  </section>
+
+  <!-- 参加者ウォール -->
+  <section class="p100-participants-section">
+    <div class="container">
+      <h2 class="p100-section-heading">
+        参加者 <span class="p100-participants-count">{realCount}人</span>
+      </h2>
+      <p class="p100-participants-note">
+        投稿してくれた{realCount}人の名前です。あなたもここに名前を刻みませんか。
+      </p>
+      <ul class="p100-participants-wall">
+        {participants.map((s: any) => (
+          <li class="p100-participant">
+            <a href={`${base}/stories/${s.id}`} class="p100-participant-link">
+              <span class="p100-participant-avatar">{s.displayName.charAt(0)}</span>
+              <span class="p100-participant-name">{s.displayName}</span>
+            </a>
+          </li>
+        ))}
+        {/* 残りの空きスロット（最大5つプレビュー） */}
+        {Array.from({ length: Math.min(5, GOAL - realCount) }).map((_, i) => (
+          <li class="p100-participant p100-participant--empty">
+            <span class="p100-participant-avatar p100-participant-avatar--empty">?</span>
+            <span class="p100-participant-name p100-participant-name--empty">あなた？</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <h2 class="cta-title">あなたが{realCount + 1}人目になりませんか。</h2>
+      <p class="cta-desc">
+        長文でなくていい。うまく書けなくてもいい。<br />
+        「あの瞬間」を一言でも。
+      </p>
+      <a href={`${base}/submit`} class="btn btn-primary btn-large">体験談を投稿する</a>
+      <p class="cta-note">
+        <a href={`${base}/guidelines`}>投稿ガイドライン</a>を必ずご確認ください。
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>

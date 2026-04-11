@@ -17,6 +17,13 @@ const countries = [...new Set(stories.map((s: any) => s.country).filter(Boolean)
 const countryCount = countries.length;
 const realCount = (stories as any[]).filter(s => !s.isSeedContent).length;
 
+// 100人プロジェクト
+const GOAL = 100;
+const pct100 = Math.min(100, Math.round((realCount / GOAL) * 100));
+const milestones100 = [20, 30, 50, 75];
+const nextMilestone100 = [20, 30, 50, 75, 100].find(m => m > realCount) ?? 100;
+const toNext100 = nextMilestone100 - realCount;
+
 // クライアント JS に渡すスニペット用ミニマルデータ（catchphrase がある投稿のみ）
 const storyPool = stories
   .filter((s: any) => s.catchphrase)
@@ -91,6 +98,33 @@ const storyPool = stories
       </div>
     </div>
   </div>
+
+  <!-- PROJECT 100 バナー -->
+  <section class="p100-banner" aria-label="PROJECT 100 進捗">
+    <div class="p100-banner-inner container">
+      <div class="p100-banner-left">
+        <p class="p100-banner-eyebrow">PROJECT 100</p>
+        <div class="p100-banner-nums">
+          <span class="p100-banner-current">{realCount}</span>
+          <span class="p100-banner-sep">/</span>
+          <span class="p100-banner-total">{GOAL}</span>
+          <span class="p100-banner-unit">人</span>
+        </div>
+        <p class="p100-banner-next">次の節目まで <strong>あと{toNext100}人</strong></p>
+      </div>
+      <div class="p100-banner-right">
+        <div class="p100-banner-bar-wrap" role="progressbar" aria-valuenow={realCount} aria-valuemin={0} aria-valuemax={GOAL}>
+          <div class="p100-banner-track">
+            <div class="p100-banner-fill" style={`width: ${pct100}%`}></div>
+            {milestones100.map(m => (
+              <span class="p100-banner-marker" style={`left: ${m}%`}></span>
+            ))}
+          </div>
+        </div>
+        <a href={`${base}/project100`} class="p100-banner-link">プロジェクト詳細 →</a>
+      </div>
+    </div>
+  </section>
 
   <!-- 最新投稿 -->
   <section class="section has-hero-bleed">
