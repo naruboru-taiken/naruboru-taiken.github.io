@@ -90,6 +90,7 @@ const storyPath = lang === 'ja'
   data-chara={story.favoriteCharacter ?? ''}
   data-published-at={story.publishedAt}
   data-story-id={story.id}
+  data-seed={story.isSeedContent ? 'true' : undefined}
 >
   {story.imageUrl && (
     <div class="card-image">

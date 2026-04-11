@@ -15,6 +15,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 // スタッツバー用
 const countries = [...new Set(stories.map((s: any) => s.country).filter(Boolean))];
 const countryCount = countries.length;
+const realCount = (stories as any[]).filter(s => !s.isSeedContent).length;
 
 // クライアント JS に渡すスニペット用ミニマルデータ（catchphrase がある投稿のみ）
 const storyPool = stories
@@ -80,7 +81,7 @@ const storyPool = stories
   <div class="stats-bar" aria-label="サイト統計">
     <div class="stats-inner">
       <div class="stat">
-        <span class="stat-num">{stories.length}</span>
+        <span class="stat-num">{realCount}</span>
         <span class="stat-label">件の体験談</span>
       </div>
       <span class="stat-sep" aria-hidden="true">·</span>

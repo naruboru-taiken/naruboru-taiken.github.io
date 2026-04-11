@@ -9,6 +9,7 @@ const sorted = [...stories].sort((a, b) => {
 });
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const realCount = (stories as any[]).filter(s => !s.isSeedContent).length;
 ---
 
 <BaseLayout title="体験談一覧" description="ナルボルファンの体験談一覧です。" lang="ja" pagePath="/stories">
@@ -16,7 +17,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div class="page-header-inner">
       <h1 class="page-title">体験談一覧</h1>
       <p class="page-desc">
-        現在 <strong id="story-count">{stories.length}</strong> 件の体験談が集まっています。
+        現在 <strong id="story-count">{realCount}</strong> 件の体験談が集まっています。
       </p>
     </div>
   </section>
@@ -102,7 +103,7 @@ function applyFilters() {
     const charaOk = !currentChara || card.dataset.chara === currentChara;
     const show = seriesOk && charaOk;
     card.style.display = show ? '' : 'none';
-    if (show) visible++;
+    if (show && card.dataset.seed !== 'true') visible++;
   });
   if (countEl) countEl.textContent = String(visible);
   if (noResults) noResults.hidden = visible > 0;

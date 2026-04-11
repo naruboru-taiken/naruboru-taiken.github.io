@@ -1,0 +1,16 @@
+[
+  {
+    "id": "aff-sample-001",
+    "title": "（サンプル）NARUTO 全72巻セット",
+    "shopName": "メルカリ",
+    "shopType": "mercari",
+    "url": "https://jp.mercari.com/search?keyword=NARUTO+%E5%85%A872%E5%B7%BB",
+    "imageUrl": null,
+    "matchCharacters": [],
+    "matchSeries": [
+      "NARUTO"
+    ],
+    "active": false,
+    "note": "サンプルデータ。active: true にして本番URLに差し替えること"
+  }
+]

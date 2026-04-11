@@ -34,11 +34,12 @@ function anniversaryText(event: CalendarEvent): string {
 ---
 
 <BaseLayout title="カレンダー" description="NARUTO・BORUTOに関連する記念日・声優誕生日・キャラ誕生日カレンダー" lang="ja" pagePath="/calendar">
-  <div class="page-hero">
-    <p class="page-eyebrow">NARUTO・BORUTO</p>
-    <h1 class="page-title">記念日カレンダー</h1>
-    <p class="page-desc">作品の歴史・キャラクターの誕生日・声優の誕生日をまとめました。</p>
-  </div>
+  <section class="page-header">
+    <div class="page-header-inner">
+      <h1 class="page-title">記念日カレンダー</h1>
+      <p class="page-desc">作品の歴史・キャラクターの誕生日・声優の誕生日をまとめました。</p>
+    </div>
+  </section>
 
   <!-- 今日のできごと（JS動的表示） -->
   <section class="calendar-today-section" id="today-section" hidden>
@@ -82,9 +83,6 @@ function anniversaryText(event: CalendarEvent): string {
                   </div>
                   <div class="event-body">
                     <span class={`event-badge event-badge--${event.type}`}>{typeLabel(event.type)}</span>
-                    {event.series && (
-                      <span class={`event-series event-series--${event.series.toLowerCase()}`}>{event.series}</span>
-                    )}
                     <p class="event-title">{event.title}</p>
                     {event.year && (
                       <p class="event-year">{anniversaryText(event)}</p>

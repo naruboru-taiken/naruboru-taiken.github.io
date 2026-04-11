@@ -161,6 +161,32 @@ const TALLY_FORM_URL = 'https://tally.so/r/実際のフォームID';
 const TALLY_EMBED_URL = 'https://tally.so/embed/実際のフォームID?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1';
 ```
 
+### 「アフィリエイトリンクを追加・管理したい」
+→ `src/data/affiliate-items.json` に1件追記する
+
+**フィールド説明:**
+- `shopType`: `"bandai"` / `"animate"` / `"jump-store"` / `"mercari"` / `"amazon"`
+- `matchCharacters`: 体験談の `favoriteCharacter` と一致した場合に表示。空配列 = キャラ条件なし
+- `matchSeries`: 体験談の `firstSeries` と一致した場合に表示。空配列 = シリーズ条件なし
+- `active`: `false` にすると非表示（URL切れ・在庫切れ時に使用）
+
+```json
+{
+  "id": "aff-XXX",
+  "title": "商品名",
+  "shopName": "ショップ名（表示用）",
+  "shopType": "bandai",
+  "url": "https://...",
+  "imageUrl": null,
+  "matchCharacters": ["はたけカカシ"],
+  "matchSeries": ["NARUTO"],
+  "active": true,
+  "note": "追加日・メモ"
+}
+```
+
+体験談詳細ページの「関連グッズ・作品を探す」セクションに最大3件まで自動表示される。
+
 ### 「GitHub Pagesの本番URLを設定したい」
 → `astro.config.mjs` のコメントアウトを外して更新:
 ```js

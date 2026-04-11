@@ -47,11 +47,12 @@ const pageDesc = t('calendar.desc');
 ---
 
 <BaseLayout title={pageTitle} description={pageDesc} lang={lang} pagePath="/calendar">
-  <div class="page-hero">
-    <p class="page-eyebrow">NARUTO・BORUTO</p>
-    <h1 class="page-title">{pageTitle}</h1>
-    <p class="page-desc">{pageDesc}</p>
-  </div>
+  <section class="page-header">
+    <div class="page-header-inner">
+      <h1 class="page-title">{pageTitle}</h1>
+      <p class="page-desc">{pageDesc}</p>
+    </div>
+  </section>
 
   <!-- 今日のできごと（JS動的表示） -->
   <section class="calendar-today-section" id="today-section" hidden>
@@ -95,9 +96,6 @@ const pageDesc = t('calendar.desc');
                   </div>
                   <div class="event-body">
                     <span class={`event-badge event-badge--${event.type}`}>{typeLabel(event.type)}</span>
-                    {event.series && (
-                      <span class={`event-series event-series--${event.series.toLowerCase()}`}>{event.series}</span>
-                    )}
                     <p class="event-title">{event.title}</p>
                     {event.year && (
                       <p class="event-year">{anniversaryText(event)}</p>
