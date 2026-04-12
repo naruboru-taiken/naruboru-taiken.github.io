@@ -1863,6 +1863,7 @@ body { background-color: var(--color-bg); }
     width: 100%;
     min-height: auto;
   }
+  .hero-snippet-1,
   .hero-snippet-2,
   .hero-snippet-3 { display: none; }
 
