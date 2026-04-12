@@ -347,7 +347,7 @@ https://naruboru-taiken.github.io に反映（数分以内）
 | ヒーロータイピングエフェクト | トップページ（日本語）のh1タイトルを1文字ずつタイプする演出。完了後カーソルフェードアウト |
 | ヒーローVoiceスニペット | トップページ右カラム。`catchphrase`を持つ投稿からランダム3件を抽出し、タイピング完了後に時差フェードイン表示。`<script type="application/json">` 経由でデータ注入（define:vars のTypeScript制約回避） |
 | hero-metaストリップ | トップページヒーロー内に件数・国数・PROJECT 100進捗バーを統合表示（Kickstarter/Campfire方式の社会的証明） |
-| PROJECT 100 LP | `/project100`。カウンター・マイルストーン・参加者ウォール・CTA。オレンジ基調デザイン。フッターからは非公開 |
+| PROJECT 100 LP | `/project100`。カウンター・マイルストーン・参加者ウォール・CTA。オレンジ基調デザイン。フッターからは非公開。**hero-metaのPROJECT 100進捗バーはrealCount < 20のとき非活性（`<span>`・クリック不可）、realCount >= 20で自動的にリンク（`<a>`）に切り替わる** |
 | チャクラ発光エフェクト | ヒーロー背景の炎エフェクト（日本語・多言語トップ共通）。`filter`と`mix-blend-mode`の同一要素競合を回避するため`::before`に分離。`translateY(-6%)`で炎が湧き上がるアニメーション（7s、opacity 0.30→1.00）。ノイズテクスチャはSVG data URIをbackground-imageに直接埋め込み（`mix-blend-mode: soft-light`） |
 | 国旗絵文字 | StoryCard の card-meta エリアに `・国名 🇯🇵` 形式で表示。日本を含む25ヶ国対応 |
 | キャラ名多言語表示 | `getCharaName(jaName, lang)` 関数（`src/i18n/ui.ts`）が正規日本語名→8言語に変換。21キャラ対応、`・`/`、` 区切りの複合名も分割翻訳。DeepLは使用しない（直訳で壊れるため） |
