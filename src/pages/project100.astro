@@ -13,8 +13,8 @@ const milestones = [
   { count: 20, label: '最初の20人', reward: 'X でプロジェクト発足アナウンス' },
   { count: 30, label: '30の声', reward: '月ごとのまとめポストを開始' },
   { count: 50, label: '折り返し', reward: '体験談ハイライト記事を公開' },
-  { count: 75, label: 'あと25人', reward: 'ファンブック企画をアナウンス' },
-  { count: 100, label: 'PROJECT 100 達成！', reward: 'ファンブック制作プロジェクトをスタート' },
+  { count: 75, label: 'あと25人', reward: '達成後の企画をアナウンス' },
+  { count: 100, label: 'PROJECT 100 達成！', reward: '100人の声で、何かを作り始める' },
 ];
 
 function milestoneStatus(m: number): 'done' | 'next' | 'upcoming' {
@@ -93,7 +93,8 @@ const toNext = nextMilestone.count - realCount;
         <div class="p100-why-card">
           <div class="p100-why-icon">📚</div>
           <h3>100人集まったら</h3>
-          <p>100通りの体験談をもとにしたファンブックの制作を企画しています。あなたの投稿がその1ページになるかもしれません。</p>
+          <p>100人の声が集まったとき、みんなでそれを何かの形に残したいと思っています。</p>
+          <p class="p100-coming-soon">coming soon...</p>
         </div>
       </div>
     </div>

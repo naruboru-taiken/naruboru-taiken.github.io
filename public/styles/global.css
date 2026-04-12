@@ -2943,6 +2943,13 @@ body { background-color: var(--color-bg); }
   color: #555;
   margin: 0;
 }
+.p100-coming-soon {
+  margin-top: 0.75rem !important;
+  font-size: 0.8rem !important;
+  color: #aaa !important;
+  font-style: italic;
+  letter-spacing: 0.05em;
+}
 
 .p100-milestones-section {
   padding: 3.5rem 0;
