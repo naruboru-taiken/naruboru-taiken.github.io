@@ -184,7 +184,7 @@ naruboru-fan-site/
   - story-030: あゆ（R_tag_uTxTu、うちはサスケ推し、NARUTO TVアニメ、日本）
   - story-031: ハリー（@Hedgehog_kwkw、ボルト推し、NARUTO TVアニメ→漫画、10代・女、日本）
   - story-032: 的（wolkiger_ks、サスケ推し、NARUTO 漫画、10代、日本）
-  - story-033: 未登録（以降随時追加）
+  - story-033: だってばよ（うちはサスケ推し、NARUTO TVアニメ、20代、日本）
 
 ---
 
