@@ -343,6 +343,115 @@ a:hover { text-decoration: underline; }
 }
 .hero-count strong { color: var(--color-primary); }
 
+/* ヒーロー内 メタストリップ（件数 + PROJECT 100）*/
+.hero-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.hero-meta-stats {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25em;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.55);
+}
+
+.hero-meta-num {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.hero-meta-unit {
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.55);
+}
+
+.hero-meta-sep {
+  color: rgba(255,255,255,0.25);
+  margin: 0 0.1em;
+}
+
+.hero-meta-divider {
+  display: block;
+  width: 1px;
+  height: 1rem;
+  background: rgba(255,255,255,0.15);
+  flex-shrink: 0;
+}
+
+.hero-meta-p100 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: rgba(255,255,255,0.65);
+  font-size: 0.82rem;
+  transition: color var(--transition-base);
+}
+
+.hero-meta-p100:hover {
+  color: white;
+  text-decoration: none;
+}
+
+.hero-meta-p100-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+.hero-meta-p100-bar {
+  display: block;
+  width: 72px;
+  height: 4px;
+  background: rgba(255,255,255,0.14);
+  border-radius: 2px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.hero-meta-p100-fill {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--color-primary) 0%, #ff9a50 100%);
+  border-radius: 2px;
+  min-width: 4px;
+  transition: width 0.6s ease;
+}
+
+.hero-meta-p100-count {
+  font-weight: 700;
+  color: rgba(255,255,255,0.85);
+  font-size: 0.85rem;
+}
+
+.hero-meta-p100-goal {
+  font-weight: 400;
+  color: rgba(255,255,255,0.4);
+  font-size: 0.78rem;
+}
+
+.hero-meta-p100-arrow {
+  color: rgba(255,255,255,0.35);
+  font-size: 0.75rem;
+  transition: color var(--transition-base), transform var(--transition-base);
+}
+
+.hero-meta-p100:hover .hero-meta-p100-arrow {
+  color: rgba(255,255,255,0.75);
+  transform: translateX(2px);
+}
+
 /* ヒーロー エミッター（チャクラ炎）
  * filter と mix-blend-mode を同一要素に併用すると、ブラウザが compositing layer
  * を分離して mix-blend-mode が機能しなくなる。
@@ -583,9 +692,9 @@ a:hover { text-decoration: underline; }
 
 /* ============ スタッツバー ============ */
 .stats-bar {
-  background: var(--color-bg);
-  border-top: 2px solid rgba(232,98,26,0.18);
-  box-shadow: 0 -6px 24px rgba(232,98,26,0.06), 0 2px 8px rgba(0,0,0,0.04);
+  background: linear-gradient(180deg, #1a1a2e 0%, #1e1e38 100%);
+  border-top: none;
+  box-shadow: none;
   padding: 0.875rem 0;
 }
 
@@ -615,17 +724,17 @@ a:hover { text-decoration: underline; }
 .stat-label {
   font-size: 0.82rem;
   font-weight: 500;
-  color: var(--color-text-sub);
+  color: rgba(255,255,255,0.55);
 }
 
 .stat-amp {
   font-size: 0.82rem;
-  color: var(--color-text-sub);
+  color: rgba(255,255,255,0.35);
   margin: 0 0.15rem;
 }
 
 .stat-sep {
-  color: var(--color-border);
+  color: rgba(255,255,255,0.2);
   font-size: 1rem;
   line-height: 1;
 }
@@ -637,7 +746,8 @@ a:hover { text-decoration: underline; }
 
 body { background-color: var(--color-bg); }
 
-.section-inner {
+.section-inner,
+.container {
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--space-md);
@@ -1329,8 +1439,10 @@ body { background-color: var(--color-bg); }
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   text-align: center;
   padding: 1.25rem 0.75rem;
+  min-height: 90px;
   background: var(--color-white);
   border: 1.5px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -1347,9 +1459,14 @@ body { background-color: var(--color-bg); }
 }
 .chara-card-name {
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   margin-bottom: 0.4rem;
-  word-break: break-all;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .chara-card-count {
   font-size: 0.8rem;
@@ -1728,12 +1845,6 @@ body { background-color: var(--color-bg); }
 
   .hero-actions { flex-direction: column; align-items: flex-start; }
 
-  /* ヒーロー: モバイルで画面を覆いすぎないよう高さを調整 */
-  .hero {
-    min-height: 85vh;           /* フォールバック */
-    min-height: 85svh;          /* small viewport height（アドレスバー等を除外） */
-  }
-
   /* ヒーロー 2カラム → 1カラム */
   .hero.has-snippets .hero-inner {
     flex-direction: column;
@@ -1947,8 +2058,8 @@ body { background-color: var(--color-bg); }
 }
 
 /* お気に入りページ */
-.favorites-section { padding: 2rem 0 4rem; }
-.favorites-inner { max-width: 720px; margin: 0 auto; padding: 0 1rem; }
+.favorites-section { padding: 3rem 0 5rem; min-height: 50vh; }
+.favorites-inner { max-width: 720px; margin: 0 auto; padding: 0 var(--space-md); }
 .favorites-empty { text-align: center; color: #888; padding: 3rem 0; }
 .fav-item {
   display: block;
@@ -2574,9 +2685,10 @@ body { background-color: var(--color-bg); }
    PROJECT 100 — トップページバナー
    ============================================================ */
 .p100-banner {
-  background: linear-gradient(135deg, var(--color-accent) 0%, #2d1a4a 100%);
+  background: linear-gradient(180deg, #1e1e38 0%, #211a3a 50%, #2d1a4a 100%);
   color: #fff;
-  padding: 1.5rem 0;
+  padding: 2.5rem 0;
+  border-top: none;
 }
 .p100-banner-inner {
   display: flex;
@@ -2604,7 +2716,7 @@ body { background-color: var(--color-bg); }
 .p100-banner-current {
   font-size: 2.8rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-primary);
 }
 .p100-banner-sep {
   font-size: 1.4rem;
@@ -2689,7 +2801,7 @@ body { background-color: var(--color-bg); }
    ============================================================ */
 
 .p100-hero {
-  background: linear-gradient(135deg, var(--color-accent) 0%, #2d1a4a 60%, #1a1a2e 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, #c94a0a 40%, #1a1a2e 100%);
   color: #fff;
   padding: 5rem 1.5rem 4rem;
   text-align: center;
@@ -2704,8 +2816,8 @@ body { background-color: var(--color-bg); }
   font-weight: 700;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--color-primary);
-  border: 1px solid var(--color-primary);
+  color: rgba(255,255,255,0.9);
+  border: 1px solid rgba(255,255,255,0.5);
   padding: 0.2em 0.8em;
   border-radius: 2px;
   margin-bottom: 1.5rem;
@@ -2742,7 +2854,7 @@ body { background-color: var(--color-bg); }
 .p100-big-num {
   font-size: clamp(4rem, 12vw, 7rem);
   font-weight: 700;
-  color: var(--color-accent);
+  color: var(--color-primary);
   line-height: 1;
 }
 .p100-slash {
@@ -2770,7 +2882,7 @@ body { background-color: var(--color-bg); }
 }
 .p100-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-primary) 100%);
+  background: linear-gradient(90deg, #c94a0a 0%, var(--color-primary) 100%);
   border-radius: 6px;
   transition: width 0.8s ease;
   min-width: 6px;
@@ -2822,7 +2934,7 @@ body { background-color: var(--color-bg); }
   font-size: 1rem;
   font-weight: 700;
   margin: 0 0 0.6rem;
-  color: var(--color-accent);
+  color: var(--color-primary);
 }
 .p100-why-card p {
   font-size: 0.88rem;
@@ -2837,7 +2949,7 @@ body { background-color: var(--color-bg); }
 .p100-section-heading {
   font-size: 1.4rem;
   font-weight: 700;
-  color: var(--color-accent);
+  color: var(--color-primary);
   margin: 0 0 2rem;
   text-align: center;
 }
@@ -2873,9 +2985,9 @@ body { background-color: var(--color-bg); }
   color: #fff;
 }
 .p100-milestone--next .p100-milestone-indicator {
-  background: var(--color-accent);
+  background: var(--color-primary);
   color: #fff;
-  box-shadow: 0 0 0 3px rgba(26,26,46,0.12);
+  box-shadow: 0 0 0 3px rgba(232,98,26,0.25);
 }
 .p100-milestone--upcoming .p100-milestone-indicator {
   background: #e8e8e8;
@@ -2892,7 +3004,7 @@ body { background-color: var(--color-bg); }
 .p100-milestone-count {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--color-accent);
+  color: var(--color-primary);
 }
 .p100-milestone--upcoming .p100-milestone-count { color: #bbb; }
 .p100-milestone-label {
@@ -2911,7 +3023,7 @@ body { background-color: var(--color-bg); }
   color: var(--color-primary);
 }
 .p100-milestone-badge--next {
-  background: var(--color-accent);
+  background: var(--color-primary);
   color: #fff;
 }
 .p100-milestone-reward {
@@ -2967,7 +3079,7 @@ body { background-color: var(--color-bg); }
   width: 2.8rem;
   height: 2.8rem;
   border-radius: 50%;
-  background: var(--color-accent);
+  background: var(--color-primary);
   color: #fff;
   display: flex;
   align-items: center;

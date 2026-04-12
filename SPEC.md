@@ -1,6 +1,6 @@
 # ナルボル体験談 — サイト仕様書
 
-> 最終更新: 2026-04-08（Aboutページ追加・SNS告知文作成）
+> 最終更新: 2026-04-12（デザイン刷新・PROJECT 100 LP追加・hero-meta統合）
 
 ---
 
@@ -168,9 +168,9 @@ naruboru-fan-site/
 
 ### 現在のデータ状況
 
-- **総件数**: 32件
-- **シードコンテンツ**: 14件（運営作成サンプル）
-- **実投稿**: 18件（story-005, 016〜032）
+- **総件数**: 33件
+- **シードコンテンツ**: 14件（運営作成サンプル、`isSeedContent: true`）
+- **実投稿**: 19件（story-005, 016〜033）
   - story-020: Defensor de Boruto（ブラジル・ポルトガル語投稿、`sourceLang: "pt"`）
   - story-021: "A"（@itami_0513、うちはイタチ、〜10歳、日本）
   - story-022: Moe（m_7144_、ボルサラ推し、BORUTO TVアニメ、日本）
@@ -184,6 +184,7 @@ naruboru-fan-site/
   - story-030: あゆ（R_tag_uTxTu、うちはサスケ推し、NARUTO TVアニメ、日本）
   - story-031: ハリー（@Hedgehog_kwkw、ボルト推し、NARUTO TVアニメ→漫画、10代・女、日本）
   - story-032: 的（wolkiger_ks、サスケ推し、NARUTO 漫画、10代、日本）
+  - story-033: 未登録（以降随時追加）
 
 ---
 
@@ -241,13 +242,15 @@ src/i18n/ui.ts
 |---|---|
 | `/` | トップ |
 | `/stories` | 体験談一覧 |
-| `/stories/[id]` | 体験談詳細（32件×1言語） |
+| `/stories/[id]` | 体験談詳細（33件×1言語） |
 | `/characters` | 推し一覧 |
 | `/submit` | 投稿フォーム |
 | `/guidelines` | 投稿ガイドライン |
 | `/privacy` | プライバシーポリシー |
 | `/about` | このサイトについて |
 | `/favorites` | お気に入り一覧（クライアント側レンダリング） |
+| `/project100` | PROJECT 100 専用LP（カウンター・マイルストーン・参加者ウォール・CTA）※フッター非表示・URLから直アクセスのみ |
+| `/calendar` | 記念日カレンダー（非公開中・データ整備中） |
 
 ### 多言語（`/[lang]/`）× 7言語
 
@@ -343,7 +346,8 @@ https://naruboru-taiken.github.io に反映（数分以内）
 |---|---|
 | ヒーロータイピングエフェクト | トップページ（日本語）のh1タイトルを1文字ずつタイプする演出。完了後カーソルフェードアウト |
 | ヒーローVoiceスニペット | トップページ右カラム。`catchphrase`を持つ投稿からランダム3件を抽出し、タイピング完了後に時差フェードイン表示。`<script type="application/json">` 経由でデータ注入（define:vars のTypeScript制約回避） |
-| スタッツバー | トップページ（日本語）ヒーロー直下に総投稿件数・国数を数値表示 |
+| hero-metaストリップ | トップページヒーロー内に件数・国数・PROJECT 100進捗バーを統合表示（Kickstarter/Campfire方式の社会的証明） |
+| PROJECT 100 LP | `/project100`。カウンター・マイルストーン・参加者ウォール・CTA。オレンジ基調デザイン。フッターからは非公開 |
 | チャクラ発光エフェクト | ヒーロー背景の炎エフェクト（日本語・多言語トップ共通）。`filter`と`mix-blend-mode`の同一要素競合を回避するため`::before`に分離。`translateY(-6%)`で炎が湧き上がるアニメーション（7s、opacity 0.30→1.00）。ノイズテクスチャはSVG data URIをbackground-imageに直接埋め込み（`mix-blend-mode: soft-light`） |
 | 国旗絵文字 | StoryCard の card-meta エリアに `・国名 🇯🇵` 形式で表示。日本を含む25ヶ国対応 |
 | キャラ名多言語表示 | `getCharaName(jaName, lang)` 関数（`src/i18n/ui.ts`）が正規日本語名→8言語に変換。21キャラ対応、`・`/`、` 区切りの複合名も分割翻訳。DeepLは使用しない（直訳で壊れるため） |

@@ -74,6 +74,32 @@ const storyPool = stories
           <a href={`${base}/stories`} class="btn btn-primary">体験談をすべて読む</a>
           <a href={`${base}/submit`} class="btn btn-outline">あの記憶を投稿する</a>
         </div>
+
+        <!-- 社会的証明 + PROJECT 100 インライン -->
+        <div class="hero-meta">
+          <div class="hero-meta-stats" aria-label="サイト統計">
+            <span class="hero-meta-num">{realCount}</span>
+            <span class="hero-meta-unit">件</span>
+            <span class="hero-meta-sep" aria-hidden="true">·</span>
+            <span class="hero-meta-num">{countryCount}</span>
+            <span class="hero-meta-unit">ヶ国から</span>
+          </div>
+          <span class="hero-meta-divider" aria-hidden="true"></span>
+          <a href={`${base}/project100`} class="hero-meta-p100" aria-label={`PROJECT 100 進捗: ${realCount}/${GOAL}人`}>
+            <span class="hero-meta-p100-label">PROJECT 100</span>
+            <span
+              class="hero-meta-p100-bar"
+              role="progressbar"
+              aria-valuenow={realCount}
+              aria-valuemin={0}
+              aria-valuemax={GOAL}
+            >
+              <span class="hero-meta-p100-fill" style={`width: ${pct100}%`}></span>
+            </span>
+            <span class="hero-meta-p100-count">{realCount}<span class="hero-meta-p100-goal">/{GOAL}人</span></span>
+            <span class="hero-meta-p100-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
       </div>
 
       <!-- 右カラム: Voice 型スニペット（JS でランダム生成・タイピング完了後フェードイン） -->
@@ -81,48 +107,6 @@ const storyPool = stories
         <!-- populated by client JS -->
       </div>
 
-    </div>
-  </section>
-
-  <!-- スタッツバー -->
-  <div class="stats-bar" aria-label="サイト統計">
-    <div class="stats-inner">
-      <div class="stat">
-        <span class="stat-num">{realCount}</span>
-        <span class="stat-label">件の体験談</span>
-      </div>
-      <span class="stat-sep" aria-hidden="true">·</span>
-      <div class="stat">
-        <span class="stat-num">{countryCount}</span>
-        <span class="stat-label">ヶ国から</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- PROJECT 100 バナー -->
-  <section class="p100-banner" aria-label="PROJECT 100 進捗">
-    <div class="p100-banner-inner container">
-      <div class="p100-banner-left">
-        <p class="p100-banner-eyebrow">PROJECT 100</p>
-        <div class="p100-banner-nums">
-          <span class="p100-banner-current">{realCount}</span>
-          <span class="p100-banner-sep">/</span>
-          <span class="p100-banner-total">{GOAL}</span>
-          <span class="p100-banner-unit">人</span>
-        </div>
-        <p class="p100-banner-next">次の節目まで <strong>あと{toNext100}人</strong></p>
-      </div>
-      <div class="p100-banner-right">
-        <div class="p100-banner-bar-wrap" role="progressbar" aria-valuenow={realCount} aria-valuemin={0} aria-valuemax={GOAL}>
-          <div class="p100-banner-track">
-            <div class="p100-banner-fill" style={`width: ${pct100}%`}></div>
-            {milestones100.map(m => (
-              <span class="p100-banner-marker" style={`left: ${m}%`}></span>
-            ))}
-          </div>
-        </div>
-        <a href={`${base}/project100`} class="p100-banner-link">プロジェクト詳細 →</a>
-      </div>
     </div>
   </section>
 
