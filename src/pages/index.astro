@@ -85,7 +85,7 @@ const storyPool = stories
             <span class="hero-meta-unit">ヶ国から</span>
           </div>
           <span class="hero-meta-divider" aria-hidden="true"></span>
-          <a href={`${base}/project100`} class="hero-meta-p100" aria-label={`PROJECT 100 進捗: ${realCount}/${GOAL}人`}>
+          <span class="hero-meta-p100" aria-label={`PROJECT 100 進捗: ${realCount}/${GOAL}人`} style="cursor: default; pointer-events: none;">
             <span class="hero-meta-p100-label">PROJECT 100</span>
             <span
               class="hero-meta-p100-bar"
@@ -97,8 +97,7 @@ const storyPool = stories
               <span class="hero-meta-p100-fill" style={`width: ${pct100}%`}></span>
             </span>
             <span class="hero-meta-p100-count">{realCount}<span class="hero-meta-p100-goal">/{GOAL}人</span></span>
-            <span class="hero-meta-p100-arrow" aria-hidden="true">→</span>
-          </a>
+          </span>
         </div>
       </div>
 
