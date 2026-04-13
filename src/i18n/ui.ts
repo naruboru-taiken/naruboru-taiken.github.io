@@ -804,6 +804,10 @@ const CHARA_TRANSLATIONS: Record<string, Record<SupportedLang, string>> = {
   '千手柱間':               { en: 'Hashirama Senju',         fr: 'Hashirama Senju',         ar: 'هاشيراما سينجو',          es: 'Hashirama Senju',         pt: 'Hashirama Senju',         zh: '千手柱间',   ko: '센주 하시라마' },
   '筧スミレ':               { en: 'Sumire Kakei',            fr: 'Sumire Kakei',            ar: 'سوميري كاكي',             es: 'Sumire Kakei',            pt: 'Sumire Kakei',            zh: '筧菫',       ko: '카케이 스미레' },
   'うずまきヒマワリ':       { en: 'Himawari Uzumaki',        fr: 'Himawari Uzumaki',        ar: 'هيماواري أوزوماكي',       es: 'Himawari Uzumaki',        pt: 'Himawari Uzumaki',        zh: '漩涡向日葵', ko: '우즈마키 히마와리' },
+  '日向ネジ':               { en: 'Neji Hyuga',              fr: 'Neji Hyuga',              ar: 'نيجي هيوغا',              es: 'Neji Hyuga',              pt: 'Neji Hyuga',              zh: '日向宁次',   ko: '효가 네지' },
+  '干柿鬼鮫':               { en: 'Kisame Hoshigaki',        fr: 'Kisame Hoshigaki',        ar: 'كيسامي هوشيغاكي',         es: 'Kisame Hoshigaki',        pt: 'Kisame Hoshigaki',        zh: '干柿鬼鲛',   ko: '호시가키 키사메' },
+  'うちはマダラ':           { en: 'Madara Uchiha',           fr: 'Madara Uchiha',           ar: 'ماداراأوتشيها',            es: 'Madara Uchiha',           pt: 'Madara Uchiha',           zh: '宇智波斑',   ko: '우치하 마다라' },
+  '九喇嘛':                 { en: 'Kurama',                  fr: 'Kurama',                  ar: 'كورامًا',                 es: 'Kurama',                  pt: 'Kurama',                  zh: '九喇嘛',     ko: '구라마' },
 };
 
 /**
