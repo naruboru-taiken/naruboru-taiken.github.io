@@ -33,10 +33,30 @@ naruboru-fan-site/
 ├── public/
 │   └── styles/
 │       └── global.css           ★ 全スタイル（色・フォント・レイアウトはここで変更）
+├── src/
+│   └── components/
+│       ├── StoryCard.astro      体験談カードコンポーネント（一覧で使用）
+│       └── FlagIcon.astro       SVG国旗アイコン（JP/BR/KR/TH/GB/US/CN/FR/DE/IT）
+├── src/
+│   └── i18n/
+│       └── ui.ts                全翻訳キー辞書（8言語: ja/en/fr/ar/es/pt/zh/ko）
+├── scripts/
+│   └── translate-stories.mjs    DeepL翻訳スクリプト（国名は辞書優先）
 ├── astro.config.mjs             Astroの設定（GitHub Pages URLもここ）
 ├── package.json
 └── CLAUDE.md                    このファイル
 ```
+
+### 多言語対応メモ
+- **日本語版**: `src/pages/*.astro`（ルート直下）
+- **海外版7言語**: `src/pages/[lang]/*.astro`（en/fr/ar/es/pt/zh/ko）
+- 共通翻訳キー: `src/i18n/ui.ts` の `useTranslations(lang)` で `t('key', vars)` 呼び出し
+- 国旗表示: 絵文字を避け、`<FlagIcon code="JP" />` を使用（Windows Chrome対応）
+- 国名の DeepL 誤訳を避けるため、`translate-stories.mjs` の `COUNTRY_BY_CODE` 辞書を優先使用（`country` フィールドは DeepL スキップ）
+
+### フッターナビの構成（BaseLayout.astro）
+- ホーム / 体験談一覧 / 推し一覧 / **PROJECT 100** / 投稿ガイドライン / プライバシー / このサイトについて / 投稿する
+- ※ ファンデータページ (`/data`) はフッターから非表示（実装は残っている）
 
 ---
 
@@ -154,12 +174,12 @@ SNS文案:
 ### 「ガイドラインの内容を変えたい」
 → `src/pages/guidelines.astro` を編集
 
-### 「投稿フォームのTally.so URLを設定したい」
-→ `src/pages/submit.astro` の冒頭の変数を更新:
+### 「投稿フォームのURLを変更したい」
+→ `src/pages/submit.astro` の冒頭 `FORM_URL` を更新:
 ```js
-const TALLY_FORM_URL = 'https://tally.so/r/実際のフォームID';
-const TALLY_EMBED_URL = 'https://tally.so/embed/実際のフォームID?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1';
+const FORM_URL = 'https://docs.google.com/forms/d/e/.../viewform?embedded=true';
 ```
+※ **現状 Google Forms を iframe 埋め込みで使用**（過去のドキュメントで Tally.so と記載されていた箇所があるが、実態は Google Forms）。`privacy.astro` の storage 記載も Google Forms に合わせること。
 
 ### 「アフィリエイトリンクを追加・管理したい」
 → `src/data/affiliate-items.json` に1件追記する
