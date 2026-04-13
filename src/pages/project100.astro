@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import FlagIcon from '../components/FlagIcon.astro';
 import stories from '../data/stories.json';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -9,41 +10,32 @@ const participants = (stories as any[]).filter(s => !s.isSeedContent);
 const realCount = participants.length;
 const pct = Math.min(100, Math.round((realCount / GOAL) * 100));
 
-// 国名を国コード/国旗に正規化（多言語の表記ゆれを吸収）
-const COUNTRY_MAP: Record<string, { code: string; flag: string }> = {
+// 国名を国コードに正規化（多言語の表記ゆれを吸収・SVG国旗で描画）
+const COUNTRY_CODE_MAP: Record<string, string> = {
   // Japan
-  '日本': { code: 'JP', flag: '🇯🇵' }, 'Japan': { code: 'JP', flag: '🇯🇵' },
-  'Japon': { code: 'JP', flag: '🇯🇵' }, 'Japón': { code: 'JP', flag: '🇯🇵' },
-  'Japão': { code: 'JP', flag: '🇯🇵' }, '일본': { code: 'JP', flag: '🇯🇵' },
-  'اليابان': { code: 'JP', flag: '🇯🇵' },
+  '日本': 'JP', 'Japan': 'JP', 'Japon': 'JP', 'Japón': 'JP',
+  'Japão': 'JP', '일본': 'JP', 'اليابان': 'JP',
   // Brazil
-  'Brasil': { code: 'BR', flag: '🇧🇷' }, 'Brazil': { code: 'BR', flag: '🇧🇷' },
-  'Brésil': { code: 'BR', flag: '🇧🇷' }, '巴西': { code: 'BR', flag: '🇧🇷' },
-  'ブラジル': { code: 'BR', flag: '🇧🇷' }, '브라질': { code: 'BR', flag: '🇧🇷' },
-  'البرازيل': { code: 'BR', flag: '🇧🇷' },
+  'Brasil': 'BR', 'Brazil': 'BR', 'Brésil': 'BR', '巴西': 'BR',
+  'ブラジル': 'BR', '브라질': 'BR', 'البرازيل': 'BR',
   // Korea
-  'Corea': { code: 'KR', flag: '🇰🇷' }, 'Coreia': { code: 'KR', flag: '🇰🇷' },
-  'Corée': { code: 'KR', flag: '🇰🇷' }, 'Korea': { code: 'KR', flag: '🇰🇷' },
-  '韓国': { code: 'KR', flag: '🇰🇷' }, '韩国': { code: 'KR', flag: '🇰🇷' },
-  '한국': { code: 'KR', flag: '🇰🇷' }, 'كوريا': { code: 'KR', flag: '🇰🇷' },
+  'Corea': 'KR', 'Coreia': 'KR', 'Corée': 'KR', 'Korea': 'KR',
+  '韓国': 'KR', '韩国': 'KR', '한국': 'KR', 'كوريا': 'KR',
   // Thailand
-  'Tailandia': { code: 'TH', flag: '🇹🇭' }, 'Tailândia': { code: 'TH', flag: '🇹🇭' },
-  'Thaïlande': { code: 'TH', flag: '🇹🇭' }, 'タイ': { code: 'TH', flag: '🇹🇭' },
-  '泰国': { code: 'TH', flag: '🇹🇭' }, '태국': { code: 'TH', flag: '🇹🇭' },
-  'تايلاند': { code: 'TH', flag: '🇹🇭' },
-  'tai (species of reddish-brown Pacific sea bream, Pagrus major)': { code: 'TH', flag: '🇹🇭' },
+  'Tailandia': 'TH', 'Tailândia': 'TH', 'Thaïlande': 'TH', 'タイ': 'TH',
+  '泰国': 'TH', '태국': 'TH', 'تايلاند': 'TH',
+  'tai (species of reddish-brown Pacific sea bream, Pagrus major)': 'TH',
   // UK
-  'United Kingdom': { code: 'GB', flag: '🇬🇧' }, '英国': { code: 'GB', flag: '🇬🇧' },
+  'United Kingdom': 'GB', '英国': 'GB',
 };
-const uniqueFlags = Array.from(new Map(
+const uniqueCountryCodes: string[] = Array.from(new Set(
   participants
     .map((p: any) => p.country)
     .filter(Boolean)
-    .map((c: string) => COUNTRY_MAP[c])
+    .map((c: string) => COUNTRY_CODE_MAP[c])
     .filter(Boolean)
-    .map((e: { code: string; flag: string }) => [e.code, e.flag])
-).values());
-const countryCount = uniqueFlags.length;
+));
+const countryCount = uniqueCountryCodes.length;
 
 const milestones = [
   { count: 20, label: '最初の20人', reward: 'X でプロジェクト発足アナウンス' },
@@ -156,8 +148,10 @@ const toNext = nextMilestone.count - realCount;
           <h3>世界中のファンと繋がる</h3>
           <p>投稿者はすでに複数の国から集まっています。言語は違っても、「あの瞬間」の感動は同じ。</p>
           <p class="p100-why-fact">
-            {uniqueFlags.length > 0 && (
-              <span class="p100-why-flags">{uniqueFlags.join(' ')}</span>
+            {uniqueCountryCodes.length > 0 && (
+              <span class="p100-why-flags">
+                {uniqueCountryCodes.map(code => <FlagIcon code={code} />)}
+              </span>
             )}
             <span>{countryCount}の国・地域から参加中</span>
           </p>

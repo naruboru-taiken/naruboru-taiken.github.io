@@ -41,6 +41,40 @@ const TRANSLATABLE_FIELDS = [
   // 'favoriteCharacter' は getCharaName() ハードコード辞書で処理するため除外
 ];
 
+// 国名辞書（固有名詞保護・DeepL誤訳の回避）
+// 例: 「タイ」→ "tai (species of ... sea bream)" と誤訳される問題を防ぐ
+const COUNTRY_BY_CODE = {
+  JP: { ja: '日本',     en: 'Japan',          fr: 'Japon',          ar: 'اليابان',         es: 'Japón',         pt: 'Japão',         zh: '日本',   ko: '일본' },
+  TH: { ja: 'タイ',     en: 'Thailand',       fr: 'Thaïlande',      ar: 'تايلاند',         es: 'Tailandia',     pt: 'Tailândia',     zh: '泰国',   ko: '태국' },
+  BR: { ja: 'ブラジル', en: 'Brazil',         fr: 'Brésil',         ar: 'البرازيل',        es: 'Brasil',        pt: 'Brasil',        zh: '巴西',   ko: '브라질' },
+  KR: { ja: '韓国',     en: 'Korea',          fr: 'Corée',          ar: 'كوريا',           es: 'Corea',         pt: 'Coreia',        zh: '韩国',   ko: '한국' },
+  GB: { ja: '英国',     en: 'United Kingdom', fr: 'Royaume-Uni',    ar: 'المملكة المتحدة', es: 'Reino Unido',   pt: 'Reino Unido',   zh: '英国',   ko: '영국' },
+  US: { ja: 'アメリカ', en: 'United States',  fr: 'États-Unis',     ar: 'الولايات المتحدة', es: 'Estados Unidos', pt: 'Estados Unidos', zh: '美国', ko: '미국' },
+  CN: { ja: '中国',     en: 'China',          fr: 'Chine',          ar: 'الصين',           es: 'China',         pt: 'China',         zh: '中国',   ko: '중국' },
+  FR: { ja: 'フランス', en: 'France',         fr: 'France',         ar: 'فرنسا',           es: 'Francia',       pt: 'França',        zh: '法国',   ko: '프랑스' },
+  DE: { ja: 'ドイツ',   en: 'Germany',        fr: 'Allemagne',      ar: 'ألمانيا',         es: 'Alemania',      pt: 'Alemanha',      zh: '德国',   ko: '독일' },
+  IT: { ja: 'イタリア', en: 'Italy',          fr: 'Italie',          ar: 'إيطاليا',         es: 'Italia',        pt: 'Itália',        zh: '意大利', ko: '이탈리아' },
+};
+
+// 逆引きテーブル: どの言語の国名からでも国コードを特定できる
+const COUNTRY_CODE_LOOKUP = {};
+for (const [code, names] of Object.entries(COUNTRY_BY_CODE)) {
+  for (const name of Object.values(names)) {
+    COUNTRY_CODE_LOOKUP[name] = code;
+  }
+}
+// 既知の DeepL 誤訳パターンも吸収
+COUNTRY_CODE_LOOKUP['tai (species of reddish-brown Pacific sea bream, Pagrus major)'] = 'TH';
+
+/**
+ * 国名を翻訳辞書から取得。未登録の国の場合は null を返す（DeepLにフォールバック）
+ */
+function lookupCountry(originalText, targetLang) {
+  const code = COUNTRY_CODE_LOOKUP[originalText?.trim()];
+  if (!code) return null;
+  return COUNTRY_BY_CODE[code][targetLang] ?? null;
+}
+
 const STORIES_PATH = resolve(process.cwd(), 'src/data/stories.json');
 
 async function translate(text, targetLang, sourceLang = 'JA') {
@@ -114,6 +148,19 @@ async function main() {
         if (alreadyTranslated && !FORCE) {
           totalSkipped++;
           continue;
+        }
+
+        // country フィールドは固有名詞辞書を優先（DeepL 誤訳の回避）
+        if (field === 'country') {
+          const dictTranslation = lookupCountry(originalText, storyLang);
+          if (dictTranslation) {
+            story.translations[storyLang][field] = dictTranslation;
+            totalTranslated++;
+            console.log(`  📖 辞書: ${story.id} → ${storyLang}.country = "${dictTranslation}"`);
+            continue;
+          }
+          // 辞書にない国の場合は DeepL にフォールバック（警告）
+          console.warn(`  ⚠️  未登録の国名: "${originalText}" → DeepL にフォールバック`);
         }
 
         console.log(`  翻訳中: ${story.id} → ${storyLang}.${field} (${originalText.length}文字)`);

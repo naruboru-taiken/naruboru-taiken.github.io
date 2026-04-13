@@ -1,0 +1,108 @@
+---
+// SVGで描画する国旗アイコン（絵文字を使わない＝Windows Chromeでも綺麗に表示）
+export interface Props {
+  code: string;
+  label?: string;
+}
+const { code, label } = Astro.props;
+
+const labels: Record<string, string> = {
+  JP: 'Japan', BR: 'Brazil', KR: 'South Korea', TH: 'Thailand',
+  GB: 'United Kingdom', US: 'United States', CN: 'China',
+  FR: 'France', DE: 'Germany', IT: 'Italy',
+};
+const ariaLabel = label ?? labels[code] ?? code;
+---
+
+{code === 'JP' && (
+  <svg class="flag-svg" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" role="img" aria-label={ariaLabel}>
+    <rect width="30" height="20" fill="#fff"/>
+    <circle cx="15" cy="10" r="6" fill="#bc002d"/>
+  </svg>
+)}
+
+{code === 'BR' && (
+  <svg class="flag-svg" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" role="img" aria-label={ariaLabel}>
+    <rect width="30" height="20" fill="#009c3b"/>
+    <polygon points="15,2.5 27.5,10 15,17.5 2.5,10" fill="#ffdf00"/>
+    <circle cx="15" cy="10" r="3.8" fill="#002776"/>
+  </svg>
+)}
+
+{code === 'KR' && (
+  <svg class="flag-svg" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" role="img" aria-label={ariaLabel}>
+    <rect width="30" height="20" fill="#fff"/>
+    <path d="M10 10 A5 5 0 0 1 20 10 Z" fill="#cd2e3a"/>
+    <path d="M10 10 A5 5 0 0 0 20 10 Z" fill="#0047a0"/>
+    <rect x="3" y="5.5" width="4" height="1" fill="#000"/>
+    <rect x="3" y="7.5" width="4" height="1" fill="#000"/>
+    <rect x="3" y="9.5" width="4" height="1" fill="#000"/>
+    <rect x="23" y="10.5" width="4" height="1" fill="#000"/>
+    <rect x="23" y="12.5" width="4" height="1" fill="#000"/>
+    <rect x="23" y="14.5" width="4" height="1" fill="#000"/>
+  </svg>
+)}
+
+{code === 'TH' && (
+  <svg class="flag-svg" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" role="img" aria-label={ariaLabel}>
+    <rect width="30" height="20" fill="#ed1b2e"/>
+    <rect y="3.33" width="30" height="13.34" fill="#fff"/>
+    <rect y="6.67" width="30" height="6.66" fill="#241d4f"/>
+  </svg>
+)}
+
+{code === 'GB' && (
+  <svg class="flag-svg" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label={ariaLabel}>
+    <rect width="60" height="40" fill="#012169"/>
+    <path d="M0 0 L60 40 M60 0 L0 40" stroke="#fff" stroke-width="8"/>
+    <path d="M0 0 L60 40" stroke="#c8102e" stroke-width="4" clip-path="polygon(0 0, 50% 0, 100% 100%, 50% 100%)"/>
+    <path d="M60 0 L0 40" stroke="#c8102e" stroke-width="4" clip-path="polygon(50% 0, 100% 0, 50% 100%, 0 100%)"/>
+    <path d="M30 0 L30 40 M0 20 L60 20" stroke="#fff" stroke-width="10"/>
+    <path d="M30 0 L30 40 M0 20 L60 20" stroke="#c8102e" stroke-width="6"/>
+  </svg>
+)}
+
+{code === 'US' && (
+  <svg class="flag-svg" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" role="img" aria-label={ariaLabel}>
+    <rect width="30" height="20" fill="#fff"/>
+    <rect y="0"    width="30" height="1.54" fill="#b22234"/>
+    <rect y="3.08" width="30" height="1.54" fill="#b22234"/>
+    <rect y="6.15" width="30" height="1.54" fill="#b22234"/>
+    <rect y="9.23" width="30" height="1.54" fill="#b22234"/>
+    <rect y="12.31" width="30" height="1.54" fill="#b22234"/>
+    <rect y="15.38" width="30" height="1.54" fill="#b22234"/>
+    <rect y="18.46" width="30" height="1.54" fill="#b22234"/>
+    <rect width="12" height="10.77" fill="#3c3b6e"/>
+  </svg>
+)}
+
+{code === 'FR' && (
+  <svg class="flag-svg" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" role="img" aria-label={ariaLabel}>
+    <rect width="10" height="20" x="0"  fill="#002654"/>
+    <rect width="10" height="20" x="10" fill="#fff"/>
+    <rect width="10" height="20" x="20" fill="#ce1126"/>
+  </svg>
+)}
+
+{code === 'DE' && (
+  <svg class="flag-svg" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" role="img" aria-label={ariaLabel}>
+    <rect width="30" height="6.67" y="0"     fill="#000"/>
+    <rect width="30" height="6.67" y="6.67"  fill="#dd0000"/>
+    <rect width="30" height="6.67" y="13.34" fill="#ffce00"/>
+  </svg>
+)}
+
+{code === 'IT' && (
+  <svg class="flag-svg" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" role="img" aria-label={ariaLabel}>
+    <rect width="10" height="20" x="0"  fill="#009246"/>
+    <rect width="10" height="20" x="10" fill="#fff"/>
+    <rect width="10" height="20" x="20" fill="#ce2b37"/>
+  </svg>
+)}
+
+{code === 'CN' && (
+  <svg class="flag-svg" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" role="img" aria-label={ariaLabel}>
+    <rect width="30" height="20" fill="#de2910"/>
+    <polygon points="5,3 5.9,5.8 8.8,5.8 6.5,7.5 7.4,10.3 5,8.6 2.6,10.3 3.5,7.5 1.2,5.8 4.1,5.8" fill="#ffde00"/>
+  </svg>
+)}
