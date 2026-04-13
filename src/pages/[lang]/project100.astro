@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import stories from '../../data/stories.json';
+import { SUPPORTED_LANGS, useTranslations, isSupportedLang } from '../../i18n/ui';
+import type { SupportedLang } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return SUPPORTED_LANGS.map(lang => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: SupportedLang };
+if (!isSupportedLang(lang)) return Astro.redirect('/');
+
+const t = useTranslations(lang);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const GOAL = 100;
+const participants = (stories as any[]).filter(s => !s.isSeedContent);
+const realCount = participants.length;
+const pct = Math.min(100, Math.round((realCount / GOAL) * 100));
+
+const milestones = [
+  { count: 20, label: t('p100.ms1_label'), reward: t('p100.ms1_reward') },
+  { count: 30, label: t('p100.ms2_label'), reward: t('p100.ms2_reward') },
+  { count: 50, label: t('p100.ms3_label'), reward: t('p100.ms3_reward') },
+  { count: 75, label: t('p100.ms4_label'), reward: t('p100.ms4_reward') },
+  { count: 100, label: t('p100.ms5_label'), reward: t('p100.ms5_reward') },
+];
+
+function milestoneStatus(m: number): 'done' | 'next' | 'upcoming' {
+  if (realCount >= m) return 'done';
+  const nextMilestone = milestones.find(ms => ms.count > realCount);
+  if (nextMilestone && nextMilestone.count === m) return 'next';
+  return 'upcoming';
+}
+
+const nextMilestone = milestones.find(m => m.count > realCount) ?? milestones[milestones.length - 1];
+const toNext = nextMilestone.count - realCount;
+---
+
+<BaseLayout
+  title={t('p100.title')}
+  description={t('p100.desc', { count: realCount })}
+  ogImage="https://naruboru-taiken.github.io/ogp-project100.png"
+  lang={lang}
+  pagePath="/project100"
+>
+
+  <!-- ヒーロー -->
+  <section class="p100-hero">
+    <div class="p100-hero-inner">
+      <p class="p100-eyebrow">{t('p100.eyebrow')}</p>
+      <h1 class="p100-title">{t('p100.hero_title')}</h1>
+      <p class="p100-desc">{t('p100.hero_desc')}</p>
+    </div>
+  </section>
+
+  <!-- カウンター -->
+  <section class="p100-counter-section">
+    <div class="container">
+      <div class="p100-counter">
+        <div class="p100-numbers-row">
+          <span class="p100-big-num">{realCount}</span>
+          <span class="p100-slash">/</span>
+          <span class="p100-goal-num">{GOAL}</span>
+        </div>
+        <div class="p100-bar-wrap" role="progressbar" aria-valuenow={realCount} aria-valuemin={0} aria-valuemax={GOAL}>
+          <div class="p100-bar-track">
+            <div class="p100-bar-fill" style={`width: ${pct}%`}></div>
+            {milestones.slice(0, -1).map(m => (
+              <span class="p100-bar-marker" style={`left: ${m.count}%`} title={`${m.count}`}></span>
+            ))}
+          </div>
+          <div class="p100-bar-labels">
+            <span>0</span>
+            <span>{GOAL}</span>
+          </div>
+        </div>
+        <p class="p100-next-label">
+          {t('p100.next_label', { toNext, label: nextMilestone.label })}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- プロジェクトの意義 -->
+  <section class="p100-why-section">
+    <div class="container">
+      <div class="p100-why-grid">
+        <div class="p100-why-card">
+          <div class="p100-why-icon">📖</div>
+          <h3>{t('p100.why_title1')}</h3>
+          <p>{t('p100.why_desc1')}</p>
+        </div>
+        <div class="p100-why-card">
+          <div class="p100-why-icon">🌍</div>
+          <h3>{t('p100.why_title2')}</h3>
+          <p>{t('p100.why_desc2')}</p>
+        </div>
+        <div class="p100-why-card">
+          <div class="p100-why-icon">📚</div>
+          <h3>{t('p100.why_title3')}</h3>
+          <p>{t('p100.why_desc3')}</p>
+          <p class="p100-coming-soon">coming soon...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- マイルストーン -->
+  <section class="p100-milestones-section">
+    <div class="container">
+      <h2 class="p100-section-heading">{t('p100.milestone_heading')}</h2>
+      <ol class="p100-milestones">
+        {milestones.map(m => {
+          const status = milestoneStatus(m.count);
+          return (
+            <li class={`p100-milestone p100-milestone--${status}`}>
+              <div class="p100-milestone-indicator">
+                {status === 'done' ? '✓' : status === 'next' ? '→' : m.count}
+              </div>
+              <div class="p100-milestone-body">
+                <div class="p100-milestone-header">
+                  <span class="p100-milestone-count">{m.count}</span>
+                  <span class="p100-milestone-label">{m.label}</span>
+                  {status === 'done' && <span class="p100-milestone-badge p100-milestone-badge--done">{t('p100.milestone_done')}</span>}
+                  {status === 'next' && <span class="p100-milestone-badge p100-milestone-badge--next">{t('p100.milestone_next')}</span>}
+                </div>
+                <p class="p100-milestone-reward">{m.reward}</p>
+              </div>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  </section>
+
+  <!-- 参加者ウォール -->
+  <section class="p100-participants-section">
+    <div class="container">
+      <h2 class="p100-section-heading">
+        {t('p100.participants_heading')} <span class="p100-participants-count">{realCount}</span>
+      </h2>
+      <p class="p100-participants-note">
+        {t('p100.participants_note', { count: realCount })}
+      </p>
+      <ul class="p100-participants-wall">
+        {participants.map((s: any) => (
+          <li class="p100-participant">
+            <a href={`${base}/${lang}/stories/${s.id}`} class="p100-participant-link">
+              <span class="p100-participant-avatar">{s.displayName.charAt(0)}</span>
+              <span class="p100-participant-name">{s.displayName}</span>
+            </a>
+          </li>
+        ))}
+        {Array.from({ length: Math.min(5, GOAL - realCount) }).map(() => (
+          <li class="p100-participant p100-participant--empty">
+            <span class="p100-participant-avatar p100-participant-avatar--empty">?</span>
+            <span class="p100-participant-name p100-participant-name--empty">{t('p100.empty_slot')}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-inner">
+      <h2 class="cta-title">{t('p100.cta_title', { n: realCount + 1 })}</h2>
+      <p class="cta-desc">{t('p100.cta_desc')}</p>
+      <a href={`${base}/${lang}/submit`} class="btn btn-primary btn-large">{t('p100.cta_btn')}</a>
+      <p class="cta-note">
+        <a href={`${base}/${lang}/guidelines`}>{t('p100.cta_guidelines')}</a>
+      </p>
+    </div>
+  </section>
+
+</BaseLayout>
