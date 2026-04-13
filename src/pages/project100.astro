@@ -9,6 +9,42 @@ const participants = (stories as any[]).filter(s => !s.isSeedContent);
 const realCount = participants.length;
 const pct = Math.min(100, Math.round((realCount / GOAL) * 100));
 
+// 国名を国コード/国旗に正規化（多言語の表記ゆれを吸収）
+const COUNTRY_MAP: Record<string, { code: string; flag: string }> = {
+  // Japan
+  '日本': { code: 'JP', flag: '🇯🇵' }, 'Japan': { code: 'JP', flag: '🇯🇵' },
+  'Japon': { code: 'JP', flag: '🇯🇵' }, 'Japón': { code: 'JP', flag: '🇯🇵' },
+  'Japão': { code: 'JP', flag: '🇯🇵' }, '일본': { code: 'JP', flag: '🇯🇵' },
+  'اليابان': { code: 'JP', flag: '🇯🇵' },
+  // Brazil
+  'Brasil': { code: 'BR', flag: '🇧🇷' }, 'Brazil': { code: 'BR', flag: '🇧🇷' },
+  'Brésil': { code: 'BR', flag: '🇧🇷' }, '巴西': { code: 'BR', flag: '🇧🇷' },
+  'ブラジル': { code: 'BR', flag: '🇧🇷' }, '브라질': { code: 'BR', flag: '🇧🇷' },
+  'البرازيل': { code: 'BR', flag: '🇧🇷' },
+  // Korea
+  'Corea': { code: 'KR', flag: '🇰🇷' }, 'Coreia': { code: 'KR', flag: '🇰🇷' },
+  'Corée': { code: 'KR', flag: '🇰🇷' }, 'Korea': { code: 'KR', flag: '🇰🇷' },
+  '韓国': { code: 'KR', flag: '🇰🇷' }, '韩国': { code: 'KR', flag: '🇰🇷' },
+  '한국': { code: 'KR', flag: '🇰🇷' }, 'كوريا': { code: 'KR', flag: '🇰🇷' },
+  // Thailand
+  'Tailandia': { code: 'TH', flag: '🇹🇭' }, 'Tailândia': { code: 'TH', flag: '🇹🇭' },
+  'Thaïlande': { code: 'TH', flag: '🇹🇭' }, 'タイ': { code: 'TH', flag: '🇹🇭' },
+  '泰国': { code: 'TH', flag: '🇹🇭' }, '태국': { code: 'TH', flag: '🇹🇭' },
+  'تايلاند': { code: 'TH', flag: '🇹🇭' },
+  'tai (species of reddish-brown Pacific sea bream, Pagrus major)': { code: 'TH', flag: '🇹🇭' },
+  // UK
+  'United Kingdom': { code: 'GB', flag: '🇬🇧' }, '英国': { code: 'GB', flag: '🇬🇧' },
+};
+const uniqueFlags = Array.from(new Map(
+  participants
+    .map((p: any) => p.country)
+    .filter(Boolean)
+    .map((c: string) => COUNTRY_MAP[c])
+    .filter(Boolean)
+    .map((e: { code: string; flag: string }) => [e.code, e.flag])
+).values());
+const countryCount = uniqueFlags.length;
+
 const milestones = [
   { count: 20, label: '最初の20人', reward: 'X でプロジェクト発足アナウンス' },
   { count: 30, label: '30の声', reward: '月ごとのまとめポストを開始' },
@@ -81,22 +117,73 @@ const toNext = nextMilestone.count - realCount;
   <section class="p100-why-section">
     <div class="container">
       <div class="p100-why-grid">
-        <div class="p100-why-card">
-          <div class="p100-why-icon">📖</div>
+
+        <!-- Card 01: 個 -->
+        <article class="p100-why-card">
+          <span class="p100-why-num" aria-hidden="true">01</span>
+          <div class="p100-why-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M6 10 L6 38 L24 34 L42 38 L42 10 L24 14 Z"/>
+              <path d="M24 14 L24 34"/>
+              <path d="M11 19 L19 17.2" stroke-width="1.5"/>
+              <path d="M11 24 L19 22.2" stroke-width="1.5"/>
+              <path d="M29 17.2 L37 19" stroke-width="1.5"/>
+              <path d="M29 22.2 L37 24" stroke-width="1.5"/>
+            </svg>
+          </div>
           <h3>あなたの記憶は、あなただけのもの</h3>
           <p>NARUTOに出会った瞬間は人それぞれ。友達のジャンプ、偶然つけたテレビ、図書館の古い単行本。どれも本物の物語です。</p>
-        </div>
-        <div class="p100-why-card">
-          <div class="p100-why-icon">🌍</div>
+          <p class="p100-why-fact">
+            <span class="p100-why-fact-dot" aria-hidden="true">●</span>
+            <span>{realCount}通りの「あの瞬間」が集まっています</span>
+          </p>
+        </article>
+
+        <!-- Card 02: 繋がり -->
+        <article class="p100-why-card">
+          <span class="p100-why-num" aria-hidden="true">02</span>
+          <div class="p100-why-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="24" cy="24" r="15"/>
+              <path d="M9 24 L39 24"/>
+              <path d="M24 9 C32 16 32 32 24 39 C16 32 16 16 24 9 Z"/>
+              <circle cx="14" cy="18" r="2" fill="currentColor" stroke="none"/>
+              <circle cx="32" cy="14" r="2" fill="currentColor" stroke="none"/>
+              <circle cx="34" cy="30" r="2" fill="currentColor" stroke="none"/>
+              <circle cx="18" cy="33" r="2" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
           <h3>世界中のファンと繋がる</h3>
           <p>投稿者はすでに複数の国から集まっています。言語は違っても、「あの瞬間」の感動は同じ。</p>
-        </div>
-        <div class="p100-why-card">
-          <div class="p100-why-icon">📚</div>
+          <p class="p100-why-fact">
+            {uniqueFlags.length > 0 && (
+              <span class="p100-why-flags">{uniqueFlags.join(' ')}</span>
+            )}
+            <span>{countryCount}の国・地域から参加中</span>
+          </p>
+        </article>
+
+        <!-- Card 03: 集結（ハイライト） -->
+        <article class="p100-why-card p100-why-card--highlight">
+          <span class="p100-why-num" aria-hidden="true">03</span>
+          <div class="p100-why-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 6 L12 42"/>
+              <path d="M12 8 L36 8 L31 15 L36 22 L12 22"/>
+            </svg>
+          </div>
           <h3>100人集まったら</h3>
-          <p>100人の声が集まったとき、みんなでそれを何かの形に残したいと思っています。</p>
-          <p class="p100-coming-soon">coming soon...</p>
-        </div>
+          <p>100人の声が集まったとき、みんなでそれを何かの形に残したい。今日のあなたも、その1人です。</p>
+          <div class="p100-dot-grid" role="img" aria-label={`達成率 ${pct}% (${realCount}/${GOAL})`}>
+            {Array.from({ length: 100 }).map((_, i) => (
+              <span class={`p100-dot ${i < realCount ? 'p100-dot--filled' : ''}`}></span>
+            ))}
+          </div>
+          <p class="p100-why-fact">
+            <span>達成率 <strong>{pct}%</strong> · あと <strong>{GOAL - realCount}人</strong></span>
+          </p>
+        </article>
+
       </div>
     </div>
   </section>
