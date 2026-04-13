@@ -193,34 +193,29 @@ const ageLabel = getAgeGroupLabel(story.ageGroup, lang);
         )}
       </div>
 
-      <!-- Share buttons -->
-      <div class="story-share">
-        <p class="story-share-label">{t('detail.share_label')}</p>
-        <a href={xShareUrl} target="_blank" rel="noopener noreferrer" class="btn btn-x-share">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <!-- アクションバー（リアクション＋シェア統合） -->
+      <div class="story-actions">
+        <button type="button" id="like-btn" class="action-btn action-btn--like" aria-pressed="false">
+          <span class="action-icon">🍥</span>
+          <span class="action-label">{t('detail.like')}</span>
+        </button>
+        <button type="button" id="fav-btn" class="action-btn action-btn--fav" aria-pressed="false">
+          <span class="action-icon">♡</span>
+          <span class="action-label">{t('detail.save')}</span>
+        </button>
+        <a href={xShareUrl} target="_blank" rel="noopener noreferrer" class="action-btn action-btn--x">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.732-8.857L1.555 2.25H8.08l4.27 5.646L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/>
           </svg>
-          {t('detail.share_x')}
+          <span class="action-label">X</span>
         </a>
-        <button type="button" id="ig-share-btn" class="btn btn-ig-share">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <button type="button" id="ig-share-btn" class="action-btn action-btn--ig">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
             <circle cx="12" cy="12" r="5"/>
             <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
           </svg>
-          {t('detail.share_ig')}
-        </button>
-      </div>
-
-      <!-- わかる！ & お気に入り -->
-      <div class="story-engagement">
-        <button type="button" id="like-btn" class="btn-like" aria-pressed="false">
-          <span class="like-icon">🍥</span>
-          <span class="like-label">{t('detail.like')}</span>
-        </button>
-        <button type="button" id="fav-btn" class="btn-favorite" aria-pressed="false">
-          <span class="fav-icon">♡</span>
-          <span class="fav-label">{t('detail.save')}</span>
+          <span class="action-label">IG</span>
         </button>
       </div>
 
@@ -304,8 +299,8 @@ const favBtn = document.getElementById('fav-btn');
 const favList = () => JSON.parse(localStorage.getItem('naruboru-favorites') || '[]');
 function updateFavBtn() {
   const isFav = favList().includes(storyId);
-  favBtn.querySelector('.fav-icon').textContent = isFav ? '♥' : '♡';
-  favBtn.querySelector('.fav-label').textContent = isFav ? savedLabel : saveLabel;
+  favBtn.querySelector('.action-icon').textContent = isFav ? '♥' : '♡';
+  favBtn.querySelector('.action-label').textContent = isFav ? savedLabel : saveLabel;
   favBtn.classList.toggle('favorited', isFav);
   favBtn.setAttribute('aria-pressed', String(isFav));
 }
@@ -323,7 +318,7 @@ const likeBtn = document.getElementById('like-btn');
 const likeList = () => JSON.parse(localStorage.getItem('naruboru-likes') || '[]');
 function updateLikeBtn() {
   const isLiked = likeList().includes(storyId);
-  likeBtn.querySelector('.like-label').textContent = isLiked ? likedLabel : likeLabel;
+  likeBtn.querySelector('.action-label').textContent = isLiked ? likedLabel : likeLabel;
   likeBtn.classList.toggle('liked', isLiked);
   likeBtn.setAttribute('aria-pressed', String(isLiked));
 }
