@@ -20,11 +20,12 @@ const sorted = [...stories].sort((a, b) => {
 });
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const realCount = (stories as any[]).filter(s => !s.isSeedContent).length;
 ---
 
 <BaseLayout
   title={t('stories.title')}
-  description={t('stories.desc', { count: stories.length })}
+  description={t('stories.desc', { count: realCount })}
   lang={lang}
   pagePath="/stories"
 >
@@ -32,8 +33,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
     <div class="page-header-inner">
       <h1 class="page-title">{t('stories.title')}</h1>
       <p class="page-desc">
-        <strong id="story-count">{stories.length}</strong> {lang === 'ar' ? 'قصة' : lang === 'ja' ? '件' : ''}
-        {lang !== 'ar' && lang !== 'ja' && t('stories.desc', { count: stories.length }).replace(/\d+/, '').trim()}
+        <strong id="story-count">{realCount}</strong> {lang === 'ar' ? 'قصة' : lang === 'ja' ? '件' : ''}
+        {lang !== 'ar' && lang !== 'ja' && t('stories.desc', { count: realCount }).replace(/\d+/, '').trim()}
       </p>
     </div>
   </section>
@@ -117,7 +118,7 @@ function applyFilters() {
     const charaOk = !currentChara || card.dataset.chara === currentChara;
     const show = seriesOk && charaOk;
     card.style.display = show ? '' : 'none';
-    if (show) visible++;
+    if (show && card.dataset.seed !== 'true') visible++;
   });
   if (countEl) countEl.textContent = String(visible);
   if (noResults) noResults.hidden = visible > 0;

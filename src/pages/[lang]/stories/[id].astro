@@ -216,12 +216,19 @@ const ageLabel = getAgeGroupLabel(story.ageGroup, lang);
       <div class="story-engagement">
         <button type="button" id="like-btn" class="btn-like" aria-pressed="false">
           <span class="like-icon">🍥</span>
-          <span class="like-label">わかる！</span>
+          <span class="like-label">{t('detail.like')}</span>
         </button>
         <button type="button" id="fav-btn" class="btn-favorite" aria-pressed="false">
           <span class="fav-icon">♡</span>
-          <span class="fav-label">保存</span>
+          <span class="fav-label">{t('detail.save')}</span>
         </button>
+      </div>
+
+      <!-- わかる！CTA バブル -->
+      <div id="like-cta" class="like-cta" hidden aria-live="polite">
+        <p class="like-cta-text">{t('detail.like_cta_text')}</p>
+        <a href={`${base}/${lang}/submit`} class="like-cta-link">{t('detail.like_cta_btn')}</a>
+        <button type="button" id="like-cta-close" class="like-cta-close" aria-label="閉じる">×</button>
       </div>
 
       <!-- Related stories -->
@@ -251,7 +258,7 @@ const ageLabel = getAgeGroupLabel(story.ageGroup, lang);
           ) : <span />}
         </div>
         <div class="story-nav-actions">
-          <button type="button" id="random-btn" class="btn btn-outline">🎲 ランダムに読む</button>
+          <button type="button" id="random-btn" class="btn btn-outline">🎲 {t('stories.random')}</button>
           <a href={`${base}/${lang}/stories`} class="btn btn-outline">{t('detail.back')}</a>
           <a href={`${base}/${lang}/submit`} class="btn btn-primary">{t('detail.submit')}</a>
         </div>
@@ -276,6 +283,10 @@ const ageLabel = getAgeGroupLabel(story.ageGroup, lang);
   message: message ?? null,
   generatingLabel: '',
   downloadToast: '',
+  likeLabel: t('detail.like'),
+  likedLabel: t('detail.liked'),
+  saveLabel: t('detail.save'),
+  savedLabel: t('detail.saved'),
   storyId: story.id,
   allIds,
   base,
@@ -294,7 +305,7 @@ const favList = () => JSON.parse(localStorage.getItem('naruboru-favorites') || '
 function updateFavBtn() {
   const isFav = favList().includes(storyId);
   favBtn.querySelector('.fav-icon').textContent = isFav ? '♥' : '♡';
-  favBtn.querySelector('.fav-label').textContent = isFav ? '保存済み' : '保存';
+  favBtn.querySelector('.fav-label').textContent = isFav ? savedLabel : saveLabel;
   favBtn.classList.toggle('favorited', isFav);
   favBtn.setAttribute('aria-pressed', String(isFav));
 }
@@ -312,17 +323,43 @@ const likeBtn = document.getElementById('like-btn');
 const likeList = () => JSON.parse(localStorage.getItem('naruboru-likes') || '[]');
 function updateLikeBtn() {
   const isLiked = likeList().includes(storyId);
-  likeBtn.querySelector('.like-label').textContent = isLiked ? 'わかった！' : 'わかる！';
+  likeBtn.querySelector('.like-label').textContent = isLiked ? likedLabel : likeLabel;
   likeBtn.classList.toggle('liked', isLiked);
   likeBtn.setAttribute('aria-pressed', String(isLiked));
 }
 updateLikeBtn();
+
+// ── わかる！CTA バブル ──
+let ctaTimer: ReturnType<typeof setTimeout> | null = null;
+
+function showLikeCta() {
+  const cta = document.getElementById('like-cta');
+  if (!cta) return;
+  cta.removeAttribute('hidden');
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => cta.classList.add('like-cta--visible'));
+  });
+  ctaTimer = setTimeout(hideLikeCta, 6000);
+}
+
+function hideLikeCta() {
+  const cta = document.getElementById('like-cta');
+  if (!cta) return;
+  cta.classList.remove('like-cta--visible');
+  setTimeout(() => cta.setAttribute('hidden', ''), 300);
+  if (ctaTimer) { clearTimeout(ctaTimer); ctaTimer = null; }
+}
+
+document.getElementById('like-cta-close')?.addEventListener('click', hideLikeCta);
+
 likeBtn?.addEventListener('click', () => {
   const list = likeList();
   const idx = list.indexOf(storyId);
+  const wasLiked = idx !== -1;
   if (idx === -1) list.push(storyId); else list.splice(idx, 1);
   localStorage.setItem('naruboru-likes', JSON.stringify(list));
   updateLikeBtn();
+  if (!wasLiked) showLikeCta();
 });
 
 // ── ランダムボタン ──

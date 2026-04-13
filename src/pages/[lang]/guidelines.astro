@@ -45,6 +45,7 @@ const content = {
     ],
     disclaimer_title: 'Disclaimer',
     disclaimer: 'This is an unofficial fan site for NARUTO / BORUTO. It has no affiliation with Masashi Kishimoto, Shueisha, or any other rights holders. Copyright of submitted content belongs to the submitter, but by submitting you grant permission for the content to be published on this site.',
+    positive_note: '💛 Fans who only know NARUTO or only BORUTO are also very welcome. Please avoid negative comments about works you don\'t know, and focus on your love for the works and characters you do love.',
     thanks: 'Thank you for reading the guidelines.',
     submit_btn: 'Submit Your Story',
   },
@@ -78,6 +79,7 @@ const content = {
     ],
     disclaimer_title: 'Avertissement',
     disclaimer: 'Ce site est un site fan non officiel de NARUTO / BORUTO. Il n\'est affilié à Masashi Kishimoto, Shueisha ni à aucun autre détenteur de droits. Les droits d\'auteur du contenu soumis appartiennent au soumissionnaire, mais en soumettant, vous accordez la permission de publier le contenu sur ce site.',
+    positive_note: '💛 Les fans qui ne connaissent que NARUTO ou que BORUTO sont également les bienvenus. Évitez les commentaires négatifs sur les œuvres que vous ne connaissez pas, et concentrez-vous sur votre amour pour les œuvres et personnages que vous aimez.',
     thanks: 'Merci d\'avoir lu les règles.',
     submit_btn: 'Soumettre mon histoire',
   },
@@ -111,6 +113,7 @@ const content = {
     ],
     disclaimer_title: 'إخلاء المسؤولية',
     disclaimer: 'هذا موقع غير رسمي لمحبي NARUTO / BORUTO. لا علاقة له بـ Masashi Kishimoto أو Shueisha أو أي من أصحاب الحقوق. حقوق الملكية الأدبية للمحتوى المقدَّم تعود لصاحبه، ولكن بتقديمه تمنح إذناً بنشره على هذا الموقع.',
+    positive_note: '💛 المعجبون الذين يعرفون NARUTO فقط أو BORUTO فقط مرحب بهم أيضاً. يُرجى تجنب التعليقات السلبية على الأعمال التي لا تعرفها، والتركيز على حبك للأعمال والشخصيات التي تحبها.',
     thanks: 'شكراً لقراءة الإرشادات.',
     submit_btn: 'شارك قصتك',
   },
@@ -144,6 +147,7 @@ const content = {
     ],
     disclaimer_title: 'Descargo de responsabilidad',
     disclaimer: 'Este es un sitio fan no oficial de NARUTO / BORUTO. No tiene afiliación con Masashi Kishimoto, Shueisha ni ningún otro titular de derechos. Los derechos de autor del contenido enviado pertenecen al autor, pero al enviarlo otorgas permiso para que se publique en este sitio.',
+    positive_note: '💛 Los fans que solo conocen NARUTO o solo BORUTO también son muy bienvenidos. Por favor evita comentarios negativos sobre obras que no conoces, y céntrate en el amor por las obras y personajes que sí amas.',
     thanks: 'Gracias por leer las guías.',
     submit_btn: 'Enviar mi historia',
   },
@@ -177,6 +181,7 @@ const content = {
     ],
     disclaimer_title: 'Aviso legal',
     disclaimer: 'Este é um site fan não oficial de NARUTO / BORUTO. Não tem afiliação com Masashi Kishimoto, Shueisha ou qualquer outro detentor de direitos. Os direitos autorais do conteúdo enviado pertencem ao autor, mas ao enviar você concede permissão para que o conteúdo seja publicado neste site.',
+    positive_note: '💛 Fãs que só conhecem NARUTO ou só BORUTO também são muito bem-vindos. Por favor evite comentários negativos sobre obras que você não conhece, e foque no amor pelas obras e personagens que você ama.',
     thanks: 'Obrigado por ler as diretrizes.',
     submit_btn: 'Enviar minha história',
   },
@@ -210,6 +215,7 @@ const content = {
     ],
     disclaimer_title: '免责声明',
     disclaimer: '本站是NARUTO/BORUTO的非官方粉丝网站，与岸本齐史、集英社及其他版权持有方无任何关联。投稿内容的版权归投稿者所有，但投稿即表示你授权本站发布该内容。',
+    positive_note: '💛 只了解NARUTO或只了解BORUTO的粉丝也非常欢迎。请避免对不了解的作品发表负面评论，专注于表达对你所爱的作品和角色的热情。',
     thanks: '感谢阅读投稿须知。',
     submit_btn: '投稿故事',
   },
@@ -243,6 +249,7 @@ const content = {
     ],
     disclaimer_title: '면책 조항',
     disclaimer: '이 사이트는 NARUTO/BORUTO의 비공식 팬 사이트입니다. 키시모토 마사시, 슈에이샤 또는 기타 저작권자와 아무 관련이 없습니다. 투고된 내용의 저작권은 투고자에게 귀속되지만, 투고함으로써 이 사이트에 게재할 권한을 부여하는 것으로 간주합니다.',
+    positive_note: '💛 NARUTO만 아는 팬이나 BORUTO만 아는 팬도 모두 환영합니다. 잘 모르는 작품에 대한 부정적인 댓글은 삼가고, 좋아하는 작품과 캐릭터에 대한 애정에 집중해 주세요.',
     thanks: '가이드라인을 읽어주셔서 감사합니다.',
     submit_btn: '이야기 투고하기',
   },
@@ -270,6 +277,7 @@ const c = content[lang] ?? content.en;
       <section class="gl-section">
         <h2>{c.about_title}</h2>
         <p>{c.about}</p>
+        {c.positive_note && <p class="gl-positive-note">{c.positive_note}</p>}
       </section>
 
       <section class="gl-section">

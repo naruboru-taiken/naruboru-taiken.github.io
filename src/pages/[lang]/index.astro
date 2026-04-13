@@ -22,6 +22,13 @@ const latestStories = [...stories]
   .slice(0, 9);
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const countries = [...new Set(stories.map((s: any) => s.country).filter(Boolean))];
+const countryCount = countries.length;
+const realCount = (stories as any[]).filter(s => !s.isSeedContent).length;
+const GOAL = 100;
+const pct100 = Math.min(100, Math.round((realCount / GOAL) * 100));
+const nextMilestone100 = [20, 30, 50, 75, 100].find(m => m > realCount) ?? 100;
 ---
 
 <BaseLayout
@@ -58,9 +65,35 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <a href={`${base}/${lang}/stories`} class="btn btn-primary">{t('home.read_all')}</a>
         <a href={`${base}/${lang}/submit`} class="btn btn-outline">{t('home.submit')}</a>
       </div>
-      <p class="hero-count">
-        {t('home.count', { count: stories.length })}
-      </p>
+
+      <div class="hero-meta">
+        <div class="hero-meta-stats" aria-label="site stats">
+          <span class="hero-meta-num">{realCount}</span>
+          <span class="hero-meta-unit">{t('home.meta_stories_unit')}</span>
+          <span class="hero-meta-sep" aria-hidden="true">·</span>
+          <span class="hero-meta-num">{countryCount}</span>
+          <span class="hero-meta-unit">{t('home.meta_countries_unit')}</span>
+        </div>
+        <span class="hero-meta-divider" aria-hidden="true"></span>
+        {realCount >= 20 ? (
+          <a href={`${base}/${lang}/project100`} class="hero-meta-p100" aria-label={`PROJECT 100: ${realCount}/${GOAL}`}>
+            <span class="hero-meta-p100-label">PROJECT 100</span>
+            <span class="hero-meta-p100-bar" role="progressbar" aria-valuenow={realCount} aria-valuemin={0} aria-valuemax={GOAL}>
+              <span class="hero-meta-p100-fill" style={`width: ${pct100}%`}></span>
+            </span>
+            <span class="hero-meta-p100-count">{realCount}<span class="hero-meta-p100-goal">/{GOAL}{t('home.p100_goal_unit')}</span></span>
+            <span class="hero-meta-p100-arrow" aria-hidden="true">→</span>
+          </a>
+        ) : (
+          <span class="hero-meta-p100" style="cursor: default; pointer-events: none;">
+            <span class="hero-meta-p100-label">PROJECT 100</span>
+            <span class="hero-meta-p100-bar" role="progressbar" aria-valuenow={realCount} aria-valuemin={0} aria-valuemax={GOAL}>
+              <span class="hero-meta-p100-fill" style={`width: ${pct100}%`}></span>
+            </span>
+            <span class="hero-meta-p100-count">{realCount}<span class="hero-meta-p100-goal">/{GOAL}{t('home.p100_goal_unit')}</span></span>
+          </span>
+        )}
+      </div>
     </div>
   </section>
 
