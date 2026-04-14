@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import stories from '../../data/stories.json';
 import { SUPPORTED_LANGS, useTranslations, isSupportedLang } from '../../i18n/ui';
 import type { SupportedLang } from '../../i18n/ui';
 
@@ -159,6 +160,8 @@ const notices = {
 };
 
 const c = notices[lang] ?? notices.en;
+
+const storyIds = (stories as any[]).map(s => s.id as string);
 ---
 
 <BaseLayout
@@ -221,7 +224,11 @@ const c = notices[lang] ?? notices.en;
         <h2>{c.thanks_title}</h2>
         <p>{c.thanks_desc}</p>
         <p>{c.thanks_x} (<a href="https://x.com/naruboru_taiken" target="_blank" rel="noopener noreferrer">@naruboru_taiken</a>).</p>
-        <a href={`${base}/${lang}/stories`} class="btn btn-primary" style="margin-top: 1.5rem; display: inline-block;">{c.thanks_btn}</a>
+        <div class="thanks-actions" style="margin-top: 1.5rem; display: grid; gap: .75rem;">
+          <a href={`${base}/${lang}/project100`} class="btn btn-primary">PROJECT 100 →</a>
+          <button id="thanks-random" type="button" class="btn btn-outline">{t('stories.random')} →</button>
+          <a href={`${base}/${lang}/stories`} class="btn btn-outline">{c.thanks_btn}</a>
+        </div>
       </div>
 
       <p id="submit-guideline-link" class="submit-guideline-link">
@@ -232,7 +239,7 @@ const c = notices[lang] ?? notices.en;
   </section>
 </BaseLayout>
 
-<script>
+<script define:vars={{ storyIds, base, lang }}>
 const iframe = document.getElementById('google-form-iframe') as HTMLIFrameElement;
 let loadCount = 0;
 iframe?.addEventListener('load', () => {
@@ -245,5 +252,13 @@ iframe?.addEventListener('load', () => {
     thanks.removeAttribute('hidden');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+});
+
+// 完了画面から「ランダムに読む」
+document.getElementById('thanks-random')?.addEventListener('click', () => {
+  const ids = (storyIds as string[]) ?? [];
+  if (!ids.length) return;
+  const id = ids[Math.floor(Math.random() * ids.length)];
+  window.location.href = `${base}/${lang}/stories/${id}`;
 });
 </script>
