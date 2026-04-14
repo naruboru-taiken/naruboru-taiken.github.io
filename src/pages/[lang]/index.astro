@@ -29,6 +29,11 @@ const realCount = (stories as any[]).filter(s => !s.isSeedContent).length;
 const GOAL = 100;
 const pct100 = Math.min(100, Math.round((realCount / GOAL) * 100));
 const nextMilestone100 = [20, 30, 50, 75, 100].find(m => m > realCount) ?? 100;
+
+// 「まず1本読む」導線用（翻訳がある投稿を優先）
+const translatedIds = (stories as any[])
+  .filter(s => !!s?.translations?.[lang])
+  .map(s => s.id as string);
 ---
 
 <BaseLayout
@@ -61,8 +66,13 @@ const nextMilestone100 = [20, 30, 50, 75, 100].find(m => m > realCount) ?? 100;
       <p class="hero-eyebrow">{t('home.eyebrow')}</p>
       <h1 class="hero-title">{t('home.title')}</h1>
       <p class="hero-desc">{t('home.desc')}</p>
+      <div class="hero-intl" aria-label="translation note">
+        <p class="hero-intl-title">{t('home.intl_value_title')}</p>
+        <p class="hero-intl-desc">{t('home.intl_value_desc')}</p>
+      </div>
       <div class="hero-actions">
-        <a href={`${base}/${lang}/stories`} class="btn btn-primary">{t('home.read_all')}</a>
+        <button type="button" id="start-reading-btn" class="btn btn-primary">{t('home.start_reading')}</button>
+        <a href={`${base}/${lang}/stories`} class="btn btn-outline">{t('home.read_all')}</a>
         <a href={`${base}/${lang}/submit`} class="btn btn-outline">{t('home.submit')}</a>
       </div>
 
@@ -126,3 +136,15 @@ const nextMilestone100 = [20, 30, 50, 75, 100].find(m => m > realCount) ?? 100;
   </section>
 
 </BaseLayout>
+
+<script define:vars={{ translatedIds, base, lang }}>
+document.getElementById('start-reading-btn')?.addEventListener('click', () => {
+  const ids = (translatedIds as string[]) ?? [];
+  if (ids.length > 0) {
+    const id = ids[Math.floor(Math.random() * ids.length)];
+    window.location.href = `${base}/${lang}/stories/${id}`;
+  } else {
+    window.location.href = `${base}/${lang}/stories`;
+  }
+});
+</script>

@@ -214,17 +214,6 @@ interface StoryEntry {
   m: string;
 }
 
-const flagMap: Record<string, string> = {
-  '日本': '🇯🇵', 'ブラジル': '🇧🇷', '韓国': '🇰🇷',
-  'フランス': '🇫🇷', 'アメリカ': '🇺🇸', 'イギリス': '🇬🇧',
-  'アラブ首長国連邦': '🇦🇪', 'スペイン': '🇪🇸', 'ポルトガル': '🇵🇹',
-  '中国': '🇨🇳', 'カナダ': '🇨🇦', 'オーストラリア': '🇦🇺',
-  'ドイツ': '🇩🇪', 'インドネシア': '🇮🇩', 'タイ': '🇹🇭',
-  'フィリピン': '🇵🇭', 'メキシコ': '🇲🇽', 'アルゼンチン': '🇦🇷',
-  'イタリア': '🇮🇹', 'インド': '🇮🇳', 'ベトナム': '🇻🇳',
-  'マレーシア': '🇲🇾', '台湾': '🇹🇼', '香港': '🇭🇰', 'シンガポール': '🇸🇬',
-};
-
 /** Fisher-Yates shuffle */
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -246,8 +235,7 @@ if (poolEl && container) {
     const picked = shuffle(storyPool).slice(0, 3);
 
     picked.forEach((story, idx) => {
-      const flag = story.co ? (flagMap[story.co] ?? '') : '';
-      const countryStr = story.co ? `${story.co}${flag ? ' ' + flag : ''}` : '';
+      const countryStr = story.co ? story.co : '';
       const seriesStr = [story.s, story.m, countryStr].filter(Boolean).join(' · ');
       const avatarChar = story.n.charAt(0);
 

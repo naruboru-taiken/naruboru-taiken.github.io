@@ -328,6 +328,26 @@ a:hover { text-decoration: underline; }
   margin-bottom: var(--space-sm);
 }
 
+.hero-intl {
+  margin: 0 0 var(--space-md);
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.18);
+  max-width: 560px;
+}
+.hero-intl-title {
+  margin: 0 0 0.25rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.92);
+}
+.hero-intl-desc {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.72);
+}
+
 .hero .btn-outline {
   color: white;
   border-color: rgba(255,255,255,0.5);
@@ -2043,13 +2063,18 @@ body { background-color: var(--color-bg); }
   right: 0.75rem;
   background: none;
   border: none;
-  font-size: 1.2rem;
   cursor: pointer;
   color: var(--color-primary);
   line-height: 1;
   padding: 0.2rem;
   z-index: 2;
   transition: transform 0.15s;
+}
+.card-fav-icon {
+  display: block;
+}
+.card-fav-btn.is-fav .card-fav-icon path {
+  fill: currentColor;
 }
 .card-fav-btn:hover {
   transform: scale(1.2);

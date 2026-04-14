@@ -1,6 +1,7 @@
 ---
 import { getStoryText, getAgeGroupLabel, getCharaName } from '../i18n/ui';
 import type { Lang } from '../i18n/ui';
+import FlagIcon from './FlagIcon.astro';
 
 export interface Props {
   story: {
@@ -40,38 +41,21 @@ const displayCatchphrase =
 const ageLabel = getAgeGroupLabel(story.ageGroup, lang);
 const charaName = getCharaName(story.favoriteCharacter, lang);
 
-// 国旗絵文字マッピング（country フィールドがある投稿に表示）
-const countryFlagMap: Record<string, string> = {
-  '日本': '🇯🇵',
-  'ブラジル': '🇧🇷', 'Brasil': '🇧🇷',
-  '韓国': '🇰🇷',
-  'フランス': '🇫🇷', 'France': '🇫🇷',
-  'アメリカ': '🇺🇸', 'United States': '🇺🇸', 'USA': '🇺🇸',
-  'イギリス': '🇬🇧', 'UK': '🇬🇧',
-  'アラブ首長国連邦': '🇦🇪',
-  'スペイン': '🇪🇸',
-  'ポルトガル': '🇵🇹',
-  '中国': '🇨🇳',
-  'カナダ': '🇨🇦',
-  'オーストラリア': '🇦🇺',
-  'ドイツ': '🇩🇪',
-  'インドネシア': '🇮🇩',
-  'タイ': '🇹🇭',
-  'フィリピン': '🇵🇭',
-  'メキシコ': '🇲🇽',
-  'アルゼンチン': '🇦🇷',
-  'イタリア': '🇮🇹',
-  'ロシア': '🇷🇺',
-  'インド': '🇮🇳',
-  'ベトナム': '🇻🇳',
-  'マレーシア': '🇲🇾',
-  '台湾': '🇹🇼',
-  '香港': '🇭🇰',
-  'シンガポール': '🇸🇬',
+// 国旗は絵文字ではなくSVG（対応国のみ）
+const countryToCode: Record<string, string> = {
+  '日本': 'JP',
+  'ブラジル': 'BR', 'Brasil': 'BR',
+  '韓国': 'KR',
+  'タイ': 'TH',
+  'イギリス': 'GB', 'UK': 'GB',
+  'アメリカ': 'US', 'United States': 'US', 'USA': 'US',
+  '中国': 'CN',
+  'フランス': 'FR', 'France': 'FR',
+  'ドイツ': 'DE',
+  'イタリア': 'IT',
 };
-const countryFlag = (story as any).country
-  ? (countryFlagMap[(story as any).country] ?? null)
-  : null;
+const countryName = (story as any).country as string | undefined;
+const countryCode = countryName ? (countryToCode[countryName] ?? null) : null;
 
 // Labels
 const agePrefix = lang === 'ja' ? '出会いは' : (lang === 'ar' ? 'عمر الاكتشاف: ' : '');
@@ -115,13 +99,25 @@ const storyPath = lang === 'ja'
         {charaName && (
           <span class="card-chara">・{favPrefix}{charaName}</span>
         )}
-        {(story as any).country && (
-          <span class="card-country">・{(story as any).country}{countryFlag ? ` ${countryFlag}` : ''}</span>
+        {countryName && (
+          <span class="card-country">
+            ・{countryName}
+            {countryCode && <span class="card-country-flag" aria-hidden="true"><FlagIcon code={countryCode} /></span>}
+          </span>
         )}
       </div>
     </div>
   </div>
-  <button type="button" class="card-fav-btn" aria-label="お気に入り">♡</button>
+  <button type="button" class="card-fav-btn" aria-label="お気に入りに保存" aria-pressed="false">
+    <svg class="card-fav-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M12.1 20.3s-7.1-4.4-9.3-8.1C.6 8.4 2.1 5.4 5.1 4.6c1.7-.5 3.6.1 4.8 1.5 1.2-1.4 3.1-2 4.8-1.5 3 .8 4.5 3.8 2.3 7.6-2.2 3.7-9.3 8.1-9.3 8.1z"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linejoin="round"
+      />
+    </svg>
+  </button>
   <a href={storyPath} class="card-link" aria-label={story.displayName}>
     <span class="card-link-text">{readMore}</span>
   </a>
@@ -147,15 +143,22 @@ document.querySelectorAll<HTMLElement>('.story-card[data-story-id]').forEach(car
   const favList = JSON.parse(localStorage.getItem('naruboru-favorites') || '[]');
   const favBtn = card.querySelector<HTMLButtonElement>('.card-fav-btn');
   if (favBtn) {
-    if (favList.includes(id)) favBtn.textContent = '♥';
+    const setFavState = (isFav: boolean) => {
+      favBtn.classList.toggle('is-fav', isFav);
+      favBtn.setAttribute('aria-pressed', String(isFav));
+      favBtn.setAttribute('aria-label', isFav ? 'お気に入りから外す' : 'お気に入りに保存');
+    };
+    setFavState(favList.includes(id));
     favBtn.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
       const list = JSON.parse(localStorage.getItem('naruboru-favorites') || '[]');
       const idx = list.indexOf(id);
-      if (idx === -1) { list.push(id); favBtn.textContent = '♥'; }
-      else { list.splice(idx, 1); favBtn.textContent = '♡'; }
+      const willFav = idx === -1;
+      if (willFav) list.push(id);
+      else list.splice(idx, 1);
       localStorage.setItem('naruboru-favorites', JSON.stringify(list));
+      setFavState(willFav);
     });
   }
 });

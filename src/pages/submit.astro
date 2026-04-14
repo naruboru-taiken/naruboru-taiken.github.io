@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import stories from '../data/stories.json';
 
 const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSc5haprqYIM3MX0FdsuPVZinmbA4xPljPETYs1ewAfL9EW59Q/viewform?embedded=true';
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
@@ -67,7 +68,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
         <h2>投稿を受け付けました！</h2>
         <p>ありがとうございます。内容を確認後、数日〜1週間程度で掲載します。</p>
         <p>掲載後はXアカウント（<a href="https://x.com/naruboru_taiken" target="_blank" rel="noopener noreferrer">@naruboru_taiken</a>）でお知らせします。</p>
-        <a href={`${base}/stories`} class="btn btn-primary" style="margin-top: 1.5rem; display: inline-block;">みんなの体験談を読む →</a>
+        <div class="thanks-actions" style="margin-top: 1.5rem; display: grid; gap: .75rem;">
+          <a href={`${base}/project100`} class="btn btn-primary">PROJECT 100 を見る →</a>
+          <button id="thanks-random" type="button" class="btn btn-outline">ランダムに読む →</button>
+          <a href={`${base}/favorites`} class="btn btn-outline">お気に入りを見る →</a>
+          <a href={`${base}/stories`} class="btn btn-outline">体験談一覧へ →</a>
+        </div>
       </div>
 
       <!-- ガイドライン再掲リンク -->
@@ -79,7 +85,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   </section>
 </BaseLayout>
 
-<script>
+<script define:vars={{ storiesData: stories, base }}>
 // Googleフォームは送信後にiframe内のページが切り替わり、loadイベントが再発火する
 // 初回load（フォーム表示）はスキップし、2回目以降（送信完了）で完了画面を表示する
 const iframe = document.getElementById('google-form-iframe') as HTMLIFrameElement;
@@ -96,5 +102,13 @@ iframe?.addEventListener('load', () => {
     thanks.removeAttribute('hidden');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+});
+
+// 完了画面から「ランダムに読む」
+document.getElementById('thanks-random')?.addEventListener('click', () => {
+  const published = (storiesData as any[]).filter(s => s?.id);
+  if (!published.length) return;
+  const story = published[Math.floor(Math.random() * published.length)];
+  window.location.href = `${base}/stories/${story.id}`;
 });
 </script>

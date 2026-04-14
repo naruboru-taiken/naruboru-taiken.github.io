@@ -7,7 +7,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 <BaseLayout title="お気に入り" description="保存した体験談" lang="ja" pagePath="/favorites">
   <section class="page-header">
     <div class="page-header-inner">
-      <h1 class="page-title">♥ お気に入り</h1>
+      <h1 class="page-title">お気に入り</h1>
       <p class="page-desc">保存した体験談の一覧です。</p>
     </div>
   </section>
@@ -30,7 +30,7 @@ const favStories = storiesData.filter(s => favIds.includes(s.id));
 const container = document.getElementById('favorites-list');
 
 if (favStories.length === 0) {
-  container.innerHTML = '<p class="favorites-empty">まだお気に入りがありません。体験談の♡ボタンで保存できます。</p>';
+  container.innerHTML = '<p class="favorites-empty">まだお気に入りがありません。体験談カードの保存ボタンから追加できます。</p>';
 } else {
   container.innerHTML = favStories.map(s => {
     const catchphrase = s.catchphrase || (s.mainStory ? s.mainStory.slice(0, 60) + '…' : '');
