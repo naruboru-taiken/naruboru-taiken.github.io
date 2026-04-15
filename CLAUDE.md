@@ -118,7 +118,7 @@ naruboru-fan-site/
   "imageUrl": null,
   "imageCaption": null,
   "country": "日本",               // Q3（列は末尾付近に注意）
-  "publishedAt": "2025-01-01",     // 公開日（表示順に影響）
+  "publishedAt": "2025-01-01",     // 公開日（表示順に影響）★ 必ずgit pushする当日の日付を入れること（事前に作成していた場合も公開日に更新する）
   "isSeedContent": false           // 運営作成のサンプルはtrue
 }
 ```
@@ -129,6 +129,10 @@ naruboru-fan-site/
 - `favoriteScene` / `futureWish` / `message` は条件付き表示（nullなら非表示）
 
 #### 投稿追加時に必ず出力する付帯情報
+
+> ⚠️ **`publishedAt` は git push 当日の日付を設定すること**
+> 事前に投稿データを作成・翻訳済みであっても、実際に公開（push）するタイミングで日付を更新する。
+> 一覧ページは `publishedAt` 降順でソートされるため、古い日付のままだと最新投稿が最左上に表示されない。
 
 stories.json への追記が完了したら、以下を **毎回セットで出力すること**。
 
