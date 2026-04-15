@@ -2533,5 +2533,78 @@
         "country": "일본"
       }
     }
+  },
+  {
+    "id": "story-035",
+    "displayName": "mo",
+    "ageGroup": "10代",
+    "favoriteCharacter": "うずまきボルト",
+    "firstSeries": "BORUTO",
+    "firstMedia": "TVアニメ",
+    "catchphrase": "アニメを待っていたら、里を守るナルトと九喇嘛に出会った。",
+    "mainStory": "私が初めてBORUTOを見たのは「大筒木、襲来!!」でした。当時アニポケにハマっていた私はアニメが始まるのをテレビをつけて待っていたんですが、そこで見たのがナルトと九喇嘛が里のみんなを守るシーンでした。その続きが気になって見てましたがミツキ失踪編が始まったくらいで一度離れました。そこから数年してふと「大筒木、襲来!!」のラストシーンを思い出してアニメを1話から見ていくうち、気づけばハマっていました。アニメを追いながら単行本で15巻から原作も読んでいき、TBVが始まったタイミングで本誌に切り替え、今では月一の楽しみになっています。\nジャンフェスに行くきっかけの一つにもなり、昨年のフェスでは一昨年購入したグッズを身につけて回りました。今年はグッズが出ることを願っています。",
+    "triggerScene": null,
+    "realization": null,
+    "currentRelationship": null,
+    "favoriteScene": "アニメでのvsボロ戦のサラダとの連携シーンが大好きです。ボルトのサラダに対する「絶対に仕留めてくれる」という信頼、サラダのボルトに対する「言葉がなくとも十分なフォローをしてくれる」という信頼が全面に出ており何度も見返しています。\n\nあとは、ボルトのヒマワリへの接し方が大好きです。仲間や両親に対する愛とは違う愛が溢れていて、「こんな兄がいたら幸せだろうな」と思います。",
+    "futureWish": "うずまき兄妹が共に任務に行き、共闘するものが見てみたいです。",
+    "message": null,
+    "imageUrl": null,
+    "imageCaption": null,
+    "country": "日本",
+    "sourceLang": "ja",
+    "publishedAt": "2026-04-12",
+    "isSeedContent": false,
+    "translations": {
+      "en": {
+        "catchphrase": "While waiting for the anime, I met Naruto and Kusarama, who were protecting their village.",
+        "mainStory": "The first time I saw Boruto was \"Otsutsuki, attack! I was into Anipoke at the time. I was hooked on Anipoke at the time, so I turned on the TV and waited for the anime to start, and that's when I saw the scene where Naruto and the Nine Lamas protect everyone in the village. I was curious to see the rest of the story, but once the Mitsuki disappearance episode started, I left the anime. A few years later, I suddenly remembered the last scene of \"Otsutsuki, attack! I started watching the anime from the first episode and found myself hooked. While following the anime, I also started reading the original story in book form from volume 15, and switched to the magazine when TBV started, and now it's something I look forward to once a month.\nIt was one of the reasons for me to go to Jangfest, and at last year's festival I wore the goods I had purchased the year before. I hope to get the goods this year.",
+        "favoriteScene": "I love the scene in the anime where he and Salada work together in the vs Boro fight. I have watched it over and over again because it shows Bolt's trust in Salada that she will definitely finish him off and Salada's trust in Bolt that he will follow through enough even without words.\n\nI also love the way Bolt treats Sunflower. He is full of love that is different from the love he has for his friends and parents, and I think, \"I would be happy if I had an older brother like him.",
+        "futureWish": "I would like to see something where the Uzumaki siblings go on missions together and fight together.",
+        "country": "Japan"
+      },
+      "fr": {
+        "catchphrase": "En attendant l'anime, j'ai rencontré Naruto et Kuharama, qui protégeaient leur village.",
+        "mainStory": "J'ai vu BORUTO pour la première fois dans \"Otsutsuki, Attack !\" était \"Otsutsuki, Attack !\". J'étais accro à Anipoke à l'époque, alors j'ai allumé la télé et j'ai attendu que l'anime commence, et c'est là que j'ai vu la scène où Naruto et les Neuf Lamas protègent tout le monde dans le village. J'étais curieux de voir la suite de l'histoire, mais une fois que l'épisode de la disparition de Mitsuki a commencé, j'ai abandonné la série. Quelques années plus tard, je me suis soudain souvenu de la dernière scène de \" Otsutsuki, attaque ! J'ai commencé à regarder l'anime à partir de l'épisode 1 et je me suis retrouvée accrochée. Tout en suivant l'anime, j'ai également lu l'histoire originale à partir du 15ème volume sous forme de livre, et je suis passé au magazine lorsque TBV a commencé.\nC'est aussi l'une des raisons pour lesquelles j'ai décidé d'aller au Jangfest, et lors du festival de l'année dernière, j'ai porté les articles que j'avais achetés l'année précédente. J'espère que j'obtiendrai d'autres articles cette année.",
+        "favoriteScene": "J'adore les scènes de l'anime où lui et Salada travaillent ensemble dans le combat contre Bolo. Je la regarde encore et encore parce qu'elle montre la confiance de Bolt en Salada, qui sait qu'elle l'achèvera, et la confiance totale de Salada en Bolt, qui sait qu'il ira jusqu'au bout, même sans paroles.\n\nJ'aime aussi la façon dont Bolt traite Tournesol. Il est plein d'un amour différent de celui qu'il a pour ses amis et ses parents, et je me dis que je serais heureuse si j'avais un frère comme lui.",
+        "futureWish": "J'aimerais que les frères et sœurs Uzumaki partent ensemble en mission et se battent ensemble.",
+        "country": "Japon"
+      },
+      "ar": {
+        "catchphrase": "أثناء انتظار الأنمي، قابلت ناروتو وكوهاراما اللذين كانا يحميان قريتهما.",
+        "mainStory": "رأيت بوروتو لأول مرة في \"أوتسوتسوكي، هجوم!\" كان \"أوتسوتسوتسوكي، هجوم!\". لقد كنت مدمنًا على أنيبوكي في ذلك الوقت، لذلك قمت بتشغيل التلفاز وانتظرت بدء عرض الأنمي، وحينها رأيت المشهد الذي يحمي فيه ناروتو واللامات التسعة جميع من في القرية. شعرت بالفضول لرؤية بقية القصة، ولكن بمجرد أن بدأت حلقة اختفاء ميتسوكي، تركت المسلسل. بعد سنوات قليلة، تذكرت فجأة المشهد الأخير من \"أوتسوتسوكي، هجوم! بدأت بمشاهدة الأنمي من الحلقة الأولى ووجدت نفسي مدمنًا. بينما كنت أتابع الأنمي، قرأت أيضًا القصة الأصلية من المجلد الخامس عشر في شكل كتاب، وتحولت إلى المجلة عندما بدأت TBV.\nوكان أيضًا أحد الأسباب التي دفعتني للذهاب إلى مهرجان جانجفيست، وفي مهرجان العام الماضي ذهبت في مهرجان العام الماضي وأنا أرتدي السلع التي اشتريتها في العام السابق. آمل أن أحصل على بعض الأشياء الجيدة هذا العام.",
+        "favoriteScene": "أحب المشاهد في الأنمي حيث يعمل هو وسالادا معًا في قتال ضد بولو. أشاهده مرارًا وتكرارًا لأنه يُظهر ثقة بولت في سالادا بأنها ستقضي عليه بالتأكيد، وثقة سالادا الكاملة في بولت بأنه سيتابعه بما فيه الكفاية حتى بدون كلمات.\n\nأحب أيضاً الطريقة التي يعامل بها بولت زهرة دوار الشمس. إنه مليء بالحب الذي يختلف عن الحب الذي يكنه لأصدقائه ووالديه، وأفكر \"سأكون سعيدًا لو كان لي أخ مثل هذا\".",
+        "futureWish": "أود أن أرى شيئًا حيث يذهب الأشقاء أوزوماكي في مهمات معًا ويقاتلون معًا.",
+        "country": "اليابان"
+      },
+      "es": {
+        "catchphrase": "Mientras esperaba el anime, conocí a Naruto y Kuharama, que protegían su aldea.",
+        "mainStory": "La primera vez que vi a BORUTO en \"Otsutsuki, ¡Ataca!\" fue en \"Otsutsuki, Attack!\". Estaba enganchado al Anipoke por aquel entonces, así que encendí la tele y esperé a que empezara el anime, y fue entonces cuando vi la escena en la que Naruto y los Nueve Lamas protegen a todos los habitantes de la aldea. Tenía curiosidad por ver el resto de la historia, pero en cuanto empezó el episodio de la desaparición de Mitsuki, dejé la serie. Unos años más tarde, recordé de repente la última escena de \"Otsutsuki, ¡ataca! Empecé a ver el anime desde el primer episodio y me enganché. Mientras seguía el anime, también leí la historia original a partir del volumen 15, y me pasé a la revista cuando empezó TBV, y ahora es algo que espero con impaciencia una vez al mes.\nTambién fue una de las razones que me llevaron a ir al Jangfest, y en el festival del año pasado fui por ahí con los artículos que compré el año anterior. Espero conseguir algunas cosas este año.",
+        "favoriteScene": "Me encantan las escenas del anime en las que él y Salada trabajan juntos en el combate contra Bolo. La veo una y otra vez porque muestra la confianza de Bolt en Salada de que ella acabará definitivamente con él, y la plena confianza de Salada en Bolt de que seguirá lo suficiente incluso sin palabras.\n\nTambién me encanta la forma en que Bolt trata a Girasol. Está lleno de un amor diferente del que siente por sus amigos y sus padres, y pienso: \"Yo sería feliz si tuviera un hermano como él\".",
+        "futureWish": "Me gustaría ver algo en lo que los hermanos Uzumaki vayan juntos a misiones y luchen juntos.",
+        "country": "Japón"
+      },
+      "pt": {
+        "catchphrase": "Enquanto esperava pelo anime, conheci Naruto e Kuharama, que estavam a proteger a sua aldeia.",
+        "mainStory": "A primeira vez que vi o BORUTO em \"Otsutsuki, Attack!\" foi \"Otsutsuki, Attack!\". Na altura, estava viciado em Anipoke, por isso liguei a televisão e esperei que o anime começasse, e foi aí que vi a cena em que Naruto e os Nove Lamas protegem toda a gente da aldeia. Fiquei curioso para ver o resto da história, mas assim que o episódio do desaparecimento de Mitsuki começou, abandonei a série. Alguns anos mais tarde, lembrei-me subitamente da última cena de \"Otsutsuki, attack! Comecei a ver o anime desde o primeiro episódio e fiquei viciado. Enquanto seguia o anime, também li a história original a partir do volume 15, e mudei para a revista quando o TBV começou, e agora é algo que espero ansiosamente uma vez por mês.\nFoi também uma das razões que me levou a ir ao Jangfest, e no festival do ano passado andei por lá com os artigos que comprei no ano anterior. Este ano, espero receber alguns brindes.",
+        "favoriteScene": "Adoro as cenas do anime em que ele e a Salada trabalham juntos na luta contra o Bolo. Vejo-a vezes sem conta, porque mostra a confiança de Bolt em Salada, que acredita que ela vai acabar com ele, e a confiança total de Salada em Bolt, que acredita que ele vai seguir em frente mesmo sem palavras.\n\nTambém adoro a forma como Bolt trata Sunflower. Ele está cheio de amor, diferente do amor que tem pelos amigos e pelos pais, e eu penso: \"Seria feliz se tivesse um irmão assim\".",
+        "futureWish": "Gostava de ver algo em que os irmãos Uzumaki fossem em missões juntos e lutassem juntos.",
+        "country": "Japão"
+      },
+      "zh": {
+        "catchphrase": "在等待动画片的过程中，我遇到了保护村子的鸣人和库哈拉玛。",
+        "mainStory": "我第一次看到 BORUTO 是在 \"大槻响，出击！\"是在 \"大槻响，出击！\"中。当时我迷上了 Anipoke，于是打开电视等待动画开始，就在那时我看到了鸣人和九喇嘛保护村子里所有人的场景。我很好奇，想看看后面的故事，但光月失踪的情节一开始，我就离开了这个系列。几年后，我突然想起了 \"大筒木，来袭 \"的最后一幕！我从第一集开始观看这部动画片，发现自己已经被深深地吸引住了。在关注动画的同时，我还阅读了第 15 卷的原作故事，并在 TBV 开播后改看杂志，现在这已经成为我每月一次的期待。\n这也是我去参加 Jangfest 的原因之一，在去年的节日上，我穿着前年买的东西到处逛。我希望今年能买到一些好东西。",
+        "favoriteScene": "我喜欢动画片中他和萨拉达在与博洛的战斗中合作的场景。我看了一遍又一遍，因为这显示了博尔特对萨拉达的信任，相信她一定会把他干掉，而萨拉达也完全相信博尔特，相信他即使不说话也会坚持到底。\n\n我还喜欢博尔特对待向日葵的方式。他对向日葵充满了爱，这种爱不同于他对朋友和父母的爱，我想，\"如果我有一个这样的哥哥，我一定会很幸福\"。",
+        "futureWish": "我希望看到乌云兄妹一起执行任务，一起战斗。",
+        "country": "日本"
+      },
+      "ko": {
+        "catchphrase": "애니메이션을 기다리다가 마을을 지키는 나루토와 구라마를 만났다.",
+        "mainStory": "제가 처음 보루토를 본 것은 \"대통나무, 습격!!!\" 이었습니다. 당시 애니포케에 빠져있던 저는 애니메이션이 시작되기를 기다리며 TV를 틀어놓고 기다리고 있었는데, 나루토와 쿠라마가 마을 사람들을 지키는 장면을 봤어요. 그 다음이 궁금해서 계속 보고 있었는데, 미츠키 실종편이 시작될 즈음에 한 번 떨어져 나갔어요. 그로부터 몇 년 후 문득 「오오츠츠츠키, 습격! 의 마지막 장면이 떠올라 애니메이션을 1화부터 다시 보기 시작했는데, 어느새 빠져들고 있었어요. 애니메이션을 따라가면서 단행본으로 15권부터 원작도 읽었고, TBV가 시작된 시점에 본지로 전환해 지금은 한 달에 한 번씩 보는 것이 하나의 즐거움으로 자리 잡았어요.\n잼페스에 가는 계기가 되기도 했고, 작년 페스티벌에서는 재작년에 구입한 굿즈를 입고 돌아다녔어요. 올해도 굿즈가 나왔으면 좋겠다.",
+        "favoriteScene": "저는 애니메이션에서 볼트와 샐러드의 대결 장면이 정말 마음에 듭니다. 볼트의 샐러드에 대한 '절대 죽여줄 거야'라는 신뢰, 샐러드의 볼트에 대한 '말하지 않아도 충분히 따라줄 거야'라는 신뢰가 고스란히 드러나서 몇 번이고 다시 보게 되네요.\n\n그리고 볼트가 해바라기를 대하는 태도가 너무 좋아요. 동료나 부모에 대한 사랑과는 또 다른 사랑이 넘쳐나서 '이런 오빠가 있다면 행복할 것 같다'는 생각이 듭니다.",
+        "futureWish": "우즈마키 남매가 함께 임무를 수행하며 공투하는 모습을 보고 싶어요.",
+        "country": "일본"
+      }
+    }
   }
 ]
